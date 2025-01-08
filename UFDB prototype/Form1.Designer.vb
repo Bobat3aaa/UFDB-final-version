@@ -75,7 +75,7 @@ Partial Class Form1
         Me.Btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Btnlogin.Font = New System.Drawing.Font("Helvetica Neue", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Btnlogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
-        Me.Btnlogin.Location = New System.Drawing.Point(447, 126)
+        Me.Btnlogin.Location = New System.Drawing.Point(425, 126)
         Me.Btnlogin.Name = "Btnlogin"
         Me.Btnlogin.Size = New System.Drawing.Size(133, 199)
         Me.Btnlogin.TabIndex = 3

@@ -8,6 +8,9 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Security.Policy
 
 Public Class Form1
+
+
+
     Private Sub Fights_Click(sender As Object, e As EventArgs) Handles fights.Click
 
         fight_form.Show()

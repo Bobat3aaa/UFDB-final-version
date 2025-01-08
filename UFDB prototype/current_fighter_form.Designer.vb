@@ -22,14 +22,14 @@ Partial Class current_fighter_form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend6 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.lblname = New System.Windows.Forms.Label()
         Me.lblheight = New System.Windows.Forms.Label()
         Me.lblreach = New System.Windows.Forms.Label()
@@ -206,7 +206,7 @@ Partial Class current_fighter_form
         '
         'btnlike
         '
-        Me.btnlike.Location = New System.Drawing.Point(503, 362)
+        Me.btnlike.Location = New System.Drawing.Point(529, 362)
         Me.btnlike.Name = "btnlike"
         Me.btnlike.Size = New System.Drawing.Size(238, 45)
         Me.btnlike.TabIndex = 18
@@ -239,42 +239,42 @@ Partial Class current_fighter_form
         'chartsigstr
         '
         Me.chartsigstr.BorderlineColor = System.Drawing.Color.Black
-        ChartArea5.Name = "ChartArea1"
-        Me.chartsigstr.ChartAreas.Add(ChartArea5)
-        Legend5.Name = "Legend1"
-        Me.chartsigstr.Legends.Add(Legend5)
+        ChartArea1.Name = "ChartArea1"
+        Me.chartsigstr.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chartsigstr.Legends.Add(Legend1)
         Me.chartsigstr.Location = New System.Drawing.Point(503, 227)
         Me.chartsigstr.Name = "chartsigstr"
-        Series9.BackSecondaryColor = System.Drawing.Color.White
-        Series9.ChartArea = "ChartArea1"
-        Series9.Color = System.Drawing.Color.Red
-        Series9.Legend = "Legend1"
-        Series9.Name = "sig strikes landed"
-        Series10.ChartArea = "ChartArea1"
-        Series10.Legend = "Legend1"
-        Series10.Name = "sig str taken"
-        Me.chartsigstr.Series.Add(Series9)
-        Me.chartsigstr.Series.Add(Series10)
+        Series1.BackSecondaryColor = System.Drawing.Color.White
+        Series1.ChartArea = "ChartArea1"
+        Series1.Color = System.Drawing.Color.Red
+        Series1.Legend = "Legend1"
+        Series1.Name = "sig strikes landed"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "sig str taken"
+        Me.chartsigstr.Series.Add(Series1)
+        Me.chartsigstr.Series.Add(Series2)
         Me.chartsigstr.Size = New System.Drawing.Size(238, 129)
         Me.chartsigstr.TabIndex = 21
         Me.chartsigstr.Text = "Sig strike vs sig abs"
         '
         'Charttd
         '
-        ChartArea6.Name = "ChartArea1"
-        Me.Charttd.ChartAreas.Add(ChartArea6)
-        Legend6.Name = "Legend1"
-        Me.Charttd.Legends.Add(Legend6)
+        ChartArea2.Name = "ChartArea1"
+        Me.Charttd.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Charttd.Legends.Add(Legend2)
         Me.Charttd.Location = New System.Drawing.Point(503, 71)
         Me.Charttd.Name = "Charttd"
-        Series11.ChartArea = "ChartArea1"
-        Series11.Legend = "Legend1"
-        Series11.Name = "Takedown accuracy(%)"
-        Series12.ChartArea = "ChartArea1"
-        Series12.Legend = "Legend1"
-        Series12.Name = "Takedown defence accuracy(%)"
-        Me.Charttd.Series.Add(Series11)
-        Me.Charttd.Series.Add(Series12)
+        Series3.ChartArea = "ChartArea1"
+        Series3.Legend = "Legend1"
+        Series3.Name = "Takedown accuracy(%)"
+        Series4.ChartArea = "ChartArea1"
+        Series4.Legend = "Legend1"
+        Series4.Name = "Takedown defence accuracy(%)"
+        Me.Charttd.Series.Add(Series3)
+        Me.Charttd.Series.Add(Series4)
         Me.Charttd.Size = New System.Drawing.Size(222, 132)
         Me.Charttd.TabIndex = 22
         Me.Charttd.Text = "Chart1"

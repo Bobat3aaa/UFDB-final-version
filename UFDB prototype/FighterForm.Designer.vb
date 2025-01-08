@@ -32,8 +32,21 @@ Partial Class FighterForm
         Me.btnclear = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Home = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cmbstance = New System.Windows.Forms.ComboBox()
+        Me.cmbliked = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Btnback = New System.Windows.Forms.Button()
+        Me.lblsorted = New System.Windows.Forms.Label()
+        Me.txtwins = New System.Windows.Forms.TextBox()
+        Me.txtloss = New System.Windows.Forms.TextBox()
+        Me.txtdraws = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -87,9 +100,9 @@ Partial Class FighterForm
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(12, 190)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(8, 257)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(776, 248)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(772, 320)
         Me.FlowLayoutPanel1.TabIndex = 15
         '
         'cmbweightclass
@@ -125,40 +138,158 @@ Partial Class FighterForm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.Btnback)
+        Me.Panel1.Controls.Add(Me.Home)
         Me.Panel1.Location = New System.Drawing.Point(-4, -3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(808, 69)
+        Me.Panel1.Size = New System.Drawing.Size(1077, 69)
         Me.Panel1.TabIndex = 19
+        '
+        'Home
+        '
+        Me.Home.AutoSize = True
+        Me.Home.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Home.ForeColor = System.Drawing.Color.Red
+        Me.Home.Location = New System.Drawing.Point(3, 12)
+        Me.Home.Name = "Home"
+        Me.Home.Size = New System.Drawing.Size(157, 54)
+        Me.Home.TabIndex = 6
+        Me.Home.Text = "UFDB"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label5.Location = New System.Drawing.Point(514, 86)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(51, 14)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Stance:"
+        '
+        'cmbstance
+        '
+        Me.cmbstance.FormattingEnabled = True
+        Me.cmbstance.Items.AddRange(New Object() {"All", "Orthodox", "Southpaw", "Switch"})
+        Me.cmbstance.Location = New System.Drawing.Point(517, 103)
+        Me.cmbstance.Name = "cmbstance"
+        Me.cmbstance.Size = New System.Drawing.Size(121, 21)
+        Me.cmbstance.TabIndex = 24
+        '
+        'cmbliked
+        '
+        Me.cmbliked.FormattingEnabled = True
+        Me.cmbliked.Items.AddRange(New Object() {"All", "115 lbs.", "125 lbs.", "135 lbs.", "145 lbs.", "155 lbs.", "170 lbs.", "185 lbs.", "205 lbs.", "265 lbs.", ""})
+        Me.cmbliked.Location = New System.Drawing.Point(663, 103)
+        Me.cmbliked.Name = "cmbliked"
+        Me.cmbliked.Size = New System.Drawing.Size(121, 21)
+        Me.cmbliked.TabIndex = 25
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label6.Location = New System.Drawing.Point(660, 86)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(50, 14)
+        Me.Label6.TabIndex = 26
+        Me.Label6.Text = "Liked?:"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label7.Location = New System.Drawing.Point(366, 139)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(40, 14)
+        Me.Label7.TabIndex = 30
+        Me.Label7.Text = "Wins:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label8.Location = New System.Drawing.Point(514, 139)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(0, 14)
+        Me.Label8.TabIndex = 31
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label9.Location = New System.Drawing.Point(516, 139)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(53, 14)
+        Me.Label9.TabIndex = 34
+        Me.Label9.Text = "Losses:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label10.Location = New System.Drawing.Point(661, 139)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(48, 14)
+        Me.Label10.TabIndex = 35
+        Me.Label10.Text = "Draws:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(3, 12)
+        Me.Label4.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Label4.Location = New System.Drawing.Point(12, 240)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(210, 54)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Fighters"
+        Me.Label4.Size = New System.Drawing.Size(68, 14)
+        Me.Label4.TabIndex = 37
+        Me.Label4.Text = "Sorted by:"
         '
-        'Btnback
+        'lblsorted
         '
-        Me.Btnback.BackColor = System.Drawing.Color.Silver
-        Me.Btnback.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnback.Location = New System.Drawing.Point(655, 23)
-        Me.Btnback.Name = "Btnback"
-        Me.Btnback.Size = New System.Drawing.Size(133, 33)
-        Me.Btnback.TabIndex = 2
-        Me.Btnback.Text = "back"
-        Me.Btnback.UseVisualStyleBackColor = False
+        Me.lblsorted.AutoSize = True
+        Me.lblsorted.Location = New System.Drawing.Point(86, 240)
+        Me.lblsorted.Name = "lblsorted"
+        Me.lblsorted.Size = New System.Drawing.Size(44, 13)
+        Me.lblsorted.TabIndex = 38
+        Me.lblsorted.Text = "Nothing"
+        '
+        'txtwins
+        '
+        Me.txtwins.Location = New System.Drawing.Point(369, 161)
+        Me.txtwins.Name = "txtwins"
+        Me.txtwins.Size = New System.Drawing.Size(125, 20)
+        Me.txtwins.TabIndex = 39
+        '
+        'txtloss
+        '
+        Me.txtloss.Location = New System.Drawing.Point(517, 161)
+        Me.txtloss.Name = "txtloss"
+        Me.txtloss.Size = New System.Drawing.Size(125, 20)
+        Me.txtloss.TabIndex = 40
+        '
+        'txtdraws
+        '
+        Me.txtdraws.Location = New System.Drawing.Point(663, 161)
+        Me.txtdraws.Name = "txtdraws"
+        Me.txtdraws.Size = New System.Drawing.Size(125, 20)
+        Me.txtdraws.TabIndex = 41
         '
         'FighterForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(795, 589)
+        Me.Controls.Add(Me.txtdraws)
+        Me.Controls.Add(Me.txtloss)
+        Me.Controls.Add(Me.txtwins)
+        Me.Controls.Add(Me.lblsorted)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.cmbliked)
+        Me.Controls.Add(Me.cmbstance)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnclear)
@@ -187,6 +318,19 @@ Partial Class FighterForm
     Friend WithEvents btnclear As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Home As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbstance As ComboBox
+    Friend WithEvents cmbliked As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label4 As Label
-    Friend WithEvents Btnback As Button
+    Friend WithEvents lblsorted As Label
+    Friend WithEvents txtwins As TextBox
+    Friend WithEvents txtloss As TextBox
+    Friend WithEvents txtdraws As TextBox
 End Class

@@ -3,6 +3,8 @@ Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class FighterForm
+
+
     Dim fighterlist As List(Of Fighter)
     Private Sub btnsort_Click(sender As Object, e As EventArgs)
 
@@ -61,7 +63,9 @@ Public Class FighterForm
 
         'makes sure the filters are all set to 0 to start, will be more in future
 
-        cmbweightclass.SelectedIndex = 0
+
+        If cmbstance.Items.Count > 0 Then cmbstance.SelectedIndex = 0
+        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
 
         'sorts fighters and saves to file
         Dim fighters As List(Of Fighter) = ReadfightersFromFile()
@@ -250,22 +254,68 @@ Public Class FighterForm
         updatebuttons(fighterlist)
     End Sub
     Function checkfilters(fighterlist As List(Of Fighter))
-        Dim selectedWeightClass As String = cmbweightclass.SelectedItem.ToString()
+
+        Dim selectedstance As String
+        Dim selectedWeightClass As String
+        Dim selectedliked As Integer
+
+        Dim selectedwins As Integer
+        Dim selectedlosses As Integer
+        Dim selecteddraws As Integer
+
+        If cmbweightclass.SelectedItem IsNot Nothing Then
+            selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+        End If
+
+        If cmbstance.SelectedItem IsNot Nothing Then
+            selectedstance = cmbstance.SelectedItem.ToString()
+        End If
+
 
         ' Filter fighters based on the selected weight class
         Dim filteredFighters As List(Of Fighter) = fighterlist
         If selectedWeightClass <> "All" Then
             filteredFighters = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
         End If
+
+
+
+        If selectedstance <> "All" Then
+            filteredFighters = fighterlist.Where(Function(f) f.Stance = selectedstance).ToList()
+        End If
         Return filteredFighters
+
+
     End Function
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Home.Click
+        Form1.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub Btnback_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs) Handles Btnback.Click
-        Form1.Show()
-        Me.Close()
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
+    End Sub
+
+    Private Sub cmbstance_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbstance.SelectedIndexChanged
+        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighterlist As List(Of Fighter) = checkfilters(fighters)
+        updatebuttons(fighterlist)
+    End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class

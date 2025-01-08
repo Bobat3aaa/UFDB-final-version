@@ -8,7 +8,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Security.Policy
 
 Public Class current_user_form
-    Private Sub btnback_Click(sender As Object, e As EventArgs) Handles btnback.Click
+    Private Sub btnback_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Close()
 
@@ -36,7 +36,19 @@ Public Class current_user_form
         MessageBox.Show($"Data saved to {filePath}")
     End Sub
 
-    Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
+    Private Sub btndelete_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnlogout_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
 
     End Sub
 End Class

@@ -10,9 +10,10 @@ Imports System.Collections.Generic
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Security.Policy
 
-Public Class loginform
 
-    Dim currentuserid As Integer
+Public Class loginform
+    Public Property currentuserid As Integer
+
     Private Sub btnsortusers_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -88,10 +89,6 @@ Public Class loginform
             If users(currentuserindex).Admin = True Then
                 refreshapi()
                 currentuserid = users(currentuserindex).UserID
-
-
-
-
             ElseIf users(currentuserindex).Admin = False Then
                 currentuserid = users(currentuserindex).UserID
 
@@ -181,11 +178,13 @@ Public Class loginform
 
         Dim allFighters As New List(Of Fighter)
         Using httpclient As New HttpClient()
+            Dim answer As HttpResponseMessage = httpclient.GetAsync("https://ufc-api-theta.vercel.app/mma-api/fighters?page=0").Result
+            Dim i = 1
 
-            For i = 1 To 10
+            For i = 1 To 20
                 Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fighters?page=" & i
 
-                Dim answer As HttpResponseMessage = httpclient.GetAsync(apiurl).Result
+                answer = httpclient.GetAsync(apiurl).Result
 
                 If answer.IsSuccessStatusCode Then
 
@@ -201,12 +200,41 @@ Public Class loginform
 
 
 
-                Else
-                    MessageBox.Show("Error getting API data")
+
                 End If
             Next
             SaveTofighterJsonFile(allFighters)
         End Using
+
+        Dim allFights As New List(Of Fight)
+        Using httpclient As New HttpClient()
+
+            For i = 1 To 5
+                Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fights?page=" & i
+
+                Dim answer As HttpResponseMessage = httpclient.GetAsync(apiurl).Result
+
+                If answer.IsSuccessStatusCode Then
+
+                    'turns api into string
+                    Dim responsecontent As String = answer.Content.ReadAsStringAsync().Result
+
+
+
+
+                    Dim response As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(responsecontent)
+
+                    allFights.AddRange(response.fights)
+
+
+
+                Else
+                    MessageBox.Show("Error getting API data")
+                End If
+            Next
+            SaveTofightJsonFile(allFights)
+        End Using
+
     End Sub
 
     Private Sub SaveTofighterJsonFile(allfighters As List(Of Fighter))
@@ -214,6 +242,14 @@ Public Class loginform
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)
         'MessageBox.Show($"Data saved to {filePath}")
+    End Sub
+
+
+    Private Sub SaveTofightJsonFile(allfights As List(Of Fight))
+        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
+        Dim filePath As String = $"fights_page.json"
+        File.WriteAllText(filePath, json)
+        MessageBox.Show($"Data saved to {filePath}")
     End Sub
 
     Private Sub Btnback_Click(sender As Object, e As EventArgs) Handles Btnback.Click

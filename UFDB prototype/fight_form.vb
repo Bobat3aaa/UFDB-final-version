@@ -11,34 +11,7 @@ Public Class fight_form
     Dim fightlist As List(Of Fight)
     Private Sub fight_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim allFights As New List(Of Fight)
-        Using httpclient As New HttpClient()
 
-            For i = 1 To 5
-                Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fights?page=" & i
-
-                Dim answer As HttpResponseMessage = httpclient.GetAsync(apiurl).Result
-
-                If answer.IsSuccessStatusCode Then
-
-                    'turns api into string
-                    Dim responsecontent As String = answer.Content.ReadAsStringAsync().Result
-
-
-
-
-                    Dim response As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(responsecontent)
-
-                    allFights.AddRange(response.fights)
-
-
-
-                Else
-                    MessageBox.Show("Error getting API data")
-                End If
-            Next
-            SaveToJsonFile(allFights)
-        End Using
 
         FlowLayoutPanel1.VerticalScroll.Visible = True
         FlowLayoutPanel1.HorizontalScroll.Visible = True
@@ -49,7 +22,7 @@ Public Class fight_form
         Dim ihigh As Integer = fights.Count - 1
 
         Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh)
-        SaveToJsonFile(sortedfights)
+        SaveTofightJsonFile(sortedfights)
         fightlist = sortedfights
         updatebuttons(sortedfights)
     End Sub
@@ -85,12 +58,7 @@ Public Class fight_form
         Me.Hide()
     End Sub
 
-    Private Sub SaveToJsonFile(allfights As List(Of Fight))
-        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
-        Dim filePath As String = $"fights_page.json"
-        File.WriteAllText(filePath, json)
-        MessageBox.Show($"Data saved to {filePath}")
-    End Sub
+
 
     Function ReadfightsFromFile() As List(Of Fight)
         If Not File.Exists("fights_page.json") Then
@@ -486,4 +454,12 @@ Public Class fight_form
         fightlist = fights
         updatebuttons(fightlist)
     End Sub
+
+    Private Sub SaveTofightJsonFile(allfights As List(Of Fight))
+        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
+        Dim filePath As String = $"fights_page.json"
+        File.WriteAllText(filePath, json)
+        MessageBox.Show($"Data saved to {filePath}")
+    End Sub
+
 End Class
