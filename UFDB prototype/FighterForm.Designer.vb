@@ -40,13 +40,11 @@ Partial Class FighterForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblsorted = New System.Windows.Forms.Label()
-        Me.txtwins = New System.Windows.Forms.TextBox()
-        Me.txtloss = New System.Windows.Forms.TextBox()
-        Me.txtdraws = New System.Windows.Forms.TextBox()
+        Me.cmbwins = New System.Windows.Forms.ComboBox()
+        Me.cmbloss = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -222,16 +220,6 @@ Partial Class FighterForm
         Me.Label9.TabIndex = 34
         Me.Label9.Text = "Losses:"
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label10.Location = New System.Drawing.Point(661, 139)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(48, 14)
-        Me.Label10.TabIndex = 35
-        Me.Label10.Text = "Draws:"
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -251,38 +239,33 @@ Partial Class FighterForm
         Me.lblsorted.TabIndex = 38
         Me.lblsorted.Text = "Nothing"
         '
-        'txtwins
+        'cmbwins
         '
-        Me.txtwins.Location = New System.Drawing.Point(369, 161)
-        Me.txtwins.Name = "txtwins"
-        Me.txtwins.Size = New System.Drawing.Size(125, 20)
-        Me.txtwins.TabIndex = 39
+        Me.cmbwins.FormattingEnabled = True
+        Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc"})
+        Me.cmbwins.Location = New System.Drawing.Point(369, 163)
+        Me.cmbwins.Name = "cmbwins"
+        Me.cmbwins.Size = New System.Drawing.Size(126, 21)
+        Me.cmbwins.TabIndex = 42
         '
-        'txtloss
+        'cmbloss
         '
-        Me.txtloss.Location = New System.Drawing.Point(517, 161)
-        Me.txtloss.Name = "txtloss"
-        Me.txtloss.Size = New System.Drawing.Size(125, 20)
-        Me.txtloss.TabIndex = 40
-        '
-        'txtdraws
-        '
-        Me.txtdraws.Location = New System.Drawing.Point(663, 161)
-        Me.txtdraws.Name = "txtdraws"
-        Me.txtdraws.Size = New System.Drawing.Size(125, 20)
-        Me.txtdraws.TabIndex = 41
+        Me.cmbloss.FormattingEnabled = True
+        Me.cmbloss.Items.AddRange(New Object() {"N/A", "Descending", "Ascending"})
+        Me.cmbloss.Location = New System.Drawing.Point(517, 163)
+        Me.cmbloss.Name = "cmbloss"
+        Me.cmbloss.Size = New System.Drawing.Size(126, 21)
+        Me.cmbloss.TabIndex = 43
         '
         'FighterForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(795, 589)
-        Me.Controls.Add(Me.txtdraws)
-        Me.Controls.Add(Me.txtloss)
-        Me.Controls.Add(Me.txtwins)
+        Me.Controls.Add(Me.cmbloss)
+        Me.Controls.Add(Me.cmbwins)
         Me.Controls.Add(Me.lblsorted)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -326,11 +309,9 @@ Partial Class FighterForm
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label4 As Label
     Friend WithEvents lblsorted As Label
-    Friend WithEvents txtwins As TextBox
-    Friend WithEvents txtloss As TextBox
-    Friend WithEvents txtdraws As TextBox
+    Friend WithEvents cmbwins As ComboBox
+    Friend WithEvents cmbloss As ComboBox
 End Class

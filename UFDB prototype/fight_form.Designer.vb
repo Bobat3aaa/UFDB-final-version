@@ -22,7 +22,6 @@ Partial Class fight_form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.btnsort = New System.Windows.Forms.Button()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.txteventnum = New System.Windows.Forms.TextBox()
@@ -34,19 +33,12 @@ Partial Class fight_form
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Btnback = New System.Windows.Forms.Button()
-        Me.btnsearchfighter = New System.Windows.Forms.Button()
+        Me.cmbsort = New System.Windows.Forms.ComboBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnsort
-        '
-        Me.btnsort.Location = New System.Drawing.Point(612, 103)
-        Me.btnsort.Name = "btnsort"
-        Me.btnsort.Size = New System.Drawing.Size(142, 77)
-        Me.btnsort.TabIndex = 0
-        Me.btnsort.Text = "sort"
-        Me.btnsort.UseVisualStyleBackColor = True
         '
         'FileSystemWatcher1
         '
@@ -59,7 +51,7 @@ Partial Class fight_form
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(12, 216)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(776, 222)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(761, 222)
         Me.FlowLayoutPanel1.TabIndex = 1
         '
         'txteventnum
@@ -148,21 +140,31 @@ Partial Class fight_form
         Me.Btnback.Text = "back"
         Me.Btnback.UseVisualStyleBackColor = False
         '
-        'btnsearchfighter
+        'cmbsort
         '
-        Me.btnsearchfighter.Location = New System.Drawing.Point(312, 105)
-        Me.btnsearchfighter.Name = "btnsearchfighter"
-        Me.btnsearchfighter.Size = New System.Drawing.Size(141, 20)
-        Me.btnsearchfighter.TabIndex = 21
-        Me.btnsearchfighter.Text = "Search fighter"
-        Me.btnsearchfighter.UseVisualStyleBackColor = True
+        Me.cmbsort.FormattingEnabled = True
+        Me.cmbsort.Items.AddRange(New Object() {"Descending", "Ascending"})
+        Me.cmbsort.Location = New System.Drawing.Point(302, 101)
+        Me.cmbsort.Name = "cmbsort"
+        Me.cmbsort.Size = New System.Drawing.Size(126, 21)
+        Me.cmbsort.TabIndex = 22
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(302, 135)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.ShowCheckBox = True
+        Me.DateTimePicker1.Size = New System.Drawing.Size(126, 20)
+        Me.DateTimePicker1.TabIndex = 23
+        Me.DateTimePicker1.Value = New Date(2025, 1, 8, 17, 21, 6, 0)
         '
         'fight_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.btnsearchfighter)
+        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.cmbsort)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnclear)
         Me.Controls.Add(Me.btnsearch)
@@ -171,7 +173,6 @@ Partial Class fight_form
         Me.Controls.Add(Me.txtfighter)
         Me.Controls.Add(Me.txteventnum)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.btnsort)
         Me.Name = "fight_form"
         Me.Text = "fight_form"
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -181,8 +182,6 @@ Partial Class fight_form
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnsort As Button
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label2 As Label
@@ -194,5 +193,7 @@ Partial Class fight_form
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents Btnback As Button
-    Friend WithEvents btnsearchfighter As Button
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents cmbsort As ComboBox
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class

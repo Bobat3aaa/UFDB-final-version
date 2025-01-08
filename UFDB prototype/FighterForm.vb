@@ -10,42 +10,143 @@ Public Class FighterForm
 
     End Sub
     'quicksort used to sort fighters
-    Function Quicksort(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer) As List(Of Fighter)
+    Function Quicksort(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer, sortwins As Integer) As List(Of Fighter)
 
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
 
-        pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
 
-        While templow <= temphigh
-            While String.Compare(fighters(templow).Name, pivot) < 0
-                templow += 1
+
+        If sortwins = 0 Then
+
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+
+            While templow <= temphigh
+                While String.Compare(fighters(templow).Name, pivot) < 0
+                    templow += 1
+                End While
+
+                While String.Compare(fighters(temphigh).Name, pivot) > 0
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    Dim tempfighter As Fighter = fighters(templow)
+                    fighters(templow) = fighters(temphigh)
+                    fighters(temphigh) = tempfighter
+                    templow += 1
+                    temphigh -= 1
+                End If
             End While
 
-            While String.Compare(fighters(temphigh).Name, pivot) > 0
-                temphigh -= 1
+        ElseIf sortwins = 1 Then
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
+            While templow <= temphigh
+
+
+                While fighters(templow).Wins < pivot And templow < indexhigh
+                    templow += 1
+                End While
+
+                While pivot < fighters(temphigh).Wins And temphigh > indexlow
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    If fighters(templow).Wins <> fighters(temphigh).Wins Then
+                        Dim tempfighter As Fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+                    End If
+                    templow += 1
+                    temphigh -= 1
+                End If
+
             End While
 
-            If templow <= temphigh Then
-                Dim tempfighter As Fighter = fighters(templow)
-                fighters(templow) = fighters(temphigh)
-                fighters(temphigh) = tempfighter
-                templow += 1
-                temphigh -= 1
-            End If
-        End While
+        ElseIf sortwins = 2 Then
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
+            While templow <= temphigh
 
-        If indexlow < temphigh Then
-            Quicksort(fighters, indexlow, temphigh)
+
+                While fighters(templow).Wins > pivot And templow < indexhigh
+                    templow += 1
+                End While
+
+                While pivot > fighters(temphigh).Wins And temphigh > indexlow
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    If fighters(templow).Wins <> fighters(temphigh).Wins Then
+                        Dim tempfighter As Fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+                    End If
+                    templow += 1
+                    temphigh -= 1
+                End If
+
+            End While
+
+        End If
+
+        If indexlow <= temphigh Then
+            Quicksort(fighters, indexlow, temphigh, sortwins)
         End If
 
         If templow < indexhigh Then
-            Quicksort(fighters, templow, indexhigh)
+            Quicksort(fighters, templow, indexhigh, sortwins)
         End If
 
         Return fighters
     End Function
+
+    'Function Quicksortwins(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer) As List(Of Fighter)
+
+    '    Dim pivot As Integer
+    '    Dim templow As Integer = indexlow
+    '    Dim temphigh As Integer = indexhigh
+
+    '    pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
+    '    Debug.WriteLine($"Pivot chosen: {pivot} at index {(indexlow + indexhigh) \ 2}")
+
+
+
+    '    While templow <= temphigh
+
+
+    '        While fighters(templow).Wins < pivot And templow < indexhigh
+    '            templow += 1
+    '        End While
+
+    '        While pivot < fighters(temphigh).Wins And temphigh > indexlow
+    '            temphigh -= 1
+    '        End While
+
+    '        If templow <= temphigh Then
+    '            If fighters(templow).Wins <> fighters(temphigh).Wins Then
+    '                Dim tempfighter As Fighter = fighters(templow)
+    '                fighters(templow) = fighters(temphigh)
+    '                fighters(temphigh) = tempfighter
+    '            End If
+    '            templow += 1
+    '                temphigh -= 1
+    '            End If
+
+    '    End While
+
+    '    If indexlow <= temphigh Then
+    '        Quicksortwins(fighters, indexlow, temphigh)
+    '    End If
+
+    '    If templow < indexhigh Then
+    '        Quicksortwins(fighters, templow, indexhigh)
+    '    End If
+    '    Debug.WriteLine(fighters(0).Name)
+    '    Return fighters
+    'End Function
 
     'reads fighters from the json file
     Function ReadfightersFromFile() As List(Of Fighter)
@@ -66,13 +167,23 @@ Public Class FighterForm
 
         If cmbstance.Items.Count > 0 Then cmbstance.SelectedIndex = 0
         If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
+        cmbwins.SelectedIndex = 0
+        cmbloss.SelectedIndex = 0
+
+
+
+
 
         'sorts fighters and saves to file
         Dim fighters As List(Of Fighter) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
+        Dim sortwins As Integer = 0
+        Dim sortloss As Integer = 0
 
-        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh)
+
+
+        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh, sortwins)
         fighterlist = sortedfighters
         SaveToJsonFile(sortedfighters)
 
@@ -224,11 +335,12 @@ Public Class FighterForm
 
         'need to find a way to optimise / reuse code
 
-        Dim fighters As List(Of Fighter) = fighterlist
+        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
+        Dim sortwins As Integer = cmbwins.SelectedIndex
 
-        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh, sortwins)
 
 
         'finds current fighter
@@ -318,4 +430,23 @@ Public Class FighterForm
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbwins.SelectedIndexChanged
+        Dim sortwins As Integer = cmbwins.SelectedIndex
+        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim indexlow As Integer = 0
+        Dim indexhigh As Integer = fighters.Count - 1
+
+
+
+
+        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh, sortwins)
+
+
+
+
+
+        updatebuttons(sortedfighters)
+    End Sub
+
 End Class

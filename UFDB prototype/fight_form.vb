@@ -20,8 +20,12 @@ Public Class fight_form
         Dim fights As List(Of Fight) = ReadfightsFromFile()
         Dim ilow As Integer = 0
         Dim ihigh As Integer = fights.Count - 1
+        cmbsort.SelectedIndex = 0
 
-        Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh)
+
+
+        Dim sortdirection As Integer = cmbsort.SelectedIndex
+        Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
         SaveTofightJsonFile(sortedfights)
         fightlist = sortedfights
         updatebuttons(sortedfights)
@@ -69,21 +73,21 @@ Public Class fight_form
     End Function
 
 
-    Function mergesortevents(ByRef fights As List(Of Fight), ilow As Integer, ihigh As Integer) As List(Of Fight)
+    Function mergesortevents(ByRef fights As List(Of Fight), ilow As Integer, ihigh As Integer, sortdirection As Integer) As List(Of Fight)
         If ilow >= ihigh Then
             Return fights
         Else
             Dim imiddle As Integer = ilow + (ihigh - ilow) \ 2
-            mergesortevents(fights, ilow, imiddle)
-            mergesortevents(fights, imiddle + 1, ihigh)
-            fights = mergeeventsdesc(fights, ilow, imiddle, ihigh)
+            mergesortevents(fights, ilow, imiddle, sortdirection)
+            mergesortevents(fights, imiddle + 1, ihigh, sortdirection)
+            fights = mergeevents(fights, ilow, imiddle, ihigh, sortdirection)
             Return fights
         End If
     End Function
 
 
-    'ascending order
-    Function mergeeventsasc(ByRef fights As List(Of Fight), ilow As Integer, imiddle As Integer, ihigh As Integer) As List(Of Fight)
+
+    Function mergeevents(ByRef fights As List(Of Fight), ilow As Integer, imiddle As Integer, ihigh As Integer, sortdirection As Integer) As List(Of Fight)
         Dim upperleft As Integer = imiddle - ilow + 1
         Dim upperright As Integer = ihigh - imiddle
 
@@ -106,84 +110,63 @@ Public Class fight_form
         pointer2 = 0
         pointer3 = ilow
 
-        While pointer1 < upperleft AndAlso pointer2 < upperright
-            If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) <= 0 Then
+        If sortdirection = 0 Then
+            ' Change comparison to sort in descending order
+            While pointer1 < upperleft AndAlso pointer2 < upperright
+                If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) >= 0 Then
+                    fights(pointer3) = fightslefthalf(pointer1)
+                    pointer1 += 1
+                Else
+                    fights(pointer3) = fightsrighthalf(pointer2)
+                    pointer2 += 1
+                End If
+                pointer3 += 1
+            End While
+
+            While pointer1 < upperleft
                 fights(pointer3) = fightslefthalf(pointer1)
                 pointer1 += 1
-            Else
+                pointer3 += 1
+            End While
+
+            While pointer2 < upperright
                 fights(pointer3) = fightsrighthalf(pointer2)
                 pointer2 += 1
-            End If
-            pointer3 += 1
-        End While
+                pointer3 += 1
+            End While
+        ElseIf sortdirection = 1 Then
+            While pointer1 < upperleft AndAlso pointer2 < upperright
+                If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) <= 0 Then
+                    fights(pointer3) = fightslefthalf(pointer1)
+                    pointer1 += 1
+                Else
+                    fights(pointer3) = fightsrighthalf(pointer2)
+                    pointer2 += 1
+                End If
+                pointer3 += 1
+            End While
 
-        While pointer1 < upperleft
-            fights(pointer3) = fightslefthalf(pointer1)
-            pointer1 += 1
-            pointer3 += 1
-        End While
-
-        While pointer2 < upperright
-            fights(pointer3) = fightsrighthalf(pointer2)
-            pointer2 += 1
-            pointer3 += 1
-        End While
-
-        Return fights
-    End Function
-
-    Function mergeeventsdesc(ByRef fights As List(Of Fight), ilow As Integer, imiddle As Integer, ihigh As Integer) As List(Of Fight)
-        Dim upperleft As Integer = imiddle - ilow + 1
-        Dim upperright As Integer = ihigh - imiddle
-
-        Dim fightslefthalf(upperleft - 1) As Fight
-        Dim fightsrighthalf(upperright - 1) As Fight
-
-        Dim pointer1 As Integer
-        Dim pointer2 As Integer
-        Dim pointer3 As Integer
-
-        For pointer1 = 0 To upperleft - 1
-            fightslefthalf(pointer1) = fights(ilow + pointer1)
-        Next
-
-        For pointer2 = 0 To upperright - 1
-            fightsrighthalf(pointer2) = fights(imiddle + 1 + pointer2)
-        Next
-
-        pointer1 = 0
-        pointer2 = 0
-        pointer3 = ilow
-
-        ' Change comparison to sort in descending order
-        While pointer1 < upperleft AndAlso pointer2 < upperright
-            If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) >= 0 Then
+            While pointer1 < upperleft
                 fights(pointer3) = fightslefthalf(pointer1)
                 pointer1 += 1
-            Else
+                pointer3 += 1
+            End While
+
+            While pointer2 < upperright
                 fights(pointer3) = fightsrighthalf(pointer2)
                 pointer2 += 1
-            End If
-            pointer3 += 1
-        End While
+                pointer3 += 1
+            End While
 
-        While pointer1 < upperleft
-            fights(pointer3) = fightslefthalf(pointer1)
-            pointer1 += 1
-            pointer3 += 1
-        End While
-
-        While pointer2 < upperright
-            fights(pointer3) = fightsrighthalf(pointer2)
-            pointer2 += 1
-            pointer3 += 1
-        End While
+        End If
 
         Return fights
+
+
     End Function
 
 
-    Private Sub btnsort_Click(sender As Object, e As EventArgs) Handles btnsort.Click
+    Private Sub btnsort_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -244,21 +227,34 @@ Public Class fight_form
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
-
-
         Dim fights As List(Of Fight) = ReadfightsFromFile()
-        Dim indexlow As Integer = 0
-        Dim indexhigh As Integer = fights.Count - 1
 
 
-        Dim numtofind As Integer = txteventnum.Text
+
+        If txteventnum.Text <> "" Then
+            Dim indexlow As Integer = 0
+            Dim indexhigh As Integer = fights.Count - 1
+            Dim numtofind As Integer
+
+            numtofind = txteventnum.Text
 
 
-        Dim searchedfights As List(Of Fight) = bsearchevent(fights, numtofind, indexlow, indexhigh)
-        fightlist = searchedfights
+            Dim searchedfights As List(Of Fight) = bsearchevent(fights, numtofind, indexlow, indexhigh)
+            fightlist = searchedfights
 
+        End If
 
-        updatebuttons(searchedfights)
+        If txtfighter.Text <> "" Then
+
+            Dim fightertofind As String = txtfighter.Text
+            Dim fighterfightlist As List(Of Fight)
+            fighterfightlist = fightlist.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
+            fightlist = fighterfightlist
+
+        End If
+
+        updatebuttons(fightlist)
+
     End Sub
 
     'Function bsearchevent(fightlist As List(Of Fight), numtofind As Integer, indexlow As Integer, indexhigh As Integer)
@@ -438,7 +434,7 @@ Public Class fight_form
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnsearchfighter.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
 
 
         Dim fights As List(Of Fight) = ReadfightsFromFile()
@@ -462,4 +458,29 @@ Public Class fight_form
         MessageBox.Show($"Data saved to {filePath}")
     End Sub
 
+    Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
+        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim ilow As Integer = 0
+        Dim ihigh As Integer = fights.Count - 1
+        Dim sortdirection As Integer = cmbsort.SelectedIndex
+        Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
+        SaveTofightJsonFile(sortedfights)
+        fightlist = sortedfights
+        updatebuttons(sortedfights)
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        Dim fightdate As DateTime
+        fightdate = DateTimePicker1.Value.Date
+        Dim fights As List(Of Fight) = ReadfightsFromFile()
+
+        If DateTimePicker1.Checked = False Then
+            updatebuttons(fights)
+        ElseIf DateTimePicker1.Checked = True Then
+
+            Dim filteredFights As List(Of Fight)
+            filteredFights = fights.Where(Function(f) f.date.Date = fightdate.Date).ToList()
+            updatebuttons(filteredFights)
+        End If
+    End Sub
 End Class
