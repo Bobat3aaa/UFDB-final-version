@@ -90,6 +90,57 @@ Public Class FighterForm
 
             End While
 
+        ElseIf sortwins = 3 Then
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Losses
+            While templow <= temphigh
+
+
+                While fighters(templow).Losses < pivot And templow < indexhigh
+                    templow += 1
+                End While
+
+                While pivot < fighters(temphigh).Losses And temphigh > indexlow
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    If fighters(templow).Losses <> fighters(temphigh).Losses Then
+                        Dim tempfighter As Fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+                    End If
+                    templow += 1
+                    temphigh -= 1
+                End If
+
+            End While
+
+        ElseIf sortwins = 4 Then
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Losses
+            While templow <= temphigh
+
+
+                While fighters(templow).Losses > pivot And templow < indexhigh
+                    templow += 1
+                End While
+
+                While pivot > fighters(temphigh).Losses And temphigh > indexlow
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    If fighters(templow).Losses <> fighters(temphigh).Losses Then
+                        Dim tempfighter As Fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+                    End If
+                    templow += 1
+                    temphigh -= 1
+                End If
+
+            End While
+
+
         End If
 
         If indexlow <= temphigh Then
@@ -103,52 +154,7 @@ Public Class FighterForm
         Return fighters
     End Function
 
-    'Function Quicksortwins(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer) As List(Of Fighter)
 
-    '    Dim pivot As Integer
-    '    Dim templow As Integer = indexlow
-    '    Dim temphigh As Integer = indexhigh
-
-    '    pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
-    '    Debug.WriteLine($"Pivot chosen: {pivot} at index {(indexlow + indexhigh) \ 2}")
-
-
-
-    '    While templow <= temphigh
-
-
-    '        While fighters(templow).Wins < pivot And templow < indexhigh
-    '            templow += 1
-    '        End While
-
-    '        While pivot < fighters(temphigh).Wins And temphigh > indexlow
-    '            temphigh -= 1
-    '        End While
-
-    '        If templow <= temphigh Then
-    '            If fighters(templow).Wins <> fighters(temphigh).Wins Then
-    '                Dim tempfighter As Fighter = fighters(templow)
-    '                fighters(templow) = fighters(temphigh)
-    '                fighters(temphigh) = tempfighter
-    '            End If
-    '            templow += 1
-    '                temphigh -= 1
-    '            End If
-
-    '    End While
-
-    '    If indexlow <= temphigh Then
-    '        Quicksortwins(fighters, indexlow, temphigh)
-    '    End If
-
-    '    If templow < indexhigh Then
-    '        Quicksortwins(fighters, templow, indexhigh)
-    '    End If
-    '    Debug.WriteLine(fighters(0).Name)
-    '    Return fighters
-    'End Function
-
-    'reads fighters from the json file
     Function ReadfightersFromFile() As List(Of Fighter)
         If Not File.Exists("fighters_page.json") Then
             Return New List(Of Fighter)
@@ -168,7 +174,7 @@ Public Class FighterForm
         If cmbstance.Items.Count > 0 Then cmbstance.SelectedIndex = 0
         If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
         cmbwins.SelectedIndex = 0
-        cmbloss.SelectedIndex = 0
+
 
 
 
@@ -229,21 +235,41 @@ Public Class FighterForm
         Dim fighters As List(Of Fighter) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
+        Dim nametofind As String
+        Dim searchedfighterindex As Integer
+        Dim decision As Integer
 
 
+        If String.IsNullOrEmpty(txtlname.Text) And String.IsNullOrEmpty(txtfname.Text) = False Then
+            nametofind = txtfname.Text
+            decision = 0
+            Dim searchedfighters As List(Of Fighter) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
+            fighterlist = searchedfighters
 
-        Dim nametofind As String = (txtfname.Text) + " " + (txtlname.Text)
-        Dim searchedfighterindex As Integer = bsearchusers(fighters, nametofind, indexlow, indexhigh)
-        MsgBox(searchedfighterindex)
+        ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
+            nametofind = txtlname.Text
+            decision = 1
+            Dim searchedfighters As List(Of Fighter) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
+            fighterlist = searchedfighters
 
-        'adds fighter to a new list to be shown in search alone
-        If searchedfighterindex <> -1 Then
-            Dim fighterlist As New List(Of Fighter)
-            fighterlist.Clear()
-            fighterlist.Add(fighters(searchedfighterindex))
-            updatebuttons(fighterlist)
+        Else
+            nametofind = (txtfname.Text) + " " + (txtlname.Text)
+            searchedfighterindex = bsearchusers(fighters, nametofind, indexlow, indexhigh)
+            MsgBox(searchedfighterindex)
+
+            'adds fighter to a new list to be shown in search alone
+            If searchedfighterindex <> -1 Then
+                Dim searchedfighterlist As New List(Of Fighter)
+                searchedfighterlist.Clear()
+                searchedfighterlist.Add(fighters(searchedfighterindex))
+                fighterlist = searchedfighterlist
+
+            End If
+
         End If
+        Debug.WriteLine(nametofind)
 
+        updatebuttons(fighterlist)
 
     End Sub
     Function bsearchusers(fighterlist As List(Of Fighter), nametofind As String, indexlow As Integer, indexhigh As Integer)
@@ -344,7 +370,7 @@ Public Class FighterForm
 
 
         'finds current fighter
-        Dim currentfighter As Fighter = sortedfighters(fighterIndex)
+        Dim currentfighter As Fighter = fighterlist(fighterIndex)
         MsgBox(currentfighter.Name)
         'sends current fighter data over to the current fighter form
         Dim fighterForm As New current_fighter_form(currentfighter)
@@ -405,21 +431,7 @@ Public Class FighterForm
         Me.Close()
     End Sub
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-
-    End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
-
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-
-    End Sub
 
     Private Sub cmbstance_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbstance.SelectedIndexChanged
         Dim fighters As List(Of Fighter) = ReadfightersFromFile()
@@ -448,5 +460,75 @@ Public Class FighterForm
 
         updatebuttons(sortedfighters)
     End Sub
+
+    Public Function bsearchonename(fighterlist As List(Of Fighter), nametofind As String, indexlow As Integer, indexhigh As Integer, decision As Integer) As List(Of Fighter)
+
+
+
+        If indexlow > indexhigh Then
+            Return New List(Of Fighter)()
+        End If
+
+        Dim midpoint As Integer = (indexlow + indexhigh) \ 2
+        Dim currentfighter As Fighter = fighterlist(midpoint)
+
+        'gets event number
+        Dim fightname As String = parsename(currentfighter.Name, decision)
+
+
+        If String.Compare(fightname, nametofind) < 0 Then
+            Return bsearchonename(fighterlist, nametofind, midpoint + 1, indexhigh, decision)
+        ElseIf String.Compare(fightname, nametofind) > 0 Then
+            Return bsearchonename(fighterlist, nametofind, indexlow, midpoint - 1, decision)
+        Else
+
+            'once binary search is done, finds all the fights with event number
+            Dim searchedfighters As New List(Of Fighter)()
+        searchedfighters.Add(currentfighter)
+
+
+        Dim left As Integer = midpoint - 1
+        While left >= indexlow
+            Dim leftfightername As String = parsename(fighterlist(left).Name, decision)
+            If leftfightername = nametofind Then
+                searchedfighters.Add(fighterlist(left))
+            ElseIf leftfightername <> nametofind Then
+                Exit While
+            End If
+            left -= 1
+        End While
+
+            Dim right As Integer = midpoint + 1
+
+
+            While right <= indexhigh
+            Dim rightfightername As String = parsename(fighterlist(right).Name, decision)
+            If rightfightername = nametofind Then
+                searchedfighters.Add(fighterlist(left))
+            ElseIf rightfightername <> nametofind Then
+                Exit While
+            End If
+                right += 1
+            End While
+
+
+
+
+
+        Return searchedfighters
+        End If
+    End Function
+
+    Function parsename(name As String, decision As Integer)
+
+        Dim parsedname As String() = name.Split(" "c)
+        If decision = 0 Then
+            Return parsedname(0)
+        ElseIf decision = 1 And parsedname.Length > 0 Then
+            Return parsedname(1)
+        Else
+            Return ""
+        End If
+    End Function
 
 End Class
