@@ -306,6 +306,33 @@ Public Class FighterForm
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
         Dim endIndex As Integer = Math.Min(startIndex + count, sortedfighters.Count)
 
+
+
+        If startIndex > 0 Then
+
+
+            Dim btnback As New Button
+            btnback.Width = 100
+            btnback.Height = 50
+            btnback.BackColor = Color.Red
+            btnback.ForeColor = Color.White
+            btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
+            btnback.TextAlign = ContentAlignment.MiddleCenter
+
+            btnback.Text = "back"
+            btnback.Visible = True
+            btnback.Tag = "btnback"
+
+            'adds an event handler to update buttons
+            AddHandler btnback.Click, Sub()
+                                          updatebuttons(sortedfighters, endIndex - 100)
+                                      End Sub
+            FlowLayoutPanel1.Controls.Add(btnback)
+
+
+        End If
+
+
         'creates 50 buttons
         For i = startIndex To endIndex - 1
 
@@ -313,6 +340,7 @@ Public Class FighterForm
             Dim btn As New Button
             btn.Width = 100
             btn.Height = 50
+            btn.BackColor = Color.White
             btn.TextAlign = ContentAlignment.MiddleCenter
 
             btn.Text = sortedfighters(i).Name
@@ -334,6 +362,10 @@ Public Class FighterForm
             btnloadmore.Width = 100
             btnloadmore.Height = 50
             btnloadmore.TextAlign = ContentAlignment.MiddleCenter
+            btnloadmore.BackColor = Color.Red
+            btnloadmore.ForeColor = Color.White
+            btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
+            btnloadmore.TextAlign = ContentAlignment.MiddleCenter
 
             btnloadmore.Text = "Load more"
             btnloadmore.Visible = True
@@ -347,6 +379,7 @@ Public Class FighterForm
 
 
         End If
+
     End Sub
 
 

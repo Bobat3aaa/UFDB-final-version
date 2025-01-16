@@ -181,16 +181,41 @@ Public Class fight_form
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
         Dim endIndex As Integer = Math.Min(startIndex + count, sortedfights.Count)
 
+
+        If startIndex > 0 Then
+
+
+            Dim btnback As New Button
+            btnback.Width = 100
+            btnback.Height = 100
+            btnback.BackColor = Color.Red
+            btnback.ForeColor = Color.White
+            btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
+            btnback.TextAlign = ContentAlignment.MiddleCenter
+
+            btnback.Text = "back"
+            btnback.Visible = True
+            btnback.Tag = "btnback"
+
+            'adds an event handler to update buttons
+            AddHandler btnback.Click, Sub()
+                                          updatebuttons(sortedfights, endIndex - 100)
+                                      End Sub
+            FlowLayoutPanel1.Controls.Add(btnback)
+
+
+        End If
+
         'creates 50 buttons
         For i = startIndex To endIndex - 1
 
 
             Dim btn As New Button
             btn.Width = 100
-            btn.Height = 100
+            btn.Height = 120
             btn.TextAlign = ContentAlignment.MiddleCenter
-
-            btn.Text = sortedfights(i).event_name & vbCrLf & " " & sortedfights(i).fighter1 & vbCrLf & " VS " & vbCrLf & sortedfights(i).fighter2
+            btn.BackColor = Color.White
+            btn.Text = sortedfights(i).event_name & vbCrLf & vbCrLf & " " & sortedfights(i).fighter1 & vbCrLf & " VS " & vbCrLf & sortedfights(i).fighter2
             btn.Visible = True
             btn.Tag = i
 
@@ -208,9 +233,11 @@ Public Class fight_form
 
             Dim btnloadmore As New Button
             btnloadmore.Width = 100
-            btnloadmore.Height = 50
+            btnloadmore.Height = 100
             btnloadmore.TextAlign = ContentAlignment.MiddleCenter
-
+            btnloadmore.BackColor = Color.Red
+            btnloadmore.ForeColor = Color.White
+            btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
             btnloadmore.Text = "Load more"
             btnloadmore.Visible = True
             btnloadmore.Tag = "btnloadmore"
@@ -483,4 +510,36 @@ Public Class fight_form
             updatebuttons(filteredFights)
         End If
     End Sub
+
+    Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
+        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
+        updatebuttons(filteredfightlist)
+    End Sub
+
+    Function checkfilters(fightlist As List(Of Fight))
+
+
+        Dim selectedWeightClass As String
+
+
+        If cmbweightclass.SelectedItem IsNot Nothing Then
+            selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+        End If
+
+
+
+        ' Filter fighters based on the selected weight class
+        Dim filteredFights As List(Of Fight) = fightlist
+        If selectedWeightClass <> "All" Then
+            filteredFights = fightlist.Where(Function(f) f.weight_class = selectedWeightClass).ToList()
+        End If
+
+
+
+
+        Return filteredFights
+
+
+    End Function
 End Class

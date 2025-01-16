@@ -105,7 +105,7 @@ Partial Class FighterForm
         '
         Me.cmbweightclass.FormattingEnabled = True
         Me.cmbweightclass.Items.AddRange(New Object() {"All", "115 lbs.", "125 lbs.", "135 lbs.", "145 lbs.", "155 lbs.", "170 lbs.", "185 lbs.", "205 lbs.", "265 lbs.", ""})
-        Me.cmbweightclass.Location = New System.Drawing.Point(368, 103)
+        Me.cmbweightclass.Location = New System.Drawing.Point(374, 103)
         Me.cmbweightclass.Name = "cmbweightclass"
         Me.cmbweightclass.Size = New System.Drawing.Size(121, 21)
         Me.cmbweightclass.TabIndex = 16

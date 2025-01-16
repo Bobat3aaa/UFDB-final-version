@@ -36,6 +36,8 @@ Partial Class fight_form
         Me.cmbsort = New System.Windows.Forms.ComboBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Home = New System.Windows.Forms.Label()
+        Me.cmbweightclass = New System.Windows.Forms.ComboBox()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -111,6 +113,7 @@ Partial Class fight_form
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Home)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Btnback)
         Me.Panel1.Location = New System.Drawing.Point(-4, -3)
@@ -144,25 +147,45 @@ Partial Class fight_form
         '
         Me.cmbsort.FormattingEnabled = True
         Me.cmbsort.Items.AddRange(New Object() {"Descending", "Ascending"})
-        Me.cmbsort.Location = New System.Drawing.Point(302, 101)
+        Me.cmbsort.Location = New System.Drawing.Point(318, 105)
         Me.cmbsort.Name = "cmbsort"
         Me.cmbsort.Size = New System.Drawing.Size(126, 21)
         Me.cmbsort.TabIndex = 22
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(302, 135)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(318, 135)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.ShowCheckBox = True
         Me.DateTimePicker1.Size = New System.Drawing.Size(126, 20)
         Me.DateTimePicker1.TabIndex = 23
         Me.DateTimePicker1.Value = New Date(2025, 1, 8, 17, 21, 6, 0)
         '
+        'Home
+        '
+        Me.Home.AutoSize = True
+        Me.Home.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Home.ForeColor = System.Drawing.Color.Red
+        Me.Home.Location = New System.Drawing.Point(172, 12)
+        Me.Home.Name = "Home"
+        Me.Home.Size = New System.Drawing.Size(0, 54)
+        Me.Home.TabIndex = 24
+        '
+        'cmbweightclass
+        '
+        Me.cmbweightclass.FormattingEnabled = True
+        Me.cmbweightclass.Items.AddRange(New Object() {"All", "Women's Strawweight", "Women's Flyweight", "Women's Bantamweight", "Women's Featherweight", "Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight", "Light Heavyweight", "Heavyweight"})
+        Me.cmbweightclass.Location = New System.Drawing.Point(486, 105)
+        Me.cmbweightclass.Name = "cmbweightclass"
+        Me.cmbweightclass.Size = New System.Drawing.Size(121, 21)
+        Me.cmbweightclass.TabIndex = 24
+        '
         'fight_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.cmbweightclass)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.cmbsort)
         Me.Controls.Add(Me.Panel1)
@@ -196,4 +219,6 @@ Partial Class fight_form
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents cmbsort As ComboBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Home As Label
+    Friend WithEvents cmbweightclass As ComboBox
 End Class
