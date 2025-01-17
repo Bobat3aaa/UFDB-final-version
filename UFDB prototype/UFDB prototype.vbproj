@@ -78,10 +78,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="currentranking.Designer.vb">
+    <Compile Include="Ranking\currentranking.Designer.vb">
       <DependentUpon>currentranking.vb</DependentUpon>
     </Compile>
-    <Compile Include="currentranking.vb">
+    <Compile Include="Ranking\currentranking.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fight\currentfightform.Designer.vb">
@@ -100,6 +100,12 @@
       <DependentUpon>current_fighter_form.vb</DependentUpon>
     </Compile>
     <Compile Include="Fighter\current_fighter_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ranking\Rankingsearch.Designer.vb">
+      <DependentUpon>Rankingsearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ranking\Rankingsearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User\current_user_form.Designer.vb">
@@ -166,7 +172,7 @@
     <Compile Include="Classes\user.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="currentranking.resx">
+    <EmbeddedResource Include="Ranking\currentranking.resx">
       <DependentUpon>currentranking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fight\currentfightform.resx">
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fighter\current_fighter_form.resx">
       <DependentUpon>current_fighter_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ranking\Rankingsearch.resx">
+      <DependentUpon>Rankingsearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\current_user_form.resx">
       <DependentUpon>current_user_form.vb</DependentUpon>
@@ -219,8 +228,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ranking\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

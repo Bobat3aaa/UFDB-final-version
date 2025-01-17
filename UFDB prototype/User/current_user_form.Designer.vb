@@ -22,20 +22,16 @@ Partial Class current_user_form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.panelmain = New System.Windows.Forms.Panel()
+        Me.btnlikedfighters = New System.Windows.Forms.Button()
+        Me.btnuserdetails = New System.Windows.Forms.Button()
+        Me.btnlogout = New System.Windows.Forms.Button()
+        Me.btnranking = New System.Windows.Forms.Button()
+        Me.btnnewranking = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.Location = New System.Drawing.Point(435, 78)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(372, 401)
-        Me.Panel1.TabIndex = 6
         '
         'Label4
         '
@@ -48,52 +44,98 @@ Partial Class current_user_form
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "UFDB"
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.Silver
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Location = New System.Drawing.Point(655, 23)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(133, 33)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "back"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
         Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Location = New System.Drawing.Point(2, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(808, 72)
+        Me.Panel2.Size = New System.Drawing.Size(1014, 72)
         Me.Panel2.TabIndex = 21
         '
-        'FlowLayoutPanel1
+        'panelmain
         '
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(2, 78)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(427, 100)
-        Me.FlowLayoutPanel1.TabIndex = 22
+        Me.panelmain.AutoSize = True
+        Me.panelmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.panelmain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelmain.Dock = System.Windows.Forms.DockStyle.Right
+        Me.panelmain.Location = New System.Drawing.Point(1013, 0)
+        Me.panelmain.Name = "panelmain"
+        Me.panelmain.Size = New System.Drawing.Size(2, 711)
+        Me.panelmain.TabIndex = 22
+        '
+        'btnlikedfighters
+        '
+        Me.btnlikedfighters.Location = New System.Drawing.Point(15, 87)
+        Me.btnlikedfighters.Name = "btnlikedfighters"
+        Me.btnlikedfighters.Size = New System.Drawing.Size(122, 38)
+        Me.btnlikedfighters.TabIndex = 23
+        Me.btnlikedfighters.Text = "Liked Fighters"
+        Me.btnlikedfighters.UseVisualStyleBackColor = True
+        '
+        'btnuserdetails
+        '
+        Me.btnuserdetails.Location = New System.Drawing.Point(15, 421)
+        Me.btnuserdetails.Name = "btnuserdetails"
+        Me.btnuserdetails.Size = New System.Drawing.Size(122, 38)
+        Me.btnuserdetails.TabIndex = 24
+        Me.btnuserdetails.Text = "User Details"
+        Me.btnuserdetails.UseVisualStyleBackColor = True
+        '
+        'btnlogout
+        '
+        Me.btnlogout.Location = New System.Drawing.Point(12, 560)
+        Me.btnlogout.Name = "btnlogout"
+        Me.btnlogout.Size = New System.Drawing.Size(122, 38)
+        Me.btnlogout.TabIndex = 25
+        Me.btnlogout.Text = "Logout"
+        Me.btnlogout.UseVisualStyleBackColor = True
+        '
+        'btnranking
+        '
+        Me.btnranking.Location = New System.Drawing.Point(15, 184)
+        Me.btnranking.Name = "btnranking"
+        Me.btnranking.Size = New System.Drawing.Size(122, 38)
+        Me.btnranking.TabIndex = 26
+        Me.btnranking.Text = "See rankings"
+        Me.btnranking.UseVisualStyleBackColor = True
+        '
+        'btnnewranking
+        '
+        Me.btnnewranking.Location = New System.Drawing.Point(15, 296)
+        Me.btnnewranking.Name = "btnnewranking"
+        Me.btnnewranking.Size = New System.Drawing.Size(122, 38)
+        Me.btnnewranking.TabIndex = 27
+        Me.btnnewranking.Text = "Make new ranking"
+        Me.btnnewranking.UseVisualStyleBackColor = True
         '
         'current_user_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(807, 476)
-        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(1015, 711)
+        Me.Controls.Add(Me.btnnewranking)
+        Me.Controls.Add(Me.btnranking)
+        Me.Controls.Add(Me.btnlogout)
+        Me.Controls.Add(Me.btnuserdetails)
+        Me.Controls.Add(Me.btnlikedfighters)
+        Me.Controls.Add(Me.panelmain)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel1)
         Me.Name = "current_user_form"
         Me.Text = "current_user_form"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents panelmain As Panel
+    Friend WithEvents btnlikedfighters As Button
+    Friend WithEvents btnuserdetails As Button
+    Friend WithEvents btnlogout As Button
+    Friend WithEvents btnranking As Button
+    Friend WithEvents btnnewranking As Button
 End Class

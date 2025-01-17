@@ -1,0 +1,16 @@
+[
+  {
+    "RankingID": 2,
+    "UserID": 1,
+    "RankingName": "Ranking 2",
+    "Rankingdesc": "To test ranking the second",
+    "Rankingdatemade": "2025-01-17T00:00:00+00:00"
+  },
+  {
+    "RankingID": 1,
+    "UserID": 1,
+    "RankingName": "Test ranking",
+    "Rankingdesc": "To test ranking stuff",
+    "Rankingdatemade": "2025-01-17T00:00:00+00:00"
+  }
+]

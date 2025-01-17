@@ -14,6 +14,14 @@ Public Class current_user_form
 
     End Sub
 
+    Private Sub btnranking_Click(sender As Object, e As EventArgs) Handles btnranking.Click
+        childform(Rankingsearch)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnnewranking.Click
+        childform(currentranking)
+    End Sub
+
     'Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     '    End Function
@@ -29,30 +37,15 @@ Public Class current_user_form
     '        Me.Close()
     '    End If
     'End Sub
-    Private Sub SavecurrentuserToJsonFile(currentuser As User)
-        Dim json As String = JsonConvert.SerializeObject(currentuser, Formatting.Indented)
-        Dim filePath As String = "currentuserdata.json"
-        File.WriteAllText(filePath, json)
-        MessageBox.Show($"Data saved to {filePath}")
-    End Sub
 
-    Private Sub btndelete_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub btnlogout_Click(sender As Object, e As EventArgs)
-
+    Sub childform(ByVal panel As Form)
+        panelmain.Controls.Clear()
+        panel.TopLevel = False
+        panelmain.Controls.Add(panel)
+        panel.Show()
     End Sub
 
     Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 End Class

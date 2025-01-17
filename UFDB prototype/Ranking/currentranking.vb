@@ -211,7 +211,7 @@ Public Class currentranking
             End If
 
             rankedfighterlist.Add(fighterrank)
-
+            updatetitles(fighterrank, currentfighter)
         Else
             MsgBox("please add a rank!")
         End If
@@ -349,6 +349,8 @@ Public Class currentranking
         ElseIf String.IsNullOrEmpty(txtrankingdesc.Text) Then
             MsgBox("Please add a list description")
 
+        Else
+
 
             Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
 
@@ -371,5 +373,25 @@ Public Class currentranking
             SaveTofighterranksJson(jsonfighterrankinglist)
             MsgBox("new list created!")
         End If
+    End Sub
+
+    Sub updatetitles(fighterrank, currentfighter)
+
+        For i = 1 To 10
+            Dim ranklbl As Label = Me.Controls("lblfighter" & i)
+            If ranklbl IsNot Nothing And i = fighterrank.rank Then
+
+                ranklbl.Text = currentfighter.name
+            End If
+
+
+        Next
+
+
+
+    End Sub
+
+    Private Sub txtfname_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
+
     End Sub
 End Class

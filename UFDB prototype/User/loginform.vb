@@ -83,24 +83,31 @@ Public Class loginform
         Dim usernametofind As String = txtusername.Text
         Dim passwordtofind As String = txtpassword.Text
         Dim currentuserindex As Integer = bsearchusers(sortedusers, usernametofind, indexlow, indexhigh)
-        MsgBox(currentuserindex)
-        Dim passwordcheck As Boolean = checkpassword(sortedusers, currentuserindex, usernametofind, passwordtofind)
-        If passwordcheck = True Then
-            If users(currentuserindex).Admin = True Then
-                refreshapi()
-                currentuserid = users(currentuserindex).UserID
-            ElseIf users(currentuserindex).Admin = False Then
-                currentuserid = users(currentuserindex).UserID
+        If currentuserindex = -1 Then
+            MsgBox("no accounts made")
+        Else
+            MsgBox(currentuserindex)
+            Dim passwordcheck As Boolean = checkpassword(sortedusers, currentuserindex, usernametofind, passwordtofind)
+            If passwordcheck = True Then
+                If users(currentuserindex).Admin = True Then
+                    refreshapi()
+                    currentuserid = users(currentuserindex).UserID
+                ElseIf users(currentuserindex).Admin = False Then
+                    currentuserid = users(currentuserindex).UserID
 
 
 
-                MsgBox("logged in as user")
+                    MsgBox("logged in as user")
 
-            End If
+                End If
 
-        ElseIf passwordcheck = False Then
+            ElseIf passwordcheck = False Then
                 MsgBox("password is wrong")
             End If
+
+        End If
+
+
 
 
 

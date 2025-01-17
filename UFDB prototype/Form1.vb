@@ -23,9 +23,15 @@ Public Class Form1
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles Btnlogin.Click
 
 
+        If loginform.currentuserid = 0 Then
+            loginform.Show()
+            Me.Hide()
+        ElseIf loginform.currentuserid <> 0 Then
+            current_user_form.Show()
+            Me.Hide()
+        End If
 
-        loginform.Show()
-        Me.Hide()
+
 
 
     End Sub
