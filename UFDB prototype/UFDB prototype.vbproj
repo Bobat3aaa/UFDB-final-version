@@ -108,6 +108,12 @@
     <Compile Include="Ranking\Rankingsearch.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ranking\showranking.Designer.vb">
+      <DependentUpon>showranking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ranking\showranking.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="User\current_user_form.Designer.vb">
       <DependentUpon>current_user_form.vb</DependentUpon>
     </Compile>
@@ -133,6 +139,12 @@
     </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Likedfightersearch.Designer.vb">
+      <DependentUpon>Likedfightersearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="User\Likedfightersearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User\loginform.Designer.vb">
@@ -187,6 +199,9 @@
     <EmbeddedResource Include="Ranking\Rankingsearch.resx">
       <DependentUpon>Rankingsearch.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ranking\showranking.resx">
+      <DependentUpon>showranking.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\current_user_form.resx">
       <DependentUpon>current_user_form.vb</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Likedfightersearch.resx">
+      <DependentUpon>Likedfightersearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\loginform.resx">
       <DependentUpon>loginform.vb</DependentUpon>

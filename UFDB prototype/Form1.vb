@@ -39,7 +39,6 @@ Public Class Form1
     Private Sub btnregister_Click(sender As Object, e As EventArgs) Handles Btnregister.Click
         register.Show()
         Me.Hide()
-        currentranking.Show()
     End Sub
 
 

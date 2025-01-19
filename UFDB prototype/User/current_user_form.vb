@@ -19,7 +19,9 @@ Public Class current_user_form
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnnewranking.Click
-        childform(currentranking)
+        Dim newranking As New currentranking
+        childform(newranking)
+
     End Sub
 
     'Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -47,5 +49,14 @@ Public Class current_user_form
 
     Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub btnlikedfighters_Click(sender As Object, e As EventArgs) Handles btnlikedfighters.Click
+        childform(Likedfightersearch)
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        Form1.Show()
+        Me.Close()
     End Sub
 End Class

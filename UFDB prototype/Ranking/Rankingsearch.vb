@@ -157,12 +157,11 @@ Public Class Rankingsearch
 
 
 
-        'Dim fighterForm As New current_fighter_form(currentfighter)
+        Dim rankingform As New showranking(currentranking)
 
 
 
-        'FighterForm.Show()
-        Me.Hide()
+        rankingform.Show()
     End Sub
 
     Function Quicksort(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking)
@@ -272,4 +271,36 @@ Public Class Rankingsearch
         Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
         updatebuttons(ranklist)
     End Sub
+
+    Private Sub cmbownlists_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbownlists.SelectedIndexChanged
+
+        Dim filteredlist As List(Of ranking) = checkfilters(globalranklist)
+        If filteredlist IsNot Nothing Then
+            updatebuttons(filteredlist)
+        Else
+            updatebuttons(globalranklist)
+        End If
+    End Sub
+    Function checkfilters(ranklist As List(Of ranking))
+        Dim ownrank As String
+
+
+        If cmbownlists.SelectedItem IsNot Nothing Then
+            ownrank = cmbownlists.SelectedItem
+            Debug.WriteLine(ownrank)
+        End If
+
+
+        ' Filter fighters based on the selected weight class
+
+        Dim filteredlist As List(Of ranking)
+        If ownrank <> "No" Then
+            filteredlist = ranklist.Where(Function(r) r.UserID = loginform.currentuserid).ToList()
+        End If
+
+
+
+        Return filteredlist
+
+    End Function
 End Class

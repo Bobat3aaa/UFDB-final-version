@@ -67,7 +67,7 @@ Partial Class loginform
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(540, 87)
+        Me.Label1.Location = New System.Drawing.Point(267, 87)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(152, 65)
         Me.Label1.TabIndex = 6
@@ -81,7 +81,7 @@ Partial Class loginform
         Me.Panel1.Controls.Add(Me.Btnback)
         Me.Panel1.Location = New System.Drawing.Point(-4, -2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(808, 73)
+        Me.Panel1.Size = New System.Drawing.Size(471, 73)
         Me.Panel1.TabIndex = 20
         '
         'Label4
@@ -99,7 +99,7 @@ Partial Class loginform
         '
         Me.Btnback.BackColor = System.Drawing.Color.Silver
         Me.Btnback.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnback.Location = New System.Drawing.Point(655, 23)
+        Me.Btnback.Location = New System.Drawing.Point(274, 14)
         Me.Btnback.Name = "Btnback"
         Me.Btnback.Size = New System.Drawing.Size(133, 33)
         Me.Btnback.TabIndex = 2
@@ -128,7 +128,7 @@ Partial Class loginform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(464, 450)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)

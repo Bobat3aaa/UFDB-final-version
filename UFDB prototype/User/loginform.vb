@@ -98,7 +98,8 @@ Public Class loginform
 
 
                     MsgBox("logged in as user")
-
+                    current_user_form.Show()
+                    Me.Hide()
                 End If
 
             ElseIf passwordcheck = False Then

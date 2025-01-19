@@ -7,14 +7,14 @@ Public Class currentranking
 
     Dim fighterlist As List(Of Fighter)
     Dim rankedfighterlist As New List(Of fighterranking)
-    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
 
     End Sub
-
-    Private Sub Label11_Click(sender As Object, e As EventArgs) Handles Label11.Click
-
-    End Sub
-
     Private Sub currentranking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'make search work
