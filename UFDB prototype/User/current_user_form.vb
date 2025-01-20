@@ -59,4 +59,9 @@ Public Class current_user_form
         Form1.Show()
         Me.Close()
     End Sub
+
+    Private Sub btnuserdetails_Click(sender As Object, e As EventArgs) Handles btnuserdetails.Click
+
+        childform(Userdetails)
+    End Sub
 End Class

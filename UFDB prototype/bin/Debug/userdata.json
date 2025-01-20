@@ -1,18 +1,13 @@
 [
+ 
   {
-    "UserID": 1,
-    "username": "AdminUser",
-    "password": "ûÖßßÜ‚€‡’ƒðûûù“’‘‘¥“Ÿƒƒ‚¦¥¥¥½¦®",
+    "UserID": 1
+    "username": "Pleasework",
+    "password": "ëÚÈÈÌÔÉß‰šŽû÷÷ôñ÷ùš­˜‘‰‰Š‰—­µ¬§",
+    "passwordlength": 10,
     "age": 20,
-    "email": "adminuser@gmail.com",
-    "Admin": true
-  },
-  {
-    "UserID": 2,
-    "username": "User1",
-    "password": "Öçõõñéôâ·´µ²§³ÆÊÊÉÌÊÄ¦§¤¤¥¬´´²·",
-    "age": 20,
-    "email": "guestuser@gmail.com",
+    "email": "bbep@gmail.com",
     "Admin": false
   }
+ 
 ]

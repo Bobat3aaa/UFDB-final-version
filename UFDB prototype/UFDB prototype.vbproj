@@ -114,6 +114,12 @@
     <Compile Include="Ranking\showranking.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="User\Changepassword.Designer.vb">
+      <DependentUpon>Changepassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="User\Changepassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="User\current_user_form.Designer.vb">
       <DependentUpon>current_user_form.vb</DependentUpon>
     </Compile>
@@ -182,6 +188,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\user.vb" />
+    <Compile Include="User\User details.Designer.vb">
+      <DependentUpon>User details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="User\User details.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ranking\currentranking.resx">
@@ -201,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ranking\showranking.resx">
       <DependentUpon>showranking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Changepassword.resx">
+      <DependentUpon>Changepassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\current_user_form.resx">
       <DependentUpon>current_user_form.vb</DependentUpon>
@@ -231,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\register.resx">
       <DependentUpon>register.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\User details.resx">
+      <DependentUpon>User details.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

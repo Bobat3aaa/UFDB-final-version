@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
 
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
@@ -31,7 +32,7 @@ Public Class register
                 MsgBox("Email must have 8-32 characters, one special character and a capital letter")
             End If
         Else
-                MsgBox("These passwords do not match each other.")
+            MsgBox("These passwords do not match each other.")
         End If
 
 
@@ -40,8 +41,11 @@ Public Class register
     Sub Adduser(newusername, newpassword, newage, newemail)
 
         'gets encrypted password
-        Dim encryptpass As String = encryptpassword(newusername, newpassword)
+
         Dim newuser As New User()
+        newuser.passwordlength = Len(newpassword)
+        Dim encryptpass As String = encryptpassword(newusername, newpassword)
+
 
 
         newuser.username = newusername
@@ -126,6 +130,7 @@ Public Class register
     End Function
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
     End Sub
 

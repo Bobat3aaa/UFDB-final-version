@@ -164,12 +164,7 @@ Public Class loginform
 
         Return encryptpass
     End Function
-    Private Sub SavecurrentuserToJsonFile(currentuser As User)
-        Dim json As String = JsonConvert.SerializeObject(currentuser, Formatting.Indented)
-        Dim filePath As String = "currentuserdata.json"
-        File.WriteAllText(filePath, json)
 
-    End Sub
     Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
