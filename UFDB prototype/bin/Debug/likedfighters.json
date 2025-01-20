@@ -1,9 +1,5 @@
 [
   {
-    "userid": 1,
-    "fighterid": "edc9eb3051f444fa"
-  },
-  {
     "userid": 2,
     "fighterid": "a4d055f1435d6d75"
   },
@@ -18,13 +14,5 @@
   {
     "userid": 2,
     "fighterid": "260bd4cef10b033f"
-  },
-  {
-    "userid": 1,
-    "fighterid": "a4d055f1435d6d75"
-  },
-  {
-    "userid": 1,
-    "fighterid": "6c9384138c82962f"
   }
 ]

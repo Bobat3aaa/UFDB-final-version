@@ -124,4 +124,91 @@ Public Class Userdetails
 
     End Function
 
+    Private Sub btndeleteaccount_Click(sender As Object, e As EventArgs) Handles btndeleteaccount.Click
+        Dim answer As MsgBoxResult
+        answer = MsgBox("Are you sure you wanty to delete your account", vbQuestion + vbYesNo, "Delete Account")
+        If answer = vbYes Then
+
+
+            Dim userlist As List(Of User) = ReadusersFromFile()
+            Dim currentuser As User = getcurrentuser()
+            Dim fighterrankinglist As List(Of fighterranking) = ReadfighterranksFromFile()
+            Dim likedfighters As List(Of likedfighter) = ReadlikedfightersFromFile()
+            Dim rankinglist As List(Of ranking) = ReadranklistsFromFile()
+
+            Dim usertoremove As User = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
+            MsgBox(usertoremove.UserID)
+            userlist.Remove(usertoremove)
+
+
+            likedfighters.RemoveAll(Function(lf) lf.userid = currentuser.UserID)
+
+
+
+
+            Dim rankingstoremove As List(Of ranking) = rankinglist.Where(Function(r) r.UserID = currentuser.UserID).ToList()
+            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
+
+
+
+            fighterrankinglist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
+            rankinglist.RemoveAll(Function(r) r.UserID = currentuser.UserID)
+
+            SaveTolikedfightersJsonFile(likedfighters)
+            SaveTofighterranksJson(fighterrankinglist)
+            SaveToranklistJson(rankinglist)
+            SaveToJsonFile(userlist)
+
+
+        End If
+
+    End Sub
+
+
+
+
+
+
+
+    Function ReadlikedfightersFromFile() As List(Of likedfighter)
+        If Not File.Exists("likedfighters.json") Then
+            Return New List(Of likedfighter)
+        End If
+        Dim json As String = File.ReadAllText("likedfighters.json")
+        Return JsonConvert.DeserializeObject(Of List(Of likedfighter))(json)
+    End Function
+    Private Sub SaveTolikedfightersJsonFile(likedfighters As List(Of likedfighter))
+        Dim json As String = JsonConvert.SerializeObject(likedfighters, Formatting.Indented)
+        Dim filePath As String = $"likedfighters.json"
+        File.WriteAllText(filePath, json)
+        ' MessageBox.Show($"Data saved to {filePath}")
+    End Sub
+    Function ReadranklistsFromFile() As List(Of ranking)
+        If Not File.Exists("ranklists.json") Then
+            Return New List(Of ranking)
+        End If
+        Dim json As String = File.ReadAllText("ranklists.json")
+        Return JsonConvert.DeserializeObject(Of List(Of ranking))(json)
+    End Function
+    Private Sub SaveToranklistJson(rankedlists As List(Of ranking))
+        Dim json As String = JsonConvert.SerializeObject(rankedlists, Formatting.Indented)
+        Dim filePath As String = $"ranklists.json"
+        File.WriteAllText(filePath, json)
+
+    End Sub
+
+    Function ReadfighterranksFromFile() As List(Of fighterranking)
+        If Not File.Exists("fighterranks.json") Then
+            Return New List(Of fighterranking)
+        End If
+        Dim json As String = File.ReadAllText("fighterranks.json")
+        Return JsonConvert.DeserializeObject(Of List(Of fighterranking))(json)
+    End Function
+
+    Private Sub SaveTofighterranksJson(rankingfighterlist As List(Of fighterranking))
+        Dim json As String = JsonConvert.SerializeObject(rankingfighterlist, Formatting.Indented)
+        Dim filePath As String = $"fighterranks.json"
+        File.WriteAllText(filePath, json)
+
+    End Sub
 End Class
