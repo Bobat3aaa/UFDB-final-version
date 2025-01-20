@@ -31,13 +31,14 @@ Partial Class fight_form
         Me.btnsearch = New System.Windows.Forms.Button()
         Me.btnclear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Home = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Btnback = New System.Windows.Forms.Button()
         Me.cmbsort = New System.Windows.Forms.ComboBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Home = New System.Windows.Forms.Label()
         Me.cmbweightclass = New System.Windows.Forms.ComboBox()
+        Me.pnlcurrentfight = New System.Windows.Forms.Panel()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -53,7 +54,7 @@ Partial Class fight_form
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(12, 216)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(761, 222)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(595, 303)
         Me.FlowLayoutPanel1.TabIndex = 1
         '
         'txteventnum
@@ -118,8 +119,18 @@ Partial Class fight_form
         Me.Panel1.Controls.Add(Me.Btnback)
         Me.Panel1.Location = New System.Drawing.Point(-4, -3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(808, 68)
+        Me.Panel1.Size = New System.Drawing.Size(1448, 68)
         Me.Panel1.TabIndex = 20
+        '
+        'Home
+        '
+        Me.Home.AutoSize = True
+        Me.Home.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.Home.ForeColor = System.Drawing.Color.Red
+        Me.Home.Location = New System.Drawing.Point(172, 12)
+        Me.Home.Name = "Home"
+        Me.Home.Size = New System.Drawing.Size(0, 54)
+        Me.Home.TabIndex = 24
         '
         'Label4
         '
@@ -136,7 +147,7 @@ Partial Class fight_form
         '
         Me.Btnback.BackColor = System.Drawing.Color.Silver
         Me.Btnback.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnback.Location = New System.Drawing.Point(655, 23)
+        Me.Btnback.Location = New System.Drawing.Point(1306, 15)
         Me.Btnback.Name = "Btnback"
         Me.Btnback.Size = New System.Drawing.Size(133, 33)
         Me.Btnback.TabIndex = 2
@@ -161,16 +172,6 @@ Partial Class fight_form
         Me.DateTimePicker1.TabIndex = 23
         Me.DateTimePicker1.Value = New Date(2025, 1, 8, 17, 21, 6, 0)
         '
-        'Home
-        '
-        Me.Home.AutoSize = True
-        Me.Home.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Home.ForeColor = System.Drawing.Color.Red
-        Me.Home.Location = New System.Drawing.Point(172, 12)
-        Me.Home.Name = "Home"
-        Me.Home.Size = New System.Drawing.Size(0, 54)
-        Me.Home.TabIndex = 24
-        '
         'cmbweightclass
         '
         Me.cmbweightclass.FormattingEnabled = True
@@ -180,11 +181,19 @@ Partial Class fight_form
         Me.cmbweightclass.Size = New System.Drawing.Size(121, 21)
         Me.cmbweightclass.TabIndex = 24
         '
+        'pnlcurrentfight
+        '
+        Me.pnlcurrentfight.Location = New System.Drawing.Point(644, 69)
+        Me.pnlcurrentfight.Name = "pnlcurrentfight"
+        Me.pnlcurrentfight.Size = New System.Drawing.Size(800, 450)
+        Me.pnlcurrentfight.TabIndex = 25
+        '
         'fight_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1447, 524)
+        Me.Controls.Add(Me.pnlcurrentfight)
         Me.Controls.Add(Me.cmbweightclass)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.cmbsort)
@@ -221,4 +230,5 @@ Partial Class fight_form
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Home As Label
     Friend WithEvents cmbweightclass As ComboBox
+    Friend WithEvents pnlcurrentfight As Panel
 End Class

@@ -480,6 +480,7 @@ Partial Class currentranking
         Me.Controls.Add(Me.lbltitle)
         Me.Controls.Add(Me.txtrankingname)
         Me.Controls.Add(Me.Panel2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "currentranking"
         Me.Text = "Edit Ranking"
         Me.Panel2.ResumeLayout(False)

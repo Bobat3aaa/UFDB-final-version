@@ -35,14 +35,13 @@ Partial Class FighterForm
         Me.Home = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbstance = New System.Windows.Forms.ComboBox()
-        Me.cmbliked = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblsorted = New System.Windows.Forms.Label()
         Me.cmbwins = New System.Windows.Forms.ComboBox()
+        Me.pnlcurrentfighter = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,7 +97,7 @@ Partial Class FighterForm
         Me.FlowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(8, 257)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(772, 320)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(630, 320)
         Me.FlowLayoutPanel1.TabIndex = 15
         '
         'cmbweightclass
@@ -137,7 +136,7 @@ Partial Class FighterForm
         Me.Panel1.Controls.Add(Me.Home)
         Me.Panel1.Location = New System.Drawing.Point(-4, -3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1077, 69)
+        Me.Panel1.Size = New System.Drawing.Size(1442, 69)
         Me.Panel1.TabIndex = 19
         '
         'Home
@@ -170,30 +169,11 @@ Partial Class FighterForm
         Me.cmbstance.Size = New System.Drawing.Size(121, 21)
         Me.cmbstance.TabIndex = 24
         '
-        'cmbliked
-        '
-        Me.cmbliked.FormattingEnabled = True
-        Me.cmbliked.Items.AddRange(New Object() {"All", "115 lbs.", "125 lbs.", "135 lbs.", "145 lbs.", "155 lbs.", "170 lbs.", "185 lbs.", "205 lbs.", "265 lbs.", ""})
-        Me.cmbliked.Location = New System.Drawing.Point(663, 103)
-        Me.cmbliked.Name = "cmbliked"
-        Me.cmbliked.Size = New System.Drawing.Size(121, 21)
-        Me.cmbliked.TabIndex = 25
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label6.Location = New System.Drawing.Point(660, 86)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(50, 14)
-        Me.Label6.TabIndex = 26
-        Me.Label6.Text = "Liked?:"
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label7.Location = New System.Drawing.Point(366, 146)
+        Me.Label7.Location = New System.Drawing.Point(371, 146)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(34, 14)
         Me.Label7.TabIndex = 30
@@ -231,23 +211,30 @@ Partial Class FighterForm
         '
         Me.cmbwins.FormattingEnabled = True
         Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc"})
-        Me.cmbwins.Location = New System.Drawing.Point(369, 163)
+        Me.cmbwins.Location = New System.Drawing.Point(374, 163)
         Me.cmbwins.Name = "cmbwins"
         Me.cmbwins.Size = New System.Drawing.Size(126, 21)
         Me.cmbwins.TabIndex = 42
+        '
+        'pnlcurrentfighter
+        '
+        Me.pnlcurrentfighter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlcurrentfighter.Location = New System.Drawing.Point(644, 64)
+        Me.pnlcurrentfighter.Name = "pnlcurrentfighter"
+        Me.pnlcurrentfighter.Size = New System.Drawing.Size(794, 513)
+        Me.pnlcurrentfighter.TabIndex = 43
         '
         'FighterForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(795, 589)
+        Me.ClientSize = New System.Drawing.Size(1438, 589)
+        Me.Controls.Add(Me.pnlcurrentfighter)
         Me.Controls.Add(Me.cmbwins)
         Me.Controls.Add(Me.lblsorted)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.cmbliked)
         Me.Controls.Add(Me.cmbstance)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Panel1)
@@ -281,12 +268,11 @@ Partial Class FighterForm
     Friend WithEvents Home As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbstance As ComboBox
-    Friend WithEvents cmbliked As ComboBox
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label4 As Label
     Friend WithEvents lblsorted As Label
     Friend WithEvents cmbwins As ComboBox
+    Friend WithEvents pnlcurrentfighter As Panel
 End Class

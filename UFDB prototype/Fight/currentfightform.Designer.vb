@@ -267,6 +267,7 @@ Partial Class currentFightForm
         Me.Controls.Add(Me.lblevent)
         Me.Controls.Add(Me.lblfight)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "currentFightForm"
         Me.Text = "currentfightform"
         Me.Panel1.ResumeLayout(False)

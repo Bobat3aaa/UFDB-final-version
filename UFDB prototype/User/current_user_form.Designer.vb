@@ -59,9 +59,9 @@ Partial Class current_user_form
         Me.panelmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.panelmain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panelmain.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelmain.Location = New System.Drawing.Point(1013, 0)
+        Me.panelmain.Location = New System.Drawing.Point(1046, 0)
         Me.panelmain.Name = "panelmain"
-        Me.panelmain.Size = New System.Drawing.Size(2, 711)
+        Me.panelmain.Size = New System.Drawing.Size(2, 741)
         Me.panelmain.TabIndex = 22
         '
         'btnlikedfighters
@@ -114,7 +114,7 @@ Partial Class current_user_form
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1015, 711)
+        Me.ClientSize = New System.Drawing.Size(1048, 741)
         Me.Controls.Add(Me.btnnewranking)
         Me.Controls.Add(Me.btnranking)
         Me.Controls.Add(Me.btnlogout)

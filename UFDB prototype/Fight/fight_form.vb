@@ -58,8 +58,8 @@ Public Class fight_form
 
 
 
-        fightForm.Show()
-        Me.Hide()
+        childform(fightForm)
+
     End Sub
 
 
@@ -284,84 +284,7 @@ Public Class fight_form
 
     End Sub
 
-    'Function bsearchevent(fightlist As List(Of Fight), numtofind As Integer, indexlow As Integer, indexhigh As Integer)
 
-    '    'binary search, returns midpoint which is place in list
-    '    If indexlow > indexhigh Then
-    '        Return New List(Of Fight())
-    '    End If
-
-    '    Dim midpoint As Integer = (indexlow + indexhigh) \ 2
-    '    Dim currentfight As Fight = fightlist(midpoint)
-
-
-    '    Dim currenteventnumber As Integer? = ParseEventNumber(currentfight.event_name)
-
-    '    If Not currenteventnumber.HasValue Then
-
-    '        If midpoint > indexlow Then
-    '            Return bsearchevent(fightlist, numtofind, indexlow, midpoint - 1)
-    '        End If
-    '        If midpoint < indexhigh Then
-    '            Return bsearchevent(fightlist, numtofind, midpoint + 1, indexhigh)
-    '        End If
-    '        Return New List(Of Fight)
-    '    End If
-
-
-    '    If currenteventnumber < numtofind Then
-    '        Return bsearchevent(fightlist, numtofind, midpoint + 1, indexhigh)
-    '    ElseIf currenteventnumber > numtofind Then
-    '        Return bsearchevent(fightlist, numtofind, indexlow, midpoint - 1)
-    '    Else
-
-    '        'once binary search is finished, starts a new list of fights to find all relevant results
-
-
-
-
-    '        Dim searchedfights As New List(Of Fight)
-    '        searchedfights.Add(currentfight)
-
-
-    '        'searches left
-
-
-    '        Dim left As Integer = midpoint - 1
-    '        While left >= indexlow
-    '            Dim lefteventnum As Integer? = ParseEventNumber(fightlist(left).event_name)
-    '            'makes sure fight nights are ignored
-    '            If lefteventnum.HasValue AndAlso lefteventnum = numtofind Then
-    '                searchedfights.Add(fightlist(left))
-
-    '            ElseIf leftEventNum.HasValue AndAlso leftEventNum <> numToFind Then
-    '                Exit While
-    '            End If
-    '            left -= 1
-
-    '        End While
-    '        'searches right
-    '        Dim right As Integer = midpoint + 1
-
-
-    '        While right <= indexhigh
-    '            Dim righteventnum As Integer? = ParseEventNumber(fightlist(right).event_name)
-    '            'makes sure fight nights are ignored
-    '            If righteventnum.HasValue AndAlso righteventnum = numtofind Then
-    '                searchedfights.Add(fightlist(right))
-
-    '            ElseIf righteventnum.HasValue AndAlso righteventnum <> numtofind Then
-    '                Exit While
-    '            End If
-    '            right = +1
-    '        End While
-
-    '        Return searchedfights
-
-
-
-    '    End If
-    'End Function
 
 
 
@@ -482,7 +405,7 @@ Public Class fight_form
         Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
         Dim filePath As String = $"fights_page.json"
         File.WriteAllText(filePath, json)
-        MessageBox.Show($"Data saved to {filePath}")
+
     End Sub
 
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
@@ -542,4 +465,10 @@ Public Class fight_form
 
 
     End Function
+    Sub childform(ByVal panel As Form)
+        pnlcurrentfight.Controls.Clear()
+        panel.TopLevel = False
+        pnlcurrentfight.Controls.Add(panel)
+        panel.Show()
+    End Sub
 End Class

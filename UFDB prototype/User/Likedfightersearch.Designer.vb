@@ -110,6 +110,7 @@ Partial Class Likedfightersearch
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtfname)
         Me.Controls.Add(Me.txtlname)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.Name = "Likedfightersearch"
         Me.Text = "Liked fighters"

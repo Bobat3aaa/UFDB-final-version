@@ -141,6 +141,8 @@ Partial Class Userdetails
         Me.Controls.Add(Me.Txtemail)
         Me.Controls.Add(Me.txtusername)
         Me.Controls.Add(Me.lblusertitle)
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Userdetails"
         Me.Text = "Userdetailsform"
         Me.ResumeLayout(False)

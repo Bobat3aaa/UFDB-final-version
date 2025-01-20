@@ -42,10 +42,12 @@ Public Class current_fighter_form
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnlike.Click
-        Dim likedfighterlist As List(Of likedfighter) = ReadlikedfightersFromFile()
+        If loginform.currentuserid <> 0 Then
+            Debug.WriteLine(loginform.currentuserid)
+            Dim likedfighterlist As List(Of likedfighter) = ReadlikedfightersFromFile()
 
 
-        Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
+            Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
 
             Dim likedfighter As New likedfighter
 
@@ -56,13 +58,17 @@ Public Class current_fighter_form
             If alreadyLiked = True Then
                 Dim fighterToRemove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
                 likedfighterlist.Remove(fighterToRemove)
-            SaveToJsonFile(likedfighterlist)
-            MsgBox("Unliked" & currentFighter.Name)
-        Else
+                SaveToJsonFile(likedfighterlist)
+                MsgBox("Unliked" & currentFighter.Name)
+            Else
                 likedfighterlist.Add(likedfighter)
                 SaveToJsonFile(likedfighterlist)
-            MsgBox("Liked" & currentFighter.Name)
+                MsgBox("Liked" & currentFighter.Name)
+            End If
+        ElseIf loginform.currentuserid = 0 Then
+            MsgBox("Please login to like an account")
         End If
+
 
     End Sub
     Private Sub SaveToJsonFile(likedfighters As List(Of likedfighter))

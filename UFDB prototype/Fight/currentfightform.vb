@@ -27,7 +27,7 @@ Public Class currentFightForm
 
         Dim fighter1 As Fighter = findfighter1(fighterlist)
         Dim fighter2 As Fighter = findfighter2(fighterlist)
-        MsgBox(fighter1.Weight)
+
 
         lblheight1.Text = ("Height: " & fighter1.Height)
         lblweight1.Text = "Weight: " & fighter1.Weight

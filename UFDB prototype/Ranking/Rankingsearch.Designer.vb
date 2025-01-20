@@ -106,6 +106,7 @@ Partial Class Rankingsearch
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtlistname)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Rankingsearch"
         Me.Text = "Search Ranking"
         Me.ResumeLayout(False)

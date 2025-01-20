@@ -410,8 +410,8 @@ Public Class FighterForm
 
 
 
-        fighterForm.Show()
-        Me.Hide()
+        childform(fighterForm)
+        'Me.Hide()
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
@@ -562,5 +562,15 @@ Public Class FighterForm
 
     Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
 
+    End Sub
+
+    Private Sub pnlcurrentfighter_Paint(sender As Object, e As PaintEventArgs) Handles pnlcurrentfighter.Paint
+
+    End Sub
+    Sub childform(ByVal panel As Form)
+        pnlcurrentfighter.Controls.Clear()
+        panel.TopLevel = False
+        pnlcurrentfighter.Controls.Add(panel)
+        panel.Show()
     End Sub
 End Class
