@@ -78,6 +78,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\currentadminuser.Designer.vb">
+      <DependentUpon>currentadminuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\currentadminuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Databaseeditor.Designer.vb">
+      <DependentUpon>Databaseeditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Databaseeditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Ranking\currentranking.Designer.vb">
       <DependentUpon>currentranking.vb</DependentUpon>
     </Compile>
@@ -196,6 +208,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Admin\currentadminuser.resx">
+      <DependentUpon>currentadminuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Databaseeditor.resx">
+      <DependentUpon>Databaseeditor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ranking\currentranking.resx">
       <DependentUpon>currentranking.vb</DependentUpon>
     </EmbeddedResource>

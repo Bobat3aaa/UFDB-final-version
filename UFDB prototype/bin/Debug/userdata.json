@@ -6,6 +6,6 @@
     "passwordlength": 11,
     "age": 22,
     "email": "user2@gmail.com",
-    "Admin": false
+    "Admin": true
   }
 ]

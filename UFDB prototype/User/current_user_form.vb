@@ -24,21 +24,7 @@ Public Class current_user_form
 
     End Sub
 
-    'Private Sub current_user_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    '    End Function
-
-    'Private Sub btnlogout_Click(sender As Object, e As EventArgs) Handles btnlogout.Click
-    '    Dim answer As Integer
-    '    answer = MsgBox("Are you sure you want to logout?", vbYesNo)
-    '    If answer = vbYes Then
-    '        Dim newuser As New User
-
-    '        Form1.Show()
-    '        Form1.Refresh()
-    '        Me.Close()
-    '    End If
-    'End Sub
 
     Sub childform(ByVal panel As Form)
         panelmain.Controls.Clear()

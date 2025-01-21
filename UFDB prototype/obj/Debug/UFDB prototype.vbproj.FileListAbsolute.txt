@@ -53,3 +53,5 @@ D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototyp
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Likedfightersearch.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Userdetails.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Changepassword.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentadminuser.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Databaseeditor.resources

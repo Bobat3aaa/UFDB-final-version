@@ -90,8 +90,13 @@ Public Class loginform
             Dim passwordcheck As Boolean = checkpassword(sortedusers, currentuserindex, usernametofind, passwordtofind)
             If passwordcheck = True Then
                 If users(currentuserindex).Admin = True Then
-                    refreshapi()
+
+
+
+                    'refreshapi()
                     currentuserid = users(currentuserindex).UserID
+                    currentadminuser.Show()
+                    Me.Hide()
                 ElseIf users(currentuserindex).Admin = False Then
                     currentuserid = users(currentuserindex).UserID
 

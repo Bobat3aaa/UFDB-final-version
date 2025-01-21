@@ -27,8 +27,19 @@ Public Class Form1
             loginform.Show()
             Me.Hide()
         ElseIf loginform.currentuserid <> 0 Then
-            current_user_form.Show()
-            Me.Hide()
+            Dim userlist As List(Of User) = ReadusersFromFile()
+            Dim currentuser As User = userlist.Where(Function(u) u.UserID = loginform.currentuserid)
+            If currentuser.Admin = True Then
+                currentadminuser.Show()
+                Me.Hide()
+            Else
+                current_user_form.Show()
+                Me.Hide()
+            End If
+
+
+
+
         End If
 
 
@@ -42,24 +53,24 @@ Public Class Form1
     End Sub
 
 
-    Async Function FetchFighterData() As Task(Of List(Of Fighter))
-        Dim url As String = "https://ufc-api-theta.vercel.app/mma-api/fighters?page=1"
-        Dim fighters As List(Of Fighter) = Nothing
+    'Async Function FetchFighterData() As Task(Of List(Of Fighter))
+    '    Dim url As String = "https://ufc-api-theta.vercel.app/mma-api/fighters?page=1"
+    '    Dim fighters As List(Of Fighter) = Nothing
 
-        Using client As New HttpClient()
-            Try
-                ' Fetch JSON data
-                Dim json As String = Await client.GetStringAsync(url)
+    '    Using client As New HttpClient()
+    '        Try
+    '            ' Fetch JSON data
+    '            Dim json As String = Await client.GetStringAsync(url)
 
-                ' Deserialize JSON array into List of Fighter objects
-                fighters = JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
-            Catch ex As Exception
-                Console.WriteLine($"Error fetching data: {ex.Message}")
-            End Try
-        End Using
+    '            ' Deserialize JSON array into List of Fighter objects
+    '            fighters = JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+    '        Catch ex As Exception
+    '            Console.WriteLine($"Error fetching data: {ex.Message}")
+    '        End Try
+    '    End Using
 
-        Return fighters
-    End Function
+    '    Return fighters
+    'End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -86,4 +97,13 @@ Public Class Form1
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
     End Sub
+
+    Function ReadusersFromFile() As List(Of User)
+        If Not File.Exists("userdata.json") Then
+            Return New List(Of User)
+        End If
+        Dim json As String = File.ReadAllText("userdata.json")
+        Return JsonConvert.DeserializeObject(Of List(Of User))(json)
+    End Function
+
 End Class
