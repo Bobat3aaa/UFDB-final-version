@@ -28,6 +28,8 @@ Partial Class Databaseeditor
         Me.btnsavefile = New System.Windows.Forms.Button()
         Me.btnadd = New System.Windows.Forms.Button()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
+        Me.Lbltitle = New System.Windows.Forms.Label()
+        Me.lblchoose = New System.Windows.Forms.Label()
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,14 +47,14 @@ Partial Class Databaseeditor
         Me.cmbselectview.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbselectview.FormattingEnabled = True
         Me.cmbselectview.Items.AddRange(New Object() {"Fighter", "Fight"})
-        Me.cmbselectview.Location = New System.Drawing.Point(580, 98)
+        Me.cmbselectview.Location = New System.Drawing.Point(578, 98)
         Me.cmbselectview.Name = "cmbselectview"
         Me.cmbselectview.Size = New System.Drawing.Size(204, 32)
         Me.cmbselectview.TabIndex = 1
         '
         'btndelete
         '
-        Me.btndelete.Location = New System.Drawing.Point(367, 136)
+        Me.btndelete.Location = New System.Drawing.Point(302, 136)
         Me.btndelete.Name = "btndelete"
         Me.btndelete.Size = New System.Drawing.Size(205, 46)
         Me.btndelete.TabIndex = 2
@@ -70,7 +72,7 @@ Partial Class Databaseeditor
         '
         'btnadd
         '
-        Me.btnadd.Location = New System.Drawing.Point(367, 84)
+        Me.btnadd.Location = New System.Drawing.Point(12, 136)
         Me.btnadd.Name = "btnadd"
         Me.btnadd.Size = New System.Drawing.Size(205, 46)
         Me.btnadd.TabIndex = 4
@@ -82,11 +84,33 @@ Partial Class Databaseeditor
         Me.FileSystemWatcher1.EnableRaisingEvents = True
         Me.FileSystemWatcher1.SynchronizingObject = Me
         '
+        'Lbltitle
+        '
+        Me.Lbltitle.AutoSize = True
+        Me.Lbltitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbltitle.Location = New System.Drawing.Point(12, 19)
+        Me.Lbltitle.Name = "Lbltitle"
+        Me.Lbltitle.Size = New System.Drawing.Size(227, 42)
+        Me.Lbltitle.TabIndex = 5
+        Me.Lbltitle.Text = "Fighter/fight"
+        '
+        'lblchoose
+        '
+        Me.lblchoose.AutoSize = True
+        Me.lblchoose.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblchoose.Location = New System.Drawing.Point(574, 75)
+        Me.lblchoose.Name = "lblchoose"
+        Me.lblchoose.Size = New System.Drawing.Size(102, 20)
+        Me.lblchoose.TabIndex = 6
+        Me.lblchoose.Text = "Choose view:"
+        '
         'Databaseeditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(796, 631)
+        Me.Controls.Add(Me.lblchoose)
+        Me.Controls.Add(Me.Lbltitle)
         Me.Controls.Add(Me.btnadd)
         Me.Controls.Add(Me.btnsavefile)
         Me.Controls.Add(Me.btndelete)
@@ -97,6 +121,7 @@ Partial Class Databaseeditor
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -106,4 +131,6 @@ Partial Class Databaseeditor
     Friend WithEvents btnsavefile As Button
     Friend WithEvents btnadd As Button
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
+    Friend WithEvents Lbltitle As Label
+    Friend WithEvents lblchoose As Label
 End Class

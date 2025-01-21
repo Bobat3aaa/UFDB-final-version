@@ -34,16 +34,16 @@ Partial Class currentadminuser
         '
         'btnviewdatabase
         '
-        Me.btnviewdatabase.Location = New System.Drawing.Point(14, 78)
+        Me.btnviewdatabase.Location = New System.Drawing.Point(13, 127)
         Me.btnviewdatabase.Name = "btnviewdatabase"
         Me.btnviewdatabase.Size = New System.Drawing.Size(122, 38)
         Me.btnviewdatabase.TabIndex = 34
-        Me.btnviewdatabase.Text = "Viewdatabase"
+        Me.btnviewdatabase.Text = "Edit fights/fighter"
         Me.btnviewdatabase.UseVisualStyleBackColor = True
         '
         'btnlogout
         '
-        Me.btnlogout.Location = New System.Drawing.Point(14, 210)
+        Me.btnlogout.Location = New System.Drawing.Point(14, 259)
         Me.btnlogout.Name = "btnlogout"
         Me.btnlogout.Size = New System.Drawing.Size(122, 38)
         Me.btnlogout.TabIndex = 32
@@ -52,7 +52,7 @@ Partial Class currentadminuser
         '
         'btnuserdetails
         '
-        Me.btnuserdetails.Location = New System.Drawing.Point(14, 122)
+        Me.btnuserdetails.Location = New System.Drawing.Point(12, 171)
         Me.btnuserdetails.Name = "btnuserdetails"
         Me.btnuserdetails.Size = New System.Drawing.Size(122, 38)
         Me.btnuserdetails.TabIndex = 31
@@ -92,7 +92,7 @@ Partial Class currentadminuser
         '
         'btnrefresh
         '
-        Me.btnrefresh.Location = New System.Drawing.Point(13, 166)
+        Me.btnrefresh.Location = New System.Drawing.Point(12, 215)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(122, 38)
         Me.btnrefresh.TabIndex = 35
