@@ -5,7 +5,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class currentranking
 
-    Dim fighterlist As List(Of Fighter)
+    Dim fighterlist As List(Of fightermanagement)
     Dim rankedfighterlist As New List(Of fighterranking)
     Public Sub New()
 
@@ -24,13 +24,13 @@ Public Class currentranking
         If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
 
         'sorts fighters and saves to file
-        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
         Dim sortwins As Integer = 0
         Dim sortloss As Integer = 0
 
-        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
         fighterlist = sortedfighters
         SaveToJsonFile(sortedfighters)
 
@@ -81,7 +81,7 @@ Public Class currentranking
 
 
 
-    Sub updatebuttons(sortedfighters As List(Of Fighter), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(sortedfighters As List(Of fightermanagement), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -181,17 +181,17 @@ Public Class currentranking
 
         'need to find a way to optimise / reuse code
 
-        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
 
-        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
 
         If cmbchangerank.SelectedItem > 0 And cmbchangerank.SelectedItem < 11 Then
 
             'finds current fighter
-            Dim currentfighter As Fighter = fighterlist(fighterIndex)
+            Dim currentfighter As fightermanagement = fighterlist(fighterIndex)
             MsgBox(currentfighter.Name)
             Dim currentrank As Integer = currentrankfinder()
 
@@ -218,7 +218,7 @@ Public Class currentranking
 
 
     End Sub
-    Function checkfilters(fighterlist As List(Of Fighter))
+    Function checkfilters(fighterlist As List(Of fightermanagement))
 
         Dim selectedWeightClass As String
 
@@ -227,20 +227,20 @@ Public Class currentranking
         End If
 
         ' Filter fighters based on the selected weight class
-        Dim filteredFighters As List(Of Fighter) = fighterlist
+        Dim filteredFighters As List(Of fightermanagement) = fighterlist
         If selectedWeightClass <> "All" Then
             filteredFighters = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
         End If
         Return filteredFighters
     End Function
-    Function ReadfightersFromFile() As List(Of Fighter)
+    Function ReadfightersFromFile() As List(Of fightermanagement)
         If Not File.Exists("fighters_page.json") Then
-            Return New List(Of Fighter)
+            Return New List(Of fightermanagement)
         End If
         Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
-    Private Sub SaveToJsonFile(sortedfighters As List(Of Fighter))
+    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)
@@ -248,7 +248,7 @@ Public Class currentranking
     End Sub
 
 
-    Function Quicksort(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer) As List(Of Fighter)
+    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
 
         Dim pivot As String
         Dim templow As Integer = indexlow
@@ -270,7 +270,7 @@ Public Class currentranking
             End While
 
             If templow <= temphigh Then
-                Dim tempfighter As Fighter = fighters(templow)
+                Dim tempfighter As fightermanagement = fighters(templow)
                 fighters(templow) = fighters(temphigh)
                 fighters(temphigh) = tempfighter
                 templow += 1

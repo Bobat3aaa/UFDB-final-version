@@ -76,7 +76,7 @@ Public Class Form1
 
 
     End Sub
-    Private Sub SaveToJsonFile(allfighters As List(Of Fighter))
+    Private Sub SaveToJsonFile(allfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(allfighters, Formatting.Indented)
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)

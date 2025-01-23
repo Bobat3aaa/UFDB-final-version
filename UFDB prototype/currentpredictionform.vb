@@ -2,8 +2,8 @@
 Imports System.Windows.Forms.VisualStyles
 
 Public Class currentpredictionform
-    Public Property fighter1 As Fighter
-    Public Property fighter2 As Fighter
+    Public Property fighter1 As fightermanagement
+    Public Property fighter2 As fightermanagement
     Private Sub currentpredictionform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim oddpair As Double() = generateodds(fighter1, fighter2)
         lblfighter1odds.Text = oddpair(0)
@@ -22,7 +22,7 @@ Public Class currentpredictionform
         lblfighter1name.Text = fighter1.Name
         lblfighter2name.Text = fighter2.Name
     End Sub
-    Function generateodds(fighter1 As Fighter, fighter2 As Fighter)
+    Function generateodds(fighter1 As fightermanagement, fighter2 As fightermanagement)
 
         Dim fighter1win As Integer = fighter1.Wins
         Dim fighter2win As Integer = fighter2.Wins

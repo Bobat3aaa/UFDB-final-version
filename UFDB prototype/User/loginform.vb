@@ -189,7 +189,7 @@ Public Class loginform
 
     End Sub
 
-    Private Sub SaveTofighterJsonFile(allfighters As List(Of Fighter))
+    Private Sub SaveTofighterJsonFile(allfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(allfighters, Formatting.Indented)
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)
@@ -212,7 +212,7 @@ Public Class loginform
     Public Async Function fetchfighters(httpclient As HttpClient) As Task
 
 
-        Dim allfighters As New List(Of Fighter)
+        Dim allfighters As New List(Of fightermanagement)
         Dim answer As HttpResponseMessage
         Dim i As Integer = 1
         Dim moredata As Boolean = True

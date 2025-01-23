@@ -4,9 +4,9 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class oddsgeneratorform
 
-    Private fighter1 As Fighter
+    Private fighter1 As fightermanagement
 
-    Private fighter2 As Fighter
+    Private fighter2 As fightermanagement
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles lblfighter2.Click
 
@@ -19,17 +19,17 @@ Public Class oddsgeneratorform
     Private Sub oddsgeneratorform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'sorts fighters and saves to file
 
-        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
-        Dim sortedfighters As List(Of Fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
         SaveToJsonFile(sortedfighters)
 
 
     End Sub
 
-    Function Quicksort(fighters As List(Of Fighter), indexlow As Integer, indexhigh As Integer) As List(Of Fighter)
+    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
 
         Dim pivot As String
         Dim templow As Integer = indexlow
@@ -47,7 +47,7 @@ Public Class oddsgeneratorform
             End While
 
             If templow <= temphigh Then
-                Dim tempfighter As Fighter = fighters(templow)
+                Dim tempfighter As fightermanagement = fighters(templow)
                 fighters(templow) = fighters(temphigh)
                 fighters(temphigh) = tempfighter
                 templow += 1
@@ -67,20 +67,20 @@ Public Class oddsgeneratorform
     End Function
 
     'reads fighters from the json file
-    Function ReadfightersFromFile() As List(Of Fighter)
+    Function ReadfightersFromFile() As List(Of fightermanagement)
         If Not File.Exists("fighters_page.json") Then
-            Return New List(Of Fighter)
+            Return New List(Of fightermanagement)
         End If
         Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
-    Private Sub SaveToJsonFile(sortedfighters As List(Of Fighter))
+    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)
         ' MessageBox.Show($"Data saved to {filePath}")
     End Sub
-    Function bsearchusers(fighterlist As List(Of Fighter), nametofind As String, indexlow As Integer, indexhigh As Integer)
+    Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer)
 
         'binary search, returns midpoint which is place in list
         If indexlow > indexhigh Then
@@ -99,7 +99,7 @@ Public Class oddsgeneratorform
     End Function
 
     Private Sub btnsearch1_Click(sender As Object, e As EventArgs) Handles btnsearch1.Click
-        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -112,7 +112,7 @@ Public Class oddsgeneratorform
 
         'adds fighter to a new list to be shown in search alone
         If searchedfighterindex <> -1 Then
-            Dim fighterlist As New List(Of Fighter)
+            Dim fighterlist As New List(Of fightermanagement)
             fighterlist.Add(fighters(searchedfighterindex))
             updatefighter1(fighterlist(0))
             fighter1 = fighterlist(0)
@@ -122,7 +122,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnsearch2_Click(sender As Object, e As EventArgs) Handles btnsearch2.Click
-        Dim fighters As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -135,7 +135,7 @@ Public Class oddsgeneratorform
 
         'adds fighter to a new list to be shown in search alone
         If searchedfighterindex <> -1 Then
-            Dim fighterlist As New List(Of Fighter)
+            Dim fighterlist As New List(Of fightermanagement)
             fighterlist.Add(fighters(searchedfighterindex))
             updatefighter2(fighterlist(0))
             fighter2 = fighterlist(0)
@@ -147,12 +147,12 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Sub updatefighter1(fighter As Fighter)
+    Sub updatefighter1(fighter As fightermanagement)
         txtfighter1stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
 
     End Sub
 
-    Sub updatefighter2(fighter As Fighter)
+    Sub updatefighter2(fighter As fightermanagement)
         txtfighter2stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
 
     End Sub

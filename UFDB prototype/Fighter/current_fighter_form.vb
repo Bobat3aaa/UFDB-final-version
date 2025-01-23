@@ -3,11 +3,11 @@ Imports System.IO
 
 
 Public Class current_fighter_form
-    Public Property currentFighter As Fighter
+    Public Property currentFighter As fightermanagement
 
 
 
-    Public Sub New(fighter As Fighter)
+    Public Sub New(fighter As fightermanagement)
         InitializeComponent()
         Me.currentFighter = fighter
 

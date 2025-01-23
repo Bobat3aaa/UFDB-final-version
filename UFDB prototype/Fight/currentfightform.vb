@@ -23,10 +23,10 @@ Public Class currentFightForm
     End Sub
 
     Private Sub currentFightForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim fighterlist As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
 
-        Dim fighter1 As Fighter = findfighter1(fighterlist)
-        Dim fighter2 As Fighter = findfighter2(fighterlist)
+        Dim fighter1 As fightermanagement = findfighter1(fighterlist)
+        Dim fighter2 As fightermanagement = findfighter2(fighterlist)
 
 
         lblheight1.Text = ("Height: " & fighter1.Height)
@@ -60,14 +60,14 @@ Public Class currentFightForm
         lblround.Text = "round: " & currentfight.rounds
         lblweightclass.Text = "weight class: " & currentfight.weight_class
     End Sub
-    Function ReadfightersFromFile() As List(Of Fighter)
+    Function ReadfightersFromFile() As List(Of fightermanagement)
         If Not File.Exists("fighters_page.json") Then
-            Return New List(Of Fighter)
+            Return New List(Of fightermanagement)
         End If
         Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
-    Function findfighter1(fighterlist As List(Of Fighter))
+    Function findfighter1(fighterlist As List(Of fightermanagement))
 
         Dim fighterfound As Boolean = fighterlist.Any(Function(f) f.FighterId = currentfight.fighter1id)
 
@@ -75,11 +75,11 @@ Public Class currentFightForm
             Dim foundfighter = fighterlist.FirstOrDefault(Function(f) f.FighterId = currentfight.fighter1id)
             Return foundfighter
         Else
-            Return New Fighter
+            Return New fightermanagement
         End If
 
     End Function
-    Function findfighter2(fighterlist As List(Of Fighter))
+    Function findfighter2(fighterlist As List(Of fightermanagement))
 
         Dim fighterfound As Boolean = fighterlist.Any(Function(f) f.FighterId = currentfight.fighter2id)
 
@@ -87,7 +87,7 @@ Public Class currentFightForm
             Dim foundfighter = fighterlist.FirstOrDefault(Function(f) f.FighterId = currentfight.fighter2id)
             Return foundfighter
         Else
-            Return New Fighter
+            Return New fightermanagement
         End If
 
     End Function

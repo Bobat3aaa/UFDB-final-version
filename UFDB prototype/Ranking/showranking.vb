@@ -9,7 +9,7 @@ Public Class showranking
         ' This call is required by the designer.
         InitializeComponent()
         Dim fighterranks As List(Of fighterranking) = ReadfighterranksFromFile()
-        Dim fighterlist As List(Of Fighter) = ReadfightersFromFile()
+        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
 
         For i = 1 To 10
 
@@ -18,7 +18,7 @@ Public Class showranking
 
             If samerank = True Then
                 Dim ranktoadd As fighterranking = fighterranks.FirstOrDefault(Function(rf) rf.Rank = i AndAlso rf.RankingID = currentranking.RankingID)
-                Dim fightertoadd As Fighter = fighterlist.FirstOrDefault(Function(f) f.FighterId = ranktoadd.FighterID)
+                Dim fightertoadd As fightermanagement = fighterlist.FirstOrDefault(Function(f) f.FighterId = ranktoadd.FighterID)
                 updateranks(ranktoadd, fightertoadd, i)
             End If
 
@@ -49,7 +49,7 @@ Public Class showranking
 
     End Sub
 
-    Sub updateranks(fighterrank As fighterranking, currentfighter As Fighter, i As Integer)
+    Sub updateranks(fighterrank As fighterranking, currentfighter As fightermanagement, i As Integer)
 
 
         Dim ranklbl As Label = Me.Controls("lblfighter" & i)
@@ -70,12 +70,12 @@ Public Class showranking
         Return JsonConvert.DeserializeObject(Of List(Of fighterranking))(json)
     End Function
 
-    Function ReadfightersFromFile() As List(Of Fighter)
+    Function ReadfightersFromFile() As List(Of fightermanagement)
         If Not File.Exists("fighters_page.json") Then
-            Return New List(Of Fighter)
+            Return New List(Of fightermanagement)
         End If
         Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
 
 End Class

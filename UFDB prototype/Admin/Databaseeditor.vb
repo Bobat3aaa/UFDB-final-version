@@ -4,7 +4,7 @@ Imports System.IO
 Public Class Databaseeditor
 
 
-    Private fighterlist As List(Of Fighter)
+    Private fighterlist As List(Of fightermanagement)
     Private fightlist As List(Of Fight)
 
 
@@ -20,12 +20,12 @@ Public Class Databaseeditor
 
 
     'json editors
-    Function ReadfightersFromFile() As List(Of Fighter)
+    Function ReadfightersFromFile() As List(Of fightermanagement)
         If Not File.Exists("fighters_page.json") Then
-            Return New List(Of Fighter)
+            Return New List(Of fightermanagement)
         End If
         Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fighter))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
     Private Sub Datagridviewedit(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit
         Datagridview.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightPink
@@ -57,7 +57,7 @@ Public Class Databaseeditor
 
     End Sub
 
-    Private Sub SaveTofighterJsonFile(sortedfighters As List(Of Fighter))
+    Private Sub SaveTofighterJsonFile(sortedfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
         Dim filePath As String = $"fighters_page.json"
         File.WriteAllText(filePath, json)
@@ -82,7 +82,11 @@ Public Class Databaseeditor
     End Sub
 
     Private Sub btnadd_Click(sender As Object, e As EventArgs) Handles btnadd.Click
-
+        Dim lastRow As Integer = Datagridview.Rows.Count - 1
+        If lastRow >= 0 Then
+            Datagridview.CurrentCell = Datagridview.Rows(lastRow).Cells(0)
+            Datagridview.FirstDisplayedScrollingRowIndex = lastRow
+        End If
     End Sub
     Function ReadfightsFromFile() As List(Of Fight)
         If Not File.Exists("fights_page.json") Then

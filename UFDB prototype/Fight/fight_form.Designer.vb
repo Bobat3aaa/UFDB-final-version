@@ -39,6 +39,7 @@ Partial Class fight_form
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.cmbweightclass = New System.Windows.Forms.ComboBox()
         Me.pnlcurrentfight = New System.Windows.Forms.Panel()
+        Me.cmblocation = New System.Windows.Forms.ComboBox()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -188,11 +189,20 @@ Partial Class fight_form
         Me.pnlcurrentfight.Size = New System.Drawing.Size(800, 450)
         Me.pnlcurrentfight.TabIndex = 25
         '
+        'cmblocation
+        '
+        Me.cmblocation.FormattingEnabled = True
+        Me.cmblocation.Location = New System.Drawing.Point(490, 140)
+        Me.cmblocation.Name = "cmblocation"
+        Me.cmblocation.Size = New System.Drawing.Size(154, 21)
+        Me.cmblocation.TabIndex = 26
+        '
         'fight_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1447, 524)
+        Me.Controls.Add(Me.cmblocation)
         Me.Controls.Add(Me.pnlcurrentfight)
         Me.Controls.Add(Me.cmbweightclass)
         Me.Controls.Add(Me.DateTimePicker1)
@@ -231,4 +241,5 @@ Partial Class fight_form
     Friend WithEvents Home As Label
     Friend WithEvents cmbweightclass As ComboBox
     Friend WithEvents pnlcurrentfight As Panel
+    Friend WithEvents cmblocation As ComboBox
 End Class
