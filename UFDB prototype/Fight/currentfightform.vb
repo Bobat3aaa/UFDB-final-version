@@ -23,7 +23,7 @@ Public Class currentFightForm
     End Sub
 
     Private Sub currentFightForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
 
         Dim fighter1 As fightermanagement = findfighter1(fighterlist)
         Dim fighter2 As fightermanagement = findfighter2(fighterlist)
@@ -60,21 +60,17 @@ Public Class currentFightForm
         lblround.Text = "round: " & currentfight.rounds
         lblweightclass.Text = "weight class: " & currentfight.weight_class
     End Sub
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
+
     Function findfighter1(fighterlist As List(Of fightermanagement))
 
         Dim fighterfound As Boolean = fighterlist.Any(Function(f) f.FighterId = currentfight.fighter1id)
 
         If fighterfound = True Then
             Dim foundfighter = fighterlist.FirstOrDefault(Function(f) f.FighterId = currentfight.fighter1id)
+            Debug.WriteLine("found fighter 1")
             Return foundfighter
         Else
+            Debug.WriteLine("this happened")
             Return New fightermanagement
         End If
 
@@ -85,8 +81,10 @@ Public Class currentFightForm
 
         If fighterfound = True Then
             Dim foundfighter = fighterlist.FirstOrDefault(Function(f) f.FighterId = currentfight.fighter2id)
+            Debug.WriteLine("found fighter 2")
             Return foundfighter
         Else
+            Debug.WriteLine("this happened 2")
             Return New fightermanagement
         End If
 

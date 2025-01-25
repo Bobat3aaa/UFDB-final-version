@@ -10,8 +10,8 @@ Public Class Databaseeditor
 
     Private Sub Databaseeditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbselectview.SelectedIndex = 0
-        fighterlist = ReadfightersFromFile()
-        fightlist = ReadfightsFromFile()
+        fighterlist = functions.ReadFightersFromJson
+        fightlist = functions.ReadFightsFromJson
         updatedatabase()
         Datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -20,13 +20,7 @@ Public Class Databaseeditor
 
 
     'json editors
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
+
     Private Sub Datagridviewedit(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit
         Datagridview.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightPink
     End Sub
@@ -57,19 +51,13 @@ Public Class Databaseeditor
 
     End Sub
 
-    Private Sub SaveTofighterJsonFile(sortedfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
 
     Private Sub btnsavefile_Click(sender As Object, e As EventArgs) Handles btnsavefile.Click
 
         If cmbselectview.SelectedIndex = 0 Then
-            SaveTofighterJsonFile(fighterlist)
+            functions.SaveToFighterJson(fighterlist)
         ElseIf cmbselectview.SelectedIndex = 1 Then
-            SaveTofightJsonFile(fightlist)
+            functions.SaveToFightJson(fightlist)
         End If
     End Sub
 
@@ -88,19 +76,7 @@ Public Class Databaseeditor
             Datagridview.FirstDisplayedScrollingRowIndex = lastRow
         End If
     End Sub
-    Function ReadfightsFromFile() As List(Of Fight)
-        If Not File.Exists("fights_page.json") Then
-            Return New List(Of Fight)
-        End If
-        Dim json As String = File.ReadAllText("fights_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fight))(json)
-    End Function
-    Private Sub SaveTofightJsonFile(allfights As List(Of Fight))
-        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
-        Dim filePath As String = $"fights_page.json"
-        File.WriteAllText(filePath, json)
 
-    End Sub
 
     Sub updatedatabase()
         If cmbselectview.SelectedIndex = 0 Then
@@ -114,19 +90,19 @@ Public Class Databaseeditor
     End Sub
     Sub refreshdatabase()
         If cmbselectview.SelectedIndex = 1 Then
-            fighterlist = ReadfightersFromFile()
+            fighterlist = functions.ReadFightersFromJson
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            fightlist = ReadfightsFromFile()
+            fightlist = functions.ReadFightsFromJson
         End If
     End Sub
 
     Sub savedatabase()
         If cmbselectview.SelectedIndex = 1 Then
-            SaveTofighterJsonFile(fighterlist)
+         functions.SaveToFighterJson(fighterlist)
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            SaveTofightJsonFile(fightlist)
+            functions.SaveToFightJson(fightlist)
         End If
     End Sub
 

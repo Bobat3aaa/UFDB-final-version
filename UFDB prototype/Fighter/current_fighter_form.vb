@@ -44,7 +44,7 @@ Public Class current_fighter_form
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnlike.Click
         If loginform.currentuserid <> 0 Then
             Debug.WriteLine(loginform.currentuserid)
-            Dim likedfighterlist As List(Of likedfighter) = ReadlikedfightersFromFile()
+            Dim likedfighterlist As List(Of likedfighter) = functions.ReadlikedfightersFromJson
 
 
             Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
@@ -58,11 +58,11 @@ Public Class current_fighter_form
             If alreadyLiked = True Then
                 Dim fighterToRemove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
                 likedfighterlist.Remove(fighterToRemove)
-                SaveToJsonFile(likedfighterlist)
+                functions.SaveTolikedfighterJson(likedfighterlist)
                 MsgBox("Unliked" & currentFighter.Name)
             Else
                 likedfighterlist.Add(likedfighter)
-                SaveToJsonFile(likedfighterlist)
+                functions.SaveTolikedfighterJson(likedfighterlist)
                 MsgBox("Liked" & currentFighter.Name)
             End If
         ElseIf loginform.currentuserid = 0 Then
@@ -71,20 +71,7 @@ Public Class current_fighter_form
 
 
     End Sub
-    Private Sub SaveToJsonFile(likedfighters As List(Of likedfighter))
-        Dim json As String = JsonConvert.SerializeObject(likedfighters, Formatting.Indented)
-        Dim filePath As String = $"likedfighters.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
 
-    Function ReadlikedfightersFromFile() As List(Of likedfighter)
-        If Not File.Exists("likedfighters.json") Then
-            Return New List(Of likedfighter)
-        End If
-        Dim json As String = File.ReadAllText("likedfighters.json")
-        Return JsonConvert.DeserializeObject(Of List(Of likedfighter))(json)
-    End Function
 
 
 

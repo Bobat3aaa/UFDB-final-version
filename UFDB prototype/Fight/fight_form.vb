@@ -24,7 +24,7 @@ Public Class fight_form
 
 
 
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim ilow As Integer = 0
         Dim ihigh As Integer = fights.Count - 1
 
@@ -34,7 +34,7 @@ Public Class fight_form
 
         Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
         fightlist = sortedfights
-        SaveTofightJsonFile(sortedfights)
+        functions.SaveToFightJson(sortedfights)
 
         Dim uniqueLocations = sortedfights.Select(Function(s) s.location).Distinct().ToList()
         cmblocation.Items.Add("All")
@@ -81,13 +81,7 @@ Public Class fight_form
 
 
 
-    Function ReadfightsFromFile() As List(Of Fight)
-        If Not File.Exists("fights_page.json") Then
-            Return New List(Of Fight)
-        End If
-        Dim json As String = File.ReadAllText("fights_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of Fight))(json)
-    End Function
+
 
 
     Function mergesortevents(ByRef fights As List(Of Fight), ilow As Integer, ihigh As Integer, sortdirection As Integer) As List(Of Fight)
@@ -274,7 +268,7 @@ Public Class fight_form
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
 
 
 
@@ -407,7 +401,7 @@ Public Class fight_form
     Private Sub Button1_Click_1(sender As Object, e As EventArgs)
 
 
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim fightertofind As String = txtfighter.Text
         Dim fighterfightlist As List(Of Fight)
         fighterfightlist = fights.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
@@ -416,32 +410,27 @@ Public Class fight_form
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         fightlist = fights
         updatebuttons(fightlist)
     End Sub
 
-    Private Sub SaveTofightJsonFile(allfights As List(Of Fight))
-        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
-        Dim filePath As String = $"fights_page.json"
-        File.WriteAllText(filePath, json)
 
-    End Sub
 
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
@@ -508,7 +497,7 @@ Public Class fight_form
     End Sub
 
     Private Sub cmblocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmblocation.SelectedIndexChanged
-        Dim fights As List(Of Fight) = ReadfightsFromFile()
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub

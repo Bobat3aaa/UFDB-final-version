@@ -69,7 +69,8 @@ Public Class currentadminuser
                 moredata = False
             End If
         End While
-        SaveTofighterJsonFile(allfighters)
+        Debug.WriteLine(allfighters.Count)
+        functions.SaveToFighterJson(allfighters)
     End Function
     Public Async Function fetchfights(httpclient As HttpClient) As Task
         Dim allFights As New List(Of Fight)
@@ -106,7 +107,7 @@ Public Class currentadminuser
 
         End While
 
-        SaveTofightJsonFile(allFights)
+        functions.SaveToFightJson(allFights)
 
     End Function
     Async Function fetchalldata() As Task
@@ -118,20 +119,8 @@ Public Class currentadminuser
         End Using
     End Function
 
-    Private Sub SaveTofighterJsonFile(allfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(allfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
 
 
-    Private Sub SaveTofightJsonFile(allfights As List(Of Fight))
-        Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
-        Dim filePath As String = $"fights_page.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
 
     Private Sub btnlogout_Click(sender As Object, e As EventArgs) Handles btnlogout.Click
         Dim answer = MessageBox.Show("Are you sure you would like to logout?", "logout", MessageBoxButtons.YesNo)
@@ -144,6 +133,10 @@ Public Class currentadminuser
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+    End Sub
+
+    Private Sub currentadminuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

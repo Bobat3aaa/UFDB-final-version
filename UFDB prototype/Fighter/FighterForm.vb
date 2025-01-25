@@ -161,13 +161,7 @@ Public Class FighterForm
     End Function
 
 
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
+
 
 
 
@@ -184,7 +178,7 @@ Public Class FighterForm
 
 
         'sorts fighters and saves to file
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
         cmbwins.SelectedIndex = 0
@@ -195,7 +189,7 @@ Public Class FighterForm
         Dim sortedfighters As List(Of fightermanagement) = checkfilters(fighters)
         Debug.WriteLine(1)
         fighterlist = sortedfighters
-        SaveToJsonFile(sortedfighters)
+        functions.SaveToFighterJson(sortedfighters)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
@@ -205,12 +199,6 @@ Public Class FighterForm
         updatebuttons(sortedfighters)
 
 
-    End Sub
-    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
@@ -236,7 +224,7 @@ Public Class FighterForm
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
 
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
         Dim nametofind As String
@@ -411,12 +399,12 @@ Public Class FighterForm
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
         updatebuttons(fighterlist)
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim fighterlist As List(Of fightermanagement) = checkfilters(fighters)
         updatebuttons(fighterlist)
     End Sub
@@ -478,7 +466,7 @@ Public Class FighterForm
 
 
     Private Sub cmbstance_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbstance.SelectedIndexChanged
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim fighterlist As List(Of fightermanagement) = checkfilters(fighters)
         updatebuttons(fighterlist)
     End Sub
@@ -490,7 +478,7 @@ Public Class FighterForm
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbwins.SelectedIndexChanged
 
 
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim fighterlist As List(Of fightermanagement) = checkfilters(fighters)
         updatebuttons(fighterlist)
 
