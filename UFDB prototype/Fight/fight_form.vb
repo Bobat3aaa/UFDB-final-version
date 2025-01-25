@@ -429,15 +429,9 @@ Public Class fight_form
     End Sub
 
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
-
-
         Dim fights As List(Of Fight) = ReadfightsFromFile()
-        Dim ilow As Integer = 0
-        Dim ihigh As Integer = fights.Count - 1
-        Dim sortdirection As Integer = cmbsort.SelectedIndex
-        Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
-
-        updatebuttons(sortedfights)
+        Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
+        updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
@@ -459,6 +453,9 @@ Public Class fight_form
         Dim selectedlocation As String = ""
         Dim selecteddate As DateTime
         Dim filteredFights As List(Of Fight) = fightlist
+        Dim sortdirection As Integer = cmbsort.SelectedIndex
+
+
         Debug.WriteLine("initial fight count" & filteredFights.Count)
 
         If cmbweightclass.SelectedItem IsNot Nothing Then
@@ -493,6 +490,11 @@ Public Class fight_form
             Debug.WriteLine("3 fight count" & filteredFights.Count)
         End If
 
+        Dim ilow As Integer = 0
+        Dim ihigh As Integer = filteredFights.Count - 1
+        filteredFights = mergesortevents(filteredFights, ilow, ihigh, sortdirection)
+
+        Debug.WriteLine("done")
 
         Return filteredFights
 

@@ -192,7 +192,7 @@ Partial Class fight_form
         'cmblocation
         '
         Me.cmblocation.FormattingEnabled = True
-        Me.cmblocation.Location = New System.Drawing.Point(490, 140)
+        Me.cmblocation.Location = New System.Drawing.Point(484, 134)
         Me.cmblocation.Name = "cmblocation"
         Me.cmblocation.Size = New System.Drawing.Size(154, 21)
         Me.cmblocation.TabIndex = 26

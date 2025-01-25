@@ -95,7 +95,10 @@ Public Class loginform
 
                     refreshapi()
                     currentuserid = users(currentuserindex).UserID
+
                     currentadminuser.Show()
+                    txtpassword.Text = ""
+                    txtusername.Text = ""
                     Me.Hide()
                 ElseIf users(currentuserindex).Admin = False Then
                     currentuserid = users(currentuserindex).UserID
@@ -104,11 +107,15 @@ Public Class loginform
 
                     MsgBox("logged in as user")
                     current_user_form.Show()
+                    txtpassword.Text = ""
+                    txtusername.Text = ""
                     Me.Hide()
                 End If
 
             ElseIf passwordcheck = False Then
                 MsgBox("password is wrong")
+                txtpassword.Text = ""
+                txtusername.Text = ""
             End If
 
         End If
@@ -174,7 +181,7 @@ Public Class loginform
 
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub Label1_Click(sender As Object, e As EventArgs)
 
     End Sub
 

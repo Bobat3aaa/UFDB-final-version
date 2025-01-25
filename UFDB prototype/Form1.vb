@@ -24,6 +24,7 @@ Public Class Form1
 
 
         If loginform.currentuserid = 0 Then
+
             loginform.Show()
             Me.Hide()
         ElseIf loginform.currentuserid <> 0 Then

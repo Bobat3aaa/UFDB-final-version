@@ -27,7 +27,6 @@ Partial Class loginform
         Me.txtusername = New System.Windows.Forms.TextBox()
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.btnsearch = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Btnback = New System.Windows.Forms.Button()
@@ -63,16 +62,6 @@ Partial Class loginform
         Me.btnsearch.TabIndex = 5
         Me.btnsearch.Text = "Login"
         Me.btnsearch.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(267, 87)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(152, 65)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = """UserID"": 10," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """username"": ""testuser""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """password"": abc123," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """age"": 15," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """email"":" &
-    " ""testuser@gmail.com"""
         '
         'Panel1
         '
@@ -132,7 +121,6 @@ Partial Class loginform
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnsearch)
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.txtusername)
@@ -148,7 +136,6 @@ Partial Class loginform
     Friend WithEvents txtusername As TextBox
     Friend WithEvents txtpassword As TextBox
     Friend WithEvents btnsearch As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents Btnback As Button
