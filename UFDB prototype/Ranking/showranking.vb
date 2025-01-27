@@ -8,8 +8,8 @@ Public Class showranking
 
         ' This call is required by the designer.
         InitializeComponent()
-        Dim fighterranks As List(Of fighterranking) = ReadfighterranksFromFile()
-        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
+        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
 
         For i = 1 To 10
 
@@ -62,20 +62,5 @@ Public Class showranking
 
 
     End Sub
-    Function ReadfighterranksFromFile() As List(Of fighterranking)
-        If Not File.Exists("fighterranks.json") Then
-            Return New List(Of fighterranking)
-        End If
-        Dim json As String = File.ReadAllText("fighterranks.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fighterranking))(json)
-    End Function
-
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
 
 End Class

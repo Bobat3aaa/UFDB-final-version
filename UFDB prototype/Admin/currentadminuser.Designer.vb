@@ -29,7 +29,7 @@ Partial Class currentadminuser
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btneditusers = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -100,21 +100,21 @@ Partial Class currentadminuser
         Me.btnrefresh.Text = "Refresh API"
         Me.btnrefresh.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btneditusers
         '
-        Me.Button1.Location = New System.Drawing.Point(14, 83)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(122, 38)
-        Me.Button1.TabIndex = 36
-        Me.Button1.Text = "Edit users"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btneditusers.Location = New System.Drawing.Point(14, 83)
+        Me.btneditusers.Name = "btneditusers"
+        Me.btneditusers.Size = New System.Drawing.Size(122, 38)
+        Me.btneditusers.TabIndex = 36
+        Me.btneditusers.Text = "Edit users"
+        Me.btneditusers.UseVisualStyleBackColor = True
         '
         'currentadminuser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1048, 741)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btneditusers)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnviewdatabase)
         Me.Controls.Add(Me.btnlogout)
@@ -137,5 +137,5 @@ Partial Class currentadminuser
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents btnrefresh As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btneditusers As Button
 End Class

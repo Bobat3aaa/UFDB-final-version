@@ -5,33 +5,21 @@ Imports System.Net
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class Rankingsearch
-    Dim globalranklist As List(Of ranking)
+    Private globalranklist As List(Of ranking)
 
 
 
-    Function ReadranklistsFromFile() As List(Of ranking)
-        If Not File.Exists("ranklists.json") Then
-            Return New List(Of ranking)
-        End If
-        Dim json As String = File.ReadAllText("ranklists.json")
-        Return JsonConvert.DeserializeObject(Of List(Of ranking))(json)
-    End Function
-    Private Sub SaveToranklistJson(rankedlists As List(Of ranking))
-        Dim json As String = JsonConvert.SerializeObject(rankedlists, Formatting.Indented)
-        Dim filePath As String = $"ranklists.json"
-        File.WriteAllText(filePath, json)
 
-    End Sub
 
 
     Private Sub Rankingsearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
 
 
         Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
-        SaveToranklistJson(sortedranklist)
+        functions.SaveToRanklistJson(sortedranklist)
         globalranklist = sortedranklist
 
         updatebuttons(globalranklist)
@@ -142,7 +130,7 @@ Public Class Rankingsearch
 
         'need to find a way to optimise / reuse code
 
-        Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
 
@@ -243,7 +231,7 @@ Public Class Rankingsearch
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
         Dim nametofind As String = txtlistname.Text
-        Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
         Dim searchedrankindex As Integer
@@ -268,7 +256,7 @@ Public Class Rankingsearch
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         updatebuttons(ranklist)
     End Sub
 

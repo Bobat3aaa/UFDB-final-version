@@ -5,8 +5,8 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class currentranking
 
-    Dim fighterlist As List(Of fightermanagement)
-    Dim rankedfighterlist As New List(Of fighterranking)
+    Private fighterlist As List(Of fightermanagement)
+    Private rankedfighterlist As New List(Of fighterranking)
     Public Sub New()
 
         ' This call is required by the designer.
@@ -24,7 +24,7 @@ Public Class currentranking
         If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
 
         'sorts fighters and saves to file
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
         Dim sortwins As Integer = 0
@@ -32,7 +32,7 @@ Public Class currentranking
 
         Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
         fighterlist = sortedfighters
-        SaveToJsonFile(sortedfighters)
+        functions.SaveToFighterJson(sortedfighters)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
@@ -41,7 +41,7 @@ Public Class currentranking
         Debug.WriteLine(sortedfighters(1).Name)
         updatebuttons(sortedfighters)
 
-        Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
 
 
 
@@ -54,10 +54,7 @@ Public Class currentranking
 
 
 
-    Sub Adduser(newusername, newpassword, newage, newemail)
 
-
-    End Sub
 
     Function GetNextranklistID(ranklist As List(Of ranking)) As Integer
         If ranklist.Count = 0 Then
@@ -181,7 +178,7 @@ Public Class currentranking
 
         'need to find a way to optimise / reuse code
 
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -195,7 +192,7 @@ Public Class currentranking
             MsgBox(currentfighter.Name)
             Dim currentrank As Integer = currentrankfinder()
 
-            Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+            Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim currentrankid As Integer = GetNextranklistID(ranklist)
             Dim fighterrank As New fighterranking
             fighterrank = makenewfighterrank(currentrankid, currentfighter.FighterId, currentrank)
@@ -233,19 +230,7 @@ Public Class currentranking
         End If
         Return filteredFighters
     End Function
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
-    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
+
 
 
     Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
@@ -307,34 +292,6 @@ Public Class currentranking
         Return currentrank
     End Function
 
-    Function ReadranklistsFromFile() As List(Of ranking)
-        If Not File.Exists("ranklists.json") Then
-            Return New List(Of ranking)
-        End If
-        Dim json As String = File.ReadAllText("ranklists.json")
-        Return JsonConvert.DeserializeObject(Of List(Of ranking))(json)
-    End Function
-    Private Sub SaveToranklistJson(rankedlists As List(Of ranking))
-        Dim json As String = JsonConvert.SerializeObject(rankedlists, Formatting.Indented)
-        Dim filePath As String = $"ranklists.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
-
-    Function ReadfighterranksFromFile() As List(Of fighterranking)
-        If Not File.Exists("fighterranks.json") Then
-            Return New List(Of fighterranking)
-        End If
-        Dim json As String = File.ReadAllText("fighterranks.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fighterranking))(json)
-    End Function
-
-    Private Sub SaveTofighterranksJson(rankingfighterlist As List(Of fighterranking))
-        Dim json As String = JsonConvert.SerializeObject(rankingfighterlist, Formatting.Indented)
-        Dim filePath As String = $"fighterranks.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnsubmit.Click
         Submitranking()
@@ -352,7 +309,7 @@ Public Class currentranking
         Else
 
 
-            Dim ranklist As List(Of ranking) = ReadranklistsFromFile()
+            Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
 
             Dim newranking As New ranking
             newranking.RankingID = GetNextranklistID(ranklist)
@@ -364,13 +321,13 @@ Public Class currentranking
 
 
             ranklist.Add(newranking)
-            SaveToranklistJson(ranklist)
+            functions.SaveToRanklistJson(ranklist)
 
-            Dim jsonfighterrankinglist As List(Of fighterranking) = ReadfighterranksFromFile()
+            Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
             For i = 0 To rankedfighterlist.Count - 1
                 jsonfighterrankinglist.Add(rankedfighterlist(i))
             Next
-            SaveTofighterranksJson(jsonfighterrankinglist)
+            functions.SaveToFighterranksJson(jsonfighterrankinglist)
             MsgBox("new list created!")
         End If
     End Sub
