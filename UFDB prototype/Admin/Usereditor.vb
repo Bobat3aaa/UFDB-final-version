@@ -56,6 +56,20 @@ Public Class Usereditor
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
+        Dim usertodelete As User
+
+
+
+        If Datagridview.SelectedRows(0).DataBoundItem IsNot Nothing Then
+            usertodelete = CType(Datagridview.SelectedRows(0).DataBoundItem, User)
+            likedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.UserID)
+            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.UserID = usertodelete.UserID).ToList()
+            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
+            fighterranklist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
+            ranklist.RemoveAll(Function(r) r.UserID = usertodelete.UserID)
+        End If
+
+
         If Datagridview.SelectedRows.Count > 0 Then
             For Each row As DataGridViewRow In Datagridview.SelectedRows
                 Datagridview.Rows.Remove(row)
@@ -142,4 +156,20 @@ Public Class Usereditor
         Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
         Return emailExpression.IsMatch(email)
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim answer = MessageBox.Show("This will remove all changes made. Do you want to continue?", "Clear", MessageBoxButtons.YesNo)
+        If answer = DialogResult.Yes Then
+
+            userlist = functions.ReadUsersFromJson
+            ranklist = functions.ReadRanklistsFromJson
+            fighterranklist = functions.ReadFighterranksFromFile
+            likedfighterlist = functions.ReadlikedfightersFromJson
+            updatedatabase()
+
+        End If
+
+
+
+    End Sub
 End Class

@@ -36,32 +36,33 @@ Partial Class Usereditor
         Me.Txtage = New System.Windows.Forms.TextBox()
         Me.txtemail = New System.Windows.Forms.TextBox()
         Me.Checkadmin = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnadd
         '
-        Me.btnadd.Location = New System.Drawing.Point(13, 150)
+        Me.btnadd.Location = New System.Drawing.Point(208, 150)
         Me.btnadd.Name = "btnadd"
-        Me.btnadd.Size = New System.Drawing.Size(205, 46)
+        Me.btnadd.Size = New System.Drawing.Size(171, 46)
         Me.btnadd.TabIndex = 7
         Me.btnadd.Text = "Add"
         Me.btnadd.UseVisualStyleBackColor = True
         '
         'btnsavefile
         '
-        Me.btnsavefile.Location = New System.Drawing.Point(579, 150)
+        Me.btnsavefile.Location = New System.Drawing.Point(613, 150)
         Me.btnsavefile.Name = "btnsavefile"
-        Me.btnsavefile.Size = New System.Drawing.Size(205, 46)
+        Me.btnsavefile.Size = New System.Drawing.Size(171, 46)
         Me.btnsavefile.TabIndex = 6
         Me.btnsavefile.Text = "Save files"
         Me.btnsavefile.UseVisualStyleBackColor = True
         '
         'btndelete
         '
-        Me.btndelete.Location = New System.Drawing.Point(288, 150)
+        Me.btndelete.Location = New System.Drawing.Point(412, 150)
         Me.btndelete.Name = "btndelete"
-        Me.btndelete.Size = New System.Drawing.Size(205, 46)
+        Me.btndelete.Size = New System.Drawing.Size(171, 46)
         Me.btndelete.TabIndex = 5
         Me.btndelete.Text = "Delete"
         Me.btndelete.UseVisualStyleBackColor = True
@@ -158,11 +159,21 @@ Partial Class Usereditor
         Me.Checkadmin.Text = "Admin"
         Me.Checkadmin.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 150)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(171, 46)
+        Me.Button1.TabIndex = 22
+        Me.Button1.Text = "clear"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Usereditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(796, 631)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Checkadmin)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
@@ -199,4 +210,5 @@ Partial Class Usereditor
     Friend WithEvents Txtage As TextBox
     Friend WithEvents txtemail As TextBox
     Friend WithEvents Checkadmin As CheckBox
+    Friend WithEvents Button1 As Button
 End Class
