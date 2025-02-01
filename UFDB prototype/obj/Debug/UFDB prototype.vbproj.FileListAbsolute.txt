@@ -31,7 +31,6 @@ D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\bin\Debug\Newtonsoft.Js
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\bin\Debug\Newtonsoft.Json.xml
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB prototype.vbproj.AssemblyReference.cache
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentFightForm.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentpredictionform.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.current_fighter_form.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.current_user_form.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.FighterForm.resources

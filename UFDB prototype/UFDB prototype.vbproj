@@ -109,12 +109,6 @@
     <Compile Include="Fight\currentfightform.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="currentpredictionform.Designer.vb">
-      <DependentUpon>currentpredictionform.vb</DependentUpon>
-    </Compile>
-    <Compile Include="currentpredictionform.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Fighter\current_fighter_form.Designer.vb">
       <DependentUpon>current_fighter_form.vb</DependentUpon>
     </Compile>
@@ -229,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fight\currentfightform.resx">
       <DependentUpon>currentfightform.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="currentpredictionform.resx">
-      <DependentUpon>currentpredictionform.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fighter\current_fighter_form.resx">
       <DependentUpon>current_fighter_form.vb</DependentUpon>

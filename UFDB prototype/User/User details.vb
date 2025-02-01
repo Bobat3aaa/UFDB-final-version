@@ -22,28 +22,13 @@ Public Class Userdetails
 
     End Sub
 
-    Function ReadusersFromFile() As List(Of User)
-        If Not File.Exists("userdata.json") Then
-            Return New List(Of User)
-        End If
-        Dim json As String = File.ReadAllText("userdata.json")
-        Return JsonConvert.DeserializeObject(Of List(Of User))(json)
-    End Function
-
-    Private Sub SaveToJsonFile(sortedusers As List(Of User))
-        Dim json As String = JsonConvert.SerializeObject(sortedusers, Formatting.Indented)
-        Dim filePath As String = "userdata.json"
-        File.WriteAllText(filePath, json)
-        MessageBox.Show($"Data saved to {filePath}")
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnchangedetails.Click
 
 
         Dim emailcheck As Boolean = validateemail(Txtemail.Text)
         If emailcheck = True Then
 
-            Dim userlist As List(Of User) = ReadusersFromFile()
+            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
 
             'Dim currentuser As User = getcurrentuser()
             Dim currentuser As User = getcurrentuser()
@@ -60,7 +45,7 @@ Public Class Userdetails
             Dim usertoremove As User = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
             userlist.Remove(usertoremove)
             userlist.Add(currentuser)
-            SaveToJsonFile(userlist)
+            functions.SaveUsersToJson(userlist)
             MsgBox("details updated!")
         Else
             MsgBox("email not found.")
@@ -72,7 +57,7 @@ Public Class Userdetails
 
 
     Function getcurrentuser()
-        Dim userlist As List(Of User) = ReadusersFromFile()
+        Dim userlist As List(Of User) = functions.ReadUsersFromJson()
         Dim currentuser As User
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser
@@ -130,11 +115,11 @@ Public Class Userdetails
         If answer = vbYes Then
 
 
-            Dim userlist As List(Of User) = ReadusersFromFile()
+            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
             Dim currentuser As User = getcurrentuser()
-            Dim fighterrankinglist As List(Of fighterranking) = ReadfighterranksFromFile()
-            Dim likedfighters As List(Of likedfighter) = ReadlikedfightersFromFile()
-            Dim rankinglist As List(Of ranking) = ReadranklistsFromFile()
+            Dim fighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile()
+            Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson()
+            Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()
 
             Dim usertoremove As User = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
             MsgBox(usertoremove.UserID)
@@ -154,10 +139,10 @@ Public Class Userdetails
             fighterrankinglist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
             rankinglist.RemoveAll(Function(r) r.UserID = currentuser.UserID)
 
-            SaveTolikedfightersJsonFile(likedfighters)
-            SaveTofighterranksJson(fighterrankinglist)
-            SaveToranklistJson(rankinglist)
-            SaveToJsonFile(userlist)
+            functions.SaveTolikedfighterJson(likedfighters)
+            functions.SaveToFighterranksJson(fighterrankinglist)
+            functions.SaveToRanklistJson(rankinglist)
+            functions.SaveUsersToJson(userlist)
 
 
         End If
@@ -167,48 +152,4 @@ Public Class Userdetails
 
 
 
-
-
-
-    Function ReadlikedfightersFromFile() As List(Of likedfighter)
-        If Not File.Exists("likedfighters.json") Then
-            Return New List(Of likedfighter)
-        End If
-        Dim json As String = File.ReadAllText("likedfighters.json")
-        Return JsonConvert.DeserializeObject(Of List(Of likedfighter))(json)
-    End Function
-    Private Sub SaveTolikedfightersJsonFile(likedfighters As List(Of likedfighter))
-        Dim json As String = JsonConvert.SerializeObject(likedfighters, Formatting.Indented)
-        Dim filePath As String = $"likedfighters.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
-    Function ReadranklistsFromFile() As List(Of ranking)
-        If Not File.Exists("ranklists.json") Then
-            Return New List(Of ranking)
-        End If
-        Dim json As String = File.ReadAllText("ranklists.json")
-        Return JsonConvert.DeserializeObject(Of List(Of ranking))(json)
-    End Function
-    Private Sub SaveToranklistJson(rankedlists As List(Of ranking))
-        Dim json As String = JsonConvert.SerializeObject(rankedlists, Formatting.Indented)
-        Dim filePath As String = $"ranklists.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
-
-    Function ReadfighterranksFromFile() As List(Of fighterranking)
-        If Not File.Exists("fighterranks.json") Then
-            Return New List(Of fighterranking)
-        End If
-        Dim json As String = File.ReadAllText("fighterranks.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fighterranking))(json)
-    End Function
-
-    Private Sub SaveTofighterranksJson(rankingfighterlist As List(Of fighterranking))
-        Dim json As String = JsonConvert.SerializeObject(rankingfighterlist, Formatting.Indented)
-        Dim filePath As String = $"fighterranks.json"
-        File.WriteAllText(filePath, json)
-
-    End Sub
 End Class

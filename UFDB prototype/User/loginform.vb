@@ -52,33 +52,21 @@ Public Class loginform
 
         Return users
     End Function
-    Function ReadusersFromFile() As List(Of User)
-        If Not File.Exists("userdata.json") Then
-            Return New List(Of User)
-        End If
-        Dim json As String = File.ReadAllText("userdata.json")
-        Return JsonConvert.DeserializeObject(Of List(Of User))(json)
-    End Function
+
 
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
 
     End Sub
-    Private Sub SaveToJsonFile(sortedusers As List(Of User))
-        Dim json As String = JsonConvert.SerializeObject(sortedusers, Formatting.Indented)
-        Dim filePath As String = "userdata.json"
-        File.WriteAllText(filePath, json)
-        MessageBox.Show($"Data saved to {filePath}")
-    End Sub
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
-        Dim users As List(Of User) = ReadusersFromFile()
+        Dim users As List(Of User) = functions.ReadUsersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = users.Count - 1
         Dim sortedusers As List(Of User) = Quicksort(users, indexlow, indexhigh)
-        SaveToJsonFile(sortedusers)
+        functions.SaveUsersToJson(sortedusers)
 
         Dim usernametofind As String = txtusername.Text
         Dim passwordtofind As String = txtpassword.Text

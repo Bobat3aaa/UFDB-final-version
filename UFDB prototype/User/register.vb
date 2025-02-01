@@ -54,11 +54,11 @@ Public Class register
         newuser.email = newemail
 
         'make list of existing users
-        Dim users As List(Of User) = ReadUsersFromFile()
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
         newuser.UserID = GetNextUserID(users)
         If ValidateUser(newuser) Then
             users.Add(newuser)
-            WriteUsersToFile("userdata.json", users)
+            functions.SaveUsersToJson(users)
             MsgBox("New user added!")
         Else
             MsgBox("User not added.")
@@ -90,11 +90,7 @@ Public Class register
 
         Return encryptpass
     End Function
-    'make list of all data
-    Sub WriteUsersToFile(filePath As String, users As List(Of User))
-        Dim json As String = JsonConvert.SerializeObject(users, Formatting.Indented)
-        File.WriteAllText("userdata.json", json)
-    End Sub
+
     '2nd validation after encrpytion andbefore it is added to list
     Function ValidateUser(user As User) As Boolean
         If String.IsNullOrEmpty(user.username) OrElse String.IsNullOrEmpty(user.password) OrElse user.age <= 0 OrElse Not user.email.Contains("@") Then
@@ -107,13 +103,7 @@ Public Class register
     End Function
 
     'read all the users from the list to make listg of existing users
-    Function ReadUsersFromFile() As List(Of User)
-        If Not File.Exists("userdata.json") Then
-            Return New List(Of User)
-        End If
-        Dim json As String = File.ReadAllText("userdata.json")
-        Return JsonConvert.DeserializeObject(Of List(Of User))(json)
-    End Function
+
     'get the next possible user id from list
     Function GetNextUserID(users As List(Of User)) As Integer
         If users.Count = 0 Then

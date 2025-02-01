@@ -43,7 +43,7 @@ Public Class FighterForm
             End While
 
         ElseIf sortwins = 1 Then
-            Debug.WriteLine($"  1 indexlow: {indexlow}, temphigh: {temphigh}, templow: {templow}, indexhigh: {indexhigh}")
+
             pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
             While templow <= temphigh
 
@@ -156,6 +156,7 @@ Public Class FighterForm
         If templow < indexhigh Then
             Quicksort(fighters, templow, indexhigh, sortwins)
         End If
+
 
         Return fighters
     End Function
@@ -299,6 +300,9 @@ Public Class FighterForm
         Dim endIndex As Integer = Math.Min(startIndex + count, sortedfighters.Count)
 
 
+        If cmbwins.SelectedItem IsNot Nothing Then
+            lblsorted.Text = cmbwins.SelectedItem.ToString()
+        End If
 
         If startIndex > 0 Then
 
@@ -331,11 +335,14 @@ Public Class FighterForm
 
             Dim btn As New Button
             btn.Width = 100
-            btn.Height = 50
+            btn.Height = 100
             btn.BackColor = Color.White
             btn.TextAlign = ContentAlignment.MiddleCenter
+            btn.Font = New Font("Clash Display", 9, FontStyle.Regular)
 
-            btn.Text = sortedfighters(i).Name
+            btn.Text = sortedfighters(i).Name & vbCrLf & sortedfighters(i).Wins & "/" & sortedfighters(i).Losses & "/" & sortedfighters(i).Draws
+            btn.Visible = True
+
             btn.Visible = True
             btn.Tag = i
 
@@ -352,7 +359,7 @@ Public Class FighterForm
 
             Dim btnloadmore As New Button
             btnloadmore.Width = 100
-            btnloadmore.Height = 50
+            btnloadmore.Height = 100
             btnloadmore.TextAlign = ContentAlignment.MiddleCenter
             btnloadmore.BackColor = Color.Red
             btnloadmore.ForeColor = Color.White
@@ -409,7 +416,6 @@ Public Class FighterForm
         updatebuttons(fighterlist)
     End Sub
     Function checkfilters(fighterlist As List(Of fightermanagement))
-        Debug.WriteLine("this happened")
 
         Dim selectedstance As String = ""
         Dim selectedWeightClass As String = ""
@@ -450,7 +456,7 @@ Public Class FighterForm
         filteredFighters = Quicksort(filteredFighters, indexlow, indexhigh, sortwins)
 
 
-        Debug.WriteLine("done")
+
 
 
         Return filteredFighters
@@ -458,7 +464,7 @@ Public Class FighterForm
 
     End Function
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Home.Click
+    Private Sub Label4_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Close()
     End Sub
@@ -507,18 +513,18 @@ Public Class FighterForm
 
             'once binary search is done, finds all the fights with event number
             Dim searchedfighters As New List(Of fightermanagement)()
-        searchedfighters.Add(currentfighter)
+            searchedfighters.Add(currentfighter)
 
 
-        Dim left As Integer = midpoint - 1
-        While left >= indexlow
-            Dim leftfightername As String = parsename(fighterlist(left).Name, decision)
-            If leftfightername = nametofind Then
+            Dim left As Integer = midpoint - 1
+            While left >= indexlow
+                Dim leftfightername As String = parsename(fighterlist(left).Name, decision)
+                If leftfightername = nametofind Then
                     searchedfighters.Add(fighterlist(left))
                     left -= 1
                 ElseIf leftfightername <> nametofind Then
-                Exit While
-            End If
+                    Exit While
+                End If
 
             End While
 
@@ -526,13 +532,13 @@ Public Class FighterForm
 
 
             While right <= indexhigh
-            Dim rightfightername As String = parsename(fighterlist(right).Name, decision)
-            If rightfightername = nametofind Then
+                Dim rightfightername As String = parsename(fighterlist(right).Name, decision)
+                If rightfightername = nametofind Then
                     searchedfighters.Add(fighterlist(right))
                     right += 1
                 ElseIf rightfightername <> nametofind Then
-                Exit While
-            End If
+                    Exit While
+                End If
 
             End While
 
@@ -540,7 +546,7 @@ Public Class FighterForm
 
 
 
-        Return searchedfighters
+            Return searchedfighters
         End If
     End Function
 
@@ -568,5 +574,14 @@ Public Class FighterForm
         panel.TopLevel = False
         pnlcurrentfighter.Controls.Add(panel)
         panel.Show()
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+        Form1.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub lblsorted_Click(sender As Object, e As EventArgs) Handles lblsorted.Click
+
     End Sub
 End Class

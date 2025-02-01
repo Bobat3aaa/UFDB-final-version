@@ -10,7 +10,10 @@ Public Class current_fighter_form
     Public Sub New(fighter As fightermanagement)
         InitializeComponent()
         Me.currentFighter = fighter
+        If loginform.currentuserid = 0 Then
+            btnlike.Hide()
 
+        End If
 
 
 
@@ -36,7 +39,7 @@ Public Class current_fighter_form
         lblSubAvg.Text = "Submission Average: " & currentFighter.SubmissionAverage
     End Sub
 
-    Private Sub btnback_Click(sender As Object, e As EventArgs) Handles btnback.Click
+    Private Sub btnback_Click(sender As Object, e As EventArgs)
         Me.Hide()
         FighterForm.Show()
     End Sub
@@ -90,11 +93,5 @@ Public Class current_fighter_form
 
     End Sub
 
-    Private Sub charttakedown_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub Chart1_Click(sender As Object, e As EventArgs) Handles Charttd.Click
-
-    End Sub
 End Class
