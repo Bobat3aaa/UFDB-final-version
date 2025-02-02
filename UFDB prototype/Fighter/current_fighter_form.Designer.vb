@@ -100,9 +100,9 @@ Partial Class current_fighter_form
         Me.lblrecord.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblrecord.Location = New System.Drawing.Point(15, 71)
         Me.lblrecord.Name = "lblrecord"
-        Me.lblrecord.Size = New System.Drawing.Size(107, 33)
+        Me.lblrecord.Size = New System.Drawing.Size(118, 33)
         Me.lblrecord.TabIndex = 4
-        Me.lblrecord.Text = "Label5"
+        Me.lblrecord.Text = "Record"
         '
         'lblSigStrLandedPct
         '
@@ -218,6 +218,7 @@ Partial Class current_fighter_form
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.Controls.Add(Me.lblSubAvg)
         Me.Panel2.Controls.Add(Me.lblTdDefPct)
         Me.Panel2.Controls.Add(Me.lblSigStrLandedPct)

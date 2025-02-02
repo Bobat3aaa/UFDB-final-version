@@ -190,6 +190,9 @@ Public Class fight_form
         sortedfights = checkfilters(sortedfights)
         fightlist = sortedfights
 
+        If cmbsort.SelectedItem IsNot Nothing Then
+            lblsorted.Text = cmbsort.SelectedItem.ToString()
+        End If
 
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fights
@@ -232,7 +235,7 @@ Public Class fight_form
             btn.Text = sortedfights(i).event_name & vbCrLf & vbCrLf & " " & sortedfights(i).fighter1 & vbCrLf & " VS " & vbCrLf & sortedfights(i).fighter2
             btn.Visible = True
             btn.Tag = i
-
+            btn.Font = New Font("Clash Display", 9, FontStyle.Regular)
 
             AddHandler btn.Click, AddressOf Button_Click
 
@@ -389,11 +392,11 @@ Public Class fight_form
 
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+    Private Sub Label4_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs) Handles Btnback.Click
+    Private Sub Btnback_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Close()
     End Sub
@@ -500,5 +503,18 @@ Public Class fight_form
         Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub lblsorted_Click(sender As Object, e As EventArgs) Handles lblsorted.Click
+
+    End Sub
+
+    Private Sub Label4_Click_1(sender As Object, e As EventArgs) Handles Label4.Click
+        Form1.Show()
+        Me.Close()
     End Sub
 End Class

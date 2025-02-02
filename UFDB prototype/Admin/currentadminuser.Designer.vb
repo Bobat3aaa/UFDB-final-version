@@ -27,9 +27,9 @@ Partial Class currentadminuser
         Me.btnuserdetails = New System.Windows.Forms.Button()
         Me.panelmain = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btneditusers = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -74,22 +74,11 @@ Partial Class currentadminuser
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Location = New System.Drawing.Point(1, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1047, 72)
         Me.Panel2.TabIndex = 28
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Helvetica Neue", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(3, 12)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(157, 54)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "UFDB"
         '
         'btnrefresh
         '
@@ -108,6 +97,17 @@ Partial Class currentadminuser
         Me.btneditusers.TabIndex = 36
         Me.btneditusers.Text = "Edit users"
         Me.btneditusers.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Halenoir-Black", 47.99999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Red
+        Me.Label6.Location = New System.Drawing.Point(-1, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(207, 77)
+        Me.Label6.TabIndex = 8
+        Me.Label6.Text = "UFDB"
         '
         'currentadminuser
         '
@@ -135,7 +135,7 @@ Partial Class currentadminuser
     Friend WithEvents btnuserdetails As Button
     Friend WithEvents panelmain As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label4 As Label
     Friend WithEvents btnrefresh As Button
     Friend WithEvents btneditusers As Button
+    Friend WithEvents Label6 As Label
 End Class

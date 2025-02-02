@@ -93,5 +93,7 @@ Public Class current_fighter_form
 
     End Sub
 
+    Private Sub lblrecord_Click(sender As Object, e As EventArgs) Handles lblrecord.Click
 
+    End Sub
 End Class

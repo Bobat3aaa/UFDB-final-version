@@ -106,12 +106,12 @@ Partial Class FighterForm
         '
         'cmbweightclass
         '
-        Me.cmbweightclass.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cmbweightclass.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbweightclass.FormattingEnabled = True
         Me.cmbweightclass.Items.AddRange(New Object() {"All", "115 lbs.", "125 lbs.", "135 lbs.", "145 lbs.", "155 lbs.", "170 lbs.", "185 lbs.", "205 lbs.", "265 lbs.", ""})
-        Me.cmbweightclass.Location = New System.Drawing.Point(383, 149)
+        Me.cmbweightclass.Location = New System.Drawing.Point(378, 149)
         Me.cmbweightclass.Name = "cmbweightclass"
-        Me.cmbweightclass.Size = New System.Drawing.Size(121, 22)
+        Me.cmbweightclass.Size = New System.Drawing.Size(121, 27)
         Me.cmbweightclass.TabIndex = 16
         '
         'btnclear
@@ -168,12 +168,12 @@ Partial Class FighterForm
         '
         'cmbstance
         '
-        Me.cmbstance.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cmbstance.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbstance.FormattingEnabled = True
         Me.cmbstance.Items.AddRange(New Object() {"All", "Orthodox", "Southpaw", "Switch"})
         Me.cmbstance.Location = New System.Drawing.Point(517, 149)
         Me.cmbstance.Name = "cmbstance"
-        Me.cmbstance.Size = New System.Drawing.Size(121, 22)
+        Me.cmbstance.Size = New System.Drawing.Size(121, 27)
         Me.cmbstance.TabIndex = 24
         '
         'Label7
@@ -199,7 +199,7 @@ Partial Class FighterForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 249)
+        Me.Label4.Location = New System.Drawing.Point(5, 249)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(79, 17)
         Me.Label4.TabIndex = 37
@@ -209,7 +209,7 @@ Partial Class FighterForm
         '
         Me.lblsorted.AutoSize = True
         Me.lblsorted.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblsorted.Location = New System.Drawing.Point(97, 250)
+        Me.lblsorted.Location = New System.Drawing.Point(90, 250)
         Me.lblsorted.Name = "lblsorted"
         Me.lblsorted.Size = New System.Drawing.Size(56, 16)
         Me.lblsorted.TabIndex = 38
@@ -217,12 +217,12 @@ Partial Class FighterForm
         '
         'cmbwins
         '
-        Me.cmbwins.Font = New System.Drawing.Font("Helvetica Neue", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.cmbwins.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbwins.FormattingEnabled = True
         Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc"})
-        Me.cmbwins.Location = New System.Drawing.Point(383, 203)
+        Me.cmbwins.Location = New System.Drawing.Point(378, 204)
         Me.cmbwins.Name = "cmbwins"
-        Me.cmbwins.Size = New System.Drawing.Size(126, 22)
+        Me.cmbwins.Size = New System.Drawing.Size(126, 27)
         Me.cmbwins.TabIndex = 42
         '
         'pnlcurrentfighter
@@ -268,7 +268,7 @@ Partial Class FighterForm
         Me.Controls.Add(Me.txtlname)
         Me.Controls.Add(Me.txtfname)
         Me.Name = "FighterForm"
-        Me.Text = "FighterForm"
+        Me.Text = "Fighters"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)

@@ -1,4 +1,5 @@
 ﻿Imports Newtonsoft.Json
+Imports System.DirectoryServices.ActiveDirectory
 Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
@@ -180,6 +181,7 @@ Public Class FighterForm
 
         'sorts fighters and saves to file
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Debug.WriteLine(fighters.Count)
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
         cmbwins.SelectedIndex = 0
@@ -188,9 +190,11 @@ Public Class FighterForm
 
         Debug.WriteLine(0)
         Dim sortedfighters As List(Of fightermanagement) = checkfilters(fighters)
+        Debug.WriteLine(sortedfighters.Count)
         Debug.WriteLine(1)
         fighterlist = sortedfighters
         functions.SaveToFighterJson(sortedfighters)
+        Debug.WriteLine(fighterlist.Count)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
@@ -434,14 +438,14 @@ Public Class FighterForm
 
         ' Filter fighters based on the selected weight class
 
-        If selectedWeightClass <> "All" Then
-            filteredFighters = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
+        If selectedWeightClass <> "All" And selectedWeightClass <> "" Then
+            filteredFighters = filteredFighters.Where(Function(f) f.Weight = selectedWeightClass).ToList()
         End If
 
 
 
-        If selectedstance <> "All" Then
-            filteredFighters = fighterlist.Where(Function(f) f.Stance = selectedstance).ToList()
+        If selectedstance <> "All" And selectedstance <> "" Then
+            filteredFighters = filteredfighters.Where(Function(f) f.Stance = selectedstance).ToList()
         End If
 
 

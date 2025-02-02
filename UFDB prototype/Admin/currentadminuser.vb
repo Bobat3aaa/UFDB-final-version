@@ -45,7 +45,7 @@ Public Class currentadminuser
 
         While moredata = True
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fighters?page=" & i
-
+            Debug.WriteLine(apiurl)
             answer = Await httpclient.GetAsync(apiurl)
 
             If answer.IsSuccessStatusCode Then
@@ -138,5 +138,10 @@ Public Class currentadminuser
 
     Private Sub currentadminuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+        Form1.Show()
+        Me.Close()
     End Sub
 End Class

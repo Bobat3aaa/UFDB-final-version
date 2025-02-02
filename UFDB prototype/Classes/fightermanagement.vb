@@ -16,6 +16,8 @@ Public Class fightermanagement
     Public Property Weight As String
 
     Public Property Reach As String
+
+    <JsonProperty("Stance")>
     Public Property Stance As String
     Public Property Dob As String
 
