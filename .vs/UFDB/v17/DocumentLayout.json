@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fight\\fight_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fight\\fight_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fight\\currentfightform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fight\\currentfightform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fight\\currentfightform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fight\\currentfightform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fight\\currentfightform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fight\\fight_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fight\\fight_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\admin\\currentadminuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\classes\\fights.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\classes\\fights.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
@@ -46,11 +46,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "fights.vb",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Classes\\fights.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Classes\\fights.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Classes\\fights.vb",
+              "RelativeToolTip": "UFDB prototype\\Classes\\fights.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-02T18:08:35.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "currentfightform.vb",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\currentfightform.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Fight\\currentfightform.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\currentfightform.vb",
+              "RelativeToolTip": "UFDB prototype\\Fight\\currentfightform.vb",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAqwG4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-02T18:02:20.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "current_fighter_form.vb [Design]",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\current_fighter_form.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\current_fighter_form.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\current_fighter_form.vb [Design]",
+              "RelativeToolTip": "UFDB prototype\\Fighter\\current_fighter_form.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-02T17:59:31Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "currentadminuser.vb",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Admin\\currentadminuser.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Admin\\currentadminuser.vb",
@@ -63,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "currentadminuser.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Admin\\currentadminuser.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Admin\\currentadminuser.vb",
@@ -81,40 +119,14 @@
               "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\FighterForm.vb",
               "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\FighterForm.vb",
               "RelativeToolTip": "UFDB prototype\\Fighter\\FighterForm.vb",
-              "ViewState": "AQIAADYBAAAAAAAAAAAkwFgBAAAKAAAA",
+              "ViewState": "AQIAAG4BAAAAAAAAAAAuwJcBAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-02-02T11:25:59.046Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "fight_form.vb",
-              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\fight_form.vb",
-              "RelativeDocumentMoniker": "UFDB prototype\\Fight\\fight_form.vb",
-              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\fight_form.vb",
-              "RelativeToolTip": "UFDB prototype\\Fight\\fight_form.vb",
-              "ViewState": "AQIAAOYBAAAAAAAAAAAUwAcCAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-02T11:19:04.844Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "current_fighter_form.vb",
-              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\current_fighter_form.vb",
-              "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\current_fighter_form.vb",
-              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\current_fighter_form.vb",
-              "RelativeToolTip": "UFDB prototype\\Fighter\\current_fighter_form.vb",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA1wCsAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-02T11:21:35.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FighterForm.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\FighterForm.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\FighterForm.vb",
@@ -126,19 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "fight_form.vb [Design]",
-              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\fight_form.vb",
-              "RelativeDocumentMoniker": "UFDB prototype\\Fight\\fight_form.vb",
-              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\fight_form.vb [Design]",
-              "RelativeToolTip": "UFDB prototype\\Fight\\fight_form.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-02T11:15:45.334Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "currentfightform.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fight\\currentfightform.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Fight\\currentfightform.vb",

@@ -31,6 +31,7 @@ Partial Class fight_form
         Me.btnsearch = New System.Windows.Forms.Button()
         Me.btnclear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Home = New System.Windows.Forms.Label()
         Me.cmbsort = New System.Windows.Forms.ComboBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
@@ -45,7 +46,6 @@ Partial Class fight_form
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lblsorted = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -134,6 +134,17 @@ Partial Class fight_form
         Me.Panel1.Size = New System.Drawing.Size(1585, 68)
         Me.Panel1.TabIndex = 20
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Halenoir-Black", 47.99999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(-1, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(207, 77)
+        Me.Label4.TabIndex = 25
+        Me.Label4.Text = "UFDB"
+        '
         'Home
         '
         Me.Home.AutoSize = True
@@ -160,7 +171,7 @@ Partial Class fight_form
         Me.DateTimePicker1.Location = New System.Drawing.Point(361, 204)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.ShowCheckBox = True
-        Me.DateTimePicker1.Size = New System.Drawing.Size(153, 28)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(166, 28)
         Me.DateTimePicker1.TabIndex = 23
         Me.DateTimePicker1.Value = New Date(2025, 1, 8, 17, 21, 6, 0)
         '
@@ -187,7 +198,7 @@ Partial Class fight_form
         Me.cmblocation.FormattingEnabled = True
         Me.cmblocation.Location = New System.Drawing.Point(360, 149)
         Me.cmblocation.Name = "cmblocation"
-        Me.cmblocation.Size = New System.Drawing.Size(154, 27)
+        Me.cmblocation.Size = New System.Drawing.Size(167, 27)
         Me.cmblocation.TabIndex = 26
         '
         'Label9
@@ -259,17 +270,6 @@ Partial Class fight_form
         Me.lblsorted.Size = New System.Drawing.Size(56, 16)
         Me.lblsorted.TabIndex = 51
         Me.lblsorted.Text = "Nothing"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Halenoir-Black", 47.99999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(-1, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(207, 77)
-        Me.Label4.TabIndex = 25
-        Me.Label4.Text = "UFDB"
         '
         'fight_form
         '

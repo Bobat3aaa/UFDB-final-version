@@ -3,6 +3,9 @@ Imports System.IO
 
 Public Class currentFightForm
     Public Property currentfight As Fight
+    Private fighter1 As fightermanagement
+    Private fighter2 As fightermanagement
+
 
     ' Constructor that accepts a Fight object
     Public Sub New(fight As Fight)
@@ -15,9 +18,10 @@ Public Class currentFightForm
         lbllocation.Text = currentfight.location
         lbldate.Text = currentfight.date
 
+
     End Sub
 
-    Private Sub btnback_Click(sender As Object, e As EventArgs) Handles btnback.Click
+    Private Sub btnback_Click(sender As Object, e As EventArgs)
         fight_form.Show()
         Me.Close()
     End Sub
@@ -25,8 +29,8 @@ Public Class currentFightForm
     Private Sub currentFightForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
 
-        Dim fighter1 As fightermanagement = findfighter1(fighterlist)
-        Dim fighter2 As fightermanagement = findfighter2(fighterlist)
+        fighter1 = findfighter1(fighterlist)
+        fighter2 = findfighter2(fighterlist)
 
 
         lblheight1.Text = ("Height: " & fighter1.Height)
@@ -45,20 +49,21 @@ Public Class currentFightForm
 
 
         If currentfight.fighter1 = currentfight.win Then
-            lblfighter1.ForeColor = Color.Green
-            lblfighter2.ForeColor = Color.Red
+            pnlfighter1.BackColor = Color.LightGreen
+            pnlfighter2.BackColor = Color.Pink
         ElseIf currentfight.fighter2 = currentfight.win Then
-            lblfighter2.ForeColor = Color.Green
-            lblfighter1.ForeColor = Color.Red
+            pnlfighter2.BackColor = Color.LightGreen
+            pnlfighter1.BackColor = Color.Pink
         Else
-            lblfighter2.ForeColor = Color.Orange
-            lblfighter1.ForeColor = Color.Orange
+            pnlfighter1.BackColor = Color.LightYellow
+            pnlfighter2.BackColor = Color.LightYellow
         End If
 
         lbldate.Text = "date: " & currentfight.date
         lblmethod.Text = "method: " & currentfight.method
         lblround.Text = "round: " & currentfight.rounds
         lblweightclass.Text = "weight class: " & currentfight.weight_class
+        lbltime.Text = "time: " & currentfight.time
     End Sub
 
     Function findfighter1(fighterlist As List(Of fightermanagement))
@@ -92,5 +97,29 @@ Public Class currentFightForm
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblround.Click
 
+    End Sub
+
+    Private Sub lblfighter2_Click(sender As Object, e As EventArgs) Handles lblfighter2.Click
+        Dim currentfighter As fightermanagement = fighter2
+        Dim fighterForm As New current_fighter_form(currentfighter)
+        fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow
+        fighterForm.ControlBox = True
+        fighterForm.Show()
+    End Sub
+
+    Private Sub lbltime_Click(sender As Object, e As EventArgs) Handles lbltime.Click
+
+    End Sub
+
+    Private Sub pnlfighter1_Paint(sender As Object, e As PaintEventArgs) Handles pnlfighter1.Paint
+
+    End Sub
+
+    Private Sub lblfighter1_Click(sender As Object, e As EventArgs) Handles lblfighter1.Click
+        Dim currentfighter As fightermanagement = fighter1
+        Dim fighterForm As New current_fighter_form(currentfighter)
+        fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow
+        fighterForm.ControlBox = True
+        fighterForm.Show()
     End Sub
 End Class
