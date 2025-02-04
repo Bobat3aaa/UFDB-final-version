@@ -57,6 +57,7 @@ Partial Class currentranking
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.lbllistmaker = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -441,12 +442,22 @@ Partial Class currentranking
         Me.lbllistmaker.TabIndex = 60
         Me.lbllistmaker.Text = "List maker"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(456, 608)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(104, 18)
+        Me.Button2.TabIndex = 61
+        Me.Button2.Text = "Searchj"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'currentranking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 670)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lbllistmaker)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label14)
@@ -525,4 +536,5 @@ Partial Class currentranking
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents lbllistmaker As Label
+    Friend WithEvents Button2 As Button
 End Class

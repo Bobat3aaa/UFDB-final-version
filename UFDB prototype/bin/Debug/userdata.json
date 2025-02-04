@@ -1,5 +1,14 @@
 [
   {
+    "UserID": 3,
+    "username": "User1",
+    "password": "Öçõõñéôâ·µ§³ÆÊÊÉÌÊÄ¦¤¥¬´´²·´ª“",
+    "passwordlength": 11,
+    "age": 24,
+    "email": "maxholloway@gmail.com",
+    "Admin": false
+  },
+  {
     "UserID": 2,
     "username": "User2",
     "password": "×æôôðèõã¶µ¦²ÇËËÈÍËÅ§¦‘¤­µµ³¶µ«’‘",

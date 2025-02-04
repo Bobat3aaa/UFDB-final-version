@@ -21,8 +21,6 @@ Public Class currentranking
 
 
 
-        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
-
         'sorts fighters and saves to file
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
@@ -32,12 +30,15 @@ Public Class currentranking
 
         Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
         fighterlist = sortedfighters
-        functions.SaveToFighterJson(sortedfighters)
+        Debug.WriteLine("aaaaahhhhhhhhhhhhhhhhhhh" & fighterlist.Count)
+        functions.SaveToFighterJson(fighterlist)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
         FlowLayoutPanel1.HorizontalScroll.Visible = True
 
+
+        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
         Debug.WriteLine(sortedfighters(1).Name)
         updatebuttons(sortedfighters)
 
@@ -84,7 +85,8 @@ Public Class currentranking
         FlowLayoutPanel1.Controls.Clear()
 
 
-        sortedfighters = checkfilters(sortedfighters)
+
+        fighterlist = sortedfighters
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
         Dim endIndex As Integer
@@ -225,9 +227,11 @@ Public Class currentranking
 
         ' Filter fighters based on the selected weight class
         Dim filteredFighters As List(Of fightermanagement) = fighterlist
+        Debug.WriteLine(filteredFighters.Count)
         If selectedWeightClass <> "All" Then
             filteredFighters = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
         End If
+        Debug.WriteLine(filteredFighters.Count)
         Return filteredFighters
     End Function
 
@@ -350,5 +354,74 @@ Public Class currentranking
 
     Private Sub txtfname_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
 
+    End Sub
+
+    Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighterlist As List(Of fightermanagement) = checkfilters(fighters)
+        updatebuttons(fighterlist)
+    End Sub
+    Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+
+        'binary search, returns midpoint which is place in list
+        If indexlow > indexhigh Then
+            Return Nothing
+        End If
+
+        Dim midpoint As Integer = (indexlow + indexhigh) \ 2
+
+        If String.Compare(fighterlist(midpoint).Name, nametofind) < 0 Then
+            Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
+        ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
+            Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
+        Else
+
+
+            'once binary search is done, finds all the fights with event number
+            Dim searchedfighters As New List(Of fightermanagement)()
+            searchedfighters.Add(fighterlist(midpoint))
+
+
+            Dim left As Integer = midpoint - 1
+
+            While left >= indexlow
+                Dim leftfightername As String = fighterlist(left).Name
+                If leftfightername = nametofind Then
+                    searchedfighters.Add(fighterlist(left))
+                    left -= 1
+                ElseIf leftfightername <> nametofind Then
+                    Exit While
+                End If
+
+            End While
+
+            Dim right As Integer = midpoint + 1
+
+
+            While right <= indexhigh
+                Dim rightfightername As String = fighterlist(right).Name
+                If rightfightername = nametofind Then
+                    searchedfighters.Add(fighterlist(right))
+                    right += 1
+                ElseIf rightfightername <> nametofind Then
+                    Exit While
+                End If
+
+            End While
+
+
+
+
+
+            Return searchedfighters
+        End If
+
+    End Function
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim low As Integer = 0
+        Dim high As Integer = fighterlist.Count - 1
+        Dim searchedfighters As List(Of fightermanagement) = bsearchusers(fighterlist, txtfname.Text, low, high)
+        updatebuttons(searchedfighters)
     End Sub
 End Class

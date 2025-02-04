@@ -68,40 +68,44 @@ Public Class Likedfightersearch
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
+        Debug.WriteLine(fighters.Count)
+        If fighters.Count = 0 Then
+
+            Return New List(Of fightermanagement)()
+        Else
 
 
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
 
+            While templow <= temphigh
+                While String.Compare(fighters(templow).Name, pivot) < 0
+                    templow += 1
+                End While
 
-        pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+                While String.Compare(fighters(temphigh).Name, pivot) > 0
+                    temphigh -= 1
+                End While
 
-        While templow <= temphigh
-            While String.Compare(fighters(templow).Name, pivot) < 0
-                templow += 1
+                If templow <= temphigh Then
+                    Dim tempfighter As fightermanagement = fighters(templow)
+                    fighters(templow) = fighters(temphigh)
+                    fighters(temphigh) = tempfighter
+                    templow += 1
+                    temphigh -= 1
+                End If
             End While
 
-            While String.Compare(fighters(temphigh).Name, pivot) > 0
-                temphigh -= 1
-            End While
 
-            If templow <= temphigh Then
-                Dim tempfighter As fightermanagement = fighters(templow)
-                fighters(templow) = fighters(temphigh)
-                fighters(temphigh) = tempfighter
-                templow += 1
-                temphigh -= 1
+            If indexlow <= temphigh Then
+                Quicksort(fighters, indexlow, temphigh)
             End If
-        End While
 
+            If templow < indexhigh Then
+                Quicksort(fighters, templow, indexhigh)
+            End If
 
-        If indexlow <= temphigh Then
-            Quicksort(fighters, indexlow, temphigh)
+            Return fighters
         End If
-
-        If templow < indexhigh Then
-            Quicksort(fighters, templow, indexhigh)
-        End If
-
-        Return fighters
     End Function
 
 
@@ -219,85 +223,87 @@ Public Class Likedfightersearch
 
 
         FlowLayoutPanel1.Controls.Clear()
+        If sortedfighters Is Nothing Then
+        Else
 
 
-        'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-        Dim endIndex As Integer = Math.Min(startIndex + count, sortedfighters.Count)
+            'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
+            Dim endIndex As Integer = Math.Min(startIndex + count, sortedfighters.Count)
 
 
 
-        If startIndex > 0 Then
+            If startIndex > 0 Then
 
 
-            Dim btnback As New Button
-            btnback.Width = 100
-            btnback.Height = 50
-            btnback.BackColor = Color.Red
-            btnback.ForeColor = Color.White
-            btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
-            btnback.TextAlign = ContentAlignment.MiddleCenter
+                Dim btnback As New Button
+                btnback.Width = 100
+                btnback.Height = 50
+                btnback.BackColor = Color.Red
+                btnback.ForeColor = Color.White
+                btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
+                btnback.TextAlign = ContentAlignment.MiddleCenter
 
-            btnback.Text = "back"
-            btnback.Visible = True
-            btnback.Tag = "btnback"
+                btnback.Text = "back"
+                btnback.Visible = True
+                btnback.Tag = "btnback"
 
-            'adds an event handler to update buttons
-            AddHandler btnback.Click, Sub()
-                                          updatebuttons(sortedfighters, endIndex - 100)
-                                      End Sub
-            FlowLayoutPanel1.Controls.Add(btnback)
-
-
-        End If
-
-
-        'creates 50 buttons
-        For i = startIndex To endIndex - 1
-
-
-            Dim btn As New Button
-            btn.Width = 100
-            btn.Height = 50
-            btn.BackColor = Color.White
-            btn.TextAlign = ContentAlignment.MiddleCenter
-
-            btn.Text = sortedfighters(i).Name
-            btn.Visible = True
-            btn.Tag = i
-            fighterlist = sortedfighters
-            AddHandler btn.Click, AddressOf Button_Click
-
-            FlowLayoutPanel1.Controls.Add(btn)
-
-
-        Next
-
-        'creates a load more button if needed
-        If endIndex < sortedfighters.Count Then
-
-
-            Dim btnloadmore As New Button
-            btnloadmore.Width = 100
-            btnloadmore.Height = 50
-            btnloadmore.TextAlign = ContentAlignment.MiddleCenter
-            btnloadmore.BackColor = Color.Red
-            btnloadmore.ForeColor = Color.White
-            btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
-            btnloadmore.TextAlign = ContentAlignment.MiddleCenter
-
-            btnloadmore.Text = "Load more"
-            btnloadmore.Visible = True
-            btnloadmore.Tag = "btnloadmore"
-
-            'adds an event handler to update buttons
-            AddHandler btnloadmore.Click, Sub()
-                                              updatebuttons(sortedfighters, endIndex)
+                'adds an event handler to update buttons
+                AddHandler btnback.Click, Sub()
+                                              updatebuttons(sortedfighters, endIndex - 100)
                                           End Sub
-            FlowLayoutPanel1.Controls.Add(btnloadmore)
+                FlowLayoutPanel1.Controls.Add(btnback)
 
 
+            End If
+
+
+            'creates 50 buttons
+            For i = startIndex To endIndex - 1
+
+
+                Dim btn As New Button
+                btn.Width = 100
+                btn.Height = 50
+                btn.BackColor = Color.White
+                btn.TextAlign = ContentAlignment.MiddleCenter
+
+                btn.Text = sortedfighters(i).Name
+                btn.Visible = True
+                btn.Tag = i
+                fighterlist = sortedfighters
+                AddHandler btn.Click, AddressOf Button_Click
+
+                FlowLayoutPanel1.Controls.Add(btn)
+
+
+            Next
+
+            'creates a load more button if needed
+            If endIndex < sortedfighters.Count Then
+
+
+                Dim btnloadmore As New Button
+                btnloadmore.Width = 100
+                btnloadmore.Height = 50
+                btnloadmore.TextAlign = ContentAlignment.MiddleCenter
+                btnloadmore.BackColor = Color.Red
+                btnloadmore.ForeColor = Color.White
+                btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
+                btnloadmore.TextAlign = ContentAlignment.MiddleCenter
+
+                btnloadmore.Text = "Load more"
+                btnloadmore.Visible = True
+                btnloadmore.Tag = "btnloadmore"
+
+                'adds an event handler to update buttons
+                AddHandler btnloadmore.Click, Sub()
+                                                  updatebuttons(sortedfighters, endIndex)
+                                              End Sub
+                FlowLayoutPanel1.Controls.Add(btnloadmore)
+
+
+            End If
         End If
-
     End Sub
 
 
