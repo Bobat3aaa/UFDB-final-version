@@ -110,11 +110,11 @@ Partial Class Form1
         'lblhome
         '
         Me.lblhome.AutoSize = True
-        Me.lblhome.Font = New System.Drawing.Font("Halenoir-Black", 47.99999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblhome.ForeColor = System.Drawing.Color.Red
         Me.lblhome.Location = New System.Drawing.Point(-1, 0)
         Me.lblhome.Name = "lblhome"
-        Me.lblhome.Size = New System.Drawing.Size(207, 77)
+        Me.lblhome.Size = New System.Drawing.Size(193, 77)
         Me.lblhome.TabIndex = 6
         Me.lblhome.Text = "UFDB"
         '

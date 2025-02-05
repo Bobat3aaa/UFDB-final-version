@@ -208,9 +208,10 @@ Public Class currentranking
                 Dim ranktoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
                 rankedfighterlist.Remove(ranktoremove)
             End If
-
+            Debug.WriteLine(fighterrank.FighterID)
             rankedfighterlist.Add(fighterrank)
             updatetitles(fighterrank, currentfighter)
+            Debug.WriteLine("worked")
         Else
             MsgBox("please add a rank!")
         End If
@@ -280,7 +281,7 @@ Public Class currentranking
         Return fighters
     End Function
 
-    Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
+    Private Sub Label14_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -337,9 +338,10 @@ Public Class currentranking
     End Sub
 
     Sub updatetitles(fighterrank, currentfighter)
-
+        Dim fighterpanel As Panel = (fighterpanel)
         For i = 1 To 10
-            Dim ranklbl As Label = Me.Controls("lblfighter" & i)
+            Dim ranklbl As Label = (Panel1.Controls("lblfighter" & i))
+            Debug.WriteLine(ranklbl)
             If ranklbl IsNot Nothing And i = fighterrank.rank Then
 
                 ranklbl.Text = currentfighter.name
@@ -418,10 +420,18 @@ Public Class currentranking
 
     End Function
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
         Dim low As Integer = 0
         Dim high As Integer = fighterlist.Count - 1
         Dim searchedfighters As List(Of fightermanagement) = bsearchusers(fighterlist, txtfname.Text, low, high)
         updatebuttons(searchedfighters)
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub lblfighter4_Click(sender As Object, e As EventArgs) Handles lblfighter4.Click
+
     End Sub
 End Class

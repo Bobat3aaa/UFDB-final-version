@@ -291,4 +291,8 @@ Public Class Rankingsearch
         Return filteredlist
 
     End Function
+
+    Private Sub txtlistname_TextChanged(sender As Object, e As EventArgs) Handles txtlistname.TextChanged
+
+    End Sub
 End Class

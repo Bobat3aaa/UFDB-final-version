@@ -1,5 +1,7 @@
 ﻿Imports Newtonsoft.Json
+Imports System.Drawing.Text
 Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
 
 Public Class functions
     ' read fighters from the json file
@@ -93,4 +95,7 @@ Public Class functions
         Dim json As String = File.ReadAllText("likedfighters.json")
         Return JsonConvert.DeserializeObject(Of List(Of likedfighter))(json)
     End Function
+
+
 End Class
+

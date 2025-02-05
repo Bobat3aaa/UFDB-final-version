@@ -25,18 +25,23 @@ Partial Class Rankingsearch
         Me.components = New System.ComponentModel.Container()
         Me.txtlistname = New System.Windows.Forms.TextBox()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnclear = New System.Windows.Forms.Button()
         Me.btnsearch = New System.Windows.Forms.Button()
         Me.cmbownlists = New System.Windows.Forms.ComboBox()
+        Me.lbllistmaker = New System.Windows.Forms.Label()
+        Me.lbltitle = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtlistname
         '
-        Me.txtlistname.Location = New System.Drawing.Point(58, 90)
+        Me.txtlistname.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.txtlistname.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList
+        Me.txtlistname.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtlistname.Location = New System.Drawing.Point(99, 134)
         Me.txtlistname.Name = "txtlistname"
-        Me.txtlistname.Size = New System.Drawing.Size(287, 20)
+        Me.txtlistname.Size = New System.Drawing.Size(287, 28)
         Me.txtlistname.TabIndex = 0
         '
         'ContextMenuStrip1
@@ -44,33 +49,24 @@ Partial Class Rankingsearch
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 12)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(124, 25)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Search lists"
-        '
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(17, 264)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(17, 231)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(783, 394)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(783, 410)
         Me.FlowLayoutPanel1.TabIndex = 53
         '
         'btnclear
         '
         Me.btnclear.BackColor = System.Drawing.Color.Silver
         Me.btnclear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnclear.Location = New System.Drawing.Point(240, 116)
+        Me.btnclear.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclear.Location = New System.Drawing.Point(271, 168)
         Me.btnclear.Name = "btnclear"
-        Me.btnclear.Size = New System.Drawing.Size(105, 28)
+        Me.btnclear.Size = New System.Drawing.Size(115, 41)
         Me.btnclear.TabIndex = 55
         Me.btnclear.Text = "clear"
         Me.btnclear.UseVisualStyleBackColor = False
@@ -79,32 +75,66 @@ Partial Class Rankingsearch
         '
         Me.btnsearch.BackColor = System.Drawing.Color.Silver
         Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnsearch.Location = New System.Drawing.Point(58, 116)
+        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Location = New System.Drawing.Point(99, 168)
         Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(98, 28)
+        Me.btnsearch.Size = New System.Drawing.Size(108, 41)
         Me.btnsearch.TabIndex = 54
         Me.btnsearch.Text = "search"
         Me.btnsearch.UseVisualStyleBackColor = False
         '
         'cmbownlists
         '
+        Me.cmbownlists.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbownlists.FormattingEnabled = True
         Me.cmbownlists.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cmbownlists.Location = New System.Drawing.Point(732, 89)
+        Me.cmbownlists.Location = New System.Drawing.Point(732, 182)
         Me.cmbownlists.Name = "cmbownlists"
-        Me.cmbownlists.Size = New System.Drawing.Size(68, 21)
+        Me.cmbownlists.Size = New System.Drawing.Size(68, 27)
         Me.cmbownlists.TabIndex = 56
+        '
+        'lbllistmaker
+        '
+        Me.lbllistmaker.AutoSize = True
+        Me.lbllistmaker.Font = New System.Drawing.Font("Clash Display", 47.99999!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbllistmaker.Location = New System.Drawing.Point(4, 9)
+        Me.lbllistmaker.Name = "lbllistmaker"
+        Me.lbllistmaker.Size = New System.Drawing.Size(370, 73)
+        Me.lbllistmaker.TabIndex = 61
+        Me.lbllistmaker.Text = "List maker"
+        '
+        'lbltitle
+        '
+        Me.lbltitle.AutoSize = True
+        Me.lbltitle.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltitle.Location = New System.Drawing.Point(10, 138)
+        Me.lbltitle.Name = "lbltitle"
+        Me.lbltitle.Size = New System.Drawing.Size(83, 18)
+        Me.lbltitle.TabIndex = 62
+        Me.lbltitle.Text = "Enter title:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(649, 186)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(77, 18)
+        Me.Label1.TabIndex = 63
+        Me.Label1.Text = "Own lists:"
         '
         'Rankingsearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 670)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lbltitle)
+        Me.Controls.Add(Me.lbllistmaker)
         Me.Controls.Add(Me.cmbownlists)
         Me.Controls.Add(Me.btnclear)
         Me.Controls.Add(Me.btnsearch)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtlistname)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Rankingsearch"
@@ -116,9 +146,11 @@ Partial Class Rankingsearch
 
     Friend WithEvents txtlistname As TextBox
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
-    Friend WithEvents Label1 As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents btnclear As Button
     Friend WithEvents btnsearch As Button
     Friend WithEvents cmbownlists As ComboBox
+    Friend WithEvents lbllistmaker As Label
+    Friend WithEvents lbltitle As Label
+    Friend WithEvents Label1 As Label
 End Class

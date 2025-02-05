@@ -517,4 +517,12 @@ Public Class fight_form
         Form1.Show()
         Me.Close()
     End Sub
+
+
+    Private Sub Formvisible(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+
+        If Me.Visible Then
+
+        End If
+    End Sub
 End Class

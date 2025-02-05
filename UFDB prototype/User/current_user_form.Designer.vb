@@ -24,12 +24,12 @@ Partial Class current_user_form
     Private Sub InitializeComponent()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.panelmain = New System.Windows.Forms.Panel()
         Me.btnlikedfighters = New System.Windows.Forms.Button()
         Me.btnuserdetails = New System.Windows.Forms.Button()
         Me.btnlogout = New System.Windows.Forms.Button()
         Me.btnranking = New System.Windows.Forms.Button()
         Me.btnnewranking = New System.Windows.Forms.Button()
+        Me.panelmain = New System.Windows.Forms.Panel()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,17 +52,6 @@ Partial Class current_user_form
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1014, 72)
         Me.Panel2.TabIndex = 21
-        '
-        'panelmain
-        '
-        Me.panelmain.AutoSize = True
-        Me.panelmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.panelmain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panelmain.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelmain.Location = New System.Drawing.Point(1046, 0)
-        Me.panelmain.Name = "panelmain"
-        Me.panelmain.Size = New System.Drawing.Size(2, 741)
-        Me.panelmain.TabIndex = 22
         '
         'btnlikedfighters
         '
@@ -109,33 +98,40 @@ Partial Class current_user_form
         Me.btnnewranking.Text = "Make new ranking"
         Me.btnnewranking.UseVisualStyleBackColor = True
         '
+        'panelmain
+        '
+        Me.panelmain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelmain.Location = New System.Drawing.Point(204, 78)
+        Me.panelmain.Name = "panelmain"
+        Me.panelmain.Size = New System.Drawing.Size(812, 670)
+        Me.panelmain.TabIndex = 44
+        '
         'current_user_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1048, 741)
+        Me.ClientSize = New System.Drawing.Size(1016, 751)
+        Me.Controls.Add(Me.panelmain)
         Me.Controls.Add(Me.btnnewranking)
         Me.Controls.Add(Me.btnranking)
         Me.Controls.Add(Me.btnlogout)
         Me.Controls.Add(Me.btnuserdetails)
         Me.Controls.Add(Me.btnlikedfighters)
-        Me.Controls.Add(Me.panelmain)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "current_user_form"
         Me.Text = "current_user_form"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label4 As Label
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents panelmain As Panel
     Friend WithEvents btnlikedfighters As Button
     Friend WithEvents btnuserdetails As Button
     Friend WithEvents btnlogout As Button
     Friend WithEvents btnranking As Button
     Friend WithEvents btnnewranking As Button
+    Friend WithEvents panelmain As Panel
 End Class
