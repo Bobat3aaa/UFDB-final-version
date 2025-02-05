@@ -150,8 +150,17 @@ Public Class register
         Return emailExpression.IsMatch(email)
     End Function
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs) Handles Btnback.Click
+    Private Sub Btnback_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub txtemail_TextChanged(sender As Object, e As EventArgs) Handles txtemail.TextChanged
+
+    End Sub
+
+    Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+        Form1.Show()
+        Me.Close()
     End Sub
 End Class

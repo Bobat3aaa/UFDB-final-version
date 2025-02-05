@@ -142,7 +142,7 @@ Public Class Rankingsearch
         Dim currentranking As ranking = sortedranklist(rankIndex)
 
         'sends current fighter data over to the current fighter form
-
+        Debug.WriteLine(currentranking.UserID)
 
 
         Dim rankingform As New showranking(currentranking)
@@ -293,6 +293,10 @@ Public Class Rankingsearch
     End Function
 
     Private Sub txtlistname_TextChanged(sender As Object, e As EventArgs) Handles txtlistname.TextChanged
+
+    End Sub
+
+    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
 
     End Sub
 End Class

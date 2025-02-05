@@ -96,12 +96,12 @@ Partial Class Rankingsearch
         'lbllistmaker
         '
         Me.lbllistmaker.AutoSize = True
-        Me.lbllistmaker.Font = New System.Drawing.Font("Clash Display", 47.99999!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbllistmaker.Location = New System.Drawing.Point(4, 9)
+        Me.lbllistmaker.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbllistmaker.Location = New System.Drawing.Point(3, 31)
         Me.lbllistmaker.Name = "lbllistmaker"
-        Me.lbllistmaker.Size = New System.Drawing.Size(370, 73)
+        Me.lbllistmaker.Size = New System.Drawing.Size(300, 55)
         Me.lbllistmaker.TabIndex = 61
-        Me.lbllistmaker.Text = "List maker"
+        Me.lbllistmaker.Text = "Search lists"
         '
         'lbltitle
         '

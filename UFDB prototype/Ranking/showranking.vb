@@ -11,7 +11,9 @@ Public Class showranking
         Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim currentuser As User = getcurrentuser()
+        Dim userlist As List(Of User) = functions.ReadUsersFromJson
 
+        Dim listusername As User = userlist.FirstOrDefault(Function(u) u.UserID = currentranking.UserID)
 
         For i = 1 To 10
 
@@ -35,7 +37,7 @@ Public Class showranking
         Me.formranking = currentranking
         lbltitle.Text = formranking.RankingName
         lbldesc.Text = formranking.Rankingdesc
-        Lbluserid.Text = ("Made by:" & currentuser.username)
+        Lbluserid.Text = ("Made by:" & listusername.username)
 
         If formranking.UserID = currentuser.UserID Then
             btndelete.Visible = True
@@ -89,6 +91,10 @@ Public Class showranking
             Me.Close()
 
         End If
+
+    End Sub
+
+    Private Sub Lbluserid_Click(sender As Object, e As EventArgs) Handles Lbluserid.Click
 
     End Sub
 End Class

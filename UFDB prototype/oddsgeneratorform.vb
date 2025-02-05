@@ -310,4 +310,9 @@ Public Class oddsgeneratorform
     Private Sub txtfighter1stats_TextChanged(sender As Object, e As EventArgs) Handles txtfighter1stats.TextChanged
 
     End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+        Form1.Show()
+        Me.Close()
+    End Sub
 End Class

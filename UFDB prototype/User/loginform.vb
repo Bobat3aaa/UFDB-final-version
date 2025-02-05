@@ -173,7 +173,7 @@ Public Class loginform
 
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+    Private Sub Label4_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -181,10 +181,13 @@ Public Class loginform
 
 
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs) Handles Btnback.Click
+    Private Sub Btnback_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Hide()
     End Sub
 
-
+    Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+        Form1.Show()
+        Me.Close()
+    End Sub
 End Class

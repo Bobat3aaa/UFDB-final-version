@@ -189,7 +189,7 @@ Partial Class Usereditor
         Me.Controls.Add(Me.btnsavefile)
         Me.Controls.Add(Me.btndelete)
         Me.Name = "Usereditor"
-        Me.Text = "Usereditor"
+        Me.Text = "User editor"
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

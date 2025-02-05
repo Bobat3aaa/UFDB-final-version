@@ -4,15 +4,8 @@ Imports System.IO
 
 Public Class Likedfightersearch
 
-    Dim fighterlist As List(Of fightermanagement)
+    Private fighterlist As List(Of fightermanagement)
 
-    Function ReadlikedfightersFromFile() As List(Of likedfighter)
-        If Not File.Exists("likedfighters.json") Then
-            Return New List(Of likedfighter)
-        End If
-        Dim json As String = File.ReadAllText("likedfighters.json")
-        Return JsonConvert.DeserializeObject(Of List(Of likedfighter))(json)
-    End Function
 
     Private Sub Likedfightersearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'makes sure the filters are all set to 0 to start, will be more in future
@@ -23,7 +16,7 @@ Public Class Likedfightersearch
 
 
         'sorts fighters and saves to file
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim likedfighterlist As List(Of fightermanagement) = returnlikedfighters(fighters)
 
         fighterlist = likedfighterlist
@@ -37,7 +30,7 @@ Public Class Likedfightersearch
     End Sub
 
     Function returnlikedfighters(fighters As List(Of fightermanagement))
-        Dim likedfighters As List(Of likedfighter) = ReadlikedfightersFromFile()
+        Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson
         Debug.WriteLine(likedfighters(0).fighterid)
 
 
@@ -109,53 +102,16 @@ Public Class Likedfightersearch
     End Function
 
 
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
 
 
 
 
-    Private Sub Fighterform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
-    End Sub
-    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
 
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         fighters = returnlikedfighters(fighters)
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
@@ -318,7 +274,7 @@ Public Class Likedfightersearch
 
         'need to find a way to optimise / reuse code
 
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -331,15 +287,15 @@ Public Class Likedfightersearch
         MsgBox(currentfighter.Name)
         'sends current fighter data over to the current fighter form
         Dim fighterForm As New current_fighter_form(currentfighter)
-
-
+        fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow
+        fighterForm.ControlBox = True
 
         fighterForm.Show()
 
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fighterlist As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
         fighterlist = returnlikedfighters(fighterlist)
 
         updatebuttons(fighterlist)
@@ -384,10 +340,12 @@ Public Class Likedfightersearch
                 Dim leftfightername As String = parsename(fighterlist(left).Name, decision)
                 If leftfightername = nametofind Then
                     searchedfighters.Add(fighterlist(left))
+                    left -= 1
                 ElseIf leftfightername <> nametofind Then
                     Exit While
+
                 End If
-                left -= 1
+
             End While
 
             Dim right As Integer = midpoint + 1
@@ -396,11 +354,13 @@ Public Class Likedfightersearch
             While right <= indexhigh
                 Dim rightfightername As String = parsename(fighterlist(right).Name, decision)
                 If rightfightername = nametofind Then
-                    searchedfighters.Add(fighterlist(left))
+                    searchedfighters.Add(fighterlist(right))
+                    right += 1
                 ElseIf rightfightername <> nametofind Then
                     Exit While
+
                 End If
-                right += 1
+
             End While
 
 

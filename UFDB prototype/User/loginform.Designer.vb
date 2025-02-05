@@ -28,10 +28,10 @@ Partial Class loginform
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.btnsearch = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Btnback = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblhome = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -42,82 +42,89 @@ Partial Class loginform
         '
         'txtusername
         '
-        Me.txtusername.Location = New System.Drawing.Point(75, 87)
+        Me.txtusername.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Location = New System.Drawing.Point(12, 156)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(135, 20)
+        Me.txtusername.Size = New System.Drawing.Size(270, 28)
         Me.txtusername.TabIndex = 3
         '
         'txtpassword
         '
-        Me.txtpassword.Location = New System.Drawing.Point(75, 123)
+        Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Location = New System.Drawing.Point(12, 217)
         Me.txtpassword.Name = "txtpassword"
-        Me.txtpassword.Size = New System.Drawing.Size(135, 20)
+        Me.txtpassword.Size = New System.Drawing.Size(270, 28)
         Me.txtpassword.TabIndex = 4
         '
         'btnsearch
         '
-        Me.btnsearch.Location = New System.Drawing.Point(135, 149)
+        Me.btnsearch.BackColor = System.Drawing.Color.LightGray
+        Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Location = New System.Drawing.Point(321, 193)
         Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(75, 23)
+        Me.btnsearch.Size = New System.Drawing.Size(142, 52)
         Me.btnsearch.TabIndex = 5
         Me.btnsearch.Text = "Login"
-        Me.btnsearch.UseVisualStyleBackColor = True
+        Me.btnsearch.UseVisualStyleBackColor = False
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.Btnback)
+        Me.Panel1.Controls.Add(Me.lblhome)
         Me.Panel1.Location = New System.Drawing.Point(-4, -2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(471, 73)
+        Me.Panel1.Size = New System.Drawing.Size(505, 73)
         Me.Panel1.TabIndex = 20
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(3, 12)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(147, 55)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Login"
-        '
-        'Btnback
-        '
-        Me.Btnback.BackColor = System.Drawing.Color.Silver
-        Me.Btnback.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnback.Location = New System.Drawing.Point(274, 14)
-        Me.Btnback.Name = "Btnback"
-        Me.Btnback.Size = New System.Drawing.Size(133, 33)
-        Me.Btnback.TabIndex = 2
-        Me.Btnback.Text = "back"
-        Me.Btnback.UseVisualStyleBackColor = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 90)
+        Me.Label2.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(8, 128)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 13)
+        Me.Label2.Size = New System.Drawing.Size(118, 24)
         Me.Label2.TabIndex = 21
         Me.Label2.Text = "Username:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 126)
+        Me.Label3.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(12, 190)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(56, 13)
+        Me.Label3.Size = New System.Drawing.Size(114, 24)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Password:"
+        '
+        'lblhome
+        '
+        Me.lblhome.AutoSize = True
+        Me.lblhome.BackColor = System.Drawing.Color.Transparent
+        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblhome.ForeColor = System.Drawing.Color.Red
+        Me.lblhome.Location = New System.Drawing.Point(-1, 0)
+        Me.lblhome.Name = "lblhome"
+        Me.lblhome.Size = New System.Drawing.Size(193, 77)
+        Me.lblhome.TabIndex = 24
+        Me.lblhome.Text = "UFDB"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Clash Display", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(1, 75)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(118, 42)
+        Me.Label6.TabIndex = 24
+        Me.Label6.Text = "Login"
         '
         'loginform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(464, 210)
+        Me.ClientSize = New System.Drawing.Size(485, 264)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
@@ -125,7 +132,7 @@ Partial Class loginform
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.txtusername)
         Me.Name = "loginform"
-        Me.Text = "loginform"
+        Me.Text = "Login"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -137,8 +144,8 @@ Partial Class loginform
     Friend WithEvents txtpassword As TextBox
     Friend WithEvents btnsearch As Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Btnback As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents lblhome As Label
+    Friend WithEvents Label6 As Label
 End Class
