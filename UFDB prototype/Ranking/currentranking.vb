@@ -88,84 +88,88 @@ Public Class currentranking
 
         fighterlist = sortedfighters
 
-        'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-        Dim endIndex As Integer
-        endIndex = Math.Min(startIndex + count, sortedfighters.Count)
+        If sortedfighters Is Nothing Then
+
+        Else
+
+            'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
+            Dim endIndex As Integer
+            endIndex = Math.Min(startIndex + count, sortedfighters.Count)
 
 
 
-        If startIndex > 0 Then
+            If startIndex > 0 Then
 
 
-            Dim btnback As New Button
-            btnback.Width = 100
-            btnback.Height = 50
-            btnback.BackColor = Color.Red
-            btnback.ForeColor = Color.White
-            btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
-            btnback.TextAlign = ContentAlignment.MiddleCenter
+                Dim btnback As New Button
+                btnback.Width = 100
+                btnback.Height = 50
+                btnback.BackColor = Color.Red
+                btnback.ForeColor = Color.White
+                btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
+                btnback.TextAlign = ContentAlignment.MiddleCenter
 
-            btnback.Text = "back"
-            btnback.Visible = True
-            btnback.Tag = "btnback"
+                btnback.Text = "back"
+                btnback.Visible = True
+                btnback.Tag = "btnback"
 
-            'adds an event handler to update buttons
-            AddHandler btnback.Click, Sub()
-                                          updatebuttons(sortedfighters, endIndex - 100)
-                                      End Sub
-            FlowLayoutPanel1.Controls.Add(btnback)
-
-
-        End If
-
-
-        'creates 50 buttons
-        For i = startIndex To endIndex - 1
-
-
-            Dim btn As New Button
-            btn.Width = 100
-            btn.Height = 50
-            btn.BackColor = Color.White
-            btn.TextAlign = ContentAlignment.MiddleCenter
-
-            btn.Text = sortedfighters(i).Name
-            btn.Visible = True
-            btn.Tag = i
-            fighterlist = sortedfighters
-            AddHandler btn.Click, AddressOf Button_Click_currentranking
-
-            FlowLayoutPanel1.Controls.Add(btn)
-
-
-        Next
-
-        'creates a load more button if needed
-        If endIndex < sortedfighters.Count Then
-
-
-            Dim btnloadmore As New Button
-            btnloadmore.Width = 100
-            btnloadmore.Height = 50
-            btnloadmore.TextAlign = ContentAlignment.MiddleCenter
-            btnloadmore.BackColor = Color.Red
-            btnloadmore.ForeColor = Color.White
-            btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
-            btnloadmore.TextAlign = ContentAlignment.MiddleCenter
-
-            btnloadmore.Text = "Load more"
-            btnloadmore.Visible = True
-            btnloadmore.Tag = "btnloadmore"
-
-            'adds an event handler to update buttons
-            AddHandler btnloadmore.Click, Sub()
-                                              updatebuttons(sortedfighters, endIndex)
+                'adds an event handler to update buttons
+                AddHandler btnback.Click, Sub()
+                                              updatebuttons(sortedfighters, endIndex - 100)
                                           End Sub
-            FlowLayoutPanel1.Controls.Add(btnloadmore)
+                FlowLayoutPanel1.Controls.Add(btnback)
 
 
+            End If
+
+
+            'creates 50 buttons
+            For i = startIndex To endIndex - 1
+
+
+                Dim btn As New Button
+                btn.Width = 100
+                btn.Height = 50
+                btn.BackColor = Color.White
+                btn.TextAlign = ContentAlignment.MiddleCenter
+
+                btn.Text = sortedfighters(i).Name
+                btn.Visible = True
+                btn.Tag = i
+                fighterlist = sortedfighters
+                AddHandler btn.Click, AddressOf Button_Click_currentranking
+
+                FlowLayoutPanel1.Controls.Add(btn)
+
+
+            Next
+
+            'creates a load more button if needed
+            If endIndex < sortedfighters.Count Then
+
+
+                Dim btnloadmore As New Button
+                btnloadmore.Width = 100
+                btnloadmore.Height = 50
+                btnloadmore.TextAlign = ContentAlignment.MiddleCenter
+                btnloadmore.BackColor = Color.Red
+                btnloadmore.ForeColor = Color.White
+                btnloadmore.Font = New Font(btnloadmore.Font.FontFamily, btnloadmore.Font.Size + 2)
+                btnloadmore.TextAlign = ContentAlignment.MiddleCenter
+
+                btnloadmore.Text = "Load more"
+                btnloadmore.Visible = True
+                btnloadmore.Tag = "btnloadmore"
+
+                'adds an event handler to update buttons
+                AddHandler btnloadmore.Click, Sub()
+                                                  updatebuttons(sortedfighters, endIndex)
+                                              End Sub
+                FlowLayoutPanel1.Controls.Add(btnloadmore)
+
+
+            End If
         End If
-
     End Sub
 
 
@@ -421,9 +425,11 @@ Public Class currentranking
     End Function
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
+        fighterlist = functions.ReadFightersFromJson()
         Dim low As Integer = 0
         Dim high As Integer = fighterlist.Count - 1
         Dim searchedfighters As List(Of fightermanagement) = bsearchusers(fighterlist, txtfname.Text, low, high)
+        searchedfighters = checkfilters(searchedfighters)
         updatebuttons(searchedfighters)
     End Sub
 
@@ -433,5 +439,10 @@ Public Class currentranking
 
     Private Sub lblfighter4_Click(sender As Object, e As EventArgs) Handles lblfighter4.Click
 
+    End Sub
+
+    Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
+        fighterlist = functions.ReadFightersFromJson()
+        updatebuttons(fighterlist)
     End Sub
 End Class

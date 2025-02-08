@@ -58,6 +58,7 @@ Partial Class currentranking
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblrank = New System.Windows.Forms.Label()
+        Me.btnclear = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -481,12 +482,22 @@ Partial Class currentranking
         Me.lblrank.TabIndex = 64
         Me.lblrank.Text = "Choose rank:"
         '
+        'btnclear
+        '
+        Me.btnclear.Location = New System.Drawing.Point(368, 596)
+        Me.btnclear.Name = "btnclear"
+        Me.btnclear.Size = New System.Drawing.Size(94, 23)
+        Me.btnclear.TabIndex = 65
+        Me.btnclear.Text = "clear"
+        Me.btnclear.UseVisualStyleBackColor = True
+        '
         'currentranking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 670)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnclear)
         Me.Controls.Add(Me.lblrank)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
@@ -549,4 +560,5 @@ Partial Class currentranking
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents lblrank As Label
+    Friend WithEvents btnclear As Button
 End Class

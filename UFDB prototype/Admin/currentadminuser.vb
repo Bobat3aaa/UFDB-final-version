@@ -140,8 +140,17 @@ Public Class currentadminuser
 
     End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+    Private Sub Label6_Click(sender As Object, e As EventArgs)
         Form1.Show()
         Me.Close()
+    End Sub
+
+    Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+        Form1.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

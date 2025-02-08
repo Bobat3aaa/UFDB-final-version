@@ -44,7 +44,7 @@ Partial Class Databaseeditor
         '
         'cmbselectview
         '
-        Me.cmbselectview.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbselectview.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbselectview.FormattingEnabled = True
         Me.cmbselectview.Items.AddRange(New Object() {"Fighter", "Fight"})
         Me.cmbselectview.Location = New System.Drawing.Point(578, 98)
@@ -54,30 +54,36 @@ Partial Class Databaseeditor
         '
         'btndelete
         '
-        Me.btndelete.Location = New System.Drawing.Point(302, 136)
+        Me.btndelete.BackColor = System.Drawing.Color.LightGray
+        Me.btndelete.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndelete.Location = New System.Drawing.Point(302, 145)
         Me.btndelete.Name = "btndelete"
         Me.btndelete.Size = New System.Drawing.Size(205, 46)
         Me.btndelete.TabIndex = 2
         Me.btndelete.Text = "Delete"
-        Me.btndelete.UseVisualStyleBackColor = True
+        Me.btndelete.UseVisualStyleBackColor = False
         '
         'btnsavefile
         '
-        Me.btnsavefile.Location = New System.Drawing.Point(578, 136)
+        Me.btnsavefile.BackColor = System.Drawing.Color.LightGray
+        Me.btnsavefile.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsavefile.Location = New System.Drawing.Point(578, 145)
         Me.btnsavefile.Name = "btnsavefile"
         Me.btnsavefile.Size = New System.Drawing.Size(205, 46)
         Me.btnsavefile.TabIndex = 3
         Me.btnsavefile.Text = "Save files"
-        Me.btnsavefile.UseVisualStyleBackColor = True
+        Me.btnsavefile.UseVisualStyleBackColor = False
         '
         'btnadd
         '
-        Me.btnadd.Location = New System.Drawing.Point(12, 136)
+        Me.btnadd.BackColor = System.Drawing.Color.LightGray
+        Me.btnadd.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnadd.Location = New System.Drawing.Point(12, 145)
         Me.btnadd.Name = "btnadd"
         Me.btnadd.Size = New System.Drawing.Size(205, 46)
         Me.btnadd.TabIndex = 4
         Me.btnadd.Text = "Add"
-        Me.btnadd.UseVisualStyleBackColor = True
+        Me.btnadd.UseVisualStyleBackColor = False
         '
         'FileSystemWatcher1
         '
@@ -87,20 +93,20 @@ Partial Class Databaseeditor
         'Lbltitle
         '
         Me.Lbltitle.AutoSize = True
-        Me.Lbltitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbltitle.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbltitle.Location = New System.Drawing.Point(12, 19)
         Me.Lbltitle.Name = "Lbltitle"
-        Me.Lbltitle.Size = New System.Drawing.Size(227, 42)
+        Me.Lbltitle.Size = New System.Drawing.Size(406, 55)
         Me.Lbltitle.TabIndex = 5
-        Me.Lbltitle.Text = "Fighter/fight"
+        Me.Lbltitle.Text = "Database editor"
         '
         'lblchoose
         '
         Me.lblchoose.AutoSize = True
-        Me.lblchoose.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblchoose.Font = New System.Drawing.Font("Clash Display", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblchoose.Location = New System.Drawing.Point(574, 75)
         Me.lblchoose.Name = "lblchoose"
-        Me.lblchoose.Size = New System.Drawing.Size(102, 20)
+        Me.lblchoose.Size = New System.Drawing.Size(126, 22)
         Me.lblchoose.TabIndex = 6
         Me.lblchoose.Text = "Choose view:"
         '
@@ -117,7 +123,7 @@ Partial Class Databaseeditor
         Me.Controls.Add(Me.cmbselectview)
         Me.Controls.Add(Me.Datagridview)
         Me.Name = "Databaseeditor"
-        Me.Text = "Databaseeditor"
+        Me.Text = "Edit database"
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
