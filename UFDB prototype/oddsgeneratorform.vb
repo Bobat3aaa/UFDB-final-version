@@ -73,20 +73,8 @@ Public Class oddsgeneratorform
         Return fighters
     End Function
 
-    'reads fighters from the json file
-    Function ReadfightersFromFile() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
-            Return New List(Of fightermanagement)
-        End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
-        Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
-    End Function
-    Private Sub SaveToJsonFile(sortedfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        ' MessageBox.Show($"Data saved to {filePath}")
-    End Sub
+
+
     Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer)
 
         'binary search, returns midpoint which is place in list
@@ -126,7 +114,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnsearch2_Click(sender As Object, e As EventArgs) Handles btnsearch2.Click
-        Dim fighters As List(Of fightermanagement) = ReadfightersFromFile()
+        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -147,12 +135,13 @@ Public Class oddsgeneratorform
 
     Sub updatefighter1(fighter As fightermanagement)
         txtfighter1stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
+        lblfighter1.Text = fighter1.Name
 
     End Sub
 
     Sub updatefighter2(fighter As fightermanagement)
         txtfighter2stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
-
+             lblfighter2.Text = fighter2.Name
     End Sub
 
     Private Sub btnback1_Click(sender As Object, e As EventArgs)
@@ -213,18 +202,27 @@ Public Class oddsgeneratorform
         fighter1winrate = (fighter1win / (fighter1other + fighter1win)) * 100 * (fighter1weight * 0.015)
         fighter2winrate = (fighter2win / (fighter2other + fighter2win)) * 100 * (fighter2weight * 0.015)
 
-        MsgBox(fighter1winrate)
-        MsgBox(fighter2winrate)
-
 
         'fighter odds
 
         fighter1odds = (fighter1winrate / ((fighter1winrate + fighter2winrate)) * 100)
         fighter2odds = (fighter2winrate / ((fighter1winrate + fighter2winrate)) * 100)
-        MsgBox(fighter1odds)
+
+        fighter1odds = Math.Round(fighter1odds, 2)
+        fighter2odds = Math.Round(fighter2odds, 2)
+        Dim total As Decimal = fighter1odds + fighter2odds
+
+        If total <> 100 Then
+            fighter2odds = 100 - fighter1odds
+        End If
+
+    
         Dim fighteroddsarray(1) As Double
         fighteroddsarray(0) = fighter1odds
         fighteroddsarray(1) = fighter2odds
+
+
+
 
 
         Return fighteroddsarray
@@ -267,17 +265,23 @@ Public Class oddsgeneratorform
     End Sub
 
     Sub updatewinner(oddpair)
-
+        lblfighter1.Text = fighter1.Name
+        lblfighter2.Text = fighter2.Name
         txtchance1.Text = oddpair(0)
         txtchance2.Text = oddpair(1)
 
         If oddpair(0) > oddpair(1) Then
             txtwinner.Text = (fighter1.Name)
-
+            pnlfighter1.BackColor = Color.LightGreen
+            pnlfighter2.BackColor = Color.Pink
         ElseIf oddpair(0) < oddpair(1) Then
             txtwinner.Text = (fighter2.Name)
+            pnlfighter1.BackColor = Color.Pink
+            pnlfighter2.BackColor = Color.LightGreen
         Else
             txtwinner.Text = ("draw")
+            pnlfighter1.BackColor = Color.Yellow
+            pnlfighter2.BackColor = Color.Yellow
 
         End If
 
@@ -311,7 +315,8 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    Private Sub Label6_Click_1(sender As Object, e As EventArgs) Handles Label6.Click
         Form1.Show()
         Me.Close()
     End Sub

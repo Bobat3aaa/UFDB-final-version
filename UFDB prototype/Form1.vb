@@ -10,7 +10,7 @@ Public Class Form1
 
 
     Private Sub Fights_Click(sender As Object, e As EventArgs) Handles fights.Click
-
+        'shows fight form and hides home form
         fight_form.Show()
         Me.Hide()
     End Sub
@@ -20,11 +20,12 @@ Public Class Form1
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles Btnlogin.Click
 
-
+        'if the current user id = 0, no user has joined and it will show the login form
         If loginform.currentuserid = 0 Then
 
             loginform.Show()
             Me.Hide()
+            'else, it will check whether the account is an admin account or not 
         ElseIf loginform.currentuserid <> 0 Then
             Dim userlist As List(Of User) = functions.ReadUsersFromJson()
             Dim currentuser As User = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
@@ -47,6 +48,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnregister_Click(sender As Object, e As EventArgs) Handles Btnregister.Click
+        'shows register form and hides home form
         register.Show()
         Me.Hide()
     End Sub
@@ -56,19 +58,15 @@ Public Class Form1
         loadcustomfonts()
 
     End Sub
-    Private Sub SaveToJsonFile(allfighters As List(Of fightermanagement))
-        Dim json As String = JsonConvert.SerializeObject(allfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
-        File.WriteAllText(filePath, json)
-        'MessageBox.Show($"Data saved to {filePath}")
-    End Sub
 
     Private Sub fighters_Click(sender As Object, e As EventArgs) Handles Btnfighter.Click
+        'shows fighter form and hides home form
         FighterForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub btnodds_Click(sender As Object, e As EventArgs) Handles btnodds.Click
+        'shows odd generator form and hides home form
         oddsgeneratorform.Show()
         Me.Hide()
     End Sub

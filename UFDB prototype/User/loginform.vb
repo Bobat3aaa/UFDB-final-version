@@ -141,7 +141,7 @@ Public Class loginform
     End Function
     Function encryptpassword(newusername, newpassword)
 
-        Dim encryptpass As String
+        Dim encryptpass As String = ""
         Dim key As Integer
         Dim addedchar As Char
         Dim currentchar As Integer = 0

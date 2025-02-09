@@ -270,7 +270,7 @@ Public Class Rankingsearch
         End If
     End Sub
     Function checkfilters(ranklist As List(Of ranking))
-        Dim ownrank As String
+        Dim ownrank As String = ""
 
 
         If cmbownlists.SelectedItem IsNot Nothing Then
@@ -281,7 +281,7 @@ Public Class Rankingsearch
 
         ' Filter fighters based on the selected weight class
 
-        Dim filteredlist As List(Of ranking)
+        Dim filteredlist As List(Of ranking) = Nothing
         If ownrank <> "No" Then
             filteredlist = ranklist.Where(Function(r) r.UserID = loginform.currentuserid).ToList()
         End If

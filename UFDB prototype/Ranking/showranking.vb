@@ -39,7 +39,7 @@ Public Class showranking
         lbldesc.Text = formranking.Rankingdesc
         Lbluserid.Text = ("Made by:" & listusername.username)
 
-        If formranking.UserID = currentuser.UserID Then
+        If formranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             btndelete.Visible = True
             btndelete.Enabled = True
         End If
@@ -75,7 +75,8 @@ Public Class showranking
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
-        If formranking.UserID = loginform.currentuserid Then
+        Dim currentuser As User = getcurrentuser()
+        If formranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
             Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.RankingID = formranking.RankingID).ToList()

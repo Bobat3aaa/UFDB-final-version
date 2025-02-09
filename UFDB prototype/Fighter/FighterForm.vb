@@ -6,35 +6,48 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 Public Class FighterForm
 
 
-    Private fighterlist As List(Of fightermanagement)
+    Private fighterlist As List(Of fightermanagement) ' global fighterlist for form to be accessible for all filters, sorts, etc
     Private Sub btnsort_Click(sender As Object, e As EventArgs)
 
     End Sub
     'quicksort used to sort fighters
     Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer, sortwins As Integer) As List(Of fightermanagement)
 
-        Dim pivot As String
-        Dim templow As Integer = indexlow
-        Dim temphigh As Integer = indexhigh
+        Dim pivot As String ' sorting pivot
+        Dim templow As Integer = indexlow 'low of list
+        Dim temphigh As Integer = indexhigh ' top of list
+
+        ' if there is nothing in the list, it returns the previous fighter list
 
         If indexlow >= indexhigh Then
             Return fighters
         End If
 
+        ' sortwins is used to determine what sorting method is used
+        '0 sorts by name
         If sortwins = 0 Then
 
             pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
 
             While templow <= temphigh
                 While String.Compare(fighters(templow).Name, pivot) < 0
+
+                    ' if the name before the pivot is smaller then the pivot, the indicator will increase until this is not the case
+
                     templow += 1
                 End While
 
                 While String.Compare(fighters(temphigh).Name, pivot) > 0
+
+                    ' if the name after the pivot is larger then the pivot, the indicator will decrease until this is not the case
+
                     temphigh -= 1
                 End While
 
                 If templow <= temphigh Then
+
+                    ' swaps fighters
+
                     Dim tempfighter As fightermanagement = fighters(templow)
                     fighters(templow) = fighters(temphigh)
                     fighters(temphigh) = tempfighter
@@ -43,6 +56,7 @@ Public Class FighterForm
                 End If
             End While
 
+            '1 sorts by least to most wins
         ElseIf sortwins = 1 Then
 
             pivot = fighters(Int((indexlow + indexhigh) / 2)).Wins
@@ -58,7 +72,9 @@ Public Class FighterForm
                 End While
 
                 If templow <= temphigh Then
+
                     If fighters(templow).Wins <> fighters(temphigh).Wins Then
+                        'only swaps fighters if there wins are not the same to keep all quicksort outputs the same
                         Dim tempfighter As fightermanagement = fighters(templow)
                         fighters(templow) = fighters(temphigh)
                         fighters(temphigh) = tempfighter
@@ -68,6 +84,7 @@ Public Class FighterForm
                 End If
 
             End While
+            '2 sorts by most to least wins
 
         ElseIf sortwins = 2 Then
 
@@ -94,7 +111,7 @@ Public Class FighterForm
                 End If
 
             End While
-
+            '3 sorts by least to most losses
         ElseIf sortwins = 3 Then
 
             pivot = fighters(Int((indexlow + indexhigh) / 2)).Losses
@@ -120,7 +137,7 @@ Public Class FighterForm
                 End If
 
             End While
-
+            '4 sorts by most to least losses
         ElseIf sortwins = 4 Then
 
             pivot = fighters(Int((indexlow + indexhigh) / 2)).Losses
@@ -188,10 +205,9 @@ Public Class FighterForm
 
 
 
-        Debug.WriteLine(0)
         Dim sortedfighters As List(Of fightermanagement) = checkfilters(fighters)
         Debug.WriteLine(sortedfighters.Count)
-        Debug.WriteLine(1)
+
         fighterlist = sortedfighters
         functions.SaveToFighterJson(sortedfighters)
         Debug.WriteLine(fighterlist.Count)
@@ -206,25 +222,7 @@ Public Class FighterForm
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
 
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 

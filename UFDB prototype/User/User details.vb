@@ -78,7 +78,7 @@ Public Class Userdetails
     End Sub
     Function encryptpassword(newusername As String, newpassword As String, decision As Boolean, ogpasslength As Integer)
 
-        Dim encryptpass As String
+        Dim encryptpass As String = ""
         Dim key As Integer
         Dim addedchar As Char
         Dim currentchar As Integer = 0

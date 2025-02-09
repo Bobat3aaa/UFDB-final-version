@@ -224,7 +224,7 @@ Public Class currentranking
     End Sub
     Function checkfilters(fighterlist As List(Of fightermanagement))
 
-        Dim selectedWeightClass As String
+        Dim selectedWeightClass As String = ""
 
         If cmbweightclass.SelectedItem IsNot Nothing Then
             selectedWeightClass = cmbweightclass.SelectedItem.ToString()
