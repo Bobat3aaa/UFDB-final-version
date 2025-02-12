@@ -27,9 +27,9 @@ Partial Class currentadminuser
         Me.btnuserdetails = New System.Windows.Forms.Button()
         Me.panelmain = New System.Windows.Forms.Panel()
         Me.pnltab = New System.Windows.Forms.Panel()
+        Me.lblhome = New System.Windows.Forms.Label()
         Me.btnrefresh = New System.Windows.Forms.Button()
         Me.btneditusers = New System.Windows.Forms.Button()
-        Me.lblhome = New System.Windows.Forms.Label()
         Me.btnnewranking = New System.Windows.Forms.Button()
         Me.btnranking = New System.Windows.Forms.Button()
         Me.btnlikedfighters = New System.Windows.Forms.Button()
@@ -91,6 +91,17 @@ Partial Class currentadminuser
         Me.pnltab.Size = New System.Drawing.Size(1047, 72)
         Me.pnltab.TabIndex = 28
         '
+        'lblhome
+        '
+        Me.lblhome.AutoSize = True
+        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblhome.ForeColor = System.Drawing.Color.Red
+        Me.lblhome.Location = New System.Drawing.Point(-1, 0)
+        Me.lblhome.Name = "lblhome"
+        Me.lblhome.Size = New System.Drawing.Size(193, 77)
+        Me.lblhome.TabIndex = 37
+        Me.lblhome.Text = "UFDB"
+        '
         'btnrefresh
         '
         Me.btnrefresh.BackColor = System.Drawing.Color.White
@@ -112,17 +123,6 @@ Partial Class currentadminuser
         Me.btneditusers.TabIndex = 36
         Me.btneditusers.Text = "Edit users"
         Me.btneditusers.UseVisualStyleBackColor = False
-        '
-        'lblhome
-        '
-        Me.lblhome.AutoSize = True
-        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblhome.ForeColor = System.Drawing.Color.Red
-        Me.lblhome.Location = New System.Drawing.Point(-1, 0)
-        Me.lblhome.Name = "lblhome"
-        Me.lblhome.Size = New System.Drawing.Size(193, 77)
-        Me.lblhome.TabIndex = 37
-        Me.lblhome.Text = "UFDB"
         '
         'btnnewranking
         '

@@ -4,14 +4,14 @@ Imports System.IO
 Public Class Databaseeditor
 
 
-    Private fighterlist As List(Of fightermanagement)
-    Private fightlist As List(Of Fight)
+    Private currentfighterlist As List(Of fightermanagement)
+    Private currentfightlist As List(Of Fight)
 
 
     Private Sub Databaseeditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cmbselectview.SelectedIndex = 0
-        fighterlist = functions.ReadFightersFromJson
-        fightlist = functions.ReadFightsFromJson
+        currentfighterlist = functions.ReadFightersFromJson
+        currentfightlist = functions.ReadFightsFromJson
         updatedatabase()
         Datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -35,13 +35,13 @@ Public Class Databaseeditor
 
     Private Sub cmbselectview_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbselectview.SelectedIndexChanged
 
-        If fighterlist IsNot Nothing And fightlist IsNot Nothing Then
+        If currentfighterlist IsNot Nothing And currentfightlist IsNot Nothing Then
             Debug.WriteLine(cmbselectview.SelectedIndex)
             Dim answer = MessageBox.Show("Do you want to save changes before switching?", "Save Changes", MessageBoxButtons.YesNo)
             If answer = DialogResult.Yes Then
                 savedatabase()
                 MsgBox("data saved!")
-            ElseIf answer = DialogResult.no Then
+            ElseIf answer = DialogResult.No Then
                 refreshdatabase()
             End If
             updatedatabase()
@@ -55,9 +55,9 @@ Public Class Databaseeditor
     Private Sub btnsavefile_Click(sender As Object, e As EventArgs) Handles btnsavefile.Click
 
         If cmbselectview.SelectedIndex = 0 Then
-            functions.SaveToFighterJson(fighterlist)
+            functions.SaveToFighterJson(currentfighterlist)
         ElseIf cmbselectview.SelectedIndex = 1 Then
-            functions.SaveToFightJson(fightlist)
+            functions.SaveToFightJson(currentfightlist)
         End If
     End Sub
 
@@ -81,28 +81,28 @@ Public Class Databaseeditor
     Sub updatedatabase()
         If cmbselectview.SelectedIndex = 0 Then
             Datagridview.Refresh()
-            Datagridview.DataSource = New BindingSource(fighterlist, Nothing)
+            Datagridview.DataSource = New BindingSource(currentfighterlist, Nothing)
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 1 Then
             Datagridview.Refresh()
-            Datagridview.DataSource = New BindingSource(fightlist, Nothing)
+            Datagridview.DataSource = New BindingSource(currentfightlist, Nothing)
         End If
     End Sub
     Sub refreshdatabase()
         If cmbselectview.SelectedIndex = 1 Then
-            fighterlist = functions.ReadFightersFromJson
+            currentfighterlist = functions.ReadFightersFromJson
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            fightlist = functions.ReadFightsFromJson
+            currentfightlist = functions.ReadFightsFromJson
         End If
     End Sub
 
     Sub savedatabase()
         If cmbselectview.SelectedIndex = 1 Then
-         functions.SaveToFighterJson(fighterlist)
+            functions.SaveToFighterJson(currentfighterlist)
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            functions.SaveToFightJson(fightlist)
+            functions.SaveToFightJson(currentfightlist)
         End If
     End Sub
 

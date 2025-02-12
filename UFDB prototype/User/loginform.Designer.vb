@@ -28,9 +28,9 @@ Partial Class loginform
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.btnsearch = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblhome = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblhome = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -53,6 +53,7 @@ Partial Class loginform
         Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(12, 217)
         Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtpassword.Size = New System.Drawing.Size(270, 28)
         Me.txtpassword.TabIndex = 4
         '
@@ -77,6 +78,18 @@ Partial Class loginform
         Me.Panel1.Size = New System.Drawing.Size(505, 73)
         Me.Panel1.TabIndex = 20
         '
+        'lblhome
+        '
+        Me.lblhome.AutoSize = True
+        Me.lblhome.BackColor = System.Drawing.Color.Transparent
+        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblhome.ForeColor = System.Drawing.Color.Red
+        Me.lblhome.Location = New System.Drawing.Point(-1, 0)
+        Me.lblhome.Name = "lblhome"
+        Me.lblhome.Size = New System.Drawing.Size(193, 77)
+        Me.lblhome.TabIndex = 24
+        Me.lblhome.Text = "UFDB"
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -96,18 +109,6 @@ Partial Class loginform
         Me.Label3.Size = New System.Drawing.Size(114, 24)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Password:"
-        '
-        'lblhome
-        '
-        Me.lblhome.AutoSize = True
-        Me.lblhome.BackColor = System.Drawing.Color.Transparent
-        Me.lblhome.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblhome.ForeColor = System.Drawing.Color.Red
-        Me.lblhome.Location = New System.Drawing.Point(-1, 0)
-        Me.lblhome.Name = "lblhome"
-        Me.lblhome.Size = New System.Drawing.Size(193, 77)
-        Me.lblhome.TabIndex = 24
-        Me.lblhome.Text = "UFDB"
         '
         'Label6
         '

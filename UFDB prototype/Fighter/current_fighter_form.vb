@@ -3,13 +3,17 @@ Imports System.IO
 
 
 Public Class current_fighter_form
-    Public Property currentFighter As fightermanagement
+    Private currentFighter As fightermanagement
 
 
 
     Public Sub New(fighter As fightermanagement)
         InitializeComponent()
-        Me.currentFighter = fighter
+
+
+
+        Me.currentFighter = fighter ' makes form fighter into fighter passed into it
+        'hides like button if no user is logged in
         If loginform.currentuserid = 0 Then
             btnlike.Hide()
 
@@ -17,7 +21,7 @@ Public Class current_fighter_form
 
 
 
-
+        'changes labels to fit fighter stats
         Me.Text = currentFighter.Name
 
 
@@ -37,36 +41,48 @@ Public Class current_fighter_form
         lblTdLandPct.Text = "Takedown Accuracy Percentage: " & currentFighter.TakedownAccuracyPercentage & "%"
         lblTdDefPct.Text = "Takedown Defense Percentage: " & currentFighter.TakedownDefensePercentage & "%"
         lblSubAvg.Text = "Submission Average: " & currentFighter.SubmissionAverage
+
+
+        Me.chartsigstr.Series("sig strikes landed").Points.AddXY(currentFighter.Name, currentFighter.SignificantStrikesLandedPerMinute)
+        Me.chartsigstr.Series("sig str taken").Points.AddXY(currentFighter.Name, currentFighter.SignificantStrikesAbsorbedPerMinute)
+
+        Me.Charttd.Series("Takedown accuracy(%)").Points.AddXY(currentFighter.Name, currentFighter.TakedownAccuracyPercentage * 100)
+        Me.Charttd.Series("Takedown defence accuracy(%)").Points.AddXY(currentFighter.Name, currentFighter.TakedownDefensePercentage * 100)
     End Sub
 
-    Private Sub btnback_Click(sender As Object, e As EventArgs)
-        Me.Hide()
-        FighterForm.Show()
-    End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnlike.Click
+
+
+
+        ' another check to make sure a user is logged in
         If loginform.currentuserid <> 0 Then
-            Debug.WriteLine(loginform.currentuserid)
+
+
+            ' reads list of liked fighters
             Dim likedfighterlist As List(Of likedfighter) = functions.ReadlikedfightersFromJson
 
-
+            'boolean variable to check if user is already liked via lambda function that checks if there is any object with the fighter and user id
             Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
 
+            'constructs new liked fighter
             Dim likedfighter As New likedfighter
 
             likedfighter.userid = loginform.currentuserid
             likedfighter.fighterid = currentFighter.FighterId
 
-
+            'if already liked, finds object to remove and saves to json
             If alreadyLiked = True Then
                 Dim fighterToRemove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
                 likedfighterlist.Remove(fighterToRemove)
                 functions.SaveTolikedfighterJson(likedfighterlist)
                 MsgBox("Unliked" & currentFighter.Name)
             Else
+                'adds liked fighter
                 likedfighterlist.Add(likedfighter)
                 functions.SaveTolikedfighterJson(likedfighterlist)
-                MsgBox("Liked" & currentFighter.Name)
+                MsgBox("Liked " & currentFighter.Name)
             End If
         ElseIf loginform.currentuserid = 0 Then
             MsgBox("Please login to like an account")
@@ -78,22 +94,4 @@ Public Class current_fighter_form
 
 
 
-    Private Sub current_fighter_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-        Me.chartsigstr.Series("sig strikes landed").Points.AddXY(currentFighter.Name, currentFighter.SignificantStrikesLandedPerMinute)
-        Me.chartsigstr.Series("sig str taken").Points.AddXY(currentFighter.Name, currentFighter.SignificantStrikesAbsorbedPerMinute)
-
-        Me.Charttd.Series("Takedown accuracy(%)").Points.AddXY(currentFighter.Name, currentFighter.TakedownAccuracyPercentage * 100)
-        Me.Charttd.Series("Takedown defence accuracy(%)").Points.AddXY(currentFighter.Name, currentFighter.TakedownDefensePercentage * 100)
-    End Sub
-
-
-    Private Sub chartstr_Click(sender As Object, e As EventArgs) Handles chartsigstr.Click
-
-    End Sub
-
-    Private Sub lblrecord_Click(sender As Object, e As EventArgs) Handles lblrecord.Click
-
-    End Sub
 End Class

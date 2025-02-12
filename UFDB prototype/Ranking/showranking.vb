@@ -3,11 +3,14 @@ Imports System.IO
 
 Public Class showranking
 
-    Public Property formranking As ranking
+    Public Property currentranking As ranking
     Public Sub New(currentranking As ranking)
 
         ' This call is required by the designer.
         InitializeComponent()
+
+
+
         Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim currentuser As User = getcurrentuser()
@@ -34,12 +37,12 @@ Public Class showranking
 
         ' Add any initialization after the InitializeComponent() call.
 
-        Me.formranking = currentranking
-        lbltitle.Text = formranking.RankingName
-        lbldesc.Text = formranking.Rankingdesc
+        Me.currentranking = currentranking
+        lbltitle.Text = Me.currentranking.RankingName
+        lbldesc.Text = Me.currentranking.Rankingdesc
         Lbluserid.Text = ("Made by:" & listusername.username)
 
-        If formranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
+        If Me.currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             btndelete.Visible = True
             btndelete.Enabled = True
         End If
@@ -76,13 +79,13 @@ Public Class showranking
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
         Dim currentuser As User = getcurrentuser()
-        If formranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
+        If currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
-            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.RankingID = formranking.RankingID).ToList()
+            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.RankingID = currentranking.RankingID).ToList()
             Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
             fighterranks.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
-            ranklist.RemoveAll(Function(r) r.RankingID = formranking.RankingID)
+            ranklist.RemoveAll(Function(r) r.RankingID = currentranking.RankingID)
 
 
 

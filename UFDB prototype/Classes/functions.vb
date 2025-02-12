@@ -6,10 +6,10 @@ Imports System.Security.Cryptography.X509Certificates
 Public Class functions
     ' read fighters from the json file
     Public Shared Function ReadFightersFromJson() As List(Of fightermanagement)
-        If Not File.Exists("fighters_page.json") Then
+        If Not File.Exists("fighters.json") Then
             Return New List(Of fightermanagement)
         End If
-        Dim json As String = File.ReadAllText("fighters_page.json")
+        Dim json As String = File.ReadAllText("fighters.json")
         Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
     End Function
 
@@ -17,38 +17,38 @@ Public Class functions
     ' save fighters from the json file
     Public Shared Sub SaveToFighterJson(sortedfighters As List(Of fightermanagement))
         Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
-        Dim filePath As String = $"fighters_page.json"
+        Dim filePath As String = $"fighters.json"
         File.WriteAllText(filePath, json)
         ' MessageBox.Show($"Data saved to {filePath}")
     End Sub
 
     ' read fights from the json file
     Public Shared Function ReadFightsFromJson() As List(Of Fight)
-        If Not File.Exists("fights_page.json") Then
+        If Not File.Exists("fights.json") Then
             Return New List(Of Fight)
         End If
-        Dim json As String = File.ReadAllText("fights_page.json")
+        Dim json As String = File.ReadAllText("fights.json")
         Return JsonConvert.DeserializeObject(Of List(Of Fight))(json)
     End Function
     Public Shared Sub SaveToFightJson(allfights As List(Of Fight))
         Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
-        Dim filePath As String = $"fights_page.json"
+        Dim filePath As String = $"fights.json"
         File.WriteAllText(filePath, json)
 
     End Sub
 
     ' read users from the json file
     Public Shared Function ReadUsersFromJson() As List(Of User)
-        If Not File.Exists("userdata.json") Then
+        If Not File.Exists("users.json") Then
             Return New List(Of User)
         End If
-        Dim json As String = File.ReadAllText("userdata.json")
+        Dim json As String = File.ReadAllText("users.json")
         Return JsonConvert.DeserializeObject(Of List(Of User))(json)
     End Function
 
     Public Shared Sub SaveUsersToJson(users As List(Of User))
         Dim json As String = JsonConvert.SerializeObject(users, Formatting.Indented)
-        File.WriteAllText("userdata.json", json)
+        File.WriteAllText("users.json", json)
     End Sub
 
     ' read ranklists from the json file

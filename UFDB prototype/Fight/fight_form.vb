@@ -8,64 +8,70 @@ Imports System.Text.RegularExpressions
 
 
 Public Class fight_form
-    Private fightlist As List(Of Fight)
+    Private currentfightlist As List(Of Fight) 'the current fight list the user sees
     Private Sub fight_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-
+        'makes layout scrollable
         FlowLayoutPanel1.VerticalScroll.Visible = True
         FlowLayoutPanel1.HorizontalScroll.Visible = True
+
+        'resets all sorting/ filter methods
         cmbsort.SelectedIndex = 0
         cmbweightclass.SelectedIndex = 0
-
         If cmbsort.Items.Count > 0 Then cmbsort.SelectedIndex = 0
         If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
         DateTimePicker1.Checked = False
 
 
-
+        'reads new fight list
         Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+
+
         Dim ilow As Integer = 0
         Dim ihigh As Integer = fights.Count - 1
-
         Dim sortdirection As Integer = cmbsort.SelectedIndex
 
 
+        'sorts fight list via merge sort
+        Dim fightlistfiltered As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
+        'saves filtered list into currentfightlist and saves to json
+        currentfightlist = fightlistfiltered
+        functions.SaveToFightJson(fightlistfiltered)
 
-        Dim sortedfights As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
-        fightlist = sortedfights
-        functions.SaveToFightJson(sortedfights)
 
-        Dim uniqueLocations = sortedfights.Select(Function(s) s.location).Distinct().ToList()
+        'adds all distinct fight locations to a list
+        Dim fightlocations = fightlistfiltered.Select(Function(s) s.location).Distinct().ToList()
         cmblocation.Items.Add("All")
-        For Each location As String In uniqueLocations
+
+        'list is used to populate combo select box
+        For Each location As String In fightlocations
             cmblocation.Items.Add(location)
         Next
         cmblocation.SelectedItem = "All"
 
 
-
-        updatebuttons(fightlist)
+        'populates flow layout panel
+        updatebuttons(currentfightlist)
     End Sub
 
 
-    'when a button in the flow control panel is picked (fighter edition
+    'when a button in the flow control panel is picked 
     Private Sub Button_Click(sender As Object, e As EventArgs)
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
 
-        'gets tag of button which is the fighters place in the list
+        'gets tag/index of button which is the fights place in the list
         Dim fightIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
-        'need to find a way to optimise / reuse code
 
 
 
 
 
         'finds current fight
-        Dim currentfight As Fight = fightlist(fightIndex)
+        Dim currentfight As Fight = currentfightlist(fightIndex)
 
         'sends current fight data over to the current fighter form
         Dim fightForm As New currentFightForm(currentfight)
@@ -80,18 +86,27 @@ Public Class fight_form
     End Sub
 
 
-
+    'merge sort
 
 
 
     Function mergesortevents(ByRef fights As List(Of Fight), ilow As Integer, ihigh As Integer, sortdirection As Integer) As List(Of Fight)
+
+        ' if lower index is greater than/equal to higher index, return the fight list
         If ilow >= ihigh Then
             Return fights
         Else
+
+            'find pivot
             Dim imiddle As Integer = ilow + (ihigh - ilow) \ 2
+            'sort the left half recursively
             mergesortevents(fights, ilow, imiddle, sortdirection)
+            'sort the right half recursively
             mergesortevents(fights, imiddle + 1, ihigh, sortdirection)
+            'merge halves together
             fights = mergeevents(fights, ilow, imiddle, ihigh, sortdirection)
+
+
             Return fights
         End If
     End Function
@@ -99,20 +114,25 @@ Public Class fight_form
 
 
     Function mergeevents(ByRef fights As List(Of Fight), ilow As Integer, imiddle As Integer, ihigh As Integer, sortdirection As Integer) As List(Of Fight)
+        'creates size of left and right sub-arrays
         Dim upperleft As Integer = imiddle - ilow + 1
         Dim upperright As Integer = ihigh - imiddle
 
+        'creates new arrays to store the halves
         Dim fightslefthalf(upperleft - 1) As Fight
         Dim fightsrighthalf(upperright - 1) As Fight
 
-        Dim pointer1 As Integer
-        Dim pointer2 As Integer
-        Dim pointer3 As Integer
+        Dim pointer1 As Integer 'left half pointer
+        Dim pointer2 As Integer 'right half pointer
+        Dim pointer3 As Integer ' pointer for merged list
 
+
+        'adds data to left half
         For pointer1 = 0 To upperleft - 1
             fightslefthalf(pointer1) = fights(ilow + pointer1)
         Next
 
+        'adds data to right half
         For pointer2 = 0 To upperright - 1
             fightsrighthalf(pointer2) = fights(imiddle + 1 + pointer2)
         Next
@@ -121,9 +141,13 @@ Public Class fight_form
         pointer2 = 0
         pointer3 = ilow
 
+        'sort direction determines whether it is ascending or descending 
         If sortdirection = 0 Then
             ' Change comparison to sort in descending order
+
+            'while both halves have items, it will merge
             While pointer1 < upperleft AndAlso pointer2 < upperright
+                'compare fight dates and merge if needed
                 If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) >= 0 Then
                     fights(pointer3) = fightslefthalf(pointer1)
                     pointer1 += 1
@@ -134,17 +158,21 @@ Public Class fight_form
                 pointer3 += 1
             End While
 
+            'add remaining items from left half
             While pointer1 < upperleft
                 fights(pointer3) = fightslefthalf(pointer1)
                 pointer1 += 1
                 pointer3 += 1
             End While
 
+            'add remaining items from right half
             While pointer2 < upperright
                 fights(pointer3) = fightsrighthalf(pointer2)
                 pointer2 += 1
                 pointer3 += 1
             End While
+
+
         ElseIf sortdirection = 1 Then
             While pointer1 < upperleft AndAlso pointer2 < upperright
                 If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) <= 0 Then
@@ -171,24 +199,22 @@ Public Class fight_form
 
         End If
 
+        'return merged list
         Return fights
 
 
     End Function
 
 
-    Private Sub btnsort_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Sub updatebuttons(sortedfights As List(Of Fight), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fightlist As List(Of Fight), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
 
 
-        sortedfights = checkfilters(sortedfights)
-        fightlist = sortedfights
+        fightlist = checkfilters(fightlist)
+        currentfightlist = fightlist
 
         If cmbsort.SelectedItem IsNot Nothing Then
             lblsorted.Text = cmbsort.SelectedItem.ToString()
@@ -196,7 +222,7 @@ Public Class fight_form
 
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fights
-        Dim endIndex As Integer = Math.Min(startIndex + count, sortedfights.Count)
+        Dim endIndex As Integer = Math.Min(startIndex + count, fightlist.Count)
 
 
         If startIndex > 0 Then
@@ -216,7 +242,7 @@ Public Class fight_form
 
             'adds an event handler to update buttons
             AddHandler btnback.Click, Sub()
-                                          updatebuttons(sortedfights, endIndex - 100)
+                                          updatebuttons(fightlist, endIndex - 100)
                                       End Sub
             FlowLayoutPanel1.Controls.Add(btnback)
 
@@ -227,25 +253,25 @@ Public Class fight_form
         For i = startIndex To endIndex - 1
 
 
-            Dim btn As New Button
-            btn.Width = 100
-            btn.Height = 120
-            btn.TextAlign = ContentAlignment.MiddleCenter
-            btn.BackColor = Color.White
-            btn.Text = sortedfights(i).event_name & vbCrLf & vbCrLf & " " & sortedfights(i).fighter1 & vbCrLf & " VS " & vbCrLf & sortedfights(i).fighter2
-            btn.Visible = True
-            btn.Tag = i
-            btn.Font = New Font("Clash Display", 9, FontStyle.Regular)
+            Dim btnfight As New Button
+            btnfight.Width = 100
+            btnfight.Height = 120
+            btnfight.TextAlign = ContentAlignment.MiddleCenter
+            btnfight.BackColor = Color.White
+            btnfight.Text = fightlist(i).event_name & vbCrLf & vbCrLf & " " & fightlist(i).fighter1 & vbCrLf & " VS " & vbCrLf & fightlist(i).fighter2
+            btnfight.Visible = True
+            btnfight.Tag = i
+            btnfight.Font = New Font("Clash Display", 9, FontStyle.Regular)
 
-            AddHandler btn.Click, AddressOf Button_Click
+            AddHandler btnfight.Click, AddressOf Button_Click
 
-            FlowLayoutPanel1.Controls.Add(btn)
+            FlowLayoutPanel1.Controls.Add(btnfight)
 
 
         Next
 
         'creates a load more button if needed
-        If endIndex < sortedfights.Count Then
+        If endIndex < fightlist.Count Then
 
 
             Dim btnloadmore As New Button
@@ -261,7 +287,7 @@ Public Class fight_form
 
             'adds an event handler to update buttons
             AddHandler btnloadmore.Click, Sub()
-                                              updatebuttons(sortedfights, endIndex)
+                                              updatebuttons(fightlist, endIndex)
                                           End Sub
             FlowLayoutPanel1.Controls.Add(btnloadmore)
 
@@ -284,20 +310,20 @@ Public Class fight_form
 
 
             Dim searchedfights As List(Of Fight) = bsearchevent(fights, numtofind, indexlow, indexhigh)
-            fightlist = searchedfights
+            currentfightlist = searchedfights
 
         End If
 
         If txtfighter.Text <> "" Then
 
             Dim fightertofind As String = txtfighter.Text
-            Dim fighterfightlist As List(Of Fight)
-            fighterfightlist = fightlist.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
-            fightlist = fighterfightlist
+            Dim searchedfighter_fightlist As List(Of Fight)
+            searchedfighter_fightlist = currentfightlist.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
+            currentfightlist = searchedfighter_fightlist
 
         End If
 
-        updatebuttons(fightlist)
+        updatebuttons(currentfightlist)
 
     End Sub
 
@@ -376,8 +402,8 @@ Public Class fight_form
 
     Public Function ParseEventNumber(eventName As String) As Integer?
 
-        Dim regex As New Regex("\bUFC\s+(\d+)\b", RegexOptions.IgnoreCase)
-        Dim match As Match = regex.Match(eventName)
+        Dim eventregex As New Regex("\bUFC\s+(\d+)\b", RegexOptions.IgnoreCase)
+        Dim match As Match = eventregex.Match(eventName)
 
         If match.Success Then
 
@@ -388,37 +414,102 @@ Public Class fight_form
         End If
     End Function
 
-    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
 
+
+
+
+    Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        currentfightlist = fights
+        updatebuttons(currentfightlist)
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs)
 
+
+
+
+    Function checkfilters(fightlist As List(Of Fight))
+
+
+        Dim selectedWeightClass As String = ""
+        Dim selectedlocation As String = ""
+        Dim selecteddate As DateTime
+        Dim filteredFights As List(Of Fight) = fightlist
+        Dim sortdirection As Integer = cmbsort.SelectedIndex
+
+
+
+
+        If cmbweightclass.SelectedItem IsNot Nothing Then
+            selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+
+        End If
+        If cmblocation.SelectedItem IsNot Nothing Then
+            selectedlocation = cmblocation.SelectedItem.ToString()
+
+        End If
+        If DateTimePicker1.Checked = True Then
+            selecteddate = DateTimePicker1.Value.Date
+
+        End If
+
+
+        ' Filter fighters based on the selected weight class
+
+        If Not String.IsNullOrEmpty(selectedWeightClass) And selectedWeightClass <> "All" Then
+
+            filteredFights = fightlist.Where(Function(f) f.weight_class = selectedWeightClass).ToList()
+
+        End If
+
+        If Not String.IsNullOrEmpty(selectedlocation) And selectedlocation <> "All" Then
+            filteredFights = filteredFights.Where(Function(f) f.location = selectedlocation).ToList()
+
+        End If
+
+        If DateTimePicker1.Checked = True Then
+            filteredFights = filteredFights.Where(Function(f) f.date.Date = selecteddate.Date).ToList()
+
+        End If
+
+        Dim ilow As Integer = 0
+        Dim ihigh As Integer = filteredFights.Count - 1
+        filteredFights = mergesortevents(filteredFights, ilow, ihigh, sortdirection)
+
+
+
+        Return filteredFights
+
+
+    End Function
+    Sub childform(ByVal panel As Form)
+        pnlcurrentfight.Controls.Clear()
+        panel.TopLevel = False
+        pnlcurrentfight.Controls.Add(panel)
+        panel.Show()
     End Sub
 
-    Private Sub Btnback_Click(sender As Object, e As EventArgs)
+    Private Sub cmblocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmblocation.SelectedIndexChanged
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
+        updatebuttons(filteredfightlist)
+    End Sub
+
+
+    Private Sub Label4_Click_1(sender As Object, e As EventArgs) Handles Label4.Click
         Form1.Show()
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
 
+    Private Sub Formvisible(sender As Object, e As EventArgs) Handles Me.VisibleChanged
 
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
-        Dim fightertofind As String = txtfighter.Text
-        Dim fighterfightlist As List(Of Fight)
-        fighterfightlist = fights.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
-        fightlist = fighterfightlist
-        updatebuttons(fightlist)
+        If Me.Visible Then
+
+        End If
     End Sub
 
-    Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
-        fightlist = fights
-        updatebuttons(fightlist)
-    End Sub
-
-
+    'filter checks
 
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
         Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
@@ -438,91 +529,4 @@ Public Class fight_form
         updatebuttons(filteredfightlist)
     End Sub
 
-    Function checkfilters(fightlist As List(Of Fight))
-
-
-        Dim selectedWeightClass As String = ""
-        Dim selectedlocation As String = ""
-        Dim selecteddate As DateTime
-        Dim filteredFights As List(Of Fight) = fightlist
-        Dim sortdirection As Integer = cmbsort.SelectedIndex
-
-
-        Debug.WriteLine("initial fight count" & filteredFights.Count)
-
-        If cmbweightclass.SelectedItem IsNot Nothing Then
-            selectedWeightClass = cmbweightclass.SelectedItem.ToString()
-            Debug.WriteLine(selectedWeightClass)
-        End If
-        If cmblocation.SelectedItem IsNot Nothing Then
-            selectedlocation = cmblocation.SelectedItem.ToString()
-            Debug.WriteLine("location" & selectedlocation)
-        End If
-        If DateTimePicker1.Checked = True Then
-            selecteddate = DateTimePicker1.Value.Date
-
-        End If
-
-
-        ' Filter fighters based on the selected weight class
-
-        If Not String.IsNullOrEmpty(selectedWeightClass) And selectedWeightClass <> "All" Then
-            Debug.WriteLine("selected weightclass =" & selectedWeightClass)
-            filteredFights = fightlist.Where(Function(f) f.weight_class = selectedWeightClass).ToList()
-            Debug.WriteLine("1 fight count" & filteredFights.Count)
-        End If
-
-        If Not String.IsNullOrEmpty(selectedlocation) And selectedlocation <> "All" Then
-            filteredFights = filteredFights.Where(Function(f) f.location = selectedlocation).ToList()
-            Debug.WriteLine("2 fight count" & filteredFights.Count)
-        End If
-
-        If DateTimePicker1.Checked = True Then
-            filteredFights = filteredFights.Where(Function(f) f.date.Date = selecteddate.Date).ToList()
-            Debug.WriteLine("3 fight count" & filteredFights.Count)
-        End If
-
-        Dim ilow As Integer = 0
-        Dim ihigh As Integer = filteredFights.Count - 1
-        filteredFights = mergesortevents(filteredFights, ilow, ihigh, sortdirection)
-
-        Debug.WriteLine("done")
-
-        Return filteredFights
-
-
-    End Function
-    Sub childform(ByVal panel As Form)
-        pnlcurrentfight.Controls.Clear()
-        panel.TopLevel = False
-        pnlcurrentfight.Controls.Add(panel)
-        panel.Show()
-    End Sub
-
-    Private Sub cmblocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmblocation.SelectedIndexChanged
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
-        Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
-        updatebuttons(filteredfightlist)
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub lblsorted_Click(sender As Object, e As EventArgs) Handles lblsorted.Click
-
-    End Sub
-
-    Private Sub Label4_Click_1(sender As Object, e As EventArgs) Handles Label4.Click
-        Form1.Show()
-        Me.Close()
-    End Sub
-
-
-    Private Sub Formvisible(sender As Object, e As EventArgs) Handles Me.VisibleChanged
-
-        If Me.Visible Then
-
-        End If
-    End Sub
 End Class

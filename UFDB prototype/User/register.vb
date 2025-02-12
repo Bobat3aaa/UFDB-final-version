@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
 
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Newtonsoft.Json
@@ -22,14 +23,20 @@ Public Class register
 
         If txtpassword.Text = txtpasswordagain.Text Then
             newpassword = txtpassword.Text
-            If validatepassword(newpassword) = True Then
-                If validateemail(newemail) = True Then
-                    Adduser(newusername, newpassword, newage, newemail)
+            If validateusername(newusername) = False Then
+                If validatepassword(newpassword) = True Then
+                    If validateemail(newemail) = False Then
+                        Adduser(newusername, newpassword, newage, newemail)
+                    Else
+                        MsgBox("Email not valid, or already taken")
+                    End If
                 Else
-                    MsgBox("Email not valid")
+                    MsgBox("Password must have 8-32 characters, one special character and a capital letter")
                 End If
             Else
-                MsgBox("Email must have 8-32 characters, one special character and a capital letter")
+                MsgBox("Username is already taken")
+
+
             End If
         Else
             MsgBox("These passwords do not match each other.")
@@ -146,8 +153,21 @@ Public Class register
 
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
+        Dim match As Boolean = False
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
         Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        Return emailExpression.IsMatch(email)
+        match = emailExpression.IsMatch(email)
+        If match = False Then
+            Return match
+        Else
+            match = users.Any(Function(u) u.email = email)
+            Return match
+        End If
+
+
+
+
+
     End Function
 
     Private Sub Btnback_Click(sender As Object, e As EventArgs)
@@ -163,4 +183,11 @@ Public Class register
         Form1.Show()
         Me.Close()
     End Sub
+
+    Function validateusername(username As String) As Boolean
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
+        Dim match As Boolean = False
+        match = users.Any(Function(u) u.username = username)
+        Return match
+    End Function
 End Class

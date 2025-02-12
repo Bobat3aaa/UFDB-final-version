@@ -29,8 +29,8 @@ Partial Class register
         Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.Btnregister = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblpasswordcheck = New System.Windows.Forms.Label()
         Me.lblhome = New System.Windows.Forms.Label()
+        Me.lblpasswordcheck = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -71,6 +71,7 @@ Partial Class register
         Me.txtpasswordagain.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpasswordagain.Location = New System.Drawing.Point(22, 292)
         Me.txtpasswordagain.Name = "txtpasswordagain"
+        Me.txtpasswordagain.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtpasswordagain.Size = New System.Drawing.Size(242, 28)
         Me.txtpasswordagain.TabIndex = 3
         '
@@ -79,6 +80,7 @@ Partial Class register
         Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(22, 233)
         Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtpassword.Size = New System.Drawing.Size(242, 28)
         Me.txtpassword.TabIndex = 4
         '
@@ -103,17 +105,6 @@ Partial Class register
         Me.Panel1.Size = New System.Drawing.Size(808, 74)
         Me.Panel1.TabIndex = 21
         '
-        'lblpasswordcheck
-        '
-        Me.lblpasswordcheck.AutoSize = True
-        Me.lblpasswordcheck.Font = New System.Drawing.Font("Supreme", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblpasswordcheck.Location = New System.Drawing.Point(12, 16)
-        Me.lblpasswordcheck.Name = "lblpasswordcheck"
-        Me.lblpasswordcheck.Size = New System.Drawing.Size(161, 100)
-        Me.lblpasswordcheck.TabIndex = 22
-        Me.lblpasswordcheck.Text = "Password must have:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8-32 characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 special characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 capital letters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 " &
-    "number"
-        '
         'lblhome
         '
         Me.lblhome.AutoSize = True
@@ -125,6 +116,17 @@ Partial Class register
         Me.lblhome.Size = New System.Drawing.Size(193, 77)
         Me.lblhome.TabIndex = 23
         Me.lblhome.Text = "UFDB"
+        '
+        'lblpasswordcheck
+        '
+        Me.lblpasswordcheck.AutoSize = True
+        Me.lblpasswordcheck.Font = New System.Drawing.Font("Supreme", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblpasswordcheck.Location = New System.Drawing.Point(12, 16)
+        Me.lblpasswordcheck.Name = "lblpasswordcheck"
+        Me.lblpasswordcheck.Size = New System.Drawing.Size(161, 100)
+        Me.lblpasswordcheck.TabIndex = 22
+        Me.lblpasswordcheck.Text = "Password must have:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8-32 characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 special characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 capital letters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 " &
+    "number"
         '
         'Label6
         '

@@ -57,6 +57,7 @@ Partial Class Changepassword
         Me.txtpassword.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(10, 108)
         Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtpassword.Size = New System.Drawing.Size(457, 33)
         Me.txtpassword.TabIndex = 12
         '
@@ -65,6 +66,7 @@ Partial Class Changepassword
         Me.txtnewpassword.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnewpassword.Location = New System.Drawing.Point(10, 186)
         Me.txtnewpassword.Name = "txtnewpassword"
+        Me.txtnewpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtnewpassword.Size = New System.Drawing.Size(457, 33)
         Me.txtnewpassword.TabIndex = 11
         '

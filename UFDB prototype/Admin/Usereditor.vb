@@ -2,17 +2,17 @@
 
 Public Class Usereditor
 
-    Private userlist As List(Of User)
-    Private ranklist As List(Of ranking)
-    Private fighterranklist As List(Of fighterranking)
-    Private likedfighterlist As List(Of likedfighter)
+    Private currentuserlist As List(Of User) 'user list to be saved
+    Private currentranklist As List(Of ranking) ' rank list to be saved
+    Private currentfighterranklist As List(Of fighterranking) ' fighter-rank list to be saved
+    Private currentlikedfighterlist As List(Of likedfighter) 'liked-fighter list to be saved
 
     Private Sub Usereditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        userlist = functions.ReadUsersFromJson
-        ranklist = functions.ReadRanklistsFromJson
-        fighterranklist = functions.ReadFighterranksFromFile
-        likedfighterlist = functions.ReadlikedfightersFromJson
+        currentuserlist = functions.ReadUsersFromJson
+        currentranklist = functions.ReadRanklistsFromJson
+        currentfighterranklist = functions.ReadFighterranksFromFile
+        currentlikedfighterlist = functions.ReadlikedfightersFromJson
 
 
         updatedatabase()
@@ -22,27 +22,37 @@ Public Class Usereditor
 
     Private Sub updatedatabase()
         Datagridview.Refresh()
-        Datagridview.DataSource = New BindingSource(userlist, Nothing)
+        Datagridview.DataSource = New BindingSource(currentuserlist, Nothing)
     End Sub
 
     Private Sub btnadd_Click(sender As Object, e As EventArgs) Handles btnadd.Click
+
+
+
         Dim newusername As String = txtusername.Text
         Dim newpassword As String = txtpassword.Text
         Dim newage As Integer = Val(Txtage.Text)
         Dim newemail As String = txtemail.Text
         Dim admindecision As Boolean = Checkadmin.Checked
+
+
+
+
         Debug.WriteLine(admindecision)
-        If validatepassword(newpassword) = True Then
-            If validateemail(newemail) = True Then
-                Adduser(newusername, newpassword, newage, newemail, admindecision)
+        If validateusername(newusername) = False Then
+            If validatepassword(newpassword) = True Then
+                If validateemail(newemail) = False Then
+                    Adduser(newusername, newpassword, newage, newemail, admindecision)
+                Else
+                    MsgBox("Email not valid or already taken")
+                End If
             Else
-                MsgBox("Email not valid")
+                MsgBox("Email must have 8-32 characters, one special character and a capital letter")
+
             End If
         Else
-            MsgBox("Email must have 8-32 characters, one special character and a capital letter")
-
+            MsgBox("Username is already taken")
         End If
-
 
         updatedatabase()
 
@@ -56,17 +66,19 @@ Public Class Usereditor
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
+
+
         Dim usertodelete As User
 
 
 
         If Datagridview.SelectedRows(0).DataBoundItem IsNot Nothing Then
             usertodelete = CType(Datagridview.SelectedRows(0).DataBoundItem, User)
-            likedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.UserID)
-            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.UserID = usertodelete.UserID).ToList()
+            currentlikedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.UserID)
+            Dim rankingstoremove As List(Of ranking) = currentranklist.Where(Function(r) r.UserID = usertodelete.UserID).ToList()
             Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
-            fighterranklist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
-            ranklist.RemoveAll(Function(r) r.UserID = usertodelete.UserID)
+            currentfighterranklist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
+            currentranklist.RemoveAll(Function(r) r.UserID = usertodelete.UserID)
         End If
 
 
@@ -79,10 +91,10 @@ Public Class Usereditor
 
     Private Sub btnsavefile_Click(sender As Object, e As EventArgs) Handles btnsavefile.Click
 
-        functions.SaveUsersToJson(userlist)
-        functions.SaveToFighterranksJson(fighterranklist)
-        functions.SaveTolikedfighterJson(likedfighterlist)
-        functions.SaveToRanklistJson(ranklist)
+        functions.SaveUsersToJson(currentuserlist)
+        functions.SaveToFighterranksJson(currentfighterranklist)
+        functions.SaveTolikedfighterJson(currentlikedfighterlist)
+        functions.SaveToRanklistJson(currentranklist)
     End Sub
 
     Private Sub Adduser(newusername, newpassword, newage, newemail, admin)
@@ -102,9 +114,9 @@ Public Class Usereditor
         newuser.Admin = admin
         'make list of existing users
 
-        newuser.UserID = GetNextUserID(userlist)
+        newuser.UserID = GetNextUserID(currentuserlist)
         If ValidateUser(newuser) Then
-            userlist.Add(newuser)
+            currentuserlist.Add(newuser)
 
             MsgBox("New user added!")
         Else
@@ -153,18 +165,31 @@ Public Class Usereditor
     End Function
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
+        Dim match As Boolean = False
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
         Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        Return emailExpression.IsMatch(email)
+        match = emailExpression.IsMatch(email)
+        If match = False Then
+            Return match
+        Else
+            match = users.Any(Function(u) u.email = email)
+            Return match
+        End If
+
+
+
+
+
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim answer = MessageBox.Show("This will remove all changes made. Do you want to continue?", "Clear", MessageBoxButtons.YesNo)
         If answer = DialogResult.Yes Then
 
-            userlist = functions.ReadUsersFromJson
-            ranklist = functions.ReadRanklistsFromJson
-            fighterranklist = functions.ReadFighterranksFromFile
-            likedfighterlist = functions.ReadlikedfightersFromJson
+            currentuserlist = functions.ReadUsersFromJson
+            currentranklist = functions.ReadRanklistsFromJson
+            currentfighterranklist = functions.ReadFighterranksFromFile
+            currentlikedfighterlist = functions.ReadlikedfightersFromJson
             updatedatabase()
 
         End If
@@ -172,4 +197,10 @@ Public Class Usereditor
 
 
     End Sub
+    Function validateusername(username As String) As Boolean
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
+        Dim match As Boolean = False
+        match = users.Any(Function(u) u.username = username)
+        Return match
+    End Function
 End Class

@@ -41,32 +41,34 @@ Public Class currentadminuser
         Dim allfighters As New List(Of fightermanagement)
         Dim answer As HttpResponseMessage
         Dim i As Integer = 1
-        Dim moredata As Boolean = True
+        Dim morefighters As Boolean = True
 
-        While moredata = True
+        While morefighters = True
+
+
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fighters?page=" & i
-            Debug.WriteLine(apiurl)
+
             answer = Await httpclient.GetAsync(apiurl)
 
             If answer.IsSuccessStatusCode Then
 
                 'turns api into string
-                Dim responsecontent As String = Await answer.Content.ReadAsStringAsync()
+                Dim fightercontent As String = Await answer.Content.ReadAsStringAsync()
 
 
 
 
-                Dim response As FighterResponse = JsonConvert.DeserializeObject(Of FighterResponse)(responsecontent)
-                If response IsNot Nothing AndAlso response.fighters IsNot Nothing AndAlso response.fighters.Count > 0 Then
-                    allfighters.AddRange(response.fighters)
+                Dim fighterresponse As FighterResponse = JsonConvert.DeserializeObject(Of FighterResponse)(fightercontent)
+                If fighterresponse IsNot Nothing AndAlso fighterresponse.fighters IsNot Nothing AndAlso fighterresponse.fighters.Count > 0 Then
+                    allfighters.AddRange(fighterresponse.fighters)
                     i += 1
                 Else
-                    moredata = False
+                    morefighters = False
                 End If
 
 
             Else
-                moredata = False
+                morefighters = False
             End If
         End While
         Debug.WriteLine(allfighters.Count)
@@ -75,10 +77,10 @@ Public Class currentadminuser
     Public Async Function fetchfights(httpclient As HttpClient) As Task
         Dim allFights As New List(Of Fight)
         Dim i As Integer = 1
-        Dim moredata As Boolean = True
+        Dim morefights As Boolean = True
         Dim answer As HttpResponseMessage
 
-        While moredata = True
+        While morefights = True
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fights?page=" & i
 
             answer = Await httpclient.GetAsync(apiurl)
@@ -86,23 +88,23 @@ Public Class currentadminuser
             If answer.IsSuccessStatusCode Then
 
                 'turns api into string
-                Dim responsecontent As String = Await answer.Content.ReadAsStringAsync()
+                Dim fightcontent As String = Await answer.Content.ReadAsStringAsync()
 
 
 
 
-                Dim response As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(responsecontent)
+                Dim fightresponse As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(fightcontent)
 
-                If response IsNot Nothing AndAlso response.fights IsNot Nothing AndAlso response.fights.Count > 0 Then
-                    allFights.AddRange(response.fights)
+                If fightresponse IsNot Nothing AndAlso fightresponse.fights IsNot Nothing AndAlso fightresponse.fights.Count > 0 Then
+                    allFights.AddRange(fightresponse.fights)
                     i += 1
                 Else
-                    moredata = False
+                    morefights = False
 
                 End If
 
             Else
-                moredata = False
+                morefights = False
             End If
 
         End While
@@ -151,6 +153,10 @@ Public Class currentadminuser
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub panelmain_Paint(sender As Object, e As PaintEventArgs) Handles panelmain.Paint
 
     End Sub
 End Class

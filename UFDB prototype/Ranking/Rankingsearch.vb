@@ -5,7 +5,7 @@ Imports System.Net
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class Rankingsearch
-    Private globalranklist As List(Of ranking)
+    Private currentranklist As List(Of ranking)
 
 
 
@@ -20,15 +20,15 @@ Public Class Rankingsearch
 
         Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
         functions.SaveToRanklistJson(sortedranklist)
-        globalranklist = sortedranklist
+        currentranklist = sortedranklist
 
-        updatebuttons(globalranklist)
+        updatebuttons(currentranklist)
 
     End Sub
 
 
 
-    Sub updatebuttons(sortedranklist As List(Of ranking), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(ranklist As List(Of ranking), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -37,7 +37,7 @@ Public Class Rankingsearch
 
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-        Dim endIndex As Integer = Math.Min(startIndex + count, sortedranklist.Count)
+        Dim endIndex As Integer = Math.Min(startIndex + count, ranklist.Count)
 
 
 
@@ -58,7 +58,7 @@ Public Class Rankingsearch
 
             'adds an event handler to update buttons
             AddHandler btnback.Click, Sub()
-                                          updatebuttons(sortedranklist, endIndex - 100)
+                                          updatebuttons(ranklist, endIndex - 100)
                                       End Sub
             FlowLayoutPanel1.Controls.Add(btnback)
 
@@ -70,28 +70,28 @@ Public Class Rankingsearch
         For i = startIndex To endIndex - 1
 
 
-            Dim btn As New Button
-            btn.Width = 100
-            btn.Height = 50
-            btn.BackColor = Color.White
-            btn.TextAlign = ContentAlignment.MiddleCenter
+            Dim btnlists As New Button
+            btnlists.Width = 100
+            btnlists.Height = 50
+            btnlists.BackColor = Color.White
+            btnlists.TextAlign = ContentAlignment.MiddleCenter
 
-            btn.Text = sortedranklist(i).RankingName
-            btn.Visible = True
-            btn.Tag = i
-            globalranklist = sortedranklist
+            btnlists.Text = ranklist(i).RankingName
+            btnlists.Visible = True
+            btnlists.Tag = i
+            currentranklist = ranklist
 
 
 
-            AddHandler btn.Click, AddressOf Button_Click
+            AddHandler btnlists.Click, AddressOf Button_Click
 
-            FlowLayoutPanel1.Controls.Add(btn)
+            FlowLayoutPanel1.Controls.Add(btnlists)
 
 
         Next
 
         'creates a load more button if needed
-        If endIndex < sortedranklist.Count Then
+        If endIndex < ranklist.Count Then
 
 
             Dim btnloadmore As New Button
@@ -109,7 +109,7 @@ Public Class Rankingsearch
 
             'adds an event handler to update buttons
             AddHandler btnloadmore.Click, Sub()
-                                              updatebuttons(sortedranklist, endIndex)
+                                              updatebuttons(ranklist, endIndex)
                                           End Sub
             FlowLayoutPanel1.Controls.Add(btnloadmore)
 
@@ -236,14 +236,18 @@ Public Class Rankingsearch
         Dim indexhigh As Integer = ranklist.Count - 1
         Dim searchedrankindex As Integer
         Dim searchedranklist As New List(Of ranking)
+
+
+
+
         searchedrankindex = bsearchranklist(ranklist, nametofind, indexlow, indexhigh)
-        Debug.WriteLine(searchedrankindex)
+
 
 
         If searchedrankindex <> -1 Then
             searchedranklist.Clear()
-            searchedranklist.Add(globalranklist(searchedrankindex))
-            globalranklist = searchedranklist
+            searchedranklist.Add(currentranklist(searchedrankindex))
+            currentranklist = searchedranklist
 
         End If
 
@@ -262,11 +266,11 @@ Public Class Rankingsearch
 
     Private Sub cmbownlists_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbownlists.SelectedIndexChanged
 
-        Dim filteredlist As List(Of ranking) = checkfilters(globalranklist)
+        Dim filteredlist As List(Of ranking) = checkfilters(currentranklist)
         If filteredlist IsNot Nothing Then
             updatebuttons(filteredlist)
         Else
-            updatebuttons(globalranklist)
+            updatebuttons(currentranklist)
         End If
     End Sub
     Function checkfilters(ranklist As List(Of ranking))
