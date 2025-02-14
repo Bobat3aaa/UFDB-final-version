@@ -1,4 +1,5 @@
 ﻿Imports Newtonsoft.Json
+Imports System.Configuration
 
 Imports System.IO
 Imports System.Net
@@ -32,7 +33,7 @@ Public Class Rankingsearch
 
 
         FlowLayoutPanel1.Controls.Clear()
-
+        Dim userlist As List(Of User) = functions.ReadUsersFromJson
 
 
 
@@ -69,14 +70,16 @@ Public Class Rankingsearch
         'creates 50 buttons
         For i = startIndex To endIndex - 1
 
+            Dim user As User = userlist.FirstOrDefault(Function(u) u.UserID = ranklist(i).UserID)
+
 
             Dim btnlists As New Button
             btnlists.Width = 100
-            btnlists.Height = 50
+            btnlists.Height = 100
             btnlists.BackColor = Color.White
             btnlists.TextAlign = ContentAlignment.MiddleCenter
 
-            btnlists.Text = ranklist(i).RankingName
+            btnlists.Text = ranklist(i).RankingName & vbCrLf & "Made by:" & user.username & vbCrLf & ranklist(i).Rankingdatemade
             btnlists.Visible = True
             btnlists.Tag = i
             currentranklist = ranklist
@@ -119,16 +122,15 @@ Public Class Rankingsearch
     End Sub
 
 
-    'when a button in the flow control panel is picked (fighter edition
     Private Sub Button_Click(sender As Object, e As EventArgs)
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
 
-        'gets tag of button which is the fighters place in the list
+        'gets the tag of ranking/button
         Dim rankIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
-        'need to find a way to optimise / reuse code
+
 
         Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0
@@ -138,63 +140,66 @@ Public Class Rankingsearch
         Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
 
 
-        'finds current fighter
+        'finds current ranking
         Dim currentranking As ranking = sortedranklist(rankIndex)
 
-        'sends current fighter data over to the current fighter form
-        Debug.WriteLine(currentranking.UserID)
 
 
+        'opens cureentranking form with ranking chosen
         Dim rankingform As New showranking(currentranking)
 
 
 
         rankingform.Show()
+
     End Sub
 
-    Function Quicksort(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking)
+    Function Quicksort(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking) 'quicksort used in other forms
 
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
 
+        If ranklist Is Nothing Or ranklist.Count <= 0 Then
+            Return New List(Of ranking)
+        Else
 
 
 
+            pivot = ranklist(Int((indexlow + indexhigh) / 2)).RankingName
 
-        pivot = ranklist(Int((indexlow + indexhigh) / 2)).RankingName
+            While templow <= temphigh
+                While String.Compare(ranklist(templow).RankingName, pivot) < 0
+                    templow += 1
+                End While
 
-        While templow <= temphigh
-            While String.Compare(ranklist(templow).RankingName, pivot) < 0
-                templow += 1
+                While String.Compare(ranklist(temphigh).RankingName, pivot) > 0
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    Dim temprank As ranking = ranklist(templow)
+                    ranklist(templow) = ranklist(temphigh)
+                    ranklist(temphigh) = temprank
+                    templow += 1
+                    temphigh -= 1
+                End If
             End While
 
-            While String.Compare(ranklist(temphigh).RankingName, pivot) > 0
-                temphigh -= 1
-            End While
 
-            If templow <= temphigh Then
-                Dim temprank As ranking = ranklist(templow)
-                ranklist(templow) = ranklist(temphigh)
-                ranklist(temphigh) = temprank
-                templow += 1
-                temphigh -= 1
+
+
+
+            If indexlow <= temphigh Then
+                Quicksort(ranklist, indexlow, temphigh)
             End If
-        End While
 
+            If templow < indexhigh Then
+                Quicksort(ranklist, templow, indexhigh)
+            End If
 
-
-
-
-        If indexlow <= temphigh Then
-            Quicksort(ranklist, indexlow, temphigh)
+            Return ranklist
         End If
-
-        If templow < indexhigh Then
-            Quicksort(ranklist, templow, indexhigh)
-        End If
-
-        Return ranklist
     End Function
 
     Function bsearchranklist(ranklist As List(Of ranking), nametofind As String, indexlow As Integer, indexhigh As Integer)
@@ -209,17 +214,17 @@ Public Class Rankingsearch
         Dim midpoint As Integer = (indexlow + indexhigh) \ 2
 
         If String.Compare(ranklist(midpoint).RankingName, nametofind) < 0 Then
-            Debug.WriteLine(1)
+
             Debug.WriteLine(ranklist(midpoint).RankingName)
             Return bsearchranklist(ranklist, nametofind, midpoint + 1, indexhigh)
 
         ElseIf String.Compare(ranklist(midpoint).RankingName, nametofind) > 0 Then
-            Debug.WriteLine(2)
+
             Debug.WriteLine(ranklist(midpoint).RankingName)
             Return bsearchranklist(ranklist, nametofind, indexlow, midpoint - 1)
 
         ElseIf ranklist(midpoint).RankingName = nametofind Then
-            Debug.WriteLine(3)
+
             Debug.WriteLine(ranklist(midpoint).RankingName)
             Return midpoint
 
@@ -274,6 +279,7 @@ Public Class Rankingsearch
         End If
     End Sub
     Function checkfilters(ranklist As List(Of ranking))
+
         Dim ownrank As String = ""
 
 
@@ -283,7 +289,7 @@ Public Class Rankingsearch
         End If
 
 
-        ' Filter fighters based on the selected weight class
+        ' Filter lists based on whether they contain your current user id
 
         Dim filteredlist As List(Of ranking) = Nothing
         If ownrank <> "No" Then

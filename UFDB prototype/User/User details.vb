@@ -6,16 +6,17 @@ Public Class Userdetails
 
     Public Sub New()
 
-        ' This call is required by the designer.
+
         InitializeComponent()
         Dim currentuser As User = getcurrentuser()
+        'adds user details to appropriate textboxes
         lblusertitle.Text = currentuser.username
         txtusername.Text = currentuser.username
         txtage.Text = currentuser.age
         Txtemail.Text = currentuser.email
 
 
-        ' Add any initialization after the InitializeComponent() call.
+
 
     End Sub
     Private Sub User_details_Load(sender As Object, e As EventArgs)
@@ -26,31 +27,45 @@ Public Class Userdetails
 
 
         Dim emailcheck As Boolean = validateemail(Txtemail.Text)
-        If emailcheck = True Then
+        Dim usernamecheck As Boolean = validateusername(txtusername.Text)
 
-            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-
-            'Dim currentuser As User = getcurrentuser()
-            Dim currentuser As User = getcurrentuser()
-            Dim decryptedpass As String = encryptpassword(currentuser.username, currentuser.password, False, currentuser.passwordlength)
-            Debug.WriteLine(decryptedpass)
-            currentuser.username = txtusername.Text
-            currentuser.age = txtage.Text
-            currentuser.email = Txtemail.Text
+        If usernamecheck = False Then
 
 
-            Dim encryptedpass As String = encryptpassword(currentuser.username, decryptedpass, True, currentuser.passwordlength)
-            Debug.WriteLine(encryptedpass)
-            currentuser.password = encryptedpass
-            Dim usertoremove As User = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
-            userlist.Remove(usertoremove)
-            userlist.Add(currentuser)
-            functions.SaveUsersToJson(userlist)
-            MsgBox("details updated!")
+            If emailcheck = False Then
+
+                Dim userlist As List(Of User) = functions.ReadUsersFromJson()
+
+                'Dim currentuser As User = getcurrentuser()
+                Dim currentuser As User = getcurrentuser()
+                'decrypts password to encrypt with new username
+                Dim decryptedpass As String = encryptpassword(currentuser.username, currentuser.password, False, currentuser.passwordlength)
+
+                'stores new details
+                currentuser.username = txtusername.Text
+                currentuser.age = txtage.Text
+                currentuser.email = Txtemail.Text
+
+                'encrypts password with new usewrname
+                Dim encryptedpass As String = encryptpassword(currentuser.username, decryptedpass, True, currentuser.passwordlength)
+
+                'stores new passwords
+                currentuser.password = encryptedpass
+
+                'removes user witrh old detials and adds a new one with new details
+                Dim usertoremove As User = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
+                userlist.Remove(usertoremove)
+                userlist.Add(currentuser)
+                functions.SaveUsersToJson(userlist)
+                lblusertitle.Text = currentuser.username
+                MsgBox("details updated!")
+
+            Else
+                MsgBox("email not found.")
+            End If
         Else
-            MsgBox("email not found.")
+            MsgBox("Username is taken.")
         End If
-
 
     End Sub
 
@@ -65,17 +80,26 @@ Public Class Userdetails
 
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
+        Dim match As Boolean = False
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
         Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        Return emailExpression.IsMatch(email)
+        match = emailExpression.IsMatch(email)
+        If match = False Then
+            Return match
+        Else
+            'then checks if email is being used by another account
+            match = users.Any(Function(u) u.email = email)
+            Return match
+        End If
+
     End Function
+
 
     Private Sub btnchangepassword_Click(sender As Object, e As EventArgs) Handles btnchangepassword.Click
         Changepassword.Show()
     End Sub
 
-    Private Sub Userdetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
     Function encryptpassword(newusername As String, newpassword As String, decision As Boolean, ogpasslength As Integer)
 
         Dim encryptpass As String = ""
@@ -99,10 +123,13 @@ Public Class Userdetails
             encryptpass &= Chr(Asc((newpassword(i))) Xor key)
         Next
 
+        'return password based on if encrypted password or decrypted password is asked for
         If decision = True Then
-            Return encryptpass
+            Return encryptpass 'return encrypted pass
+
+
         ElseIf decision = False Then
-            encryptpass = encryptpass.Substring(0, ogpasslength)
+            encryptpass = encryptpass.Substring(0, ogpasslength) 'returns decrypted password by using passwordlength attrbute
             Return encryptpass
         End If
 
@@ -110,46 +137,59 @@ Public Class Userdetails
     End Function
 
     Private Sub btndeleteaccount_Click(sender As Object, e As EventArgs) Handles btndeleteaccount.Click
+
+
         Dim answer As MsgBoxResult
         answer = MsgBox("Are you sure you wanty to delete your account", vbQuestion + vbYesNo, "Delete Account")
         If answer = vbYes Then
 
-
+            'store all lists connected to user
             Dim userlist As List(Of User) = functions.ReadUsersFromJson()
             Dim currentuser As User = getcurrentuser()
             Dim fighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile()
             Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson()
             Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()
 
+            'deletes user
             Dim usertoremove As User = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
             MsgBox(usertoremove.UserID)
             userlist.Remove(usertoremove)
 
-
+            'removes all liked fighters with the same userid
             likedfighters.RemoveAll(Function(lf) lf.userid = currentuser.UserID)
 
 
 
-
+            'finds all ranking lists with the same user id
             Dim rankingstoremove As List(Of ranking) = rankinglist.Where(Function(r) r.UserID = currentuser.UserID).ToList()
+            'finds all fighterrankings with rankingids connected to user id
             Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
 
 
-
+            'removes both ranking lists and fighter rankings
             fighterrankinglist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
             rankinglist.RemoveAll(Function(r) r.UserID = currentuser.UserID)
 
+            'saves all data back to the json files
             functions.SaveTolikedfighterJson(likedfighters)
             functions.SaveToFighterranksJson(fighterrankinglist)
             functions.SaveToRanklistJson(rankinglist)
             functions.SaveUsersToJson(userlist)
 
-
+            Form1.Show()
+            Me.Hide()
         End If
+
 
     End Sub
 
+    Function validateusername(username As String) As Boolean
 
-
+        'checks if username is already taken
+        Dim users As List(Of User) = functions.ReadUsersFromJson()
+        Dim match As Boolean = False
+        match = users.Any(Function(u) u.username = username)
+        Return match
+    End Function
 
 End Class

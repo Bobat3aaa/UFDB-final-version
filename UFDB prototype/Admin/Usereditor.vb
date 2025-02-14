@@ -8,7 +8,7 @@ Public Class Usereditor
     Private currentlikedfighterlist As List(Of likedfighter) 'liked-fighter list to be saved
 
     Private Sub Usereditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'load in all user related files
         currentuserlist = functions.ReadUsersFromJson
         currentranklist = functions.ReadRanklistsFromJson
         currentfighterranklist = functions.ReadFighterranksFromFile
@@ -21,12 +21,13 @@ Public Class Usereditor
     End Sub
 
     Private Sub updatedatabase()
+        'populate database
         Datagridview.Refresh()
         Datagridview.DataSource = New BindingSource(currentuserlist, Nothing)
     End Sub
 
     Private Sub btnadd_Click(sender As Object, e As EventArgs) Handles btnadd.Click
-
+        'add user based on register function
 
 
         Dim newusername As String = txtusername.Text
@@ -38,7 +39,7 @@ Public Class Usereditor
 
 
 
-        Debug.WriteLine(admindecision)
+
         If validateusername(newusername) = False Then
             If validatepassword(newpassword) = True Then
                 If validateemail(newemail) = False Then
@@ -66,7 +67,7 @@ Public Class Usereditor
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
-
+        'delete user and all items related to it in liked fighters and rankings
 
         Dim usertodelete As User
 
@@ -90,7 +91,7 @@ Public Class Usereditor
     End Sub
 
     Private Sub btnsavefile_Click(sender As Object, e As EventArgs) Handles btnsavefile.Click
-
+        'save new files to all json
         functions.SaveUsersToJson(currentuserlist)
         functions.SaveToFighterranksJson(currentfighterranklist)
         functions.SaveTolikedfighterJson(currentlikedfighterlist)

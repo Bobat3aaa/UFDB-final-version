@@ -6,10 +6,10 @@ Public Class showranking
     Public Property currentranking As ranking
     Public Sub New(currentranking As ranking)
 
-        ' This call is required by the designer.
+
         InitializeComponent()
 
-
+        'shows ranking
 
         Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
@@ -35,7 +35,6 @@ Public Class showranking
 
 
 
-        ' Add any initialization after the InitializeComponent() call.
 
         Me.currentranking = currentranking
         lbltitle.Text = Me.currentranking.RankingName
@@ -78,6 +77,8 @@ Public Class showranking
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
+
+        'deletes ranking by joining ranking id between fighterranking and ranking lists
         Dim currentuser As User = getcurrentuser()
         If currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson

@@ -9,14 +9,14 @@ Public Class currentadminuser
 
 
     'json editors
-    Sub childform(ByVal panel As Form)
+    Sub childform(ByVal panel As Form) 'used to embed a form within a form
         panelmain.Controls.Clear()
         panel.TopLevel = False
         panelmain.Controls.Add(panel)
         panel.Show()
     End Sub
 
-    Private Sub btnuserdetails_Click(sender As Object, e As EventArgs) Handles btnuserdetails.Click
+    Private Sub btnuserdetails_Click(sender As Object, e As EventArgs) Handles btnuserdetails.Click 'opens user detail
         childform(Userdetails)
     End Sub
 
@@ -29,13 +29,13 @@ Public Class currentadminuser
 
         End If
     End Sub
-    Async Sub refreshapi()
+    Async Sub refreshapi() 'refreshes api
         Await fetchalldata()
         MsgBox("API is refreshed")
 
 
     End Sub
-    Public Async Function fetchfighters(httpclient As HttpClient) As Task
+    Public Async Function fetchfighters(httpclient As HttpClient) As Task 'asynchronus function that pulls all fighters from api
 
 
         Dim allfighters As New List(Of fightermanagement)
@@ -43,13 +43,15 @@ Public Class currentadminuser
         Dim i As Integer = 1
         Dim morefighters As Boolean = True
 
-        While morefighters = True
+        While morefighters = True 'loops on condition more data can be found
 
-
+            'api url increases in page
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fighters?page=" & i
+
 
             answer = Await httpclient.GetAsync(apiurl)
 
+            'if an answer is retrieved, the content from api is turned into a string
             If answer.IsSuccessStatusCode Then
 
                 'turns api into string
@@ -57,8 +59,9 @@ Public Class currentadminuser
 
 
 
-
+                'deserialises json
                 Dim fighterresponse As FighterResponse = JsonConvert.DeserializeObject(Of FighterResponse)(fightercontent)
+                'if there are fighters within the json, add them to a list, if not, morefighters turns to false
                 If fighterresponse IsNot Nothing AndAlso fighterresponse.fighters IsNot Nothing AndAlso fighterresponse.fighters.Count > 0 Then
                     allfighters.AddRange(fighterresponse.fighters)
                     i += 1
@@ -71,20 +74,21 @@ Public Class currentadminuser
                 morefighters = False
             End If
         End While
-        Debug.WriteLine(allfighters.Count)
+        'save new list of fighters to json
+
         functions.SaveToFighterJson(allfighters)
     End Function
-    Public Async Function fetchfights(httpclient As HttpClient) As Task
+    Public Async Function fetchfights(httpclient As HttpClient) As Task 'asynchronus function that pulls all fights from api
         Dim allFights As New List(Of Fight)
         Dim i As Integer = 1
         Dim morefights As Boolean = True
         Dim answer As HttpResponseMessage
-
+        'loops on condition more data can be found
         While morefights = True
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fights?page=" & i
 
             answer = Await httpclient.GetAsync(apiurl)
-
+            'if an answer is retrieved, the content from api is turned into a string
             If answer.IsSuccessStatusCode Then
 
                 'turns api into string
@@ -92,9 +96,9 @@ Public Class currentadminuser
 
 
 
-
+                'deserialises json
                 Dim fightresponse As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(fightcontent)
-
+                'if there are fights within the json, add them to a list, if not, morefights turns to false
                 If fightresponse IsNot Nothing AndAlso fightresponse.fights IsNot Nothing AndAlso fightresponse.fights.Count > 0 Then
                     allFights.AddRange(fightresponse.fights)
                     i += 1
@@ -109,6 +113,7 @@ Public Class currentadminuser
 
         End While
 
+        'saves fights
         functions.SaveToFightJson(allFights)
 
     End Function
@@ -116,7 +121,7 @@ Public Class currentadminuser
         Using httpclient As New HttpClient()
             Dim fightertask As Task = fetchfighters(httpclient)
             Dim fighttask As Task = fetchfights(httpclient)
-            Await Task.WhenAll(fighttask, fightertask)
+            Await Task.WhenAll(fighttask, fightertask) 'waits for both fights and fighters to be finished
             MsgBox("API is refreshed")
         End Using
     End Function
@@ -135,6 +140,7 @@ Public Class currentadminuser
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btneditusers.Click
+        'opens user editor
         childform(Usereditor)
     End Sub
 
@@ -142,12 +148,9 @@ Public Class currentadminuser
 
     End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs)
-        Form1.Show()
-        Me.Close()
-    End Sub
 
-    Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+
+    Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click 'returns to home
         Form1.Show()
         Me.Close()
     End Sub
@@ -158,5 +161,23 @@ Public Class currentadminuser
 
     Private Sub panelmain_Paint(sender As Object, e As PaintEventArgs) Handles panelmain.Paint
 
+    End Sub
+
+    Private Sub btnranking_Click(sender As Object, e As EventArgs) Handles btnranking.Click
+        'open ranking search
+        Dim newrankingsearch As New Rankingsearch
+        childform(newrankingsearch)
+    End Sub
+
+    Private Sub btnnewranking_Click(sender As Object, e As EventArgs) Handles btnnewranking.Click
+        Dim newranking As New currentranking
+        childform(newranking)
+
+    End Sub
+
+    Private Sub btnlikedfighters_Click(sender As Object, e As EventArgs) Handles btnlikedfighters.Click
+        'open n
+        Dim newlikedfightersearch As New Likedfightersearch
+        childform(newlikedfightersearch)
     End Sub
 End Class

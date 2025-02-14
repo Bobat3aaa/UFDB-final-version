@@ -4,22 +4,24 @@ Imports System.IO
 
 Public Class Likedfightersearch
 
-    Private fighterlist As List(Of fightermanagement)
+    Private currentfighterlist As List(Of fightermanagement)
 
 
     Private Sub Likedfightersearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'makes sure the filters are all set to 0 to start, will be more in future
 
 
 
 
 
 
-        'sorts fighters and saves to file
+
+        'gets list of fighters via reading json
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
+
+        'returns liked fighters for current user
         Dim likedfighterlist As List(Of fightermanagement) = returnlikedfighters(fighters)
 
-        fighterlist = likedfighterlist
+        currentfighterlist = likedfighterlist
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
         FlowLayoutPanel1.HorizontalScroll.Visible = True
@@ -30,38 +32,40 @@ Public Class Likedfightersearch
     End Sub
 
     Function returnlikedfighters(fighters As List(Of fightermanagement))
+
+        'reads likedfighter json
         Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson
-        Debug.WriteLine(likedfighters(0).fighterid)
 
 
 
 
 
-        Dim likedfighterlist As List(Of fightermanagement) = (From lf In likedfighters
-                                                    Where lf.userid = loginform.currentuserid
-                                                    Join sf In fighters On lf.fighterid Equals sf.FighterId
-                                                    Select sf).ToList()
+
+        Dim likedfighterlist As List(Of fightermanagement) = (From lf In likedfighters 'looks through likedfighter list
+                                                              Where lf.userid = loginform.currentuserid 'condition -> liked fighter user id is the same as the current user id
+                                                              Join sf In fighters On lf.fighterid Equals sf.FighterId 'links liked fighter to fighter list using fighter id
+                                                              Select sf).ToList() 'adds it to a list
+
+        'uses a quicksort to sort liked fighters
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = likedfighterlist.Count - 1
+
         Dim sortedfighters As List(Of fightermanagement) = Quicksort(likedfighterlist, indexlow, indexhigh)
+        'rertuns sorted fighters
         Return sortedfighters
     End Function
 
 
-    Private Sub txtfname_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
 
-    End Sub
-
-    Private Sub txtlname_TextChanged(sender As Object, e As EventArgs) Handles txtlname.TextChanged
-
-    End Sub
 
     Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
 
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
-        Debug.WriteLine(fighters.Count)
+
+
+        'if the user has no liked fighters, returns a new list
         If fighters.Count = 0 Then
 
             Return New List(Of fightermanagement)()
@@ -79,6 +83,7 @@ Public Class Likedfightersearch
                     temphigh -= 1
                 End While
 
+                'swaps fighters
                 If templow <= temphigh Then
                     Dim tempfighter As fightermanagement = fighters(templow)
                     fighters(templow) = fighters(temphigh)
@@ -88,7 +93,7 @@ Public Class Likedfightersearch
                 End If
             End While
 
-
+            'recursively sorts
             If indexlow <= temphigh Then
                 Quicksort(fighters, indexlow, temphigh)
             End If
@@ -124,13 +129,13 @@ Public Class Likedfightersearch
             nametofind = txtfname.Text
             decision = 0
             Dim searchedfighters As List(Of fightermanagement) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
-            fighterlist = searchedfighters
+            currentfighterlist = searchedfighters
 
         ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
             nametofind = txtlname.Text
             decision = 1
             Dim searchedfighters As List(Of fightermanagement) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
-            fighterlist = searchedfighters
+            currentfighterlist = searchedfighters
 
         Else
             nametofind = (txtfname.Text) + " " + (txtlname.Text)
@@ -142,14 +147,14 @@ Public Class Likedfightersearch
                 Dim searchedfighterlist As New List(Of fightermanagement)
                 searchedfighterlist.Clear()
                 searchedfighterlist.Add(fighters(searchedfighterindex))
-                fighterlist = searchedfighterlist
+                currentfighterlist = searchedfighterlist
 
             End If
 
         End If
         Debug.WriteLine(nametofind)
 
-        updatebuttons(fighterlist)
+        updatebuttons(currentfighterlist)
 
     End Sub
     Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer)
@@ -226,7 +231,7 @@ Public Class Likedfightersearch
                 btn.Text = sortedfighters(i).Name
                 btn.Visible = True
                 btn.Tag = i
-                fighterlist = sortedfighters
+                currentfighterlist = sortedfighters
                 AddHandler btn.Click, AddressOf Button_Click
 
                 FlowLayoutPanel1.Controls.Add(btn)
@@ -283,7 +288,7 @@ Public Class Likedfightersearch
 
 
         'finds current fighter
-        Dim currentfighter As fightermanagement = fighterlist(fighterIndex)
+        Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
         MsgBox(currentfighter.Name)
         'sends current fighter data over to the current fighter form
         Dim fighterForm As New current_fighter_form(currentfighter)

@@ -591,7 +591,7 @@ Public Class FighterForm
         End If
 
 
-        'variables used for sortin
+        'variables used for sorting
 
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = filteredFighters.Count - 1

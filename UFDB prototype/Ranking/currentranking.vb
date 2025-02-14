@@ -46,6 +46,14 @@ Public Class currentranking
     End Sub
 
 
+    Function validatetitle(title As String) As Boolean
+
+        'checks if title is already taken
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim match As Boolean = False
+        match = ranklist.Any(Function(r) r.RankingName = title)
+        Return match
+    End Function
 
 
 
@@ -62,6 +70,7 @@ Public Class currentranking
 
 
     Function makenewfighterrank(rankingid As Integer, fighterid As String, rank As Integer)
+        'creates new fighterranking object
         Dim newfighterrank As New fighterranking
         newfighterrank.FighterID = fighterid
         newfighterrank.RankingID = rankingid
@@ -117,7 +126,7 @@ Public Class currentranking
             End If
 
 
-            'creates 50 buttons
+            'creates 50 fighter buttons
             For i = startIndex To endIndex - 1
 
 
@@ -176,7 +185,7 @@ Public Class currentranking
         'gets tag of button which is the fighters place in the list
         Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
-        'need to find a way to optimise / reuse code
+
 
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
@@ -189,19 +198,21 @@ Public Class currentranking
 
             'finds current fighter
             Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
-            MsgBox(currentfighter.Name)
+            'finds current rank chosen via combo box
             Dim currentrank As Integer = currentrankfinder()
 
+            'gets rank list id
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim currentrankid As Integer = GetNextranklistID(ranklist)
+            'adds fighterrank to list
             Dim fighterrank As New fighterranking
             fighterrank = makenewfighterrank(currentrankid, currentfighter.FighterId, currentrank)
 
 
-
+            'checks if the rank is already chosen
             Dim samerank As Boolean = rankedfighterlist.Any(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
 
-
+            'removes old fighter and adds new fighter
             If samerank = True Then
                 Dim ranktoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
                 rankedfighterlist.Remove(ranktoremove)
@@ -209,7 +220,7 @@ Public Class currentranking
             Debug.WriteLine(fighterrank.FighterID)
             rankedfighterlist.Add(fighterrank)
             updatetitles(fighterrank, currentfighter)
-            Debug.WriteLine("worked")
+
         Else
             MsgBox("please add a rank!")
         End If
@@ -239,7 +250,7 @@ Public Class currentranking
 
 
 
-    Function Quicksort(fighterlist As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+    Function Quicksort(fighterlist As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement) 'quicksort used in other forms
 
         Dim pivot As String
         Dim templow As Integer = indexlow
@@ -282,17 +293,15 @@ Public Class currentranking
         Return fighterlist
     End Function
 
-    Private Sub Label14_Click(sender As Object, e As EventArgs)
 
-    End Sub
 
-    Private Sub cmbchangerank_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbchangerank.SelectedIndexChanged
+    Private Sub cmbchangerank_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbchangerank.SelectedIndexChanged 'changes current rank
         Dim currentrank As Integer
         currentrank = currentrankfinder()
-        Debug.WriteLine(currentrank)
+
     End Sub
 
-    Function currentrankfinder()
+    Function currentrankfinder() 'returns current rank chosen
         Dim currentrank As Integer
         currentrank = cmbchangerank.SelectedItem
         Return currentrank
@@ -307,38 +316,47 @@ Public Class currentranking
 
 
     Sub submitranking()
+
+        'makes sure title and description are added
         If String.IsNullOrEmpty(txtrankingname.Text) Then
             MsgBox("please add a list name!")
         ElseIf String.IsNullOrEmpty(txtrankingdesc.Text) Then
             MsgBox("Please add a list description")
 
         Else
+            Dim titlecheck As Boolean = validatetitle(txtrankingname.Text)
+            If titlecheck = False Then
 
 
-            Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+                'adds both ranking list and fighterranking to json
+                Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
 
-            Dim newranking As New ranking
-            newranking.RankingID = GetNextranklistID(ranklist)
-            newranking.UserID = loginform.currentuserid
-            newranking.Rankingdesc = txtrankingdesc.Text
+                Dim newranking As New ranking
+                newranking.RankingID = GetNextranklistID(ranklist)
+                newranking.UserID = loginform.currentuserid
+                newranking.Rankingdesc = txtrankingdesc.Text
 
-            newranking.RankingName = txtrankingname.Text
-            newranking.Rankingdatemade = Today
+                newranking.RankingName = txtrankingname.Text
+                newranking.Rankingdatemade = Today
+                Debug.WriteLine(newranking.RankingName)
 
+                ranklist.Add(newranking)
 
-            ranklist.Add(newranking)
-            functions.SaveToRanklistJson(ranklist)
+                functions.SaveToRanklistJson(ranklist)
 
-            Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
-            For i = 0 To rankedfighterlist.Count - 1
-                jsonfighterrankinglist.Add(rankedfighterlist(i))
-            Next
-            functions.SaveToFighterranksJson(jsonfighterrankinglist)
-            MsgBox("new list created!")
+                Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
+                For i = 0 To rankedfighterlist.Count - 1
+                    jsonfighterrankinglist.Add(rankedfighterlist(i))
+                Next
+                functions.SaveToFighterranksJson(jsonfighterrankinglist)
+                MsgBox("new list created!")
+            Else
+                MsgBox("title is taken")
+            End If
         End If
     End Sub
 
-    Sub updatetitles(fighterrank, currentfighter)
+    Sub updatetitles(fighterrank, currentfighter) 'updates fighters next to their number
         Dim fighterpanel As Panel = (fighterpanel)
         For i = 1 To 10
             Dim ranklbl As Label = (Panel1.Controls("lblfighter" & i))
@@ -355,9 +373,6 @@ Public Class currentranking
 
     End Sub
 
-    Private Sub txtfname_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
-
-    End Sub
 
     Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
@@ -422,6 +437,7 @@ Public Class currentranking
     End Function
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
+        'searches for fighter via bsearch
         currentfighterlist = functions.ReadFightersFromJson()
         Dim low As Integer = 0
         Dim high As Integer = currentfighterlist.Count - 1
