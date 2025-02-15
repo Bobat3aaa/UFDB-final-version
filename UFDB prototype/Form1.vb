@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Imports System.IO
 Imports System.Drawing.Text
 Imports System.Drawing
+Imports System.Runtime.Remoting.Channels
 
 Public Class Form1
 
@@ -76,6 +77,17 @@ Public Class Form1
 
     End Sub
 
+    Sub updatename()
+        If loginform.currentuserid <> 0 Then
+            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
+            Dim currentuser As User = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+            Btnlogin.Text = currentuser.username
+        Else
+            Btnlogin.Text = "Login"
+        End If
+    End Sub
 
-
+    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        updatename()
+    End Sub
 End Class

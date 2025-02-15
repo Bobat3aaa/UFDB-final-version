@@ -3,32 +3,56 @@
   "WorkspaceRootPath": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\ranking\\rankingsearch.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\ranking\\rankingsearch.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\ranking\\rankingsearch.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\ranking\\rankingsearch.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\ranking\\currentranking.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\ranking\\currentranking.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\ranking\\currentranking.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\ranking\\currentranking.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\fighterform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\user\\loginform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\user\\loginform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\fighter\\current_fighter_form.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\user\\user details.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\user\\user details.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\user\\user details.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|D:\\UFDB Final\\UFDB-prototype-new-new-main\\ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|d:\\ufdb final\\ufdb-prototype-new-new-main\\ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{7BD18FFB-628C-4774-BC99-20BB99388E0D}|UFDB prototype\\UFDB prototype.vbproj|solutionrelative:ufdb prototype\\oddsgeneratorform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,19 +67,94 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Rankingsearch.vb",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "RelativeToolTip": "UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "ViewState": "AQIAABgBAAAAAAAAAAAYwA8AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:12:24.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Rankingsearch.vb [Design]",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Ranking\\Rankingsearch.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\Rankingsearch.vb [Design]",
+              "RelativeToolTip": "UFDB prototype\\Ranking\\Rankingsearch.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:12:23.569Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "currentranking.vb",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\currentranking.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Ranking\\currentranking.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\currentranking.vb",
+              "RelativeToolTip": "UFDB prototype\\Ranking\\currentranking.vb",
+              "ViewState": "AQIAAJABAAAAAAAAAAAQwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:12:07.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "currentranking.vb [Design]",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\currentranking.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Ranking\\currentranking.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Ranking\\currentranking.vb [Design]",
+              "RelativeToolTip": "UFDB prototype\\Ranking\\currentranking.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:12:05.979Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "loginform.vb [Design]",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\User\\loginform.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\User\\loginform.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\User\\loginform.vb [Design]*",
+              "RelativeToolTip": "UFDB prototype\\User\\loginform.vb [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:11:43.098Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Form1.vb",
+              "RelativeDocumentMoniker": "UFDB prototype\\Form1.vb",
+              "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Form1.vb",
+              "RelativeToolTip": "UFDB prototype\\Form1.vb",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-02-15T21:07:59.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "FighterForm.vb",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\FighterForm.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\FighterForm.vb",
               "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\FighterForm.vb",
               "RelativeToolTip": "UFDB prototype\\Fighter\\FighterForm.vb",
-              "ViewState": "AQIAAKsAAAAAAAAAAAAowOMAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowOMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-02-09T17:42:27.287Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "FighterForm.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\FighterForm.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\FighterForm.vb",
@@ -67,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "current_fighter_form.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Fighter\\current_fighter_form.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Fighter\\current_fighter_form.vb",
@@ -79,20 +178,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "User details.vb",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\User\\User details.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\User\\User details.vb",
               "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\User\\User details.vb",
               "RelativeToolTip": "UFDB prototype\\User\\User details.vb",
               "ViewState": "AQIAAFEAAAAAAAAAAAAEwG0AAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-09T17:40:19.727Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2025-02-09T17:40:19.727Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "oddsgeneratorform.vb",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\oddsgeneratorform.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\oddsgeneratorform.vb",
@@ -100,24 +198,22 @@
               "RelativeToolTip": "UFDB prototype\\oddsgeneratorform.vb",
               "ViewState": "AQIAAFkAAAAAAAAAAAAnwG8AAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-09T17:39:55.642Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T17:39:55.642Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "oddsgeneratorform.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\oddsgeneratorform.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\oddsgeneratorform.vb",
               "ToolTip": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\oddsgeneratorform.vb [Design]",
               "RelativeToolTip": "UFDB prototype\\oddsgeneratorform.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-02-09T17:39:54.712Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-09T17:39:54.712Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Form1.vb [Design]",
               "DocumentMoniker": "D:\\UFDB Final\\UFDB-prototype-new-new-main\\UFDB prototype\\Form1.vb",
               "RelativeDocumentMoniker": "UFDB prototype\\Form1.vb",
