@@ -75,7 +75,15 @@ Public Class Form1
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblhome.Click
 
     End Sub
-
+    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        If loginform.currentuserid <> 0 Then
+            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
+            Dim currentuser As User = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+            Btnlogin.Text = currentuser.username
+        Else
+            Btnlogin.Text = "login"
+        End If
+    End Sub
 
 
 End Class

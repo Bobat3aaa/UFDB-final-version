@@ -80,7 +80,7 @@ Partial Class current_user_form
         '
         Me.btnmakeranking.BackColor = System.Drawing.Color.White
         Me.btnmakeranking.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnmakeranking.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnmakeranking.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnmakeranking.Location = New System.Drawing.Point(30, 292)
         Me.btnmakeranking.Name = "btnmakeranking"
         Me.btnmakeranking.Size = New System.Drawing.Size(179, 75)
@@ -104,7 +104,7 @@ Partial Class current_user_form
         '
         Me.btnuserdetails.BackColor = System.Drawing.Color.White
         Me.btnuserdetails.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnuserdetails.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnuserdetails.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnuserdetails.Location = New System.Drawing.Point(30, 437)
         Me.btnuserdetails.Name = "btnuserdetails"
         Me.btnuserdetails.Size = New System.Drawing.Size(179, 75)
@@ -116,7 +116,7 @@ Partial Class current_user_form
         '
         Me.btnlikedfighters.BackColor = System.Drawing.Color.White
         Me.btnlikedfighters.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnlikedfighters.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnlikedfighters.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnlikedfighters.Location = New System.Drawing.Point(30, 7)
         Me.btnlikedfighters.Name = "btnlikedfighters"
         Me.btnlikedfighters.Size = New System.Drawing.Size(179, 75)
@@ -128,7 +128,7 @@ Partial Class current_user_form
         '
         Me.btnseerankings.BackColor = System.Drawing.Color.White
         Me.btnseerankings.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnseerankings.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnseerankings.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnseerankings.Location = New System.Drawing.Point(30, 150)
         Me.btnseerankings.Name = "btnseerankings"
         Me.btnseerankings.Size = New System.Drawing.Size(179, 75)

@@ -204,4 +204,8 @@ Public Class Usereditor
         match = users.Any(Function(u) u.username = username)
         Return match
     End Function
+
+    Private Sub txtusername_TextChanged(sender As Object, e As EventArgs) Handles txtusername.TextChanged
+
+    End Sub
 End Class

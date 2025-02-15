@@ -41,7 +41,7 @@ Partial Class currentadminuser
         'btnviewdatabase
         '
         Me.btnviewdatabase.BackColor = System.Drawing.Color.White
-        Me.btnviewdatabase.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnviewdatabase.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnviewdatabase.Location = New System.Drawing.Point(36, 344)
         Me.btnviewdatabase.Name = "btnviewdatabase"
         Me.btnviewdatabase.Size = New System.Drawing.Size(162, 62)
@@ -53,7 +53,7 @@ Partial Class currentadminuser
         '
         Me.btnlogout.BackColor = System.Drawing.Color.White
         Me.btnlogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnlogout.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnlogout.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnlogout.Location = New System.Drawing.Point(36, 587)
         Me.btnlogout.Name = "btnlogout"
         Me.btnlogout.Size = New System.Drawing.Size(162, 62)
@@ -64,7 +64,7 @@ Partial Class currentadminuser
         'btnuserdetails
         '
         Me.btnuserdetails.BackColor = System.Drawing.Color.White
-        Me.btnuserdetails.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnuserdetails.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnuserdetails.Location = New System.Drawing.Point(36, 425)
         Me.btnuserdetails.Name = "btnuserdetails"
         Me.btnuserdetails.Size = New System.Drawing.Size(162, 62)
@@ -105,7 +105,7 @@ Partial Class currentadminuser
         'btnrefresh
         '
         Me.btnrefresh.BackColor = System.Drawing.Color.White
-        Me.btnrefresh.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnrefresh.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnrefresh.Location = New System.Drawing.Point(36, 506)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(162, 62)
@@ -116,7 +116,7 @@ Partial Class currentadminuser
         'btneditusers
         '
         Me.btneditusers.BackColor = System.Drawing.Color.White
-        Me.btneditusers.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btneditusers.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btneditusers.Location = New System.Drawing.Point(36, 263)
         Me.btneditusers.Name = "btneditusers"
         Me.btneditusers.Size = New System.Drawing.Size(162, 62)
@@ -127,7 +127,7 @@ Partial Class currentadminuser
         'btnnewranking
         '
         Me.btnnewranking.BackColor = System.Drawing.Color.White
-        Me.btnnewranking.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnnewranking.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnnewranking.Location = New System.Drawing.Point(36, 182)
         Me.btnnewranking.Name = "btnnewranking"
         Me.btnnewranking.Size = New System.Drawing.Size(162, 62)
@@ -138,7 +138,7 @@ Partial Class currentadminuser
         'btnranking
         '
         Me.btnranking.BackColor = System.Drawing.Color.White
-        Me.btnranking.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnranking.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnranking.Location = New System.Drawing.Point(36, 101)
         Me.btnranking.Name = "btnranking"
         Me.btnranking.Size = New System.Drawing.Size(162, 62)
@@ -149,7 +149,7 @@ Partial Class currentadminuser
         'btnlikedfighters
         '
         Me.btnlikedfighters.BackColor = System.Drawing.Color.White
-        Me.btnlikedfighters.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnlikedfighters.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnlikedfighters.Location = New System.Drawing.Point(36, 20)
         Me.btnlikedfighters.Name = "btnlikedfighters"
         Me.btnlikedfighters.Size = New System.Drawing.Size(162, 62)

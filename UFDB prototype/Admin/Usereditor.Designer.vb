@@ -43,7 +43,7 @@ Partial Class Usereditor
         'btnadd
         '
         Me.btnadd.BackColor = System.Drawing.Color.LightGray
-        Me.btnadd.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnadd.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnadd.Location = New System.Drawing.Point(208, 150)
         Me.btnadd.Name = "btnadd"
         Me.btnadd.Size = New System.Drawing.Size(171, 46)
@@ -54,7 +54,7 @@ Partial Class Usereditor
         'btnsavefile
         '
         Me.btnsavefile.BackColor = System.Drawing.Color.LightGray
-        Me.btnsavefile.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsavefile.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsavefile.Location = New System.Drawing.Point(613, 150)
         Me.btnsavefile.Name = "btnsavefile"
         Me.btnsavefile.Size = New System.Drawing.Size(171, 46)
@@ -65,7 +65,7 @@ Partial Class Usereditor
         'btndelete
         '
         Me.btndelete.BackColor = System.Drawing.Color.LightGray
-        Me.btndelete.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndelete.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btndelete.Location = New System.Drawing.Point(412, 150)
         Me.btndelete.Name = "btndelete"
         Me.btndelete.Size = New System.Drawing.Size(171, 46)
@@ -84,56 +84,56 @@ Partial Class Usereditor
         'Lbltitle
         '
         Me.Lbltitle.AutoSize = True
-        Me.Lbltitle.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbltitle.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbltitle.Location = New System.Drawing.Point(6, 9)
         Me.Lbltitle.Name = "Lbltitle"
-        Me.Lbltitle.Size = New System.Drawing.Size(296, 55)
+        Me.Lbltitle.Size = New System.Drawing.Size(266, 58)
         Me.Lbltitle.TabIndex = 9
         Me.Lbltitle.Text = "User editor"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(15, 107)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(87, 18)
+        Me.Label5.Size = New System.Drawing.Size(84, 19)
         Me.Label5.TabIndex = 20
         Me.Label5.Text = "password:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(373, 73)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(38, 18)
+        Me.Label3.Size = New System.Drawing.Size(40, 19)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "age:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(362, 107)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 18)
+        Me.Label2.Size = New System.Drawing.Size(54, 19)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "email:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 71)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(88, 18)
+        Me.Label1.Size = New System.Drawing.Size(87, 19)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "username:"
         '
         'txtusername
         '
-        Me.txtusername.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtusername.Location = New System.Drawing.Point(114, 68)
         Me.txtusername.Name = "txtusername"
         Me.txtusername.Size = New System.Drawing.Size(178, 28)
@@ -141,7 +141,7 @@ Partial Class Usereditor
         '
         'txtpassword
         '
-        Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(114, 103)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.Size = New System.Drawing.Size(178, 28)
@@ -149,7 +149,7 @@ Partial Class Usereditor
         '
         'Txtage
         '
-        Me.Txtage.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Txtage.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Txtage.Location = New System.Drawing.Point(432, 69)
         Me.Txtage.Name = "Txtage"
         Me.Txtage.Size = New System.Drawing.Size(178, 28)
@@ -157,7 +157,7 @@ Partial Class Usereditor
         '
         'txtemail
         '
-        Me.txtemail.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtemail.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtemail.Location = New System.Drawing.Point(432, 103)
         Me.txtemail.Name = "txtemail"
         Me.txtemail.Size = New System.Drawing.Size(178, 28)
@@ -166,10 +166,10 @@ Partial Class Usereditor
         'Checkadmin
         '
         Me.Checkadmin.AutoSize = True
-        Me.Checkadmin.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Checkadmin.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Checkadmin.Location = New System.Drawing.Point(636, 69)
         Me.Checkadmin.Name = "Checkadmin"
-        Me.Checkadmin.Size = New System.Drawing.Size(76, 22)
+        Me.Checkadmin.Size = New System.Drawing.Size(74, 23)
         Me.Checkadmin.TabIndex = 21
         Me.Checkadmin.Text = "Admin"
         Me.Checkadmin.UseVisualStyleBackColor = True
@@ -177,7 +177,7 @@ Partial Class Usereditor
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.LightGray
-        Me.Button1.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(12, 150)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(171, 46)

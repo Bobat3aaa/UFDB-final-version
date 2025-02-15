@@ -44,51 +44,51 @@ Partial Class register
         '
         'txtusername
         '
-        Me.txtusername.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtusername.Location = New System.Drawing.Point(22, 172)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(242, 28)
+        Me.txtusername.Size = New System.Drawing.Size(242, 26)
         Me.txtusername.TabIndex = 0
         '
         'txtemail
         '
-        Me.txtemail.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtemail.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtemail.Location = New System.Drawing.Point(22, 410)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(242, 28)
+        Me.txtemail.Size = New System.Drawing.Size(242, 26)
         Me.txtemail.TabIndex = 1
         '
         'Txtage
         '
-        Me.Txtage.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Txtage.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Txtage.Location = New System.Drawing.Point(22, 351)
         Me.Txtage.Name = "Txtage"
-        Me.Txtage.Size = New System.Drawing.Size(242, 28)
+        Me.Txtage.Size = New System.Drawing.Size(242, 26)
         Me.Txtage.TabIndex = 2
         '
         'txtpasswordagain
         '
-        Me.txtpasswordagain.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpasswordagain.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpasswordagain.Location = New System.Drawing.Point(22, 292)
         Me.txtpasswordagain.Name = "txtpasswordagain"
         Me.txtpasswordagain.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpasswordagain.Size = New System.Drawing.Size(242, 28)
+        Me.txtpasswordagain.Size = New System.Drawing.Size(242, 26)
         Me.txtpasswordagain.TabIndex = 3
         '
         'txtpassword
         '
-        Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(22, 233)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(242, 28)
+        Me.txtpassword.Size = New System.Drawing.Size(242, 26)
         Me.txtpassword.TabIndex = 4
         '
         'Btnregister
         '
         Me.Btnregister.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.Btnregister.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnregister.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btnregister.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btnregister.Location = New System.Drawing.Point(295, 386)
         Me.Btnregister.Name = "Btnregister"
         Me.Btnregister.Size = New System.Drawing.Size(185, 52)
@@ -120,10 +120,10 @@ Partial Class register
         'lblpasswordcheck
         '
         Me.lblpasswordcheck.AutoSize = True
-        Me.lblpasswordcheck.Font = New System.Drawing.Font("Supreme", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblpasswordcheck.Location = New System.Drawing.Point(12, 16)
+        Me.lblpasswordcheck.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblpasswordcheck.Location = New System.Drawing.Point(8, 30)
         Me.lblpasswordcheck.Name = "lblpasswordcheck"
-        Me.lblpasswordcheck.Size = New System.Drawing.Size(161, 100)
+        Me.lblpasswordcheck.Size = New System.Drawing.Size(167, 65)
         Me.lblpasswordcheck.TabIndex = 22
         Me.lblpasswordcheck.Text = "Password must have:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8-32 characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 special characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 capital letters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 " &
     "number"
@@ -131,60 +131,60 @@ Partial Class register
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Clash Display", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(12, 79)
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift", 27.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(12, 89)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(174, 42)
+        Me.Label6.Size = New System.Drawing.Size(159, 45)
         Me.Label6.TabIndex = 23
         Me.Label6.Text = "Register"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(20, 383)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 24)
+        Me.Label2.Size = New System.Drawing.Size(68, 25)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "email:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(20, 324)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 24)
+        Me.Label3.Size = New System.Drawing.Size(50, 25)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "age:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(18, 265)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(195, 24)
+        Me.Label4.Size = New System.Drawing.Size(184, 25)
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "reenter password:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(20, 206)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(114, 24)
+        Me.Label5.Size = New System.Drawing.Size(108, 25)
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "password:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(18, 145)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(116, 24)
+        Me.Label1.Size = New System.Drawing.Size(112, 25)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "username:"
         '

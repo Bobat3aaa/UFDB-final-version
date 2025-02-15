@@ -35,55 +35,55 @@ Partial Class Changepassword
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Clash Display", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Light", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(5, 78)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(240, 27)
+        Me.Label5.Size = New System.Drawing.Size(226, 29)
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Enter old password:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Clash Display", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Bahnschrift Light", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(5, 156)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(254, 27)
+        Me.Label4.Size = New System.Drawing.Size(238, 29)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Enter new password:"
         '
         'txtpassword
         '
-        Me.txtpassword.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(10, 108)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(457, 33)
+        Me.txtpassword.Size = New System.Drawing.Size(457, 26)
         Me.txtpassword.TabIndex = 12
         '
         'txtnewpassword
         '
-        Me.txtnewpassword.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnewpassword.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtnewpassword.Location = New System.Drawing.Point(10, 186)
         Me.txtnewpassword.Name = "txtnewpassword"
         Me.txtnewpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtnewpassword.Size = New System.Drawing.Size(457, 33)
+        Me.txtnewpassword.Size = New System.Drawing.Size(457, 26)
         Me.txtnewpassword.TabIndex = 11
         '
         'lbltitle
         '
         Me.lbltitle.AutoSize = True
-        Me.lbltitle.Font = New System.Drawing.Font("Clash Display", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltitle.Font = New System.Drawing.Font("Bahnschrift", 27.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltitle.Location = New System.Drawing.Point(3, 9)
         Me.lbltitle.Name = "lbltitle"
-        Me.lbltitle.Size = New System.Drawing.Size(352, 42)
+        Me.lbltitle.Size = New System.Drawing.Size(317, 45)
         Me.lbltitle.TabIndex = 15
         Me.lbltitle.Text = "Change password"
         '
         'btnchangepass
         '
         Me.btnchangepass.BackColor = System.Drawing.Color.LightGray
-        Me.btnchangepass.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnchangepass.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnchangepass.Location = New System.Drawing.Point(287, 244)
         Me.btnchangepass.Name = "btnchangepass"
         Me.btnchangepass.Size = New System.Drawing.Size(180, 59)

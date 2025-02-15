@@ -42,26 +42,26 @@ Partial Class loginform
         '
         'txtusername
         '
-        Me.txtusername.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtusername.Location = New System.Drawing.Point(12, 156)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(270, 28)
+        Me.txtusername.Size = New System.Drawing.Size(270, 26)
         Me.txtusername.TabIndex = 3
         '
         'txtpassword
         '
-        Me.txtpassword.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpassword.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtpassword.Location = New System.Drawing.Point(12, 217)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(270, 28)
+        Me.txtpassword.Size = New System.Drawing.Size(270, 26)
         Me.txtpassword.TabIndex = 4
         '
         'btnsearch
         '
         Me.btnsearch.BackColor = System.Drawing.Color.LightGray
         Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch.Location = New System.Drawing.Point(321, 193)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(142, 52)
@@ -93,30 +93,30 @@ Partial Class loginform
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(8, 128)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 24)
+        Me.Label2.Size = New System.Drawing.Size(114, 25)
         Me.Label2.TabIndex = 21
         Me.Label2.Text = "Username:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(12, 190)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(114, 24)
+        Me.Label3.Size = New System.Drawing.Size(109, 25)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Password:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Clash Display", 27.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift", 27.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(1, 75)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(118, 42)
+        Me.Label6.Size = New System.Drawing.Size(111, 45)
         Me.Label6.TabIndex = 24
         Me.Label6.Text = "Login"
         '

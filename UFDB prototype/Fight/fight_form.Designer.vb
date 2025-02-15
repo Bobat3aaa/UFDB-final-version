@@ -59,6 +59,8 @@ Partial Class fight_form
         '
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Font = New System.Drawing.Font("Lucida Console", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(8, 269)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(630, 308)
@@ -66,7 +68,7 @@ Partial Class fight_form
         '
         'txteventnum
         '
-        Me.txteventnum.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txteventnum.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txteventnum.Location = New System.Drawing.Point(83, 173)
         Me.txteventnum.Name = "txteventnum"
         Me.txteventnum.Size = New System.Drawing.Size(248, 25)
@@ -74,7 +76,7 @@ Partial Class fight_form
         '
         'txtfighter
         '
-        Me.txtfighter.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter.Location = New System.Drawing.Point(83, 147)
         Me.txtfighter.Name = "txtfighter"
         Me.txtfighter.Size = New System.Drawing.Size(248, 25)
@@ -83,20 +85,20 @@ Partial Class fight_form
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(17, 149)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 17)
+        Me.Label1.Size = New System.Drawing.Size(54, 18)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "fighter:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(16, 175)
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(17, 173)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(52, 17)
+        Me.Label2.Size = New System.Drawing.Size(48, 18)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "event:"
         '
@@ -104,7 +106,7 @@ Partial Class fight_form
         '
         Me.btnsearch.BackColor = System.Drawing.Color.Silver
         Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch.Location = New System.Drawing.Point(226, 204)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(105, 28)
@@ -116,7 +118,7 @@ Partial Class fight_form
         '
         Me.btnclear.BackColor = System.Drawing.Color.Silver
         Me.btnclear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnclear.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclear.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnclear.Location = New System.Drawing.Point(83, 204)
         Me.btnclear.Name = "btnclear"
         Me.btnclear.Size = New System.Drawing.Size(105, 28)
@@ -157,12 +159,12 @@ Partial Class fight_form
         '
         'cmbsort
         '
-        Me.cmbsort.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbsort.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbsort.FormattingEnabled = True
         Me.cmbsort.Items.AddRange(New Object() {"Descending", "Ascending"})
         Me.cmbsort.Location = New System.Drawing.Point(533, 205)
         Me.cmbsort.Name = "cmbsort"
-        Me.cmbsort.Size = New System.Drawing.Size(105, 27)
+        Me.cmbsort.Size = New System.Drawing.Size(105, 25)
         Me.cmbsort.TabIndex = 22
         '
         'DateTimePicker1
@@ -177,12 +179,12 @@ Partial Class fight_form
         '
         'cmbweightclass
         '
-        Me.cmbweightclass.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbweightclass.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbweightclass.FormattingEnabled = True
         Me.cmbweightclass.Items.AddRange(New Object() {"All", "Women's Strawweight", "Women's Flyweight", "Women's Bantamweight", "Women's Featherweight", "Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight", "Light Heavyweight", "Heavyweight"})
         Me.cmbweightclass.Location = New System.Drawing.Point(533, 149)
         Me.cmbweightclass.Name = "cmbweightclass"
-        Me.cmbweightclass.Size = New System.Drawing.Size(100, 27)
+        Me.cmbweightclass.Size = New System.Drawing.Size(100, 25)
         Me.cmbweightclass.TabIndex = 24
         '
         'pnlcurrentfight
@@ -194,80 +196,80 @@ Partial Class fight_form
         '
         'cmblocation
         '
-        Me.cmblocation.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmblocation.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmblocation.FormattingEnabled = True
         Me.cmblocation.Location = New System.Drawing.Point(360, 149)
         Me.cmblocation.Name = "cmblocation"
-        Me.cmblocation.Size = New System.Drawing.Size(167, 27)
+        Me.cmblocation.Size = New System.Drawing.Size(167, 25)
         Me.cmblocation.TabIndex = 26
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Clash Display", 30.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Bahnschrift", 30.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(12, 90)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(143, 46)
+        Me.Label9.Size = New System.Drawing.Size(131, 48)
         Me.Label9.TabIndex = 45
         Me.Label9.Text = "Fights"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(357, 131)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 15)
+        Me.Label3.Size = New System.Drawing.Size(58, 16)
         Me.Label3.TabIndex = 46
         Me.Label3.Text = "Location:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(530, 131)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(83, 15)
+        Me.Label5.Size = New System.Drawing.Size(79, 16)
         Me.Label5.TabIndex = 47
         Me.Label5.Text = "Weightclass:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(530, 187)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(36, 15)
+        Me.Label6.Size = New System.Drawing.Size(35, 16)
         Me.Label6.TabIndex = 48
         Me.Label6.Text = "Sort:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(358, 187)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(37, 15)
+        Me.Label7.Size = New System.Drawing.Size(37, 16)
         Me.Label7.TabIndex = 49
         Me.Label7.Text = "Date:"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Bahnschrift Light", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(5, 249)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(79, 17)
+        Me.Label8.Size = New System.Drawing.Size(73, 18)
         Me.Label8.TabIndex = 50
         Me.Label8.Text = "Sorted by:"
         '
         'lblsorted
         '
         Me.lblsorted.AutoSize = True
-        Me.lblsorted.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblsorted.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblsorted.Location = New System.Drawing.Point(90, 250)
         Me.lblsorted.Name = "lblsorted"
-        Me.lblsorted.Size = New System.Drawing.Size(56, 16)
+        Me.lblsorted.Size = New System.Drawing.Size(63, 15)
         Me.lblsorted.TabIndex = 51
         Me.lblsorted.Text = "Nothing"
         '
@@ -275,7 +277,7 @@ Partial Class fight_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1580, 589)
+        Me.ClientSize = New System.Drawing.Size(1575, 589)
         Me.Controls.Add(Me.lblsorted)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -296,6 +298,7 @@ Partial Class fight_form
         Me.Controls.Add(Me.txtfighter)
         Me.Controls.Add(Me.txteventnum)
         Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Font = New System.Drawing.Font("Bahnschrift", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "fight_form"
         Me.Text = "fight_form"
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()

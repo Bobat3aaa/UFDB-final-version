@@ -44,7 +44,7 @@ Partial Class Databaseeditor
         '
         'cmbselectview
         '
-        Me.cmbselectview.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbselectview.Font = New System.Drawing.Font("Lucida Console", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbselectview.FormattingEnabled = True
         Me.cmbselectview.Items.AddRange(New Object() {"Fighter", "Fight"})
         Me.cmbselectview.Location = New System.Drawing.Point(578, 98)
@@ -55,7 +55,7 @@ Partial Class Databaseeditor
         'btndelete
         '
         Me.btndelete.BackColor = System.Drawing.Color.LightGray
-        Me.btndelete.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndelete.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btndelete.Location = New System.Drawing.Point(302, 145)
         Me.btndelete.Name = "btndelete"
         Me.btndelete.Size = New System.Drawing.Size(205, 46)
@@ -66,7 +66,7 @@ Partial Class Databaseeditor
         'btnsavefile
         '
         Me.btnsavefile.BackColor = System.Drawing.Color.LightGray
-        Me.btnsavefile.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsavefile.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsavefile.Location = New System.Drawing.Point(578, 145)
         Me.btnsavefile.Name = "btnsavefile"
         Me.btnsavefile.Size = New System.Drawing.Size(205, 46)
@@ -77,7 +77,7 @@ Partial Class Databaseeditor
         'btnadd
         '
         Me.btnadd.BackColor = System.Drawing.Color.LightGray
-        Me.btnadd.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnadd.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnadd.Location = New System.Drawing.Point(12, 145)
         Me.btnadd.Name = "btnadd"
         Me.btnadd.Size = New System.Drawing.Size(205, 46)
@@ -93,20 +93,20 @@ Partial Class Databaseeditor
         'Lbltitle
         '
         Me.Lbltitle.AutoSize = True
-        Me.Lbltitle.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbltitle.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbltitle.Location = New System.Drawing.Point(12, 19)
         Me.Lbltitle.Name = "Lbltitle"
-        Me.Lbltitle.Size = New System.Drawing.Size(406, 55)
+        Me.Lbltitle.Size = New System.Drawing.Size(367, 58)
         Me.Lbltitle.TabIndex = 5
         Me.Lbltitle.Text = "Database editor"
         '
         'lblchoose
         '
         Me.lblchoose.AutoSize = True
-        Me.lblchoose.Font = New System.Drawing.Font("Clash Display", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblchoose.Font = New System.Drawing.Font("Bahnschrift Light", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblchoose.Location = New System.Drawing.Point(574, 75)
         Me.lblchoose.Name = "lblchoose"
-        Me.lblchoose.Size = New System.Drawing.Size(126, 22)
+        Me.lblchoose.Size = New System.Drawing.Size(121, 23)
         Me.lblchoose.TabIndex = 6
         Me.lblchoose.Text = "Choose view:"
         '

@@ -267,7 +267,7 @@ Public Class FighterForm
             btnfighter.Height = 100
             btnfighter.BackColor = Color.White
             btnfighter.TextAlign = ContentAlignment.MiddleCenter
-            btnfighter.Font = New Font("Clash Display", 9, FontStyle.Regular)
+
 
             btnfighter.Text = fighterlist(i).Name & vbCrLf & fighterlist(i).Wins & "/" & fighterlist(i).Losses & "/" & fighterlist(i).Draws
             btnfighter.Visible = True

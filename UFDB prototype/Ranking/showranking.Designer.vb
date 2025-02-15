@@ -59,10 +59,10 @@ Partial Class showranking
         'lbltitle
         '
         Me.lbltitle.AutoSize = True
-        Me.lbltitle.Font = New System.Drawing.Font("Clash Display", 47.99999!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltitle.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltitle.Location = New System.Drawing.Point(9, 32)
         Me.lbltitle.Name = "lbltitle"
-        Me.lbltitle.Size = New System.Drawing.Size(168, 73)
+        Me.lbltitle.Size = New System.Drawing.Size(154, 77)
         Me.lbltitle.TabIndex = 0
         Me.lbltitle.Text = "Title"
         '
@@ -82,6 +82,7 @@ Partial Class showranking
         Me.Panel1.BackColor = System.Drawing.Color.LightGray
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.lbldesc)
+        Me.Panel1.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(12, 120)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(788, 176)
@@ -105,12 +106,12 @@ Partial Class showranking
         Me.lbl1.AutoSize = True
         Me.lbl1.BackColor = System.Drawing.Color.Transparent
         Me.lbl1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lbl1.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl1.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl1.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.lbl1.Location = New System.Drawing.Point(18, 21)
         Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(24, 33)
+        Me.lbl1.Size = New System.Drawing.Size(23, 35)
         Me.lbl1.TabIndex = 29
         Me.lbl1.Text = "1"
         '
@@ -119,12 +120,12 @@ Partial Class showranking
         Me.lbl2.AutoSize = True
         Me.lbl2.BackColor = System.Drawing.Color.Transparent
         Me.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lbl2.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl2.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl2.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.lbl2.Location = New System.Drawing.Point(15, 73)
         Me.lbl2.Name = "lbl2"
-        Me.lbl2.Size = New System.Drawing.Size(34, 33)
+        Me.lbl2.Size = New System.Drawing.Size(27, 35)
         Me.lbl2.TabIndex = 30
         Me.lbl2.Text = "2"
         '
@@ -133,12 +134,12 @@ Partial Class showranking
         Me.lbl5.AutoSize = True
         Me.lbl5.BackColor = System.Drawing.Color.Transparent
         Me.lbl5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lbl5.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl5.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl5.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.lbl5.Location = New System.Drawing.Point(16, 229)
         Me.lbl5.Name = "lbl5"
-        Me.lbl5.Size = New System.Drawing.Size(34, 33)
+        Me.lbl5.Size = New System.Drawing.Size(27, 35)
         Me.lbl5.TabIndex = 33
         Me.lbl5.Text = "5"
         '
@@ -147,12 +148,12 @@ Partial Class showranking
         Me.lbl4.AutoSize = True
         Me.lbl4.BackColor = System.Drawing.Color.Transparent
         Me.lbl4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lbl4.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl4.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl4.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.lbl4.Location = New System.Drawing.Point(15, 177)
         Me.lbl4.Name = "lbl4"
-        Me.lbl4.Size = New System.Drawing.Size(35, 33)
+        Me.lbl4.Size = New System.Drawing.Size(28, 35)
         Me.lbl4.TabIndex = 32
         Me.lbl4.Text = "4"
         '
@@ -161,12 +162,12 @@ Partial Class showranking
         Me.lbl3.AutoSize = True
         Me.lbl3.BackColor = System.Drawing.Color.Transparent
         Me.lbl3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lbl3.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl3.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.lbl3.Location = New System.Drawing.Point(15, 125)
         Me.lbl3.Name = "lbl3"
-        Me.lbl3.Size = New System.Drawing.Size(34, 33)
+        Me.lbl3.Size = New System.Drawing.Size(27, 35)
         Me.lbl3.TabIndex = 31
         Me.lbl3.Text = "3"
         '
@@ -188,12 +189,12 @@ Partial Class showranking
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label6.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label6.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Label6.Location = New System.Drawing.Point(14, 21)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(35, 33)
+        Me.Label6.Size = New System.Drawing.Size(26, 35)
         Me.Label6.TabIndex = 29
         Me.Label6.Text = "6"
         '
@@ -202,12 +203,12 @@ Partial Class showranking
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label7.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label7.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Label7.Location = New System.Drawing.Point(15, 73)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(32, 33)
+        Me.Label7.Size = New System.Drawing.Size(26, 35)
         Me.Label7.TabIndex = 30
         Me.Label7.Text = "7"
         '
@@ -216,12 +217,12 @@ Partial Class showranking
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label8.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label8.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Label8.Location = New System.Drawing.Point(11, 229)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(45, 33)
+        Me.Label8.Size = New System.Drawing.Size(35, 35)
         Me.Label8.TabIndex = 33
         Me.Label8.Text = "10"
         '
@@ -230,12 +231,12 @@ Partial Class showranking
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label9.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label9.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Label9.Location = New System.Drawing.Point(15, 177)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(35, 33)
+        Me.Label9.Size = New System.Drawing.Size(26, 35)
         Me.Label9.TabIndex = 32
         Me.Label9.Text = "9"
         '
@@ -244,112 +245,112 @@ Partial Class showranking
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label10.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label10.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.Label10.Location = New System.Drawing.Point(15, 125)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(34, 33)
+        Me.Label10.Size = New System.Drawing.Size(27, 35)
         Me.Label10.TabIndex = 31
         Me.Label10.Text = "8"
         '
         'lblfighter1
         '
         Me.lblfighter1.AutoSize = True
-        Me.lblfighter1.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter1.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter1.Location = New System.Drawing.Point(70, 21)
         Me.lblfighter1.Name = "lblfighter1"
-        Me.lblfighter1.Size = New System.Drawing.Size(85, 26)
+        Me.lblfighter1.Size = New System.Drawing.Size(114, 21)
         Me.lblfighter1.TabIndex = 75
         Me.lblfighter1.Text = "Fighter1"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(462, 229)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 26)
+        Me.Label1.Size = New System.Drawing.Size(127, 21)
         Me.Label1.TabIndex = 84
         Me.Label1.Text = "Fighter10"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(462, 177)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(85, 26)
+        Me.Label2.Size = New System.Drawing.Size(114, 21)
         Me.Label2.TabIndex = 83
         Me.Label2.Text = "fighter9"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(462, 125)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 26)
+        Me.Label3.Size = New System.Drawing.Size(114, 21)
         Me.Label3.TabIndex = 82
         Me.Label3.Text = "Fighter8"
         '
         'lblfighter2
         '
         Me.lblfighter2.AutoSize = True
-        Me.lblfighter2.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter2.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter2.Location = New System.Drawing.Point(70, 73)
         Me.lblfighter2.Name = "lblfighter2"
-        Me.lblfighter2.Size = New System.Drawing.Size(89, 26)
+        Me.lblfighter2.Size = New System.Drawing.Size(114, 21)
         Me.lblfighter2.TabIndex = 76
         Me.lblfighter2.Text = "Fighter2"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(462, 73)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 26)
+        Me.Label4.Size = New System.Drawing.Size(114, 21)
         Me.Label4.TabIndex = 81
         Me.Label4.Text = "fighter7"
         '
         'lblfighter3
         '
         Me.lblfighter3.AutoSize = True
-        Me.lblfighter3.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter3.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter3.Location = New System.Drawing.Point(70, 125)
         Me.lblfighter3.Name = "lblfighter3"
-        Me.lblfighter3.Size = New System.Drawing.Size(90, 26)
+        Me.lblfighter3.Size = New System.Drawing.Size(114, 21)
         Me.lblfighter3.TabIndex = 77
         Me.lblfighter3.Text = "Fighter3"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(462, 21)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(89, 26)
+        Me.Label5.Size = New System.Drawing.Size(114, 21)
         Me.Label5.TabIndex = 80
         Me.Label5.Text = "Fighter6"
         '
         'lblfighter4
         '
         Me.lblfighter4.AutoSize = True
-        Me.lblfighter4.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter4.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter4.Location = New System.Drawing.Point(70, 177)
         Me.lblfighter4.Name = "lblfighter4"
-        Me.lblfighter4.Size = New System.Drawing.Size(89, 26)
+        Me.lblfighter4.Size = New System.Drawing.Size(114, 21)
         Me.lblfighter4.TabIndex = 78
         Me.lblfighter4.Text = "Fighter4"
         '
         'lblfighter5
         '
         Me.lblfighter5.AutoSize = True
-        Me.lblfighter5.Font = New System.Drawing.Font("Supreme", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter5.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter5.Location = New System.Drawing.Point(70, 229)
         Me.lblfighter5.Name = "lblfighter5"
-        Me.lblfighter5.Size = New System.Drawing.Size(89, 26)
+        Me.lblfighter5.Size = New System.Drawing.Size(114, 21)
         Me.lblfighter5.TabIndex = 79
         Me.lblfighter5.Text = "Fighter5"
         '
@@ -377,10 +378,10 @@ Partial Class showranking
         '
         Me.Lbluserid.AutoSize = True
         Me.Lbluserid.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Lbluserid.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Lbluserid.Location = New System.Drawing.Point(0, 646)
+        Me.Lbluserid.Font = New System.Drawing.Font("Lucida Console", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbluserid.Location = New System.Drawing.Point(0, 651)
         Me.Lbluserid.Name = "Lbluserid"
-        Me.Lbluserid.Size = New System.Drawing.Size(88, 24)
+        Me.Lbluserid.Size = New System.Drawing.Size(97, 19)
         Me.Lbluserid.TabIndex = 86
         Me.Lbluserid.Text = "Made by:"
         '
@@ -389,7 +390,7 @@ Partial Class showranking
         Me.btndelete.BackColor = System.Drawing.Color.RosyBrown
         Me.btndelete.Enabled = False
         Me.btndelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btndelete.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndelete.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btndelete.Location = New System.Drawing.Point(571, 609)
         Me.btndelete.Name = "btndelete"
         Me.btndelete.Size = New System.Drawing.Size(220, 51)

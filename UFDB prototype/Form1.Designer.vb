@@ -37,7 +37,7 @@ Partial Class Form1
         '
         Me.Btnfighter.BackColor = System.Drawing.Color.Silver
         Me.Btnfighter.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnfighter.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btnfighter.Font = New System.Drawing.Font("Lucida Sans Typewriter", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btnfighter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
         Me.Btnfighter.Location = New System.Drawing.Point(12, 193)
         Me.Btnfighter.Name = "Btnfighter"
@@ -50,7 +50,7 @@ Partial Class Form1
         '
         Me.fights.BackColor = System.Drawing.Color.Silver
         Me.fights.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.fights.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fights.Font = New System.Drawing.Font("Lucida Sans Typewriter", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.fights.ForeColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
         Me.fights.Location = New System.Drawing.Point(286, 193)
         Me.fights.Name = "fights"
@@ -63,7 +63,7 @@ Partial Class Form1
         '
         Me.Btnregister.BackColor = System.Drawing.Color.Silver
         Me.Btnregister.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnregister.Font = New System.Drawing.Font("Clash Display", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btnregister.Font = New System.Drawing.Font("Calibri Light", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btnregister.Location = New System.Drawing.Point(874, 14)
         Me.Btnregister.Name = "Btnregister"
         Me.Btnregister.Size = New System.Drawing.Size(133, 45)
@@ -75,7 +75,7 @@ Partial Class Form1
         '
         Me.Btnlogin.BackColor = System.Drawing.Color.Silver
         Me.Btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Btnlogin.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btnlogin.Font = New System.Drawing.Font("Lucida Sans Typewriter", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Btnlogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
         Me.Btnlogin.Location = New System.Drawing.Point(841, 193)
         Me.Btnlogin.Name = "Btnlogin"
@@ -88,7 +88,7 @@ Partial Class Form1
         '
         Me.btnodds.BackColor = System.Drawing.Color.Silver
         Me.btnodds.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnodds.Font = New System.Drawing.Font("Clash Display", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnodds.Font = New System.Drawing.Font("Lucida Sans Typewriter", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnodds.ForeColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(26, Byte), Integer))
         Me.btnodds.Location = New System.Drawing.Point(557, 193)
         Me.btnodds.Name = "btnodds"
@@ -121,10 +121,10 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 47.99999!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(400, 95)
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(409, 90)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(220, 73)
+        Me.Label2.Size = New System.Drawing.Size(200, 77)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Home"
         '

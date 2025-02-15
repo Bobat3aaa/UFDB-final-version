@@ -176,7 +176,7 @@ Public Class currentadminuser
     End Sub
 
     Private Sub btnlikedfighters_Click(sender As Object, e As EventArgs) Handles btnlikedfighters.Click
-        'open n
+        'open liked fighter search
         Dim newlikedfightersearch As New Likedfightersearch
         childform(newlikedfightersearch)
     End Sub

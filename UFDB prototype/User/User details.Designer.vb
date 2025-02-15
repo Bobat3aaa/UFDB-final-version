@@ -37,71 +37,71 @@ Partial Class Userdetails
         'lblusertitle
         '
         Me.lblusertitle.AutoSize = True
-        Me.lblusertitle.Font = New System.Drawing.Font("Clash Display", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblusertitle.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblusertitle.Location = New System.Drawing.Point(12, 19)
         Me.lblusertitle.Name = "lblusertitle"
-        Me.lblusertitle.Size = New System.Drawing.Size(264, 55)
+        Me.lblusertitle.Size = New System.Drawing.Size(247, 58)
         Me.lblusertitle.TabIndex = 0
         Me.lblusertitle.Text = "Username"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(21, 155)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 24)
+        Me.Label3.Size = New System.Drawing.Size(50, 25)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "age:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(21, 198)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 24)
+        Me.Label2.Size = New System.Drawing.Size(68, 25)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "email:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(21, 110)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(116, 24)
+        Me.Label1.Size = New System.Drawing.Size(112, 25)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "username:"
         '
         'txtage
         '
-        Me.txtage.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtage.Font = New System.Drawing.Font("Lucida Console", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtage.Location = New System.Drawing.Point(140, 155)
         Me.txtage.Name = "txtage"
-        Me.txtage.Size = New System.Drawing.Size(228, 33)
+        Me.txtage.Size = New System.Drawing.Size(228, 31)
         Me.txtage.TabIndex = 14
         '
         'Txtemail
         '
-        Me.Txtemail.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Txtemail.Font = New System.Drawing.Font("Lucida Console", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Txtemail.Location = New System.Drawing.Point(140, 198)
         Me.Txtemail.Name = "Txtemail"
-        Me.Txtemail.Size = New System.Drawing.Size(228, 33)
+        Me.Txtemail.Size = New System.Drawing.Size(228, 31)
         Me.Txtemail.TabIndex = 13
         '
         'txtusername
         '
-        Me.txtusername.Font = New System.Drawing.Font("Supreme", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Font = New System.Drawing.Font("Lucida Console", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtusername.Location = New System.Drawing.Point(140, 110)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(228, 33)
+        Me.txtusername.Size = New System.Drawing.Size(228, 31)
         Me.txtusername.TabIndex = 11
         '
         'btnchangedetails
         '
-        Me.btnchangedetails.BackColor = System.Drawing.Color.LightGray
-        Me.btnchangedetails.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnchangedetails.BackColor = System.Drawing.Color.Silver
+        Me.btnchangedetails.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnchangedetails.Location = New System.Drawing.Point(439, 96)
         Me.btnchangedetails.Name = "btnchangedetails"
         Me.btnchangedetails.Size = New System.Drawing.Size(320, 62)
@@ -111,8 +111,8 @@ Partial Class Userdetails
         '
         'btndeleteaccount
         '
-        Me.btndeleteaccount.BackColor = System.Drawing.Color.LightGray
-        Me.btndeleteaccount.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btndeleteaccount.BackColor = System.Drawing.Color.Silver
+        Me.btndeleteaccount.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btndeleteaccount.Location = New System.Drawing.Point(439, 233)
         Me.btndeleteaccount.Name = "btndeleteaccount"
         Me.btndeleteaccount.Size = New System.Drawing.Size(320, 62)
@@ -122,8 +122,8 @@ Partial Class Userdetails
         '
         'btnchangepassword
         '
-        Me.btnchangepassword.BackColor = System.Drawing.Color.LightGray
-        Me.btnchangepassword.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnchangepassword.BackColor = System.Drawing.Color.Silver
+        Me.btnchangepassword.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnchangepassword.Location = New System.Drawing.Point(439, 165)
         Me.btnchangepassword.Name = "btnchangepassword"
         Me.btnchangepassword.Size = New System.Drawing.Size(320, 62)

@@ -234,7 +234,6 @@ Public Class fight_form
             btnfight.Text = fightlist(i).event_name & vbCrLf & vbCrLf & " " & fightlist(i).fighter1 & vbCrLf & " VS " & vbCrLf & fightlist(i).fighter2
             btnfight.Visible = True
             btnfight.Tag = i
-            btnfight.Font = New Font("Clash Display", 9, FontStyle.Regular)
 
             AddHandler btnfight.Click, AddressOf Button_Click
 

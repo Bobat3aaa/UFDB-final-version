@@ -36,6 +36,7 @@ Partial Class oddsgeneratorform
         Me.btnsearch1 = New System.Windows.Forms.Button()
         Me.btnsearch2 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.txtwinner = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -46,16 +47,15 @@ Partial Class oddsgeneratorform
         Me.btnback1 = New System.Windows.Forms.Button()
         Me.txtchance1 = New System.Windows.Forms.TextBox()
         Me.txtchance2 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.pnlfighter1 = New System.Windows.Forms.Panel()
-        Me.pnlfighter2 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.pnlfighter2 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.pnlfighter1.SuspendLayout()
         Me.pnlfighter2.SuspendLayout()
@@ -63,61 +63,61 @@ Partial Class oddsgeneratorform
         '
         'txtfighter1fname
         '
-        Me.txtfighter1fname.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter1fname.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter1fname.Location = New System.Drawing.Point(12, 73)
         Me.txtfighter1fname.Name = "txtfighter1fname"
-        Me.txtfighter1fname.Size = New System.Drawing.Size(160, 25)
+        Me.txtfighter1fname.Size = New System.Drawing.Size(160, 20)
         Me.txtfighter1fname.TabIndex = 0
         '
         'txtfighter2fname
         '
-        Me.txtfighter2fname.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter2fname.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter2fname.Location = New System.Drawing.Point(7, 73)
         Me.txtfighter2fname.Name = "txtfighter2fname"
-        Me.txtfighter2fname.Size = New System.Drawing.Size(160, 25)
+        Me.txtfighter2fname.Size = New System.Drawing.Size(160, 20)
         Me.txtfighter2fname.TabIndex = 1
         '
         'lblfighter1
         '
         Me.lblfighter1.AutoSize = True
-        Me.lblfighter1.Font = New System.Drawing.Font("Clash Display", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter1.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter1.Location = New System.Drawing.Point(13, 15)
         Me.lblfighter1.Name = "lblfighter1"
-        Me.lblfighter1.Size = New System.Drawing.Size(102, 27)
+        Me.lblfighter1.Size = New System.Drawing.Size(88, 29)
         Me.lblfighter1.TabIndex = 2
         Me.lblfighter1.Text = "fighter 1"
         '
         'lblfighter2
         '
         Me.lblfighter2.AutoSize = True
-        Me.lblfighter2.Font = New System.Drawing.Font("Clash Display", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter2.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfighter2.Location = New System.Drawing.Point(7, 15)
         Me.lblfighter2.Name = "lblfighter2"
-        Me.lblfighter2.Size = New System.Drawing.Size(110, 27)
+        Me.lblfighter2.Size = New System.Drawing.Size(92, 29)
         Me.lblfighter2.TabIndex = 3
         Me.lblfighter2.Text = "fighter 2"
         '
         'txtfighter1lname
         '
-        Me.txtfighter1lname.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter1lname.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter1lname.Location = New System.Drawing.Point(12, 120)
         Me.txtfighter1lname.Name = "txtfighter1lname"
-        Me.txtfighter1lname.Size = New System.Drawing.Size(160, 25)
+        Me.txtfighter1lname.Size = New System.Drawing.Size(160, 20)
         Me.txtfighter1lname.TabIndex = 4
         '
         'txtfighter2lname
         '
-        Me.txtfighter2lname.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter2lname.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter2lname.Location = New System.Drawing.Point(7, 120)
         Me.txtfighter2lname.Name = "txtfighter2lname"
-        Me.txtfighter2lname.Size = New System.Drawing.Size(160, 25)
+        Me.txtfighter2lname.Size = New System.Drawing.Size(160, 20)
         Me.txtfighter2lname.TabIndex = 5
         '
         'txtfighter1stats
         '
         Me.txtfighter1stats.BackColor = System.Drawing.Color.Silver
         Me.txtfighter1stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtfighter1stats.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter1stats.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter1stats.Location = New System.Drawing.Point(12, 151)
         Me.txtfighter1stats.Multiline = True
         Me.txtfighter1stats.Name = "txtfighter1stats"
@@ -128,7 +128,7 @@ Partial Class oddsgeneratorform
         '
         Me.txtfighter2stats.BackColor = System.Drawing.Color.Silver
         Me.txtfighter2stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtfighter2stats.Font = New System.Drawing.Font("Supreme", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfighter2stats.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtfighter2stats.Location = New System.Drawing.Point(7, 151)
         Me.txtfighter2stats.Multiline = True
         Me.txtfighter2stats.Name = "txtfighter2stats"
@@ -137,10 +137,10 @@ Partial Class oddsgeneratorform
         '
         'btnPredict
         '
-        Me.btnPredict.BackColor = System.Drawing.Color.Silver
+        Me.btnPredict.BackColor = System.Drawing.Color.LightCoral
         Me.btnPredict.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnPredict.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnPredict.Font = New System.Drawing.Font("Clash Display", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPredict.Font = New System.Drawing.Font("Lucida Sans Typewriter", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPredict.Location = New System.Drawing.Point(288, 355)
         Me.btnPredict.Name = "btnPredict"
         Me.btnPredict.Size = New System.Drawing.Size(339, 47)
@@ -158,7 +158,7 @@ Partial Class oddsgeneratorform
         '
         Me.btnsearch1.BackColor = System.Drawing.Color.Silver
         Me.btnsearch1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnsearch1.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch1.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch1.Location = New System.Drawing.Point(187, 114)
         Me.btnsearch1.Name = "btnsearch1"
         Me.btnsearch1.Size = New System.Drawing.Size(70, 31)
@@ -170,7 +170,7 @@ Partial Class oddsgeneratorform
         '
         Me.btnsearch2.BackColor = System.Drawing.Color.Silver
         Me.btnsearch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnsearch2.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch2.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch2.Location = New System.Drawing.Point(182, 114)
         Me.btnsearch2.Name = "btnsearch2"
         Me.btnsearch2.Size = New System.Drawing.Size(70, 31)
@@ -187,21 +187,32 @@ Partial Class oddsgeneratorform
         Me.Panel1.Size = New System.Drawing.Size(946, 72)
         Me.Panel1.TabIndex = 22
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Red
+        Me.Label6.Location = New System.Drawing.Point(-1, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(193, 77)
+        Me.Label6.TabIndex = 8
+        Me.Label6.Text = "UFDB"
+        '
         'txtwinner
         '
-        Me.txtwinner.Font = New System.Drawing.Font("Supreme", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtwinner.Font = New System.Drawing.Font("Lucida Console", 20.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtwinner.Location = New System.Drawing.Point(288, 284)
         Me.txtwinner.Name = "txtwinner"
-        Me.txtwinner.Size = New System.Drawing.Size(339, 44)
+        Me.txtwinner.Size = New System.Drawing.Size(339, 34)
         Me.txtwinner.TabIndex = 23
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(290, 259)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(76, 22)
+        Me.Label1.Size = New System.Drawing.Size(71, 23)
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "Winner"
         '
@@ -213,7 +224,7 @@ Partial Class oddsgeneratorform
         '
         'btnback2
         '
-        Me.btnback2.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnback2.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnback2.Location = New System.Drawing.Point(7, 396)
         Me.btnback2.Name = "btnback2"
         Me.btnback2.Size = New System.Drawing.Size(62, 27)
@@ -223,7 +234,7 @@ Partial Class oddsgeneratorform
         '
         'btnnext2
         '
-        Me.btnnext2.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnnext2.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnnext2.Location = New System.Drawing.Point(190, 396)
         Me.btnnext2.Name = "btnnext2"
         Me.btnnext2.Size = New System.Drawing.Size(62, 27)
@@ -233,7 +244,7 @@ Partial Class oddsgeneratorform
         '
         'btnnext1
         '
-        Me.btnnext1.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnnext1.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnnext1.Location = New System.Drawing.Point(195, 400)
         Me.btnnext1.Name = "btnnext1"
         Me.btnnext1.Size = New System.Drawing.Size(62, 27)
@@ -243,7 +254,7 @@ Partial Class oddsgeneratorform
         '
         'btnback1
         '
-        Me.btnback1.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnback1.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnback1.Location = New System.Drawing.Point(12, 396)
         Me.btnback1.Name = "btnback1"
         Me.btnback1.Size = New System.Drawing.Size(62, 27)
@@ -267,24 +278,13 @@ Partial Class oddsgeneratorform
         Me.txtchance2.Size = New System.Drawing.Size(134, 44)
         Me.txtchance2.TabIndex = 33
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Bahnschrift", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Red
-        Me.Label6.Location = New System.Drawing.Point(-1, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(193, 77)
-        Me.Label6.TabIndex = 8
-        Me.Label6.Text = "UFDB"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(262, 85)
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(284, 85)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(407, 55)
+        Me.Label2.Size = New System.Drawing.Size(359, 58)
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "Odds generator"
         '
@@ -307,6 +307,36 @@ Partial Class oddsgeneratorform
         Me.pnlfighter1.Size = New System.Drawing.Size(269, 546)
         Me.pnlfighter1.TabIndex = 32
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Bahnschrift", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(59, 450)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(35, 16)
+        Me.Label8.TabIndex = 38
+        Me.Label8.Text = "odds"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(12, 102)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(67, 16)
+        Me.Label5.TabIndex = 37
+        Me.Label5.Text = "Last name"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(12, 55)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(69, 16)
+        Me.Label7.TabIndex = 36
+        Me.Label7.Text = "First name"
+        '
         'pnlfighter2
         '
         Me.pnlfighter2.BackColor = System.Drawing.Color.DarkGray
@@ -326,65 +356,35 @@ Partial Class oddsgeneratorform
         Me.pnlfighter2.Size = New System.Drawing.Size(269, 546)
         Me.pnlfighter2.TabIndex = 33
         '
-        'Label3
+        'Label9
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(7, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 15)
-        Me.Label3.TabIndex = 34
-        Me.Label3.Text = "First name"
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Bahnschrift", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(67, 456)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(35, 16)
+        Me.Label9.TabIndex = 39
+        Me.Label9.Text = "odds"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(7, 102)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(70, 15)
+        Me.Label4.Size = New System.Drawing.Size(67, 16)
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "Last name"
         '
-        'Label5
+        'Label3
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 102)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(70, 15)
-        Me.Label5.TabIndex = 37
-        Me.Label5.Text = "Last name"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(12, 55)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 15)
-        Me.Label7.TabIndex = 36
-        Me.Label7.Text = "First name"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(59, 450)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 15)
-        Me.Label8.TabIndex = 38
-        Me.Label8.Text = "odds"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(67, 456)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(38, 15)
-        Me.Label9.TabIndex = 39
-        Me.Label9.Text = "odds"
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(7, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(69, 16)
+        Me.Label3.TabIndex = 34
+        Me.Label3.Text = "First name"
         '
         'oddsgeneratorform
         '
