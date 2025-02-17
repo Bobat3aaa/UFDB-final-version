@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 
 
-
+'fighter and fighterresponse data structrues to hold data from API
 
 Public Class fightermanagement
 

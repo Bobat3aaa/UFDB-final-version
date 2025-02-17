@@ -47,7 +47,7 @@ Public Class currentadminuser
             'api url increases in page
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fighters?page=" & i
 
-            'Gets response from API 
+            'sends GET request to HTTP (asynchronus)
             answer = Await httpclient.GetAsync(apiurl)
 
             'if an answer is retrieved, the content from api is turned into a string
@@ -91,7 +91,9 @@ Public Class currentadminuser
         While morefights = True
             Dim apiurl As String = $"https://ufc-api-theta.vercel.app/mma-api/fights?page=" & i
 
+            'sends GET request to HTTP (asynchronus)
             answer = Await httpclient.GetAsync(apiurl)
+
             'if an answer is retrieved, the content from api is turned into a string
             If answer.IsSuccessStatusCode Then
 

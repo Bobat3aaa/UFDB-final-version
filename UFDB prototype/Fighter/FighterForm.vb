@@ -5,10 +5,16 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class FighterForm
 
+    Private parsednames As New List(Of String)
     Private currentfighterlist As List(Of fightermanagement) ' global fighterlist for form to be accessible for all filters, sorts, etc
 
     'quicksort used to sort fighters
     Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fightermanagement)
+
+        For Each fighter In fighters
+            parsednames.Add(parsename(fighter.Name, 1))
+        Next
+
 
         Dim pivot As String ' sorting pivot
         Dim templow As Integer = indexlow 'low of list
@@ -161,7 +167,41 @@ Public Class FighterForm
 
             End While
 
+        ElseIf sortdecision = 5 Then
 
+            pivot = parsednames(Int((indexlow + indexhigh) / 2))
+
+            While templow <= temphigh
+                While String.Compare(parsednames(templow), pivot) < 0
+
+                    ' if the name before the pivot is smaller then the pivot, the indicator will increase until this is not the case
+
+                    templow += 1
+                End While
+
+                While String.Compare(parsednames(temphigh), pivot) > 0
+
+                    ' if the name after the pivot is larger then the pivot, the indicator will decrease until this is not the case
+
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+
+                    ' swaps fighters
+
+                    Dim tempfighter As fightermanagement = fighters(templow)
+                    fighters(templow) = fighters(temphigh)
+                    fighters(temphigh) = tempfighter
+
+                    Dim tempname As String = parsednames(templow)
+                    parsednames(templow) = parsednames(temphigh)
+                    parsednames(temphigh) = tempname
+
+                    templow += 1
+                    temphigh -= 1
+                End If
+            End While
         End If
 
         If indexlow < temphigh Then
@@ -230,6 +270,7 @@ Public Class FighterForm
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
         Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
 
+        If startIndex < 0 Then startIndex = 0 'if there are not many fighters in a list, makes sure back button brings you to first fighter
 
         'if the starting fighters index is bigger than 0, a back button is added that makes the starting index go back by 100 to undo the action of loading more
 
@@ -259,6 +300,7 @@ Public Class FighterForm
 
 
         'creates 50 fighter buttons
+
         For i = startIndex To endIndex - 1
 
 
@@ -336,6 +378,8 @@ Public Class FighterForm
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
         'reads fighters from json again  and updates the  buttons
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        txtfname.Text = ""
+        txtlname.Text = ""
         updatebuttons(fighterlist)
     End Sub
 
@@ -364,7 +408,7 @@ Public Class FighterForm
         ' if statement that returns a list of fighters that have the correct name
         If String.IsNullOrEmpty(txtlname.Text) And String.IsNullOrEmpty(txtfname.Text) = False Then
 
-
+            Debug.WriteLine("option1 ")
             nametofind = txtfname.Text
             decision = 0
             Dim searchedfighters As List(Of fightermanagement) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
@@ -373,7 +417,7 @@ Public Class FighterForm
 
         ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
 
-
+            Debug.WriteLine("option 2 ")
             nametofind = txtlname.Text
             decision = 1
             Dim searchedfighters As List(Of fightermanagement) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
@@ -494,15 +538,21 @@ Public Class FighterForm
         'splits name where the space is
         Dim parsedname As String() = name.Split(" "c)
 
-        If decision = 0 Then
-            'returns first name
-            Return parsedname(0)
-        ElseIf decision = 1 And parsedname.Length > 0 Then
-            'returns last name
-            Return parsedname(1)
-        Else
-            Return ""
+        If parsedname.Length > 0 Then
+            If decision = 0 Then
+                'returns first name
+                Return parsedname(0)
+
+            ElseIf decision = 1 And parsedname.Length > 1 Then
+                'returns last name
+
+                Return parsedname(1)
+            Else
+
+                Return ""
+            End If
         End If
+
     End Function
 
 

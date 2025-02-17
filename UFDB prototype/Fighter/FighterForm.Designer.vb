@@ -221,7 +221,7 @@ Partial Class FighterForm
         '
         Me.cmbwins.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbwins.FormattingEnabled = True
-        Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc"})
+        Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc", "names"})
         Me.cmbwins.Location = New System.Drawing.Point(378, 204)
         Me.cmbwins.Name = "cmbwins"
         Me.cmbwins.Size = New System.Drawing.Size(126, 24)

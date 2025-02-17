@@ -1,5 +1,7 @@
 ﻿
 Imports Newtonsoft.Json
+
+''fight and fightresponse data structrues to hold data from API
 Public Class Fight
 
     <JsonProperty("_id")>
