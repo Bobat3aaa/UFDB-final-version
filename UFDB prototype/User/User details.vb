@@ -8,7 +8,7 @@ Public Class Userdetails
 
 
         InitializeComponent()
-        Dim currentuser As User = getcurrentuser()
+        Dim currentuser As usermanagement = getcurrentuser()
         'adds user details to appropriate textboxes
         lblusertitle.Text = currentuser.username
         txtusername.Text = currentuser.username
@@ -34,10 +34,10 @@ Public Class Userdetails
 
             If emailcheck = False Then
 
-                Dim userlist As List(Of User) = functions.ReadUsersFromJson()
+                Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
 
                 'Dim currentuser As User = getcurrentuser()
-                Dim currentuser As User = getcurrentuser()
+                Dim currentuser As usermanagement = getcurrentuser()
                 'decrypts password to encrypt with new username
                 Dim decryptedpass As String = encryptpassword(currentuser.username, currentuser.password, False, currentuser.passwordlength)
 
@@ -53,7 +53,7 @@ Public Class Userdetails
                 currentuser.password = encryptedpass
 
                 'removes user witrh old detials and adds a new one with new details
-                Dim usertoremove As User = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
+                Dim usertoremove As usermanagement = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
                 userlist.Remove(usertoremove)
                 userlist.Add(currentuser)
                 functions.SaveUsersToJson(userlist)
@@ -72,8 +72,8 @@ Public Class Userdetails
 
 
     Function getcurrentuser()
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-        Dim currentuser As User
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim currentuser As usermanagement
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser
     End Function
@@ -81,8 +81,8 @@ Public Class Userdetails
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
-        Dim users As List(Of User) = functions.ReadUsersFromJson()
-        Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
         match = emailExpression.IsMatch(email)
         If match = False Then
             Return match
@@ -144,14 +144,14 @@ Public Class Userdetails
         If answer = vbYes Then
 
             'store all lists connected to user
-            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-            Dim currentuser As User = getcurrentuser()
+            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim currentuser As usermanagement = getcurrentuser()
             Dim fighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile()
             Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson()
             Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()
 
             'deletes user
-            Dim usertoremove As User = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
+            Dim usertoremove As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
             MsgBox(usertoremove.UserID)
             userlist.Remove(usertoremove)
 
@@ -186,10 +186,13 @@ Public Class Userdetails
     Function validateusername(username As String) As Boolean
 
         'checks if username is already taken
-        Dim users As List(Of User) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim match As Boolean = False
         match = users.Any(Function(u) u.username = username)
         Return match
     End Function
 
+    Private Sub Userdetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

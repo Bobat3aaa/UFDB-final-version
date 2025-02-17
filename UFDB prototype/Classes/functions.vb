@@ -38,15 +38,15 @@ Public Class functions
     End Sub
 
     ' read users from the json file
-    Public Shared Function ReadUsersFromJson() As List(Of User)
+    Public Shared Function ReadUsersFromJson() As List(Of usermanagement)
         If Not File.Exists("users.json") Then
-            Return New List(Of User)
+            Return New List(Of usermanagement)
         End If
         Dim json As String = File.ReadAllText("users.json")
-        Return JsonConvert.DeserializeObject(Of List(Of User))(json)
+        Return JsonConvert.DeserializeObject(Of List(Of usermanagement))(json)
     End Function
 
-    Public Shared Sub SaveUsersToJson(users As List(Of User))
+    Public Shared Sub SaveUsersToJson(users As List(Of usermanagement))
         Dim json As String = JsonConvert.SerializeObject(users, Formatting.Indented)
         File.WriteAllText("users.json", json)
     End Sub

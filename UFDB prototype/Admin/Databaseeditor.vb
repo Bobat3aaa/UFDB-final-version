@@ -22,7 +22,7 @@ Public Class Databaseeditor
 
     'json editors
 
-    Private Sub Datagridviewedit(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit 'if something is edited, turn light pink
+    Private Sub Datagrid_viewedoredited(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit 'if something is edited, turn light pink
         Datagridview.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightPink
     End Sub
 

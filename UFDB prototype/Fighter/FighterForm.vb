@@ -276,7 +276,7 @@ Public Class FighterForm
             btnfighter.Tag = i
 
             'associates pressing the button with the button click subprocedure
-            AddHandler btnfighter.Click, AddressOf Button_Click
+            AddHandler btnfighter.Click, AddressOf btnfighterclick
 
             FlowLayoutPanel1.Controls.Add(btnfighter)
 
@@ -313,7 +313,7 @@ Public Class FighterForm
 
 
 
-    Private Sub Button_Click(sender As Object, e As EventArgs)   'when a fighter button in the flow control panel is picked 
+    Private Sub btnfighterclick(sender As Object, e As EventArgs)   'when a fighter button in the flow control panel is picked 
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)

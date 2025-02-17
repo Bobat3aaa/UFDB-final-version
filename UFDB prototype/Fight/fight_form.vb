@@ -9,57 +9,10 @@ Imports System.Text.RegularExpressions
 
 Public Class fight_form
     Private currentfightlist As List(Of Fight) 'the current fight list the user sees
-    Private Sub fight_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-        'makes layout scrollable
-        FlowLayoutPanel1.VerticalScroll.Visible = True
-        FlowLayoutPanel1.HorizontalScroll.Visible = True
-
-        'resets all sorting/ filter methods
-        cmbsort.SelectedIndex = 0
-        cmbweightclass.SelectedIndex = 0
-        If cmbsort.Items.Count > 0 Then cmbsort.SelectedIndex = 0
-        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
-        DateTimePicker1.Checked = False
-
-
-        'reads new fight list
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
-
-
-        Dim ilow As Integer = 0
-        Dim ihigh As Integer = fights.Count - 1
-        Dim sortdirection As Integer = cmbsort.SelectedIndex
-
-
-        'sorts fight list via merge sort
-        Dim fightlistfiltered As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
-        'saves filtered list into currentfightlist and saves to json
-        currentfightlist = fightlistfiltered
-        functions.SaveToFightJson(fightlistfiltered)
-
-
-        'adds all distinct fight locations to a list
-        Dim fightlocations = fightlistfiltered.Select(Function(s) s.location).Distinct().ToList()
-        cmblocation.Items.Add("All")
-
-        'list is used to populate combo select box
-        For Each location As String In fightlocations
-            cmblocation.Items.Add(location)
-        Next
-        cmblocation.SelectedItem = "All"
-
-
-        'populates flow layout panel
-        updatebuttons(currentfightlist)
-    End Sub
 
 
 
-
-
-    'merge sort
+    'merge sort based on pseudocode from design
 
 
 
@@ -145,7 +98,7 @@ Public Class fight_form
                 pointer3 += 1
             End While
 
-
+            'same but moves earlier fights to start
         ElseIf sortdirection = 1 Then
             While pointer1 < upperleft AndAlso pointer2 < upperright
                 If DateTime.Compare(fightslefthalf(pointer1).date, fightsrighthalf(pointer2).date) <= 0 Then
@@ -180,6 +133,59 @@ Public Class fight_form
 
 
 
+    Private Sub fight_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        'makes layout scrollable
+        FlowLayoutPanel1.VerticalScroll.Visible = True
+        FlowLayoutPanel1.HorizontalScroll.Visible = True
+
+        'resets all sorting/ filter methods
+        cmbsort.SelectedIndex = 0
+        cmbweightclass.SelectedIndex = 0
+        If cmbsort.Items.Count > 0 Then cmbsort.SelectedIndex = 0
+        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
+        DateTimePicker1.Checked = False
+
+
+        'reads new fight list
+        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+
+
+        Dim ilow As Integer = 0
+        Dim ihigh As Integer = fights.Count - 1
+        Dim sortdirection As Integer = cmbsort.SelectedIndex
+
+
+        'sorts fight list via merge sort
+        Dim fightlistfiltered As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
+        'saves filtered list into currentfightlist and saves to json
+        currentfightlist = fightlistfiltered
+        functions.SaveToFightJson(fightlistfiltered)
+
+
+        'adds all distinct fight locations to a list
+        Dim fightlocations = fightlistfiltered.Select(Function(s) s.location).Distinct().ToList()
+        cmblocation.Items.Add("All")
+
+        'list is used to populate combo select box
+        For Each location As String In fightlocations
+            cmblocation.Items.Add(location)
+        Next
+        cmblocation.SelectedItem = "All"
+
+
+        'populates flow layout panel
+        updatebuttons(currentfightlist)
+    End Sub
+
+
+
+
+
+
+
+
     Sub updatebuttons(fightlist As List(Of Fight), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
@@ -189,9 +195,6 @@ Public Class fight_form
         fightlist = checkfilters(fightlist)
         currentfightlist = fightlist
 
-        If cmbsort.SelectedItem IsNot Nothing Then
-            lblsorted.Text = cmbsort.SelectedItem.ToString()
-        End If
 
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fights
@@ -235,7 +238,7 @@ Public Class fight_form
             btnfight.Visible = True
             btnfight.Tag = i
 
-            AddHandler btnfight.Click, AddressOf Button_Click
+            AddHandler btnfight.Click, AddressOf btnfightclick
 
             FlowLayoutPanel1.Controls.Add(btnfight)
 
@@ -268,7 +271,7 @@ Public Class fight_form
     End Sub
 
     'when a button in the flow control panel is picked 
-    Private Sub Button_Click(sender As Object, e As EventArgs)
+    Private Sub btnfightclick(sender As Object, e As EventArgs)
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
@@ -544,4 +547,8 @@ Public Class fight_form
 
 
     End Function
+
+    Private Sub txteventnum_TextChanged(sender As Object, e As EventArgs) Handles txteventnum.TextChanged
+
+    End Sub
 End Class

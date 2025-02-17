@@ -13,10 +13,10 @@ Public Class showranking
 
         Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
-        Dim currentuser As User = getcurrentuser()
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson
+        Dim currentuser As usermanagement = getcurrentuser()
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
 
-        Dim listusername As User = userlist.FirstOrDefault(Function(u) u.UserID = currentranking.UserID)
+        Dim listusername As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentranking.UserID)
 
         For i = 1 To 10
 
@@ -62,6 +62,9 @@ Public Class showranking
         If ranklbl IsNot Nothing And i = fighterrank.Rank Then
 
             ranklbl.Text = currentfighter.Name
+        Else
+            ranklbl.Visible = False
+
         End If
 
 
@@ -70,8 +73,8 @@ Public Class showranking
     End Sub
 
     Function getcurrentuser()
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-        Dim currentuser As User
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim currentuser As usermanagement
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser
     End Function
@@ -79,7 +82,7 @@ Public Class showranking
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
 
         'deletes ranking by joining ranking id between fighterranking and ranking lists
-        Dim currentuser As User = getcurrentuser()
+        Dim currentuser As usermanagement = getcurrentuser()
         If currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile

@@ -33,7 +33,7 @@ Public Class Rankingsearch
 
 
         FlowLayoutPanel1.Controls.Clear()
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
 
 
 
@@ -70,7 +70,7 @@ Public Class Rankingsearch
         'creates 50 buttons
         For i = startIndex To endIndex - 1
 
-            Dim user As User = userlist.FirstOrDefault(Function(u) u.UserID = ranklist(i).UserID)
+            Dim user As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = ranklist(i).UserID)
 
 
             Dim btnlists As New Button
@@ -86,7 +86,7 @@ Public Class Rankingsearch
 
 
 
-            AddHandler btnlists.Click, AddressOf Button_Click
+            AddHandler btnlists.Click, AddressOf btnlistclick
 
             FlowLayoutPanel1.Controls.Add(btnlists)
 
@@ -122,16 +122,16 @@ Public Class Rankingsearch
     End Sub
 
 
-    Private Sub Button_Click(sender As Object, e As EventArgs)
+    Private Sub btnlistclick(sender As Object, e As EventArgs)
 
-        'shows what button was pressed
+        'holds what button was just pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
 
         'gets the tag of ranking/button
         Dim rankIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
 
-
+        'find button via quicksort and using index from tag
         Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
@@ -149,7 +149,7 @@ Public Class Rankingsearch
         Dim rankingform As New showranking(currentranking)
 
 
-
+        'show rankingform
         rankingform.Show()
 
     End Sub
@@ -235,6 +235,7 @@ Public Class Rankingsearch
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
+        'uses binary search used in previous forms
         Dim nametofind As String = txtlistname.Text
         Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
         Dim indexlow As Integer = 0

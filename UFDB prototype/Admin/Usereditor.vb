@@ -2,7 +2,7 @@
 
 Public Class Usereditor
 
-    Private currentuserlist As List(Of User) 'user list to be saved
+    Private currentuserlist As List(Of usermanagement) 'user list to be saved
     Private currentranklist As List(Of ranking) ' rank list to be saved
     Private currentfighterranklist As List(Of fighterranking) ' fighter-rank list to be saved
     Private currentlikedfighterlist As List(Of likedfighter) 'liked-fighter list to be saved
@@ -58,7 +58,7 @@ Public Class Usereditor
         updatedatabase()
 
     End Sub
-    Function GetNextUserID(users As List(Of User)) As Integer
+    Function GetNextUserID(users As List(Of usermanagement)) As Integer
         If users.Count = 0 Then
             Return 1
         End If
@@ -69,12 +69,15 @@ Public Class Usereditor
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
         'delete user and all items related to it in liked fighters and rankings
 
-        Dim usertodelete As User
+        Dim usertodelete As usermanagement
 
 
 
         If Datagridview.SelectedRows(0).DataBoundItem IsNot Nothing Then
-            usertodelete = CType(Datagridview.SelectedRows(0).DataBoundItem, User)
+            usertodelete = CType(Datagridview.SelectedRows(0).DataBoundItem, usermanagement) 'returns user to delete as user from data grid view
+
+            'remove all instances of user-related items + user
+
             currentlikedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.UserID)
             Dim rankingstoremove As List(Of ranking) = currentranklist.Where(Function(r) r.UserID = usertodelete.UserID).ToList()
             Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
@@ -82,7 +85,7 @@ Public Class Usereditor
             currentranklist.RemoveAll(Function(r) r.UserID = usertodelete.UserID)
         End If
 
-
+        'remove from data grid view
         If Datagridview.SelectedRows.Count > 0 Then
             For Each row As DataGridViewRow In Datagridview.SelectedRows
                 Datagridview.Rows.Remove(row)
@@ -102,7 +105,7 @@ Public Class Usereditor
 
         'gets encrypted password
 
-        Dim newuser As New User()
+        Dim newuser As New usermanagement()
         newuser.passwordlength = Len(newpassword)
         Dim encryptpass As String = encryptpassword(newusername, newpassword)
 
@@ -125,7 +128,7 @@ Public Class Usereditor
         End If
     End Sub
     Private Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$")
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
         MsgBox(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function
@@ -155,7 +158,7 @@ Public Class Usereditor
 
         Return encryptpass
     End Function
-    Function ValidateUser(user As User) As Boolean
+    Function ValidateUser(user As usermanagement) As Boolean
         If String.IsNullOrEmpty(user.username) OrElse String.IsNullOrEmpty(user.password) OrElse user.age <= 0 OrElse Not user.email.Contains("@") Then
             Return False
         End If
@@ -167,8 +170,8 @@ Public Class Usereditor
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
-        Dim users As List(Of User) = functions.ReadUsersFromJson()
-        Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
         match = emailExpression.IsMatch(email)
         If match = False Then
             Return match
@@ -199,7 +202,7 @@ Public Class Usereditor
 
     End Sub
     Function validateusername(username As String) As Boolean
-        Dim users As List(Of User) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim match As Boolean = False
         match = users.Any(Function(u) u.username = username)
         Return match

@@ -232,7 +232,7 @@ Public Class Likedfightersearch
                 btn.Visible = True
                 btn.Tag = i
                 currentfighterlist = sortedfighters
-                AddHandler btn.Click, AddressOf Button_Click
+                AddHandler btn.Click, AddressOf btnlikedfighterclick
 
                 FlowLayoutPanel1.Controls.Add(btn)
 
@@ -269,7 +269,7 @@ Public Class Likedfightersearch
 
 
     'when a button in the flow control panel is picked (fighter edition
-    Private Sub Button_Click(sender As Object, e As EventArgs)
+    Private Sub btnlikedfighterclick(sender As Object, e As EventArgs)
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)

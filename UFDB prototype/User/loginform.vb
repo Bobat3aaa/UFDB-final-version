@@ -17,7 +17,7 @@ Public Class loginform
     Private Sub btnsortusers_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Function Quicksort(users As List(Of User), indexlow As Integer, indexhigh As Integer) As List(Of User) 'quicksort that sorts users
+    Function Quicksort(users As List(Of usermanagement), indexlow As Integer, indexhigh As Integer) As List(Of usermanagement) 'quicksort that sorts users
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
@@ -34,7 +34,7 @@ Public Class loginform
             End While
 
             If templow <= temphigh Then
-                Dim tempuser As User = users(templow)
+                Dim tempuser As usermanagement = users(templow)
                 users(templow) = users(temphigh)
                 users(temphigh) = tempuser
                 templow += 1
@@ -59,10 +59,10 @@ Public Class loginform
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
         'sorts users and saves to the json
-        Dim users As List(Of User) = functions.ReadUsersFromJson
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = users.Count - 1
-        Dim sortedusers As List(Of User) = Quicksort(users, indexlow, indexhigh)
+        Dim sortedusers As List(Of usermanagement) = Quicksort(users, indexlow, indexhigh)
         functions.SaveUsersToJson(sortedusers)
 
 
@@ -119,7 +119,7 @@ Public Class loginform
 
 
     End Sub
-    Function bsearchusers(sortedusers As List(Of User), usernametofind As String, indexlow As Integer, indexhigh As Integer)
+    Function bsearchusers(sortedusers As List(Of usermanagement), usernametofind As String, indexlow As Integer, indexhigh As Integer)
 
         ' retuns -1 if no users found
         If indexlow > indexhigh Then
@@ -182,5 +182,9 @@ Public Class loginform
     Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click 'open home
         Form1.Show()
         Me.Close()
+    End Sub
+
+    Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

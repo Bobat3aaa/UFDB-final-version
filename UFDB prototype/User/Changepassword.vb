@@ -8,7 +8,7 @@ Public Class Changepassword
     Function validatepassword(ByVal password As String) 'uses regex to make sure password fits criteria
 
 
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$")
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
 
 
         Return passwordcheck.IsMatch(password)
@@ -43,8 +43,8 @@ Public Class Changepassword
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnchangepass.Click
 
 
-        Dim currentuser As User = getcurrentuser() 'gets current user object
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson 'gets full user list
+        Dim currentuser As usermanagement = getcurrentuser() 'gets current user object
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson 'gets full user list
         Dim ogpass As String 'stores first password
         Dim newpass As String 'stores new password
 
@@ -77,8 +77,8 @@ Public Class Changepassword
     End Sub
 
     Function getcurrentuser()
-        Dim userlist As List(Of User) = functions.ReadUsersFromJson
-        Dim currentuser As User
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
+        Dim currentuser As usermanagement
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser
     End Function

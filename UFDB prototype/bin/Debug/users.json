@@ -7,5 +7,14 @@
     "age": 18,
     "email": "nathanh0606@gmail.com",
     "Admin": true
+  },
+  {
+    "UserID": 2,
+    "username": "Test",
+    "password": "˜©»»¿§º¬ùúéýˆ„„‡‚„ŠèéÞëâúúüùúäÝÞ",
+    "passwordlength": 11,
+    "age": 21,
+    "email": "nathan@gmail.com",
+    "Admin": false
   }
 ]
