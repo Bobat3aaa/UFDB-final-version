@@ -77,7 +77,7 @@ Public Class currentadminuser
         End While
 
         'save new list of fighters to json
-
+        Debug.WriteLine(allfighters.Count)
         functions.SaveToFighterJson(allfighters)
     End Function
     Public Async Function fetchfights(httpclient As HttpClient) As Task 'asynchronus function that pulls all fights from api
@@ -121,22 +121,27 @@ Public Class currentadminuser
 
         End While
 
+        Debug.WriteLine(allfights.Count)
         'saves fights
         functions.SaveToFightJson(allfights)
 
     End Function
     Async Function fetchalldata() As Task 'asynchronus function to refresh all API data
 
+        Try
+            Using httpclient As New HttpClient() 'used to access HTTP requests, responses, etc
 
-        Using httpclient As New HttpClient() 'used to access HTTP requests, responses, etc
+                Dim fightertask As Task = fetchfighters(httpclient) 'fetch all fighters from API
+                Dim fighttask As Task = fetchfights(httpclient) 'fetch all fights from API
 
-            Dim fightertask As Task = fetchfighters(httpclient) 'fetch all fighters from API
-            Dim fighttask As Task = fetchfights(httpclient) 'fetch all fights from API
+                Await Task.WhenAll(fighttask, fightertask) 'waits for both fights and fighters to be finished
 
-            Await Task.WhenAll(fighttask, fightertask) 'waits for both fights and fighters to be finished
+                MsgBox("API is refreshed")
+            End Using
+        Catch ex As Exception
+            MsgBox("problem pulling from API: " & ex.Message)
+        End Try
 
-            MsgBox("API is refreshed")
-        End Using
     End Function
 
 

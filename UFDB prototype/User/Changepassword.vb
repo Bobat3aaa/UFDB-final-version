@@ -43,8 +43,9 @@ Public Class Changepassword
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnchangepass.Click
 
 
-        Dim currentuser As usermanagement = getcurrentuser() 'gets current user object
+
         Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson 'gets full user list
+        Dim currentuser As usermanagement = getcurrentuser(userlist) 'gets current user object
         Dim ogpass As String 'stores first password
         Dim newpass As String 'stores new password
 
@@ -62,9 +63,7 @@ Public Class Changepassword
 
                 newpass = encryptpassword(currentuser.username, newpass) 'encrypts new password
                 currentuser.password = newpass 'stores encrypted password
-                Dim usertodelete = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
-                userlist.Remove(usertodelete) 'deletes old object of user with old password and adds current user with new password
-                userlist.Add(currentuser)
+
                 functions.SaveUsersToJson(userlist)
                 MsgBox("Password changed!")
                 Me.Close()
@@ -76,8 +75,8 @@ Public Class Changepassword
         End If
     End Sub
 
-    Function getcurrentuser()
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
+    Function getcurrentuser(ByRef userlist As List(Of usermanagement))
+
         Dim currentuser As usermanagement
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser

@@ -8,7 +8,8 @@ Public Class Userdetails
 
 
         InitializeComponent()
-        Dim currentuser As usermanagement = getcurrentuser()
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim currentuser As usermanagement = getcurrentuser(userlist)
         'adds user details to appropriate textboxes
         lblusertitle.Text = currentuser.username
         txtusername.Text = currentuser.username
@@ -37,14 +38,14 @@ Public Class Userdetails
                 Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
 
                 'Dim currentuser As User = getcurrentuser()
-                Dim currentuser As usermanagement = getcurrentuser()
+                Dim currentuser As usermanagement = getcurrentuser(userlist)
                 'decrypts password to encrypt with new username
                 Dim decryptedpass As String = encryptpassword(currentuser.username, currentuser.password, False, currentuser.passwordlength)
 
-                'stores new details
-                currentuser.username = txtusername.Text
-                currentuser.age = txtage.Text
-                currentuser.email = Txtemail.Text
+                'change user details via method
+                currentuser.changeuserdetails(txtusername.Text, txtage.Text, Txtemail.Text)
+
+
 
                 'encrypts password with new usewrname
                 Dim encryptedpass As String = encryptpassword(currentuser.username, decryptedpass, True, currentuser.passwordlength)
@@ -52,10 +53,6 @@ Public Class Userdetails
                 'stores new passwords
                 currentuser.password = encryptedpass
 
-                'removes user witrh old detials and adds a new one with new details
-                Dim usertoremove As usermanagement = userlist.FirstOrDefault((Function(u) u.UserID = loginform.currentuserid))
-                userlist.Remove(usertoremove)
-                userlist.Add(currentuser)
                 functions.SaveUsersToJson(userlist)
                 lblusertitle.Text = currentuser.username
                 MsgBox("details updated!")
@@ -71,14 +68,16 @@ Public Class Userdetails
 
 
 
-    Function getcurrentuser()
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+    Function getcurrentuser(userlist As List(Of usermanagement))
+
         Dim currentuser As usermanagement
         currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
         Return currentuser
+
     End Function
 
     Function validateemail(ByVal email As String) As Boolean
+
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
         Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
@@ -87,7 +86,7 @@ Public Class Userdetails
         If match = False Then
             Return match
         Else
-            'then checks if email is being used by another account
+            'then checks if email is being used by another account 'doesnt fit aS ITR CHECKS SAME ACCOUNT!!!!!!
             match = users.Any(Function(u) u.email = email)
             Return match
         End If
@@ -103,35 +102,35 @@ Public Class Userdetails
     Function encryptpassword(newusername As String, newpassword As String, decision As Boolean, ogpasslength As Integer)
 
         Dim encryptpass As String = ""
-        Dim key As Integer
-        Dim addedchar As Char
-        Dim currentchar As Integer = 0
+            Dim key As Integer
+            Dim addedchar As Char
+            Dim currentchar As Integer = 0
 
-        'makes key for password using username
-        key = (Asc(newusername(0)) + (Asc(newusername(newusername.Length - 1))))
+            'makes key for password using username
+            key = (Asc(newusername(0)) + (Asc(newusername(newusername.Length - 1))))
 
-        'adds letters to the password
-        While newpassword.Length < 32
-            addedchar = Chr(Int((Asc((newpassword(currentchar))) + Asc((newpassword(currentchar)))) / 3))
-            currentchar += 1
-            newpassword += addedchar
-        End While
+            'adds letters to the password
+            While newpassword.Length < 32
+                addedchar = Chr(Int((Asc((newpassword(currentchar))) + Asc((newpassword(currentchar)))) / 3))
+                currentchar += 1
+                newpassword += addedchar
+            End While
 
-        'encrypts password with xor key
+            'encrypts password with xor key
 
-        For i As Integer = 0 To newpassword.Length - 1
-            encryptpass &= Chr(Asc((newpassword(i))) Xor key)
-        Next
+            For i As Integer = 0 To newpassword.Length - 1
+                encryptpass &= Chr(Asc((newpassword(i))) Xor key)
+            Next
 
-        'return password based on if encrypted password or decrypted password is asked for
-        If decision = True Then
-            Return encryptpass 'return encrypted pass
+            'return password based on if encrypted password or decrypted password is asked for
+            If decision = True Then
+                Return encryptpass 'return encrypted pass
 
 
-        ElseIf decision = False Then
-            encryptpass = encryptpass.Substring(0, ogpasslength) 'returns decrypted password by using passwordlength attrbute
-            Return encryptpass
-        End If
+            ElseIf decision = False Then
+                encryptpass = encryptpass.Substring(0, ogpasslength) 'returns decrypted password by using passwordlength attrbute
+                Return encryptpass
+            End If
 
 
     End Function
@@ -145,7 +144,7 @@ Public Class Userdetails
 
             'store all lists connected to user
             Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
-            Dim currentuser As usermanagement = getcurrentuser()
+            Dim currentuser As usermanagement = getcurrentuser(userlist)
             Dim fighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile()
             Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson()
             Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()

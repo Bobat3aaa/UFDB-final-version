@@ -7,6 +7,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class Rankingsearch
     Private currentranklist As List(Of ranking)
+    Private mainendindex As Integer
 
 
 
@@ -35,11 +36,11 @@ Public Class Rankingsearch
         FlowLayoutPanel1.Controls.Clear()
         Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
 
-
+        currentranklist = ranklist
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
         Dim endIndex As Integer = Math.Min(startIndex + count, ranklist.Count)
-
+        mainendindex = endIndex
 
 
         If startIndex > 0 Then
@@ -58,9 +59,7 @@ Public Class Rankingsearch
             btnback.Tag = "btnback"
 
             'adds an event handler to update buttons
-            AddHandler btnback.Click, Sub()
-                                          updatebuttons(ranklist, endIndex - 100)
-                                      End Sub
+            AddHandler btnback.Click, AddressOf btnbackclick
             FlowLayoutPanel1.Controls.Add(btnback)
 
 
@@ -111,16 +110,19 @@ Public Class Rankingsearch
             btnloadmore.Tag = "btnloadmore"
 
             'adds an event handler to update buttons
-            AddHandler btnloadmore.Click, Sub()
-                                              updatebuttons(ranklist, endIndex)
-                                          End Sub
+            AddHandler btnloadmore.Click, AddressOf btnloadmoreclick
             FlowLayoutPanel1.Controls.Add(btnloadmore)
 
 
         End If
 
     End Sub
-
+    Private Sub btnloadmoreclick(sender As Object, e As EventArgs)
+        updatebuttons(currentranklist, mainendindex)
+    End Sub
+    Private Sub btnbackclick(sender As Object, e As EventArgs)
+        updatebuttons(currentranklist, mainendindex - 100)
+    End Sub
 
     Private Sub btnlistclick(sender As Object, e As EventArgs)
 
@@ -156,81 +158,94 @@ Public Class Rankingsearch
 
     Function Quicksort(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking) 'quicksort used in other forms
 
-        Dim pivot As String
-        Dim templow As Integer = indexlow
-        Dim temphigh As Integer = indexhigh
-
-        If ranklist Is Nothing Or ranklist.Count <= 0 Then
-            Return New List(Of ranking)
-        Else
+        Try
 
 
+            Dim pivot As String
+            Dim templow As Integer = indexlow
+            Dim temphigh As Integer = indexhigh
 
-            pivot = ranklist(Int((indexlow + indexhigh) / 2)).RankingName
+            If ranklist Is Nothing Or ranklist.Count <= 0 Then
+                Return New List(Of ranking)
+            Else
 
-            While templow <= temphigh
-                While String.Compare(ranklist(templow).RankingName, pivot) < 0
-                    templow += 1
+
+
+                pivot = ranklist(Int((indexlow + indexhigh) / 2)).RankingName
+
+                While templow <= temphigh
+                    While String.Compare(ranklist(templow).RankingName, pivot) < 0
+                        templow += 1
+                    End While
+
+                    While String.Compare(ranklist(temphigh).RankingName, pivot) > 0
+                        temphigh -= 1
+                    End While
+
+                    If templow <= temphigh Then
+                        Dim temprank As ranking = ranklist(templow)
+                        ranklist(templow) = ranklist(temphigh)
+                        ranklist(temphigh) = temprank
+                        templow += 1
+                        temphigh -= 1
+                    End If
                 End While
 
-                While String.Compare(ranklist(temphigh).RankingName, pivot) > 0
-                    temphigh -= 1
-                End While
 
-                If templow <= temphigh Then
-                    Dim temprank As ranking = ranklist(templow)
-                    ranklist(templow) = ranklist(temphigh)
-                    ranklist(temphigh) = temprank
-                    templow += 1
-                    temphigh -= 1
+
+
+
+                If indexlow <= temphigh Then
+                    Quicksort(ranklist, indexlow, temphigh)
                 End If
-            End While
 
+                If templow < indexhigh Then
+                    Quicksort(ranklist, templow, indexhigh)
+                End If
 
-
-
-
-            If indexlow <= temphigh Then
-                Quicksort(ranklist, indexlow, temphigh)
+                Return ranklist
             End If
-
-            If templow < indexhigh Then
-                Quicksort(ranklist, templow, indexhigh)
-            End If
-
-            Return ranklist
-        End If
+        Catch ex As Exception
+            MsgBox("Error occured with quicksorting rank lists:" & ex.Message)
+            Return New List(Of ranking)
+        End Try
     End Function
 
     Function bsearchranklist(ranklist As List(Of ranking), nametofind As String, indexlow As Integer, indexhigh As Integer)
-
-        'binary search, returns midpoint which is place in list
-        If indexlow > indexhigh Then
-            Debug.WriteLine(4)
-            Return -1
-
-        End If
-
-        Dim midpoint As Integer = (indexlow + indexhigh) \ 2
-
-        If String.Compare(ranklist(midpoint).RankingName, nametofind) < 0 Then
-
-            Debug.WriteLine(ranklist(midpoint).RankingName)
-            Return bsearchranklist(ranklist, nametofind, midpoint + 1, indexhigh)
-
-        ElseIf String.Compare(ranklist(midpoint).RankingName, nametofind) > 0 Then
-
-            Debug.WriteLine(ranklist(midpoint).RankingName)
-            Return bsearchranklist(ranklist, nametofind, indexlow, midpoint - 1)
-
-        ElseIf ranklist(midpoint).RankingName = nametofind Then
-
-            Debug.WriteLine(ranklist(midpoint).RankingName)
-            Return midpoint
+        Try
 
 
+            'binary search, returns midpoint which is place in list
+            If indexlow > indexhigh Then
+                Debug.WriteLine(4)
+                Return -1
 
-        End If
+            End If
+
+            Dim midpoint As Integer = (indexlow + indexhigh) \ 2
+
+            If String.Compare(ranklist(midpoint).RankingName, nametofind) < 0 Then
+
+                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Return bsearchranklist(ranklist, nametofind, midpoint + 1, indexhigh)
+
+            ElseIf String.Compare(ranklist(midpoint).RankingName, nametofind) > 0 Then
+
+                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Return bsearchranklist(ranklist, nametofind, indexlow, midpoint - 1)
+
+            ElseIf ranklist(midpoint).RankingName = nametofind Then
+
+                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Return midpoint
+
+
+
+            End If
+        Catch ex As Exception
+            MsgBox("Error occured with binary searching rank lists:" & ex.Message)
+            Return New List(Of ranking)
+        End Try
     End Function
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
@@ -281,26 +296,32 @@ Public Class Rankingsearch
     End Sub
     Function checkfilters(ranklist As List(Of ranking))
 
-        Dim ownrank As String = ""
+
+        Try
+
+            Dim ownrank As String = ""
 
 
-        If cmbownlists.SelectedItem IsNot Nothing Then
-            ownrank = cmbownlists.SelectedItem
-            Debug.WriteLine(ownrank)
-        End If
+            If cmbownlists.SelectedItem IsNot Nothing Then
+                ownrank = cmbownlists.SelectedItem
+                Debug.WriteLine(ownrank)
+            End If
 
 
-        ' Filter lists based on whether they contain your current user id
+            ' Filter lists based on whether they contain your current user id
 
-        Dim filteredlist As List(Of ranking) = Nothing
-        If ownrank <> "No" Then
-            filteredlist = ranklist.Where(Function(r) r.UserID = loginform.currentuserid).ToList()
-        End If
+            Dim filteredlist As List(Of ranking) = Nothing
+            If ownrank <> "No" Then
+                filteredlist = ranklist.Where(Function(r) r.UserID = loginform.currentuserid).ToList()
+            End If
 
 
 
-        Return filteredlist
-
+            Return filteredlist
+        Catch ex As Exception
+            MsgBox("Error occured with filter checking rank lists:" & ex.Message)
+            Return New List(Of ranking)
+        End Try
     End Function
 
     Private Sub txtlistname_TextChanged(sender As Object, e As EventArgs) Handles txtlistname.TextChanged

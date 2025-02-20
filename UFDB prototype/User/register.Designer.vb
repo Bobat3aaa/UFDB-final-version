@@ -123,10 +123,10 @@ Partial Class register
         Me.lblpasswordcheck.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblpasswordcheck.Location = New System.Drawing.Point(8, 30)
         Me.lblpasswordcheck.Name = "lblpasswordcheck"
-        Me.lblpasswordcheck.Size = New System.Drawing.Size(167, 65)
+        Me.lblpasswordcheck.Size = New System.Drawing.Size(159, 65)
         Me.lblpasswordcheck.TabIndex = 22
-        Me.lblpasswordcheck.Text = "Password must have:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8-32 characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 special characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 capital letters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 " &
-    "number"
+        Me.lblpasswordcheck.Text = "Password must have:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8-32 characters" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 special character" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 capital letter" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 nu" &
+    "mber"
         '
         'Label6
         '

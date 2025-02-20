@@ -103,30 +103,43 @@ Public Class Usereditor
 
     Private Sub Adduser(newusername, newpassword, newage, newemail, admin)
 
-        'gets encrypted password
 
-        Dim newuser As New usermanagement()
-        newuser.passwordlength = Len(newpassword)
+
+
+
+
+        'gets original password length
+        Dim passwordlength As Integer = Len(newpassword)
+        'gets encrypted password
         Dim encryptpass As String = encryptpassword(newusername, newpassword)
 
+        Dim userid As Integer = GetNextUserID(currentuserlist)
 
 
-        newuser.username = newusername
-        newuser.age = newage
-        newuser.password = encryptpass
-        newuser.email = newemail
-        newuser.Admin = admin
+        Dim newuser As New usermanagement(userid, newusername, encryptpass, passwordlength, newage, newemail, admin)
+
+
         'make list of existing users
 
-        newuser.UserID = GetNextUserID(currentuserlist)
-        If ValidateUser(newuser) Then
-            currentuserlist.Add(newuser)
 
+        If ValidateUser(newuser) Then
+            'adds user to list
+            currentuserlist.Add(newuser)
+            'saves json
+            functions.SaveUsersToJson(currentuserlist)
             MsgBox("New user added!")
         Else
-            MsgBox("User not added.")
+            MsgBox("User not added. Form is not filled in.")
         End If
+
+
+
+
+
     End Sub
+
+
+
     Private Function validatepassword(ByVal password As String)
         Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
         MsgBox(passwordcheck.IsMatch(password))
@@ -159,7 +172,7 @@ Public Class Usereditor
         Return encryptpass
     End Function
     Function ValidateUser(user As usermanagement) As Boolean
-        If String.IsNullOrEmpty(user.username) OrElse String.IsNullOrEmpty(user.password) OrElse user.age <= 0 OrElse Not user.email.Contains("@") Then
+        If String.IsNullOrEmpty(user.username) Or String.IsNullOrEmpty(user.password) Or user.age <= 0 Or String.IsNullOrEmpty(user.email) Then
             Return False
         End If
         Return True

@@ -1,20 +1,20 @@
 [
   {
     "UserID": 2,
-    "username": "Test",
-    "password": "˜©»»¿§º¬ùúéýˆ„„‡‚„ŠèéÞëâúúüùúäÝÞ",
+    "username": "NathanH",
+    "password": "Æ÷ååáùäò§¥5£ÖÚÚÙÜÚÔ¶´úµ¼¤¤¢§¤ºƒ€",
     "passwordlength": 11,
     "age": 21,
-    "email": "nathan@gmail.com",
+    "email": "nathanh@gmail.com",
     "Admin": false
   },
   {
     "UserID": 1,
-    "username": "User1",
-    "password": "Öçõõñéôâ·´§³ÆÊÊÉÌÊÄ¦§¥¬´´²·´ª“",
+    "username": "AdminUser",
+    "password": "ãÒÀÀÄÜÁ×‚’†óÿÿüùÿñ“’¥™‡‚Ÿ¦¥",
     "passwordlength": 11,
     "age": 18,
-    "email": "nathanh0606@gmail.com",
+    "email": "nathanh06@gmail.com",
     "Admin": true
   }
 ]

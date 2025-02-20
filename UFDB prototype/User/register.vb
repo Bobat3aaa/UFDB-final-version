@@ -61,30 +61,30 @@ Public Class register
 
     Sub Adduser(newusername, newpassword, newage, newemail)
 
+
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+
+        'gets original password length
+        Dim passwordlength As Integer = Len(newpassword)
         'gets encrypted password
-
-        Dim newuser As New usermanagement()
-        newuser.passwordlength = Len(newpassword)
         Dim encryptpass As String = encryptpassword(newusername, newpassword)
+        Dim userid As Integer = GetNextUserID(users)
 
 
-        'constructs new user
-        newuser.username = newusername
-        newuser.age = newage
-        newuser.password = encryptpass
-        newuser.email = newemail
+        Dim newuser As New usermanagement(userid, newusername, encryptpass, passwordlength, newage, newemail, False)
+
 
         'make list of existing users
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
-        newuser.UserID = GetNextUserID(users)
+
+
         If ValidateUser(newuser) Then
             'adds user to list
             users.Add(newuser)
-            'saves json
-            functions.SaveUsersToJson(users)
-            MsgBox("New user added!")
+        'saves json
+        functions.SaveUsersToJson(users)
+        MsgBox("New user added!")
         Else
-            MsgBox("User not added.")
+        MsgBox("User not added. Form is not filled in.")
         End If
     End Sub
 
@@ -146,17 +146,15 @@ Public Class register
 
     'validation for user
     Function ValidateUser(user As usermanagement) As Boolean
-
-
-        'makes sure no textboxes are empty
-        If String.IsNullOrEmpty(user.username) Or String.IsNullOrEmpty(user.password) Or user.age <= 0 Or Not user.email.Contains("@") Then
+        If String.IsNullOrEmpty(user.username) Or String.IsNullOrEmpty(user.password) Or user.age <= 0 Or String.IsNullOrEmpty(user.email) Then
             Return False
         End If
         Return True
-
-
-
     End Function
+
+
+    '********* VALIDATION ********
+
     Function validateusername(username As String) As Boolean
 
         'checks if username is already taken
@@ -188,7 +186,7 @@ Public Class register
     End Function
     'validate password before it is hashed
     Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
         MsgBox(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function

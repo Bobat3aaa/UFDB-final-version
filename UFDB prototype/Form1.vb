@@ -75,7 +75,7 @@ Public Class Form1
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblhome.Click
 
     End Sub
-    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated
+    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated 'changes login button text to username when form is on screen
         If loginform.currentuserid <> 0 Then
             Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
             Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
