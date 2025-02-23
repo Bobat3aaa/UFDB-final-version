@@ -127150,5 +127150,37 @@
     "method": "SUB",
     "roundd": "1",
     "time": "0:20"
+  },
+  {
+    "_id": "4",
+    "event": "UFC 1000: test",
+    "date": "1990-03-10T10:00:00",
+    "location": "Stoke-on-trent",
+    "fighter1ID": null,
+    "fighter2ID": null,
+    "fighter1": null,
+    "fighter2": null,
+    "win": null,
+    "lose": null,
+    "weight_class": null,
+    "method": null,
+    "roundd": null,
+    "time": null
+  },
+  {
+    "_id": "67533ce87a2ac5f7e09b0eaf",
+    "event": "test fight",
+    "date": "0001-01-01T00:00:00",
+    "location": null,
+    "fighter1ID": null,
+    "fighter2ID": null,
+    "fighter1": null,
+    "fighter2": null,
+    "win": null,
+    "lose": null,
+    "weight_class": null,
+    "method": null,
+    "roundd": null,
+    "time": null
   }
 ]

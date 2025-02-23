@@ -187,7 +187,10 @@ Public Class fight_form
 
         'list is used to populate combo select box
         For Each location As String In fightlocations
-            cmblocation.Items.Add(location)
+            If location IsNot Nothing And location <> "" Then
+                cmblocation.Items.Add(location)
+            End If
+
         Next
         cmblocation.SelectedItem = "All"
 
@@ -262,7 +265,7 @@ Public Class fight_form
         Next
 
         'creates a load more button if needed
-        If endIndex < fightlist.Count Then
+        If endIndex <fightlist.Count Then
 
 
             Dim btnloadmore As New Button

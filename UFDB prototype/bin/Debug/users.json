@@ -1,5 +1,14 @@
 [
   {
+    "UserID": 4,
+    "username": "Editoradd",
+    "password": "ùÈÚÚÞÆÛÍ›ˆœéååæãåëˆ‹¿Šƒ››˜›…¿¿",
+    "passwordlength": 11,
+    "age": 21,
+    "email": "editor@gmail.com",
+    "Admin": false
+  },
+  {
     "UserID": 2,
     "username": "NathanH",
     "password": "Æ÷ååáùäò§¥5£ÖÚÚÙÜÚÔ¶´úµ¼¤¤¢§¤ºƒ€",
@@ -9,12 +18,12 @@
     "Admin": false
   },
   {
-    "UserID": 1,
-    "username": "AdminUser",
-    "password": "ãÒÀÀÄÜÁ×‚’†óÿÿüùÿñ“’¥™‡‚Ÿ¦¥",
+    "UserID": 3,
+    "username": "userchanged",
+    "password": "‰¸ªª®¶«½èêøì™••–“•›ùûÏúóëëíèëõÌÏ",
     "passwordlength": 11,
-    "age": 18,
-    "email": "nathanh06@gmail.com",
+    "age": 24,
+    "email": "nh@gmail.com",
     "Admin": true
   }
 ]

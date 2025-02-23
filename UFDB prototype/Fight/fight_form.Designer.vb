@@ -196,6 +196,8 @@ Partial Class fight_form
         '
         'cmblocation
         '
+        Me.cmblocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmblocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmblocation.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmblocation.FormattingEnabled = True
         Me.cmblocation.Location = New System.Drawing.Point(360, 149)

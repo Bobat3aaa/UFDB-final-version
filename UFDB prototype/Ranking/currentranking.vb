@@ -228,23 +228,29 @@ Public Class currentranking
 
         Try
 
-            Dim selectedWeightClass As String = ""
+            If fighterlist Is Nothing Then
+                Return New List(Of fightermanagement)
+            Else
 
-            If cmbweightclass.SelectedItem IsNot Nothing Then
-                selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+
+                Dim selectedWeightClass As String = ""
+
+                If cmbweightclass.SelectedItem IsNot Nothing Then
+                    selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+                End If
+
+                ' Filter fighters based on the selected weight class
+
+
+
+                Dim fighterlistfiltered As List(Of fightermanagement) = fighterlist
+                Debug.WriteLine(fighterlistfiltered.Count)
+                If selectedWeightClass <> "All" Then
+                    fighterlistfiltered = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
+                End If
+                Debug.WriteLine(fighterlistfiltered.Count)
+                Return fighterlistfiltered
             End If
-
-            ' Filter fighters based on the selected weight class
-
-
-
-            Dim fighterlistfiltered As List(Of fightermanagement) = fighterlist
-            Debug.WriteLine(fighterlistfiltered.Count)
-            If selectedWeightClass <> "All" Then
-                fighterlistfiltered = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
-            End If
-            Debug.WriteLine(fighterlistfiltered.Count)
-            Return fighterlistfiltered
 
         Catch ex As Exception
             MsgBox("Error occured with filter checking fighters:" & ex.Message)
@@ -449,6 +455,13 @@ Public Class currentranking
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
         'searches for fighter via bsearch
         currentfighterlist = functions.ReadFightersFromJson()
+
+
+        If txtfname.Text = "" Then
+            currentfighterlist = functions.ReadFightersFromJson()
+            currentfighterlist = checkfilters(currentfighterlist)
+            updatebuttons(currentfighterlist)
+        End If
         Dim low As Integer = 0
         Dim high As Integer = currentfighterlist.Count - 1
         Dim searchedfighters As List(Of fightermanagement) = bsearchusers(currentfighterlist, txtfname.Text, low, high)

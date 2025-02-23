@@ -62,8 +62,8 @@ Public Class showranking
         If ranklbl IsNot Nothing And i = fighterrank.Rank Then
 
             ranklbl.Text = currentfighter.Name
-        Else
-            ranklbl.Visible = False
+
+
 
         End If
 

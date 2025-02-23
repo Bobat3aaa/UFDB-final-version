@@ -60800,6 +60800,26 @@
     "sub_avg": 2.4
   },
   {
+    "fighter_id": "3",
+    "Name": "Nathan Hernandez",
+    "Height": "5' 3'",
+    "Weight": "175 lbs.",
+    "Reach": "21'",
+    "Stance": "Orthodox",
+    "Dob": "Oct 06, 2006",
+    "n_win": 100,
+    "n_loss": 0,
+    "n_draw": 50,
+    "sig_str_land_pM": 5.0,
+    "sig_str_land_pct": 5.0,
+    "sig_str_abs_pM": 0.0,
+    "sig_str_def_pct": 0.0,
+    "td_avg": 0.0,
+    "td_land_pct": 0.0,
+    "td_def_pct": 0.0,
+    "sub_avg": 0.0
+  },
+  {
     "fighter_id": "f54fb3b9c4228142",
     "Name": "Nathan Jones",
     "Height": "6' 11\"",
@@ -85238,5 +85258,25 @@
     "td_land_pct": 0.0,
     "td_def_pct": 0.33,
     "sub_avg": 2.4
+  },
+  {
+    "fighter_id": "641ca2c2ed91b93c",
+    "Name": "Test fighter",
+    "Height": null,
+    "Weight": null,
+    "Reach": null,
+    "Stance": null,
+    "Dob": null,
+    "n_win": 0,
+    "n_loss": 0,
+    "n_draw": 0,
+    "sig_str_land_pM": 0.0,
+    "sig_str_land_pct": 0.0,
+    "sig_str_abs_pM": 0.0,
+    "sig_str_def_pct": 0.0,
+    "td_avg": 0.0,
+    "td_land_pct": 0.0,
+    "td_def_pct": 0.0,
+    "sub_avg": 0.0
   }
 ]

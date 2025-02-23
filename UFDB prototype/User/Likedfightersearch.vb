@@ -4,6 +4,8 @@ Imports System.IO
 
 Public Class Likedfightersearch
 
+
+    Private parsednames As New List(Of String)
     Private currentfighterlist As List(Of fightermanagement)
     Private mainendindex As Integer
 
@@ -19,6 +21,9 @@ Public Class Likedfightersearch
         'gets list of fighters via reading json
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
 
+        For Each fighter In fighters
+            parsednames.Add(parsename(fighter.Name, 1))
+        Next
         'returns liked fighters for current user
         Dim likedfighterlist As List(Of fightermanagement) = returnlikedfighters(fighters)
 
@@ -51,7 +56,7 @@ Public Class Likedfightersearch
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = likedfighterlist.Count - 1
 
-        Dim sortedfighters As List(Of fightermanagement) = Quicksort(likedfighterlist, indexlow, indexhigh)
+        Dim sortedfighters As List(Of fightermanagement) = Quicksort(likedfighterlist, indexlow, indexhigh, 1)
         'rertuns sorted fighters
         Return sortedfighters
     End Function
@@ -59,7 +64,7 @@ Public Class Likedfightersearch
 
 
 
-    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fightermanagement)
         Try
 
 
@@ -74,40 +79,81 @@ Public Class Likedfightersearch
                 Return New List(Of fightermanagement)()
             Else
 
+                If sortdecision = 1 Then
 
-                pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
 
-                While templow <= temphigh
-                    While String.Compare(fighters(templow).Name, pivot) < 0
-                        templow += 1
+                    pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+
+                    While templow <= temphigh
+                        While String.Compare(fighters(templow).Name, pivot) < 0
+                            templow += 1
+                        End While
+
+                        While String.Compare(fighters(temphigh).Name, pivot) > 0
+                            temphigh -= 1
+                        End While
+
+                        'swaps fighters
+                        If templow <= temphigh Then
+                            Dim tempfighter As fightermanagement = fighters(templow)
+                            fighters(templow) = fighters(temphigh)
+                            fighters(temphigh) = tempfighter
+                            templow += 1
+                            temphigh -= 1
+                        End If
                     End While
 
-                    While String.Compare(fighters(temphigh).Name, pivot) > 0
-                        temphigh -= 1
+
+
+                ElseIf sortdecision = 2 Then
+
+                    pivot = parsednames(Int((indexlow + indexhigh) / 2))
+
+                    While templow <= temphigh
+                        While String.Compare(parsednames(templow), pivot) < 0
+
+                            ' if the name before the pivot is smaller then the pivot, the indicator will increase until this is not the case
+
+                            templow += 1
+                        End While
+
+                        While String.Compare(parsednames(temphigh), pivot) > 0
+
+                            ' if the name after the pivot is larger then the pivot, the indicator will decrease until this is not the case
+
+                            temphigh -= 1
+                        End While
+
+                        If templow <= temphigh Then
+
+                            ' swaps fighters
+
+                            Dim tempfighter As fightermanagement = fighters(templow)
+                            fighters(templow) = fighters(temphigh)
+                            fighters(temphigh) = tempfighter
+
+                            Dim tempname As String = parsednames(templow)
+                            parsednames(templow) = parsednames(temphigh)
+                            parsednames(temphigh) = tempname
+
+                            templow += 1
+                            temphigh -= 1
+                        End If
                     End While
 
-                    'swaps fighters
-                    If templow <= temphigh Then
-                        Dim tempfighter As fightermanagement = fighters(templow)
-                        fighters(templow) = fighters(temphigh)
-                        fighters(temphigh) = tempfighter
-                        templow += 1
-                        temphigh -= 1
+                    'recursively sorts
+                    If indexlow <= temphigh Then
+                        Quicksort(fighters, indexlow, temphigh, sortdecision)
                     End If
-                End While
 
-                'recursively sorts
-                If indexlow <= temphigh Then
-                    Quicksort(fighters, indexlow, temphigh)
+                    If templow < indexhigh Then
+                        Quicksort(fighters, templow, indexhigh, sortdecision)
+                    End If
+
+                    Return fighters
+
                 End If
-
-                If templow < indexhigh Then
-                    Quicksort(fighters, templow, indexhigh)
-                End If
-
-                Return fighters
             End If
-
         Catch ex As Exception
             MsgBox("Problem occured with quicksort: " & ex.Message)
             Return New List(Of fightermanagement)
@@ -142,6 +188,7 @@ Public Class Likedfightersearch
         ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
             nametofind = txtlname.Text
             decision = 1
+            Quicksort(fighters, indexlow, indexhigh, 2) 'sorts users by last name for binary search
             Dim searchedfighters As List(Of fightermanagement) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
             currentfighterlist = searchedfighters
 
@@ -404,19 +451,29 @@ Public Class Likedfightersearch
         End Try
     End Function
 
-    Function parsename(name As String, decision As Integer)
 
+
+
+
+    Function parsename(name As String, decision As Integer) ' parse name for binary search
+
+        'splits name where the space is
         Dim parsedname As String() = name.Split(" "c)
-        If decision = 0 Then
-            Return parsedname(0)
-        ElseIf decision = 1 And parsedname.Length > 0 Then
-            Return parsedname(1)
-        Else
-            Return ""
+
+        If parsedname.Length > 0 Then
+            If decision = 0 Then
+                'returns first name
+                Return parsedname(0)
+
+            ElseIf decision = 1 And parsedname.Length > 1 Then
+                'returns last name
+
+                Return parsedname(1)
+            Else
+
+                Return ""
+            End If
         End If
+
     End Function
-
-    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
-
-    End Sub
 End Class

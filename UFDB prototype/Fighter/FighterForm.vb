@@ -435,7 +435,8 @@ Public Class FighterForm
             Debug.WriteLine("option 2 ")
             nametofind = txtlname.Text
             decision = 1
-            Dim sortedfightersbylastname As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
+            Quicksort(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
+            Debug.WriteLine(fighters(0).Name)
             Dim searchedfighters As List(Of fightermanagement) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
             currentfighterlist = searchedfighters
 
