@@ -115,6 +115,7 @@ Partial Class Databaseeditor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(796, 631)
+        Me.ControlBox = False
         Me.Controls.Add(Me.lblchoose)
         Me.Controls.Add(Me.Lbltitle)
         Me.Controls.Add(Me.btnadd)

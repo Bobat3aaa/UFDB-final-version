@@ -150,7 +150,7 @@ Public Class currentadminuser
     Private Sub btnlogout_Click(sender As Object, e As EventArgs) Handles btnlogout.Click
         Dim answer = MessageBox.Show("Are you sure you would like to logout?", "logout", MessageBoxButtons.YesNo)
         If answer = DialogResult.Yes Then
-            loginform.currentuserid = 0
+            Form1.currentuserid = 0
             Form1.Show()
             Me.Close()
 

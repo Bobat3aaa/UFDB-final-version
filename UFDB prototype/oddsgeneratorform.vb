@@ -93,8 +93,10 @@ Public Class oddsgeneratorform
             Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
         ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
             Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
-        Else
+        ElseIf fighterlist(midpoint).Name = nametofind Then
             Return midpoint
+        Else
+            Return -1
         End If
     End Function
 
@@ -111,6 +113,8 @@ Public Class oddsgeneratorform
             fighter1 = fighters(searchedfighterindex)
             fighter1index = searchedfighterindex
             updatefighter1(fighter1)
+        Else
+            MsgBox("No fighter found. Please try again!")
         End If
 
 
@@ -131,6 +135,8 @@ Public Class oddsgeneratorform
             fighter2 = fighters(searchedfighterindex)
             fighter2index = searchedfighterindex
             updatefighter2(fighter2)
+        Else
+            MsgBox("No fighter found. Please try again!")
         End If
 
 
@@ -328,5 +334,15 @@ Public Class oddsgeneratorform
 
     Private Sub pnlfighter1_Paint(sender As Object, e As PaintEventArgs) Handles pnlfighter1.Paint
 
+    End Sub
+
+    Private Sub btnclearfighter2_Click(sender As Object, e As EventArgs) Handles btnclearfighter2.Click
+        txtfighter2fname.Text = ""
+        txtfighter2lname.Text = ""
+    End Sub
+
+    Private Sub btnclearfighter1_Click(sender As Object, e As EventArgs) Handles btnclearfighter1.Click
+        txtfighter1fname.Text = ""
+        txtfighter1lname.Text = ""
     End Sub
 End Class

@@ -14,7 +14,7 @@ Public Class current_fighter_form
 
         Me.currentFighter = fighter ' makes form fighter into fighter passed into it
         'hides like button if no user is logged in
-        If loginform.currentuserid = 0 Then
+        If Form1.currentuserid = 0 Then
             btnlike.Hide()
 
         End If
@@ -57,24 +57,24 @@ Public Class current_fighter_form
 
 
         ' another check to make sure a user is logged in
-        If loginform.currentuserid <> 0 Then
+        If Form1.currentuserid <> 0 Then
 
 
             ' reads list of liked fighters
             Dim likedfighterlist As List(Of likedfighter) = functions.ReadlikedfightersFromJson
 
             'boolean variable to check if user is already liked via lambda function that checks if there is any object with the fighter and user id
-            Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
+            Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = Form1.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
 
             'constructs new liked fighter
             Dim likedfighter As New likedfighter
 
-            likedfighter.userid = loginform.currentuserid
+            likedfighter.userid = Form1.currentuserid
             likedfighter.fighterid = currentFighter.FighterId
 
             'if already liked, finds object to remove and saves to json
             If alreadyLiked = True Then
-                Dim fighterToRemove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = loginform.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
+                Dim fighterToRemove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = Form1.currentuserid AndAlso lf.fighterid = currentFighter.FighterId)
                 likedfighterlist.Remove(fighterToRemove)
                 functions.SaveTolikedfighterJson(likedfighterlist)
                 MsgBox("Unliked" & currentFighter.Name)
@@ -84,7 +84,7 @@ Public Class current_fighter_form
                 functions.SaveTolikedfighterJson(likedfighterlist)
                 MsgBox("Liked " & currentFighter.Name)
             End If
-        ElseIf loginform.currentuserid = 0 Then
+        ElseIf form1.currentuserid = 0 Then
             MsgBox("Please login to like an account")
         End If
 

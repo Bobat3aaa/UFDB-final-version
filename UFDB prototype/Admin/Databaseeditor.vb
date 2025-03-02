@@ -1,5 +1,7 @@
 ﻿Imports Newtonsoft.Json
+Imports System.ComponentModel.Design
 Imports System.IO
+Imports System.Text
 
 Public Class Databaseeditor
 
@@ -13,26 +15,48 @@ Public Class Databaseeditor
         cmbselectview.SelectedIndex = 0
         currentfighterlist = functions.ReadFightersFromJson
         currentfightlist = functions.ReadFightsFromJson
-        updatedatabase()
-        Datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
+
+        updatedatabase()
+
+
+        Datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        Datagridview.Columns(0).ReadOnly = True
     End Sub
 
 
 
     'json editors
-
     Private Sub Datagrid_viewedoredited(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit 'if something is edited, turn light pink
         Datagridview.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightPink
     End Sub
 
-    Private Sub Datagridview_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellContentClick
 
-    End Sub
+    Function fightorfighterid(decision As Boolean)
 
-    Private Sub FileSystemWatcher1_Changed(sender As Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Changed
+        Dim random As New Random
+        Dim charlist As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        Dim sb As New StringBuilder
 
-    End Sub
+        'creates string for 
+        If decision = True Then
+            For i = 0 To 15
+                Dim index As Integer = random.Next(0, charlist.Length)
+                sb.Append(charlist.Substring(index, 1))
+            Next
+        ElseIf decision = False Then
+            For i = 0 To 23
+                Dim index As Integer = random.Next(0, charlist.Length)
+                sb.Append(charlist.Substring(index, 1))
+            Next
+        End If
+
+
+
+        Return sb.ToString()
+
+    End Function
+
 
     Private Sub cmbselectview_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbselectview.SelectedIndexChanged
 
@@ -75,12 +99,94 @@ Public Class Databaseeditor
 
     Private Sub btnadd_Click(sender As Object, e As EventArgs) Handles btnadd.Click
         'selects latest row as it has nothing in it
-        Dim lastRow As Integer = Datagridview.Rows.Count - 1
-        If lastRow >= 0 Then
-            Datagridview.CurrentCell = Datagridview.Rows(lastRow).Cells(0)
-            Datagridview.FirstDisplayedScrollingRowIndex = lastRow
-        End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Dim lastRow As Integer = Datagridview.Rows.Count - 2
+
+
+
+
+        Dim check As Boolean = False
+                                         Dim editedvaluecolumn As String = Datagridview.Columns(0).Name
+            Dim id As String
+            Dim newfight As New Fight
+            Dim newfighter As New fightermanagement
+
+        If editedvaluecolumn = "FighterId" Then
+
+            currentfighterlist.Add(newfighter)
+
+
+
+        ElseIf editedvaluecolumn = "id" Then
+
+            currentfightlist.Add(newfight)
+
+            End If
+
+
+        Do 'loop to make sure the id isnt the same as someone elses
+            If editedvaluecolumn = "FighterId" Then 'add fighterid
+                id = fightorfighterid(True)
+                check = idcheck(True, id)
+                If check = False Then
+                    newfighter.FighterId = id
+                End If
+
+
+
+            ElseIf editedvaluecolumn = "id" Then 'add fightid
+                id = fightorfighterid(False)
+                check = idcheck(False, id)
+
+                newfight.id = id
+            End If
+
+
+
+        Loop While check = True
+
+
+
+
+
+        updatedatabase()
+        Datagridview.Refresh()
+
+
+        Datagridview.FirstDisplayedScrollingRowIndex = lastRow
+
     End Sub
+
+    Function idcheck(decision As Boolean, id As String) 'checks whether ID is already in use
+
+        Dim check As Boolean
+        If decision = True Then
+            check = currentfighterlist.Any(Function(cf) cf.FighterId = id)
+
+
+        ElseIf decision = False Then
+
+            check = currentfightlist.Any(Function(cf) cf.id = id)
+
+
+        End If
+
+
+        Return check
+    End Function
 
 
     Sub updatedatabase()

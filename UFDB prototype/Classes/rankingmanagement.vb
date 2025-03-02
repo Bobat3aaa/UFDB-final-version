@@ -1,4 +1,4 @@
-﻿Public Class ranking
+﻿Public Class ranking 'holds ranking list
     Public Property RankingID As Integer
     Public Property UserID As Integer
     Public Property RankingName As String
@@ -16,7 +16,7 @@
 
 End Class
 
-Public Class fighterranking
+Public Class fighterranking 'holds ranking-fighter connection 
     Public Property RankingID As Integer
     Public Property FighterID As String
     Public Property Rank As Integer

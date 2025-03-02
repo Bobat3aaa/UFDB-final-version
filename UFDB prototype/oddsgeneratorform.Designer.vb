@@ -56,6 +56,8 @@ Partial Class oddsgeneratorform
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnclearfighter1 = New System.Windows.Forms.Button()
+        Me.btnclearfighter2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.pnlfighter1.SuspendLayout()
         Me.pnlfighter2.SuspendLayout()
@@ -291,6 +293,7 @@ Partial Class oddsgeneratorform
         'pnlfighter1
         '
         Me.pnlfighter1.BackColor = System.Drawing.Color.DarkGray
+        Me.pnlfighter1.Controls.Add(Me.btnclearfighter1)
         Me.pnlfighter1.Controls.Add(Me.Label8)
         Me.pnlfighter1.Controls.Add(Me.Label5)
         Me.pnlfighter1.Controls.Add(Me.Label7)
@@ -340,6 +343,7 @@ Partial Class oddsgeneratorform
         'pnlfighter2
         '
         Me.pnlfighter2.BackColor = System.Drawing.Color.DarkGray
+        Me.pnlfighter2.Controls.Add(Me.btnclearfighter2)
         Me.pnlfighter2.Controls.Add(Me.Label9)
         Me.pnlfighter2.Controls.Add(Me.Label4)
         Me.pnlfighter2.Controls.Add(Me.Label3)
@@ -385,6 +389,30 @@ Partial Class oddsgeneratorform
         Me.Label3.Size = New System.Drawing.Size(69, 16)
         Me.Label3.TabIndex = 34
         Me.Label3.Text = "First name"
+        '
+        'btnclearfighter1
+        '
+        Me.btnclearfighter1.BackColor = System.Drawing.Color.Silver
+        Me.btnclearfighter1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnclearfighter1.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclearfighter1.Location = New System.Drawing.Point(187, 73)
+        Me.btnclearfighter1.Name = "btnclearfighter1"
+        Me.btnclearfighter1.Size = New System.Drawing.Size(70, 31)
+        Me.btnclearfighter1.TabIndex = 39
+        Me.btnclearfighter1.Text = "Clear"
+        Me.btnclearfighter1.UseVisualStyleBackColor = False
+        '
+        'btnclearfighter2
+        '
+        Me.btnclearfighter2.BackColor = System.Drawing.Color.Silver
+        Me.btnclearfighter2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnclearfighter2.Font = New System.Drawing.Font("Lucida Sans Typewriter", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclearfighter2.Location = New System.Drawing.Point(182, 66)
+        Me.btnclearfighter2.Name = "btnclearfighter2"
+        Me.btnclearfighter2.Size = New System.Drawing.Size(70, 31)
+        Me.btnclearfighter2.TabIndex = 40
+        Me.btnclearfighter2.Text = "Clear"
+        Me.btnclearfighter2.UseVisualStyleBackColor = False
         '
         'oddsgeneratorform
         '
@@ -444,4 +472,6 @@ Partial Class oddsgeneratorform
     Friend WithEvents Label3 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
+    Friend WithEvents btnclearfighter1 As Button
+    Friend WithEvents btnclearfighter2 As Button
 End Class

@@ -38,13 +38,13 @@ Partial Class showranking
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.lblfighter1 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblfighter10 = New System.Windows.Forms.Label()
+        Me.lblfighter9 = New System.Windows.Forms.Label()
+        Me.lblfighter8 = New System.Windows.Forms.Label()
         Me.lblfighter2 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblfighter7 = New System.Windows.Forms.Label()
         Me.lblfighter3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblfighter6 = New System.Windows.Forms.Label()
         Me.lblfighter4 = New System.Windows.Forms.Label()
         Me.lblfighter5 = New System.Windows.Forms.Label()
         Me.visiblepanel = New System.Windows.Forms.Panel()
@@ -264,35 +264,35 @@ Partial Class showranking
         Me.lblfighter1.TabIndex = 75
         Me.lblfighter1.Text = "Fighter1"
         '
-        'Label1
+        'lblfighter10
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(462, 229)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 21)
-        Me.Label1.TabIndex = 84
-        Me.Label1.Text = "Fighter10"
+        Me.lblfighter10.AutoSize = True
+        Me.lblfighter10.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter10.Location = New System.Drawing.Point(462, 229)
+        Me.lblfighter10.Name = "lblfighter10"
+        Me.lblfighter10.Size = New System.Drawing.Size(127, 21)
+        Me.lblfighter10.TabIndex = 84
+        Me.lblfighter10.Text = "Fighter10"
         '
-        'Label2
+        'lblfighter9
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(462, 177)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(114, 21)
-        Me.Label2.TabIndex = 83
-        Me.Label2.Text = "fighter9"
+        Me.lblfighter9.AutoSize = True
+        Me.lblfighter9.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter9.Location = New System.Drawing.Point(462, 177)
+        Me.lblfighter9.Name = "lblfighter9"
+        Me.lblfighter9.Size = New System.Drawing.Size(114, 21)
+        Me.lblfighter9.TabIndex = 83
+        Me.lblfighter9.Text = "fighter9"
         '
-        'Label3
+        'lblfighter8
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(462, 125)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(114, 21)
-        Me.Label3.TabIndex = 82
-        Me.Label3.Text = "Fighter8"
+        Me.lblfighter8.AutoSize = True
+        Me.lblfighter8.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter8.Location = New System.Drawing.Point(462, 125)
+        Me.lblfighter8.Name = "lblfighter8"
+        Me.lblfighter8.Size = New System.Drawing.Size(114, 21)
+        Me.lblfighter8.TabIndex = 82
+        Me.lblfighter8.Text = "Fighter8"
         '
         'lblfighter2
         '
@@ -304,15 +304,15 @@ Partial Class showranking
         Me.lblfighter2.TabIndex = 76
         Me.lblfighter2.Text = "Fighter2"
         '
-        'Label4
+        'lblfighter7
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(462, 73)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(114, 21)
-        Me.Label4.TabIndex = 81
-        Me.Label4.Text = "fighter7"
+        Me.lblfighter7.AutoSize = True
+        Me.lblfighter7.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter7.Location = New System.Drawing.Point(462, 73)
+        Me.lblfighter7.Name = "lblfighter7"
+        Me.lblfighter7.Size = New System.Drawing.Size(114, 21)
+        Me.lblfighter7.TabIndex = 81
+        Me.lblfighter7.Text = "fighter7"
         '
         'lblfighter3
         '
@@ -324,15 +324,15 @@ Partial Class showranking
         Me.lblfighter3.TabIndex = 77
         Me.lblfighter3.Text = "Fighter3"
         '
-        'Label5
+        'lblfighter6
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(462, 21)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(114, 21)
-        Me.Label5.TabIndex = 80
-        Me.Label5.Text = "Fighter6"
+        Me.lblfighter6.AutoSize = True
+        Me.lblfighter6.Font = New System.Drawing.Font("Lucida Console", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfighter6.Location = New System.Drawing.Point(462, 21)
+        Me.lblfighter6.Name = "lblfighter6"
+        Me.lblfighter6.Size = New System.Drawing.Size(114, 21)
+        Me.lblfighter6.TabIndex = 80
+        Me.lblfighter6.Text = "Fighter6"
         '
         'lblfighter4
         '
@@ -357,15 +357,15 @@ Partial Class showranking
         'visiblepanel
         '
         Me.visiblepanel.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.visiblepanel.Controls.Add(Me.Label1)
+        Me.visiblepanel.Controls.Add(Me.lblfighter10)
         Me.visiblepanel.Controls.Add(Me.lblfighter1)
-        Me.visiblepanel.Controls.Add(Me.Label2)
+        Me.visiblepanel.Controls.Add(Me.lblfighter9)
         Me.visiblepanel.Controls.Add(Me.lblfighter2)
-        Me.visiblepanel.Controls.Add(Me.Label3)
+        Me.visiblepanel.Controls.Add(Me.lblfighter8)
         Me.visiblepanel.Controls.Add(Me.lblfighter3)
-        Me.visiblepanel.Controls.Add(Me.Label4)
+        Me.visiblepanel.Controls.Add(Me.lblfighter7)
         Me.visiblepanel.Controls.Add(Me.lblfighter4)
-        Me.visiblepanel.Controls.Add(Me.Label5)
+        Me.visiblepanel.Controls.Add(Me.lblfighter6)
         Me.visiblepanel.Controls.Add(Me.lblfighter5)
         Me.visiblepanel.Controls.Add(Me.Panel2)
         Me.visiblepanel.Controls.Add(Me.Panel3)
@@ -440,13 +440,13 @@ Partial Class showranking
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents lblfighter1 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblfighter10 As Label
+    Friend WithEvents lblfighter9 As Label
+    Friend WithEvents lblfighter8 As Label
     Friend WithEvents lblfighter2 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblfighter7 As Label
     Friend WithEvents lblfighter3 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblfighter6 As Label
     Friend WithEvents lblfighter4 As Label
     Friend WithEvents lblfighter5 As Label
     Friend WithEvents visiblepanel As Panel

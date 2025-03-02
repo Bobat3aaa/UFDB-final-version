@@ -2,6 +2,11 @@
 
 Public Class Usereditor
 
+    Private oldvalue As String
+
+
+
+
     Private currentuserlist As List(Of usermanagement) 'user list to be saved
     Private currentranklist As List(Of ranking) ' rank list to be saved
     Private currentfighterranklist As List(Of fighterranking) ' fighter-rank list to be saved
@@ -16,7 +21,107 @@ Public Class Usereditor
 
 
         updatedatabase()
+
+
         Datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+
+        'makes sure user id cant be changed
+        Datagridview.Columns(0).ReadOnly = True
+
+
+    End Sub
+
+
+    'encrypt password function(same as user details ver.)
+    Function encryptpassword(newusername As String, newpassword As String, decision As Boolean, ogpasslength As Integer)
+
+        Dim encryptpass As String = ""
+        Dim key As Integer
+        Dim addedchar As Char
+        Dim currentchar As Integer = 0
+
+        'makes key for password using username
+        key = (Asc(newusername(0)) + (Asc(newusername(newusername.Length - 1))))
+
+        'adds letters to the password
+        While newpassword.Length < 32
+            addedchar = Chr(Int((Asc((newpassword(currentchar))) + Asc((newpassword(currentchar)))) / 3))
+            currentchar += 1
+            newpassword += addedchar
+        End While
+
+        'encrypts password with xor key
+
+        For i As Integer = 0 To newpassword.Length - 1
+            encryptpass &= Chr(Asc((newpassword(i))) Xor key)
+        Next
+
+        'return password based on if encrypted password or decrypted password is asked for
+        If decision = True Then
+            Return encryptpass 'return encrypted pass
+
+
+        ElseIf decision = False Then
+            encryptpass = encryptpass.Substring(0, ogpasslength) 'returns decrypted password by using passwordlength attrbute
+            Return encryptpass
+        End If
+
+
+    End Function
+
+
+    'holds old value so undo is available
+    Private Sub datagrid_beforeediting(sender As Object, e As DataGridViewCellCancelEventArgs) Handles Datagridview.CellBeginEdit
+
+        oldvalue = Datagridview.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+    End Sub
+
+
+
+
+
+    'does validation if a username or email is changed/edited
+    Private Sub Datagrid_viewedoredited(sender As Object, e As DataGridViewCellEventArgs) Handles Datagridview.CellEndEdit
+
+        'holds edited value as string (for email and username0
+        Dim editedvalue As String = Datagridview.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString
+
+        Dim editedvalueuserid As Integer = Datagridview.Rows(e.RowIndex).Cells(0).Value 'holds the userid of user
+
+        Debug.WriteLine(editedvalueuserid)
+
+        Dim editedvaluecolumn As String = Datagridview.Columns(e.ColumnIndex).Name 'holds the column name to check for username and pass
+
+        Dim currentuseredited As usermanagement = currentuserlist.FirstOrDefault(Function(cu) cu.UserID = editedvalueuserid) 'gets current user for encryption and decryption
+
+        Debug.WriteLine(editedvaluecolumn)
+
+        'username validation
+        If editedvaluecolumn = "username" Then
+            If validateusername(editedvalue) = True Then
+                MsgBox(editedvalue & "is already in use!")
+                Datagridview.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = oldvalue
+            Else
+
+                'if username is availbale, makes sure to encrypt password with new name
+                Dim decryptedpass As String = encryptpassword(oldvalue, currentuseredited.password, False, currentuseredited.passwordlength)
+                Dim encryptedpass As String = encryptpassword(editedvalue, decryptedpass, True, currentuseredited.passwordlength)
+
+                currentuseredited.password = encryptedpass
+                updatedatabase()
+
+            End If
+
+
+            'email vaLidation
+        ElseIf editedvaluecolumn = "email" Then
+
+            If validateemail(editedvalue) = True Then
+                MsgBox(editedvalue & "is already in use!")
+                Datagridview.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = oldvalue
+            Else
+            End If
+        End If
 
     End Sub
 
@@ -111,7 +216,7 @@ Public Class Usereditor
         'gets original password length
         Dim passwordlength As Integer = Len(newpassword)
         'gets encrypted password
-        Dim encryptpass As String = encryptpassword(newusername, newpassword)
+        Dim encryptpass As String = encryptpassword(newusername, newpassword, True, 0)
 
         Dim userid As Integer = GetNextUserID(currentuserlist)
 
@@ -140,37 +245,13 @@ Public Class Usereditor
 
 
 
-    Private Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
+    Function validatepassword(ByVal password As String)
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
         MsgBox(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function
 
-    Function encryptpassword(newusername, newpassword)
 
-        Dim encryptpass As String = ""
-        Dim key As Integer
-        Dim addedchar As Char
-        Dim currentchar As Integer = 0
-
-        'makes key for password using username
-        key = (Asc(newusername(0)) + (Asc(newusername(newusername.Length - 1))))
-
-        'adds letters to the password
-        While newpassword.Length < 32
-            addedchar = Chr(Int((Asc((newpassword(currentchar))) + Asc((newpassword(currentchar)))) / 3))
-            currentchar += 1
-            newpassword += addedchar
-        End While
-
-        'encrypts password with xor key
-        For i As Integer = 0 To newpassword.Length - 1
-            encryptpass &= Chr(Asc((newpassword(i))) Xor key)
-        Next
-
-
-        Return encryptpass
-    End Function
     Function ValidateUser(user As usermanagement) As Boolean
         If String.IsNullOrEmpty(user.username) Or String.IsNullOrEmpty(user.password) Or user.age <= 0 Or String.IsNullOrEmpty(user.email) Then
             Return False

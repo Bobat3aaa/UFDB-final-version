@@ -86,30 +86,30 @@ Public Class loginform
                 If users(currentuserindex).Admin = True Then
 
                     'save userid to currentuserid 
-                    currentuserid = users(currentuserindex).UserID
+                    Form1.currentuserid = users(currentuserindex).UserID
                     MsgBox("Logged in as admin!")
                     'open adminuser form
                     currentadminuser.Show()
                     'clear textboxes
                     txtpassword.Text = ""
                     txtusername.Text = ""
-                    Me.Hide()
+                    Me.Close()
                 ElseIf users(currentuserindex).Admin = False Then
                     'open userform
-                    currentuserid = users(currentuserindex).UserID
+                    Form1.currentuserid = users(currentuserindex).UserID
                     MsgBox("Logged in as user!")
                     current_user_form.Show()
                     'clear textboxes
                     txtpassword.Text = ""
                     txtusername.Text = ""
-                    Me.Hide()
+                    Me.Close()
                 End If
 
             ElseIf passwordcheck = False Then
                 MsgBox("password is wrong")
                 'clear textboxes
+
                 txtpassword.Text = ""
-                txtusername.Text = ""
             End If
 
         End If

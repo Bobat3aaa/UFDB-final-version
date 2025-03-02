@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "RankingID": 2,
+    "UserID": 3,
+    "RankingName": "6 fighters",
+    "Rankingdesc": "test to see 6 fighters",
+    "Rankingdatemade": "2025-03-01T00:00:00+00:00"
+  },
+  {
+    "RankingID": 1,
+    "UserID": 3,
+    "RankingName": "Test ranking to view",
+    "Rankingdesc": "Ranking to test viewing form",
+    "Rankingdatemade": "2025-03-01T00:00:00+00:00"
+  }
+]

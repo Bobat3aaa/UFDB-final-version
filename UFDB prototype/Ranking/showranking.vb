@@ -75,7 +75,7 @@ Public Class showranking
     Function getcurrentuser()
         Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
         Return currentuser
     End Function
 
@@ -103,6 +103,10 @@ Public Class showranking
     End Sub
 
     Private Sub Lbluserid_Click(sender As Object, e As EventArgs) Handles Lbluserid.Click
+
+    End Sub
+
+    Private Sub visiblepanel_Paint(sender As Object, e As PaintEventArgs) Handles visiblepanel.Paint
 
     End Sub
 End Class

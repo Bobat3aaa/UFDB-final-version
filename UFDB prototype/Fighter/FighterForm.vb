@@ -195,14 +195,16 @@ Public Class FighterForm
                     If templow <= temphigh Then
 
                         ' swaps fighters
+                        If parsednames(templow) <> parsednames(temphigh) Then
+                            Dim tempfighter As fightermanagement = fighters(templow)
+                            fighters(templow) = fighters(temphigh)
+                            fighters(temphigh) = tempfighter
 
-                        Dim tempfighter As fightermanagement = fighters(templow)
-                        fighters(templow) = fighters(temphigh)
-                        fighters(temphigh) = tempfighter
+                            Dim tempname As String = parsednames(templow)
+                            parsednames(templow) = parsednames(temphigh)
+                            parsednames(temphigh) = tempname
+                        End If
 
-                        Dim tempname As String = parsednames(templow)
-                        parsednames(templow) = parsednames(temphigh)
-                        parsednames(temphigh) = tempname
 
                         templow += 1
                         temphigh -= 1
@@ -268,7 +270,14 @@ Public Class FighterForm
 
     End Sub
 
+    Sub parsenames()
+        parsednames.Clear()
 
+        For Each fighter In currentfighterlist
+            parsednames.Add(parsename(fighter.Name, 1))
+        Next
+
+    End Sub
 
     '***************** FIGHTER BUTTON POPULATION + HANDLER ****************
 
@@ -431,14 +440,23 @@ Public Class FighterForm
 
 
         ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
-
+            parsenames()
             Debug.WriteLine("option 2 ")
             nametofind = txtlname.Text
             decision = 1
-            Quicksort(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
-            Debug.WriteLine(fighters(0).Name)
-            Dim searchedfighters As List(Of fightermanagement) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
+            Dim filteredfighters = Quicksort(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
+
+            For i = 0 To 20
+                Debug.WriteLine(filteredfighters(i).Name)
+            Next
+            For i = 0 To 20
+                Debug.WriteLine(parsednames(i))
+            Next
+            Dim searchedfighters As List(Of fightermanagement) = bsearchfighter_onename(filteredfighters, nametofind, indexlow, indexhigh, decision)
             currentfighterlist = searchedfighters
+
+
+
 
 
         Else
@@ -462,6 +480,7 @@ Public Class FighterForm
         End If
 
         'updates flow layout panel with new fighters
+        currentfighterlist = checkfilters(currentfighterlist)
         updatebuttons(currentfighterlist)
 
     End Sub
@@ -498,7 +517,7 @@ Public Class FighterForm
 
 
 
-    Public Function bsearchfighter_onename(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer, decision As Integer) As List(Of fightermanagement)
+    Function bsearchfighter_onename(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer, decision As Integer) As List(Of fightermanagement)
 
         Try
 
@@ -568,22 +587,39 @@ Public Class FighterForm
     Function parsename(name As String, decision As Integer) ' parse name for binary search
 
         'splits name where the space is
-        Dim parsedname As String() = name.Split(" "c)
 
-        If parsedname.Length > 0 Then
-            If decision = 0 Then
-                'returns first name
-                Return parsedname(0)
+        Try
 
-            ElseIf decision = 1 And parsedname.Length > 1 Then
-                'returns last name
 
-                Return parsedname(1)
+            If name <> "" And name IsNot Nothing Then
+
+
+                Dim parsedname As String() = name.Split(" "c)
+
+
+
+                If parsedname.Length > 0 Then
+                    If decision = 0 Then
+                        'returns first name
+                        Return parsedname(0)
+
+                    ElseIf decision = 1 And parsedname.Length > 1 Then
+                        'returns last name
+
+                        Return parsedname(1)
+                    Else
+
+                        Return ""
+                    End If
+                End If
             Else
-
                 Return ""
             End If
-        End If
+
+        Catch ex As Exception
+            MsgBox("Error parsing name:" & ex.Message)
+            Return ""
+        End Try
 
     End Function
 
@@ -600,6 +636,7 @@ Public Class FighterForm
         Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
         txtfname.Text = ""
         txtlname.Text = ""
+        currentfighterlist = fighterlist
         updatebuttons(fighterlist)
     End Sub
 
@@ -709,4 +746,7 @@ Public Class FighterForm
         Me.Close()
     End Sub
 
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
 End Class

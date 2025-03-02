@@ -5,14 +5,12 @@ Imports System.IO
 Public Class Changepassword
 
 
-    Function validatepassword(ByVal password As String) 'uses regex to make sure password fits criteria
-
-
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#])[A-Za-z\d!@$%^&*+#]{8,32}$")
-
-
+    Function validatepassword(ByVal password As String)
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
+        MsgBox(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function
+
 
     Function encryptpassword(newusername, newpassword)
 
@@ -53,32 +51,41 @@ Public Class Changepassword
         If txtpassword.Text IsNot Nothing And txtnewpassword.Text IsNot Nothing Then
 
 
-            ogpass = txtpassword.Text
-            ogpass = encryptpassword(currentuser.username, ogpass) 'encrypts original password to check against current user password
+            If validatepassword(txtnewpassword.Text) = True Then
 
 
-            If ogpass = currentuser.password Then
-                newpass = txtnewpassword.Text
-                currentuser.passwordlength = Len(newpass) 'stores length of new password for decrpytion
+                ogpass = txtpassword.Text
+                ogpass = encryptpassword(currentuser.username, ogpass) 'encrypts original password to check against current user password
 
-                newpass = encryptpassword(currentuser.username, newpass) 'encrypts new password
-                currentuser.password = newpass 'stores encrypted password
 
-                functions.SaveUsersToJson(userlist)
-                MsgBox("Password changed!")
-                Me.Close()
-            Else MsgBox("Password is incorrect. Please try again")
+                If ogpass = currentuser.password Then
+                    newpass = txtnewpassword.Text
+                    currentuser.passwordlength = Len(newpass) 'stores length of new password for decrpytion
 
+                    newpass = encryptpassword(currentuser.username, newpass) 'encrypts new password
+                    currentuser.password = newpass 'stores encrypted password
+
+                    functions.SaveUsersToJson(userlist)
+                    MsgBox("Password changed!")
+                    Me.Close()
+                Else
+                    MsgBox("Password is incorrect. Please try again")
+
+                End If
+            Else
+                MsgBox("Password is invalid!")
+                txtpassword.Text = ""
+                txtnewpassword.Text = ""
             End If
-        Else
             MsgBox("Please fill out the form!")
         End If
+
     End Sub
 
     Function getcurrentuser(ByRef userlist As List(Of usermanagement))
 
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
         Return currentuser
     End Function
 

@@ -48,7 +48,7 @@ Public Class Likedfightersearch
 
 
         Dim likedfighterlist As List(Of fightermanagement) = (From lf In likedfighters 'looks through likedfighter list
-                                                              Where lf.userid = loginform.currentuserid 'condition -> liked fighter user id is the same as the current user id
+                                                              Where lf.userid = Form1.currentuserid 'condition -> liked fighter user id is the same as the current user id
                                                               Join sf In fighters On lf.fighterid Equals sf.FighterId 'links liked fighter to fighter list using fighter id
                                                               Select sf).ToList() 'adds it to a list
 

@@ -1,11 +1,20 @@
 [
   {
-    "UserID": 4,
-    "username": "Editoradd",
-    "password": "ùÈÚÚÞÆÛÍ›ˆœéååæãåëˆ‹¿Šƒ››˜›…¿¿",
+    "UserID": 7,
+    "username": "AdminUser",
+    "password": "ãÒÀÀÄÜÁ×‚€’†óÿÿüùÿñ“‘¥™‡‚Ÿ¦¥",
     "passwordlength": 11,
     "age": 21,
-    "email": "editor@gmail.com",
+    "email": "adminuser@gmail.com",
+    "Admin": true
+  },
+  {
+    "UserID": 6,
+    "username": "GuestUser",
+    "password": "éØÊÊÎÖËÝˆ‹˜Œùõõöóõû™˜¯š“‹‹ˆ‹•¬¯",
+    "passwordlength": 11,
+    "age": 21,
+    "email": "guestuser@gmail.com",
     "Admin": false
   },
   {
@@ -15,6 +24,33 @@
     "passwordlength": 11,
     "age": 21,
     "email": "nathanh@gmail.com",
+    "Admin": false
+  },
+  {
+    "UserID": 5,
+    "username": "Newestuser",
+    "password": "¡³³·¯²¤ñòáõ€ŒŒŠŒ‚àáÖãêòòôñòìÕÖ",
+    "passwordlength": 11,
+    "age": 21,
+    "email": "blah@gmail.com",
+    "Admin": false
+  },
+  {
+    "UserID": 4,
+    "username": "password",
+    "password": "„µ§§£»¦°æàõá”˜˜›ž˜–õöÂ÷þææàåæøÂÂ",
+    "passwordlength": 11,
+    "age": 21,
+    "email": "editor@gmail.com",
+    "Admin": false
+  },
+  {
+    "UserID": 8,
+    "username": "testuserpassword",
+    "password": "ˆ¹««¯·ª¼éùí˜””—’”šøÎûòêêìéêôÍÖÏÄ",
+    "passwordlength": 10,
+    "age": 21,
+    "email": "passwordchange@gmail.com",
     "Admin": false
   },
   {

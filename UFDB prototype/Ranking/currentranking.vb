@@ -92,6 +92,19 @@ Public Class currentranking
             endIndex = Math.Min(startIndex + count, fighterlist.Count)
             mainendindex = endIndex
 
+            Dim btndelete As New Button
+            btndelete.Width = 100
+            btndelete.Height = 100
+            btndelete.BackColor = Color.Red
+            btndelete.ForeColor = Color.White
+            btndelete.Font = New Font(btndelete.Font.FontFamily, btndelete.Font.Size + 3)
+            btndelete.TextAlign = ContentAlignment.MiddleCenter
+            btndelete.Text = "Delete fighter"
+            btndelete.Visible = True
+            btndelete.Tag = "Delete"
+            AddHandler btndelete.Click, AddressOf btndeleteclick
+
+            FlowLayoutPanel1.Controls.Add(btndelete)
 
             If startIndex > 0 Then
 
@@ -165,6 +178,28 @@ Public Class currentranking
         End If
 
     End Sub
+
+    Private Sub btndeleteclick(sender As Object, e As EventArgs)
+
+
+        Dim currentrank As Integer = currentrankfinder()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim id As Integer = GetNextranklistID(ranklist)
+
+        If currentrank <> 0 Then
+            Dim samerank As Boolean = rankedfighterlist.Any(Function(rf) rf.Rank = currentrank AndAlso rf.RankingID = id)
+            If samerank = True Then
+                Dim fightertoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.Rank = currentrank AndAlso rf.RankingID = id)
+                rankedfighterlist.Remove(fightertoremove)
+                updatetitles(currentrank, Nothing)
+            End If
+
+
+
+        End If
+
+
+    End Sub
     Private Sub btnloadmoreclick(sender As Object, e As EventArgs)
         updatebuttons(currentfighterlist, mainendindex)
     End Sub
@@ -175,6 +210,7 @@ Public Class currentranking
 
     'when a button in the flow control panel is picked (ranking edition)
     Private Sub Button_Click_currentranking(sender As Object, e As EventArgs)
+
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
@@ -193,6 +229,9 @@ Public Class currentranking
 
         If cmbchangerank.SelectedItem > 0 And cmbchangerank.SelectedItem < 11 Then
 
+
+
+
             'finds current fighter
             Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
             'finds current rank chosen via combo box
@@ -206,6 +245,10 @@ Public Class currentranking
 
 
 
+
+            'validation before adding fighterrank
+
+
             'checks if the rank is already chosen
             Dim samerank As Boolean = rankedfighterlist.Any(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
 
@@ -215,8 +258,35 @@ Public Class currentranking
                 rankedfighterlist.Remove(ranktoremove)
             End If
             Debug.WriteLine(fighterrank.FighterID)
+
+            'check if fighter is already in a rank placement
+            Dim samefighter As Boolean = rankedfighterlist.Any(Function(rf) rf.FighterID = currentfighter.FighterId And rf.RankingID = fighterrank.RankingID)
+
+            If samefighter = True Then
+                Debug.WriteLine("same fighter")
+                'choose fighter to remove in list
+                Dim fightertoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.FighterID = currentfighter.FighterId And rf.RankingID = fighterrank.RankingID)
+                rankedfighterlist.Remove(fightertoremove)
+
+            End If
+
+
+
+
+
             rankedfighterlist.Add(fighterrank)
             updatetitles(fighterrank, currentfighter)
+
+
+
+            For Each fighterranking In rankedfighterlist
+
+
+                Debug.WriteLine(fighterranking.FighterID)
+                Debug.WriteLine(fighterranking.Rank)
+                Debug.WriteLine(fighterranking.RankingID)
+            Next
+
 
         Else
             MsgBox("please add a rank!")
@@ -335,53 +405,97 @@ Public Class currentranking
 
     Sub submitranking()
 
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
+
         'makes sure title and description are added
         If String.IsNullOrEmpty(txtrankingname.Text) Then
             MsgBox("please add a list name!")
         ElseIf String.IsNullOrEmpty(txtrankingdesc.Text) Then
-            MsgBox("Please add a list description")
+            MsgBox("Please add a list description!")
+
+        ElseIf checkfightersinlist(rankedfighterlist, ranklist) = False Then
+            MsgBox("No fighters are added!")
+
 
         Else
+
+
+
+
             Dim titlecheck As Boolean = validatetitle(txtrankingname.Text)
             If titlecheck = False Then
 
 
                 'adds both ranking list and fighterranking to json
-                Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
 
-                Dim newranking As New ranking(GetNextranklistID(ranklist), loginform.currentuserid, txtrankingname.Text, txtrankingdesc.Text, Today)
+
+                Dim newranking As New ranking(GetNextranklistID(ranklist), Form1.currentuserid, txtrankingname.Text, txtrankingdesc.Text, Today)
                 Debug.WriteLine(newranking.RankingName)
+
+
+
 
                 ranklist.Add(newranking)
 
-                functions.SaveToRanklistJson(ranklist)
+                    functions.SaveToRanklistJson(ranklist)
 
-                Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
-                For i = 0 To rankedfighterlist.Count - 1
-                    jsonfighterrankinglist.Add(rankedfighterlist(i))
-                Next
-                functions.SaveToFighterranksJson(jsonfighterrankinglist)
-                MsgBox("new list created!")
-            Else
-                MsgBox("title is taken")
+
+                    For i = 0 To rankedfighterlist.Count - 1
+                        jsonfighterrankinglist.Add(rankedfighterlist(i))
+                    Next
+                    functions.SaveToFighterranksJson(jsonfighterrankinglist)
+                    MsgBox("new list created!")
+                Else
+                    MsgBox("title is taken")
             End If
         End If
+
+
+
+
+
     End Sub
+
+    Function checkfightersinlist(jsonfighterrankinglist As List(Of fighterranking), ranklist As List(Of ranking))
+
+
+
+        Dim id As Integer = GetNextranklistID(ranklist)
+        Debug.WriteLine("This is ID" & id)
+        Dim listcheck As Boolean = jsonfighterrankinglist.Any(Function(j) j.RankingID = id)
+        Return listcheck
+
+
+
+    End Function
+
 
     Sub updatetitles(fighterrank, currentfighter) 'updates fighters next to their number
         'Dim fighterpanel As Panel = (fighterpanel)
-        For i = 1 To 10
-            Dim ranklbl As Label = (Panel1.Controls("lblfighter" & i))
-            Debug.WriteLine(ranklbl)
-            If ranklbl IsNot Nothing And i = fighterrank.rank Then
 
-                ranklbl.Text = currentfighter.name
-            End If
+        If currentfighter IsNot Nothing Then
+            For i = 1 To 10
 
 
-        Next
+                Dim ranklbl As Label = Panel1.Controls("lblfighter" & i)
+                Debug.WriteLine(ranklbl)
+                If ranklbl IsNot Nothing And i = fighterrank.rank Then
+
+                    ranklbl.Text = currentfighter.name
+                ElseIf ranklbl IsNot Nothing And ranklbl.Text = currentfighter.name Then
+                    ranklbl.Text = "Fighter " & i
+                Else
+                    ranklbl.Text = "Fighter " & i
+                End If
 
 
+            Next
+        Else
+            Dim ranklbl As Label = (Panel1.Controls("lblfighter" & fighterrank))
+            ranklbl.Text = "Fighter " & fighterrank
+
+        End If
 
     End Sub
 
@@ -483,6 +597,10 @@ Public Class currentranking
     End Sub
 
     Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 End Class

@@ -312,7 +312,7 @@ Public Class Rankingsearch
 
             Dim filteredlist As List(Of ranking) = Nothing
             If ownrank <> "No" Then
-                filteredlist = ranklist.Where(Function(r) r.UserID = loginform.currentuserid).ToList()
+                filteredlist = ranklist.Where(Function(r) r.UserID = Form1.currentuserid).ToList()
             End If
 
 

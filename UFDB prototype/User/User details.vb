@@ -71,7 +71,7 @@ Public Class Userdetails
     Function getcurrentuser(userlist As List(Of usermanagement))
 
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
         Return currentuser
 
     End Function
@@ -176,7 +176,7 @@ Public Class Userdetails
             functions.SaveUsersToJson(userlist)
 
             Form1.Show()
-            Me.Hide()
+            Me.Close()
         End If
 
 
