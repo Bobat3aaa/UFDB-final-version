@@ -36,6 +36,7 @@ Partial Class Likedfightersearch
         '
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
+        Me.FlowLayoutPanel1.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FlowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(15, 236)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -46,7 +47,7 @@ Partial Class Likedfightersearch
         '
         Me.btnclear.BackColor = System.Drawing.Color.Silver
         Me.btnclear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnclear.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclear.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnclear.Location = New System.Drawing.Point(298, 189)
         Me.btnclear.Name = "btnclear"
         Me.btnclear.Size = New System.Drawing.Size(118, 28)
@@ -58,7 +59,7 @@ Partial Class Likedfightersearch
         '
         Me.btnsearch.BackColor = System.Drawing.Color.Silver
         Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch.Location = New System.Drawing.Point(126, 189)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(110, 28)
@@ -69,46 +70,46 @@ Partial Class Likedfightersearch
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Clash Display", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Light", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(18, 143)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(106, 22)
+        Me.Label2.Size = New System.Drawing.Size(103, 23)
         Me.Label2.TabIndex = 21
         Me.Label2.Text = "Last name:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(18, 105)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(108, 22)
+        Me.Label1.Size = New System.Drawing.Size(106, 23)
         Me.Label1.TabIndex = 20
         Me.Label1.Text = "First name:"
         '
         'txtlname
         '
-        Me.txtlname.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlname.Location = New System.Drawing.Point(126, 142)
+        Me.txtlname.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtlname.Location = New System.Drawing.Point(126, 147)
         Me.txtlname.Name = "txtlname"
-        Me.txtlname.Size = New System.Drawing.Size(290, 28)
+        Me.txtlname.Size = New System.Drawing.Size(290, 22)
         Me.txtlname.TabIndex = 19
         '
         'txtfname
         '
-        Me.txtfname.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtfname.Location = New System.Drawing.Point(126, 99)
+        Me.txtfname.Font = New System.Drawing.Font("Lucida Console", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfname.Location = New System.Drawing.Point(126, 106)
         Me.txtfname.Name = "txtfname"
-        Me.txtfname.Size = New System.Drawing.Size(290, 28)
+        Me.txtfname.Size = New System.Drawing.Size(290, 22)
         Me.txtfname.TabIndex = 18
         '
         'lbllistmaker
         '
         Me.lbllistmaker.AutoSize = True
-        Me.lbllistmaker.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbllistmaker.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbllistmaker.Location = New System.Drawing.Point(12, 13)
         Me.lbllistmaker.Name = "lbllistmaker"
-        Me.lbllistmaker.Size = New System.Drawing.Size(351, 55)
+        Me.lbllistmaker.Size = New System.Drawing.Size(323, 58)
         Me.lbllistmaker.TabIndex = 62
         Me.lbllistmaker.Text = "Liked fighters"
         '

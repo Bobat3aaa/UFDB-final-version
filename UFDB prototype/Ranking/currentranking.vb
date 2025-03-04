@@ -5,16 +5,10 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
 Public Class currentranking
 
-    Private fighterlist As List(Of fightermanagement)
+    Private currentfighterlist As List(Of fightermanagement)
+    Private mainendindex As Integer
     Private rankedfighterlist As New List(Of fighterranking)
-    Public Sub New()
 
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-    End Sub
     Private Sub currentranking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'make search work
@@ -25,33 +19,40 @@ Public Class currentranking
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
-        Dim sortwins As Integer = 0
-        Dim sortloss As Integer = 0
 
-        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
-        fighterlist = sortedfighters
-        Debug.WriteLine("aaaaahhhhhhhhhhhhhhhhhhh" & fighterlist.Count)
-        functions.SaveToFighterJson(fighterlist)
+
+        Dim fighterlistsorted As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
+        currentfighterlist = fighterlistsorted
+
+        functions.SaveToFighterJson(currentfighterlist)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
         FlowLayoutPanel1.HorizontalScroll.Visible = True
 
 
-        If cmbweightclass.Items.Count > 0 Then cmbweightclass.SelectedIndex = 0
-        Debug.WriteLine(sortedfighters(1).Name)
-        updatebuttons(sortedfighters)
+        If cmbweightclass.Items.Count > 0 Then
+            cmbweightclass.SelectedIndex = 0
+        End If
+
+        updatebuttons(fighterlistsorted)
 
         Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
 
 
 
-        Dim newranking As New ranking
-        newranking.RankingID = GetNextranklistID(ranklist)
 
     End Sub
 
 
+    Function validatetitle(title As String) As Boolean
+
+        'checks if title is already taken
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim match As Boolean = False
+        match = ranklist.Any(Function(r) r.RankingName = title)
+        Return match
+    End Function
 
 
 
@@ -67,36 +68,45 @@ Public Class currentranking
 
 
 
-    Function makenewfighterrank(rankingid As Integer, fighterid As String, rank As Integer)
-        Dim newfighterrank As New fighterranking
-        newfighterrank.FighterID = fighterid
-        newfighterrank.RankingID = rankingid
-        newfighterrank.Rank = rank
-        Return newfighterrank
-    End Function
 
 
 
 
 
-    Sub updatebuttons(sortedfighters As List(Of fightermanagement), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+
+    Sub updatebuttons(fighterlist As List(Of fightermanagement), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
 
 
 
-        fighterlist = sortedfighters
+        currentfighterlist = fighterlist
 
-        If sortedfighters Is Nothing Then
+        If fighterlist Is Nothing Then
 
         Else
 
             'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
             Dim endIndex As Integer
-            endIndex = Math.Min(startIndex + count, sortedfighters.Count)
+            endIndex = Math.Min(startIndex + count, fighterlist.Count)
+            mainendindex = endIndex
 
+            If startIndex < 0 Then startIndex = 0
 
+            Dim btndelete As New Button
+            btndelete.Width = 100
+            btndelete.Height = 100
+            btndelete.BackColor = Color.Pink
+            btndelete.ForeColor = Color.Black
+            btndelete.Font = New Font(btndelete.Font.FontFamily, btndelete.Font.Size + 3)
+            btndelete.TextAlign = ContentAlignment.MiddleCenter
+            btndelete.Text = "Delete fighter"
+            btndelete.Visible = True
+            btndelete.Tag = "Delete"
+            AddHandler btndelete.Click, AddressOf btndeleteclick
+
+            FlowLayoutPanel1.Controls.Add(btndelete)
 
             If startIndex > 0 Then
 
@@ -114,38 +124,37 @@ Public Class currentranking
                 btnback.Tag = "btnback"
 
                 'adds an event handler to update buttons
-                AddHandler btnback.Click, Sub()
-                                              updatebuttons(sortedfighters, endIndex - 100)
-                                          End Sub
+                AddHandler btnback.Click, AddressOf btnbackclick
+
                 FlowLayoutPanel1.Controls.Add(btnback)
 
 
             End If
 
 
-            'creates 50 buttons
+            'creates 50 fighter buttons
             For i = startIndex To endIndex - 1
 
 
-                Dim btn As New Button
-                btn.Width = 100
-                btn.Height = 50
-                btn.BackColor = Color.White
-                btn.TextAlign = ContentAlignment.MiddleCenter
+                Dim btnfighter As New Button
+                btnfighter.Width = 100
+                btnfighter.Height = 50
+                btnfighter.BackColor = Color.White
+                btnfighter.TextAlign = ContentAlignment.MiddleCenter
 
-                btn.Text = sortedfighters(i).Name
-                btn.Visible = True
-                btn.Tag = i
-                fighterlist = sortedfighters
-                AddHandler btn.Click, AddressOf Button_Click_currentranking
+                btnfighter.Text = fighterlist(i).Name
+                btnfighter.Visible = True
+                btnfighter.Tag = i
+                currentfighterlist = fighterlist
+                AddHandler btnfighter.Click, AddressOf Button_Click_currentranking
 
-                FlowLayoutPanel1.Controls.Add(btn)
+                FlowLayoutPanel1.Controls.Add(btnfighter)
 
 
             Next
 
             'creates a load more button if needed
-            If endIndex < sortedfighters.Count Then
+            If endIndex < fighterlist.Count Then
 
 
                 Dim btnloadmore As New Button
@@ -162,19 +171,48 @@ Public Class currentranking
                 btnloadmore.Tag = "btnloadmore"
 
                 'adds an event handler to update buttons
-                AddHandler btnloadmore.Click, Sub()
-                                                  updatebuttons(sortedfighters, endIndex)
-                                              End Sub
+                AddHandler btnloadmore.Click, AddressOf btnloadmoreclick
+
                 FlowLayoutPanel1.Controls.Add(btnloadmore)
 
 
             End If
         End If
+
+    End Sub
+
+    Private Sub btndeleteclick(sender As Object, e As EventArgs)
+
+
+        Dim currentrank As Integer = currentrankfinder()
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim id As Integer = GetNextranklistID(ranklist)
+
+        If currentrank <> 0 Then
+            Dim samerank As Boolean = rankedfighterlist.Any(Function(rf) rf.Rank = currentrank AndAlso rf.RankingID = id)
+            If samerank = True Then
+                Dim fightertoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.Rank = currentrank AndAlso rf.RankingID = id)
+                rankedfighterlist.Remove(fightertoremove)
+                updatetitles(currentrank, Nothing)
+            End If
+
+
+
+        End If
+
+
+    End Sub
+    Private Sub btnloadmoreclick(sender As Object, e As EventArgs)
+        updatebuttons(currentfighterlist, mainendindex)
+    End Sub
+    Private Sub btnbackclick(sender As Object, e As EventArgs)
+        updatebuttons(currentfighterlist, mainendindex - 100)
     End Sub
 
 
     'when a button in the flow control panel is picked (ranking edition)
     Private Sub Button_Click_currentranking(sender As Object, e As EventArgs)
+
 
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
@@ -182,40 +220,76 @@ Public Class currentranking
         'gets tag of button which is the fighters place in the list
         Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
-        'need to find a way to optimise / reuse code
+
 
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
 
-        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
+        Dim fighterlistsorted As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
 
         If cmbchangerank.SelectedItem > 0 And cmbchangerank.SelectedItem < 11 Then
 
+
+
+
             'finds current fighter
-            Dim currentfighter As fightermanagement = fighterlist(fighterIndex)
-            MsgBox(currentfighter.Name)
+            Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
+            'finds current rank chosen via combo box
             Dim currentrank As Integer = currentrankfinder()
 
+            'gets rank list id
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
             Dim currentrankid As Integer = GetNextranklistID(ranklist)
-            Dim fighterrank As New fighterranking
-            fighterrank = makenewfighterrank(currentrankid, currentfighter.FighterId, currentrank)
+            'adds fighterrank to list
+            Dim fighterrank As New fighterranking(currentrankid, currentfighter.FighterId, currentrank)
 
 
 
+
+            'validation before adding fighterrank
+
+
+            'checks if the rank is already chosen
             Dim samerank As Boolean = rankedfighterlist.Any(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
 
-
+            'removes old fighter and adds new fighter
             If samerank = True Then
                 Dim ranktoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.Rank = fighterrank.Rank AndAlso rf.RankingID = fighterrank.RankingID)
                 rankedfighterlist.Remove(ranktoremove)
             End If
             Debug.WriteLine(fighterrank.FighterID)
+
+            'check if fighter is already in a rank placement
+            Dim samefighter As Boolean = rankedfighterlist.Any(Function(rf) rf.FighterID = currentfighter.FighterId And rf.RankingID = fighterrank.RankingID)
+
+            If samefighter = True Then
+                Debug.WriteLine("same fighter")
+                'choose fighter to remove in list
+                Dim fightertoremove As fighterranking = rankedfighterlist.FirstOrDefault(Function(rf) rf.FighterID = currentfighter.FighterId And rf.RankingID = fighterrank.RankingID)
+                rankedfighterlist.Remove(fightertoremove)
+
+            End If
+
+
+
+
+
             rankedfighterlist.Add(fighterrank)
             updatetitles(fighterrank, currentfighter)
-            Debug.WriteLine("worked")
+
+
+
+            For Each fighterranking In rankedfighterlist
+
+
+                Debug.WriteLine(fighterranking.FighterID)
+                Debug.WriteLine(fighterranking.Rank)
+                Debug.WriteLine(fighterranking.RankingID)
+            Next
+
+
         Else
             MsgBox("please add a rank!")
         End If
@@ -224,78 +298,100 @@ Public Class currentranking
     End Sub
     Function checkfilters(fighterlist As List(Of fightermanagement))
 
-        Dim selectedWeightClass As String = ""
+        Try
 
-        If cmbweightclass.SelectedItem IsNot Nothing Then
-            selectedWeightClass = cmbweightclass.SelectedItem.ToString()
-        End If
-
-        ' Filter fighters based on the selected weight class
-        Dim filteredFighters As List(Of fightermanagement) = fighterlist
-        Debug.WriteLine(filteredFighters.Count)
-        If selectedWeightClass <> "All" Then
-            filteredFighters = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
-        End If
-        Debug.WriteLine(filteredFighters.Count)
-        Return filteredFighters
-    End Function
+            If fighterlist Is Nothing Then
+                Return New List(Of fightermanagement)
+            Else
 
 
+                Dim selectedWeightClass As String = ""
 
-    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+                If cmbweightclass.SelectedItem IsNot Nothing Then
+                    selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+                End If
 
-        Dim pivot As String
-        Dim templow As Integer = indexlow
-        Dim temphigh As Integer = indexhigh
+                ' Filter fighters based on the selected weight class
 
 
 
-
-
-        pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
-
-        While templow <= temphigh
-            While String.Compare(fighters(templow).Name, pivot) < 0
-                templow += 1
-            End While
-
-            While String.Compare(fighters(temphigh).Name, pivot) > 0
-                temphigh -= 1
-            End While
-
-            If templow <= temphigh Then
-                Dim tempfighter As fightermanagement = fighters(templow)
-                fighters(templow) = fighters(temphigh)
-                fighters(temphigh) = tempfighter
-                templow += 1
-                temphigh -= 1
+                Dim fighterlistfiltered As List(Of fightermanagement) = fighterlist
+                Debug.WriteLine(fighterlistfiltered.Count)
+                If selectedWeightClass <> "All" Then
+                    fighterlistfiltered = fighterlist.Where(Function(f) f.Weight = selectedWeightClass).ToList()
+                End If
+                Debug.WriteLine(fighterlistfiltered.Count)
+                Return fighterlistfiltered
             End If
-        End While
 
-
-
-        If indexlow <= temphigh Then
-            Quicksort(fighters, indexlow, temphigh)
-        End If
-
-        If templow < indexhigh Then
-            Quicksort(fighters, templow, indexhigh)
-        End If
-
-        Return fighters
+        Catch ex As Exception
+            MsgBox("Error occured with filter checking fighters:" & ex.Message)
+            Return New List(Of fightermanagement)
+        End Try
     End Function
 
-    Private Sub Label14_Click(sender As Object, e As EventArgs)
 
-    End Sub
 
-    Private Sub cmbchangerank_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbchangerank.SelectedIndexChanged
+    Function Quicksort(fighterlist As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement) 'quicksort used in other forms
+
+
+        Try
+
+            Dim pivot As String
+            Dim templow As Integer = indexlow
+            Dim temphigh As Integer = indexhigh
+
+
+
+
+
+            pivot = fighterlist(Int((indexlow + indexhigh) / 2)).Name
+
+            While templow <= temphigh
+                While String.Compare(fighterlist(templow).Name, pivot) < 0
+                    templow += 1
+                End While
+
+                While String.Compare(fighterlist(temphigh).Name, pivot) > 0
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    Dim tempfighter As fightermanagement = fighterlist(templow)
+                    fighterlist(templow) = fighterlist(temphigh)
+                    fighterlist(temphigh) = tempfighter
+                    templow += 1
+                    temphigh -= 1
+                End If
+            End While
+
+
+
+            If indexlow <= temphigh Then
+                Quicksort(fighterlist, indexlow, temphigh)
+            End If
+
+            If templow < indexhigh Then
+                Quicksort(fighterlist, templow, indexhigh)
+            End If
+
+            Return fighterlist
+
+        Catch ex As Exception
+            MsgBox("Error occured with quicksorting fighters:" & ex.Message)
+        Return New List(Of fightermanagement)
+        End Try
+    End Function
+
+
+
+    Private Sub cmbchangerank_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbchangerank.SelectedIndexChanged 'changes current rank
         Dim currentrank As Integer
         currentrank = currentrankfinder()
-        Debug.WriteLine(currentrank)
+
     End Sub
 
-    Function currentrankfinder()
+    Function currentrankfinder() 'returns current rank chosen
         Dim currentrank As Integer
         currentrank = cmbchangerank.SelectedItem
         Return currentrank
@@ -303,64 +399,108 @@ Public Class currentranking
 
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnsubmit.Click
-        Submitranking()
+        submitranking()
 
 
     End Sub
 
 
     Sub submitranking()
+
+        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
+
+        'makes sure title and description are added
         If String.IsNullOrEmpty(txtrankingname.Text) Then
             MsgBox("please add a list name!")
         ElseIf String.IsNullOrEmpty(txtrankingdesc.Text) Then
-            MsgBox("Please add a list description")
+            MsgBox("Please add a list description!")
+
+        ElseIf checkfightersinlist(rankedfighterlist, ranklist) = False Then
+            MsgBox("No fighters are added!")
+
 
         Else
 
 
-            Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
-
-            Dim newranking As New ranking
-            newranking.RankingID = GetNextranklistID(ranklist)
-            newranking.UserID = loginform.currentuserid
-            newranking.Rankingdesc = txtrankingdesc.Text
-
-            newranking.RankingName = txtrankingname.Text
-            newranking.Rankingdatemade = Today
 
 
-            ranklist.Add(newranking)
-            functions.SaveToRanklistJson(ranklist)
+            Dim titlecheck As Boolean = validatetitle(txtrankingname.Text)
+            If titlecheck = False Then
 
-            Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
-            For i = 0 To rankedfighterlist.Count - 1
-                jsonfighterrankinglist.Add(rankedfighterlist(i))
-            Next
-            functions.SaveToFighterranksJson(jsonfighterrankinglist)
-            MsgBox("new list created!")
-        End If
-    End Sub
 
-    Sub updatetitles(fighterrank, currentfighter)
-        Dim fighterpanel As Panel = (fighterpanel)
-        For i = 1 To 10
-            Dim ranklbl As Label = (Panel1.Controls("lblfighter" & i))
-            Debug.WriteLine(ranklbl)
-            If ranklbl IsNot Nothing And i = fighterrank.rank Then
+                'adds both ranking list and fighterranking to json
 
-                ranklbl.Text = currentfighter.name
+
+                Dim newranking As New ranking(GetNextranklistID(ranklist), Form1.currentuserid, txtrankingname.Text, txtrankingdesc.Text, Today)
+                Debug.WriteLine(newranking.RankingName)
+
+
+
+
+                ranklist.Add(newranking)
+
+                    functions.SaveToRanklistJson(ranklist)
+
+
+                    For i = 0 To rankedfighterlist.Count - 1
+                        jsonfighterrankinglist.Add(rankedfighterlist(i))
+                    Next
+                    functions.SaveToFighterranksJson(jsonfighterrankinglist)
+                    MsgBox("new list created!")
+                Else
+                    MsgBox("title is taken")
             End If
+        End If
 
 
-        Next
 
 
+
+    End Sub
+
+    Function checkfightersinlist(jsonfighterrankinglist As List(Of fighterranking), ranklist As List(Of ranking))
+
+
+
+        Dim id As Integer = GetNextranklistID(ranklist)
+        Debug.WriteLine("This is ID" & id)
+        Dim listcheck As Boolean = jsonfighterrankinglist.Any(Function(j) j.RankingID = id)
+        Return listcheck
+
+
+
+    End Function
+
+
+    Sub updatetitles(fighterrank, currentfighter) 'updates fighters next to their number
+        'Dim fighterpanel As Panel = (fighterpanel)
+
+        If currentfighter IsNot Nothing Then
+            For i = 1 To 10
+
+
+                Dim ranklbl As Label = Panel1.Controls("lblfighter" & i)
+                Debug.WriteLine(ranklbl)
+                If ranklbl IsNot Nothing And i = fighterrank.rank Then
+
+                    ranklbl.Text = currentfighter.name
+                ElseIf ranklbl IsNot Nothing And ranklbl.Text = currentfighter.name Then
+                    ranklbl.Text = "Fighter " & i
+                Else
+                    ranklbl.Text = "Fighter " & i
+                End If
+
+
+            Next
+        Else
+            Dim ranklbl As Label = (Panel1.Controls("lblfighter" & fighterrank))
+            ranklbl.Text = "Fighter " & fighterrank
+
+        End If
 
     End Sub
 
-    Private Sub txtfname_TextChanged(sender As Object, e As EventArgs) Handles txtfname.TextChanged
-
-    End Sub
 
     Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
@@ -368,67 +508,79 @@ Public Class currentranking
         updatebuttons(fighterlist)
     End Sub
     Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+        Try
 
-        'binary search, returns midpoint which is place in list
-        If indexlow > indexhigh Then
-            Return Nothing
-        End If
+            'binary search, returns midpoint which is place in list
+            If indexlow > indexhigh Then
+                Return Nothing
+            End If
 
-        Dim midpoint As Integer = (indexlow + indexhigh) \ 2
+            Dim midpoint As Integer = (indexlow + indexhigh) \ 2
 
-        If String.Compare(fighterlist(midpoint).Name, nametofind) < 0 Then
-            Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
-        ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
-            Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
-        Else
-
-
-            'once binary search is done, finds all the fights with event number
-            Dim searchedfighters As New List(Of fightermanagement)()
-            searchedfighters.Add(fighterlist(midpoint))
+            If String.Compare(fighterlist(midpoint).Name, nametofind) < 0 Then
+                Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
+            ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
+                Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
+            Else
 
 
-            Dim left As Integer = midpoint - 1
-
-            While left >= indexlow
-                Dim leftfightername As String = fighterlist(left).Name
-                If leftfightername = nametofind Then
-                    searchedfighters.Add(fighterlist(left))
-                    left -= 1
-                ElseIf leftfightername <> nametofind Then
-                    Exit While
-                End If
-
-            End While
-
-            Dim right As Integer = midpoint + 1
+                'once binary search is done, finds all the fights with event number
+                Dim searchedfighters As New List(Of fightermanagement)()
+                searchedfighters.Add(fighterlist(midpoint))
 
 
-            While right <= indexhigh
-                Dim rightfightername As String = fighterlist(right).Name
-                If rightfightername = nametofind Then
-                    searchedfighters.Add(fighterlist(right))
-                    right += 1
-                ElseIf rightfightername <> nametofind Then
-                    Exit While
-                End If
+                Dim left As Integer = midpoint - 1
 
-            End While
+                While left >= indexlow
+                    Dim leftfightername As String = fighterlist(left).Name
+                    If leftfightername = nametofind Then
+                        searchedfighters.Add(fighterlist(left))
+                        left -= 1
+                    ElseIf leftfightername <> nametofind Then
+                        Exit While
+                    End If
+
+                End While
+
+                Dim right As Integer = midpoint + 1
+
+
+                While right <= indexhigh
+                    Dim rightfightername As String = fighterlist(right).Name
+                    If rightfightername = nametofind Then
+                        searchedfighters.Add(fighterlist(right))
+                        right += 1
+                    ElseIf rightfightername <> nametofind Then
+                        Exit While
+                    End If
+
+                End While
 
 
 
 
 
-            Return searchedfighters
-        End If
-
+                Return searchedfighters
+            End If
+        Catch ex As Exception
+            MsgBox("Error occured with binary searching fighters:" & ex.Message)
+            Return New List(Of fightermanagement)
+        End Try
     End Function
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
-        fighterlist = functions.ReadFightersFromJson()
+        'searches for fighter via bsearch
+        currentfighterlist = functions.ReadFightersFromJson()
+
+
+        If txtfname.Text = "" Then
+            currentfighterlist = functions.ReadFightersFromJson()
+            currentfighterlist = checkfilters(currentfighterlist)
+            updatebuttons(currentfighterlist)
+        End If
         Dim low As Integer = 0
-        Dim high As Integer = fighterlist.Count - 1
-        Dim searchedfighters As List(Of fightermanagement) = bsearchusers(fighterlist, txtfname.Text, low, high)
+        Dim high As Integer = currentfighterlist.Count - 1
+        Dim searchedfighters As List(Of fightermanagement) = bsearchusers(currentfighterlist, txtfname.Text, low, high)
         searchedfighters = checkfilters(searchedfighters)
         updatebuttons(searchedfighters)
     End Sub
@@ -442,7 +594,15 @@ Public Class currentranking
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        fighterlist = functions.ReadFightersFromJson()
-        updatebuttons(fighterlist)
+        currentfighterlist = functions.ReadFightersFromJson()
+        updatebuttons(currentfighterlist)
+    End Sub
+
+    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

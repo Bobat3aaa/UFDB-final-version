@@ -96,7 +96,6 @@
     <Compile Include="Admin\Usereditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\Customfonts.vb" />
     <Compile Include="Classes\functions.vb" />
     <Compile Include="Ranking\currentranking.Designer.vb">
       <DependentUpon>currentranking.vb</DependentUpon>
@@ -147,7 +146,7 @@
     <Compile Include="Fighter\FighterForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\fights.vb" />
+    <Compile Include="Classes\fightsmanagement.vb" />
     <Compile Include="Fight\fight_form.Designer.vb">
       <DependentUpon>fight_form.vb</DependentUpon>
     </Compile>
@@ -201,7 +200,7 @@
     <Compile Include="User\register.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\user.vb" />
+    <Compile Include="Classes\usermanagement.vb" />
     <Compile Include="User\User details.Designer.vb">
       <DependentUpon>User details.vb</DependentUpon>
     </Compile>

@@ -1,5 +1,6 @@
 ﻿Imports Newtonsoft.Json
 Imports System.IO
+Imports System.Runtime.Remoting.Messaging
 Imports System.Text.RegularExpressions
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
@@ -37,40 +38,44 @@ Public Class oddsgeneratorform
     End Sub
 
     Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+        Try
+            Dim pivot As String
+            Dim templow As Integer = indexlow
+            Dim temphigh As Integer = indexhigh
 
-        Dim pivot As String
-        Dim templow As Integer = indexlow
-        Dim temphigh As Integer = indexhigh
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
 
-        pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+            While templow <= temphigh
+                While String.Compare(fighters(templow).Name, pivot) < 0
+                    templow += 1
+                End While
 
-        While templow <= temphigh
-            While String.Compare(fighters(templow).Name, pivot) < 0
-                templow += 1
+                While String.Compare(fighters(temphigh).Name, pivot) > 0
+                    temphigh -= 1
+                End While
+
+                If templow <= temphigh Then
+                    Dim tempfighter As fightermanagement = fighters(templow)
+                    fighters(templow) = fighters(temphigh)
+                    fighters(temphigh) = tempfighter
+                    templow += 1
+                    temphigh -= 1
+                End If
             End While
 
-            While String.Compare(fighters(temphigh).Name, pivot) > 0
-                temphigh -= 1
-            End While
-
-            If templow <= temphigh Then
-                Dim tempfighter As fightermanagement = fighters(templow)
-                fighters(templow) = fighters(temphigh)
-                fighters(temphigh) = tempfighter
-                templow += 1
-                temphigh -= 1
+            If indexlow < temphigh Then
+                Quicksort(fighters, indexlow, temphigh)
             End If
-        End While
 
-        If indexlow < temphigh Then
-            Quicksort(fighters, indexlow, temphigh)
-        End If
+            If templow < indexhigh Then
+                Quicksort(fighters, templow, indexhigh)
+            End If
 
-        If templow < indexhigh Then
-            Quicksort(fighters, templow, indexhigh)
-        End If
-
-        Return fighters
+            Return fighters
+        Catch ex As Exception
+            MsgBox("Problem occured with sorting fighters: " & ex.Message)
+            Return New List(Of fightermanagement)
+        End Try
     End Function
 
 
@@ -88,8 +93,10 @@ Public Class oddsgeneratorform
             Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
         ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
             Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
-        Else
+        ElseIf fighterlist(midpoint).Name = nametofind Then
             Return midpoint
+        Else
+            Return -1
         End If
     End Function
 
@@ -106,6 +113,8 @@ Public Class oddsgeneratorform
             fighter1 = fighters(searchedfighterindex)
             fighter1index = searchedfighterindex
             updatefighter1(fighter1)
+        Else
+            MsgBox("No fighter found. Please try again!")
         End If
 
 
@@ -126,6 +135,8 @@ Public Class oddsgeneratorform
             fighter2 = fighters(searchedfighterindex)
             fighter2index = searchedfighterindex
             updatefighter2(fighter2)
+        Else
+            MsgBox("No fighter found. Please try again!")
         End If
 
 
@@ -134,14 +145,14 @@ Public Class oddsgeneratorform
     End Sub
 
     Sub updatefighter1(fighter As fightermanagement)
-        txtfighter1stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
+        txtfighter1stats.Text = fighter.Name & vbCrLf & " Height: " & fighter.Height & vbCrLf & " Weight: " & fighter.Weight & vbCrLf & " Reach: " & fighter.Reach & vbCrLf & " Record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
         lblfighter1.Text = fighter1.Name
 
     End Sub
 
     Sub updatefighter2(fighter As fightermanagement)
-        txtfighter2stats.Text = fighter.Name & vbCrLf & " " & "height: " & fighter.Height & vbCrLf & "  " & vbCrLf & "reach: " & fighter.Reach & vbCrLf & "record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
-             lblfighter2.Text = fighter2.Name
+        txtfighter2stats.Text = fighter.Name & vbCrLf & " Height: " & fighter.Height & vbCrLf & " Weight: " & fighter.Weight & vbCrLf & " Reach: " & fighter.Reach & vbCrLf & " Record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
+        lblfighter2.Text = fighter2.Name
     End Sub
 
     Private Sub btnback1_Click(sender As Object, e As EventArgs)
@@ -320,4 +331,23 @@ Public Class oddsgeneratorform
         Form1.Show()
         Me.Close()
     End Sub
+
+    Private Sub pnlfighter1_Paint(sender As Object, e As PaintEventArgs) Handles pnlfighter1.Paint
+
+    End Sub
+
+    Private Sub btnclearfighter2_Click(sender As Object, e As EventArgs) Handles btnclearfighter2.Click
+        txtfighter2fname.Text = ""
+        txtfighter2lname.Text = ""
+    End Sub
+
+    Private Sub btnclearfighter1_Click(sender As Object, e As EventArgs) Handles btnclearfighter1.Click
+        txtfighter1fname.Text = ""
+        txtfighter1lname.Text = ""
+    End Sub
+
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
+    End Sub
+
 End Class

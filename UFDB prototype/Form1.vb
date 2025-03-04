@@ -4,11 +4,10 @@ Imports System.Collections.Generic
 Imports System.IO
 Imports System.Drawing.Text
 Imports System.Drawing
-Imports System.Runtime.Remoting.Channels
 
 Public Class Form1
 
-
+    Public Property currentuserid As Integer = 0
 
     Private Sub Fights_Click(sender As Object, e As EventArgs) Handles fights.Click
         'shows fight form and hides home form
@@ -22,14 +21,14 @@ Public Class Form1
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles Btnlogin.Click
 
         'if the current user id = 0, no user has joined and it will show the login form
-        If loginform.currentuserid = 0 Then
+        If currentuserid = 0 Then
 
             loginform.Show()
             Me.Hide()
             'else, it will check whether the account is an admin account or not 
-        ElseIf loginform.currentuserid <> 0 Then
-            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-            Dim currentuser As User = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+        ElseIf currentuserid <> 0 Then
+            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuserid)
             If currentuser.Admin = True Then
                 currentadminuser.Show()
                 Me.Hide()
@@ -56,7 +55,7 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadcustomfonts()
+
 
     End Sub
 
@@ -76,18 +75,18 @@ Public Class Form1
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblhome.Click
 
     End Sub
-
-    Sub updatename()
-        If loginform.currentuserid <> 0 Then
-            Dim userlist As List(Of User) = functions.ReadUsersFromJson()
-            Dim currentuser As User = userlist.FirstOrDefault(Function(u) u.UserID = loginform.currentuserid)
+    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated 'changes login button text to username when form is on screen
+        If currentuserid <> 0 Then
+            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuserid)
             Btnlogin.Text = currentuser.username
         Else
-            Btnlogin.Text = "Login"
+            Btnlogin.Text = "login"
         End If
     End Sub
 
-    Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        updatename()
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
     End Sub
+
 End Class

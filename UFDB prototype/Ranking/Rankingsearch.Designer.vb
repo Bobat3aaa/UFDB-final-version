@@ -38,10 +38,10 @@ Partial Class Rankingsearch
         '
         Me.txtlistname.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.txtlistname.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList
-        Me.txtlistname.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtlistname.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtlistname.Location = New System.Drawing.Point(99, 134)
         Me.txtlistname.Name = "txtlistname"
-        Me.txtlistname.Size = New System.Drawing.Size(287, 28)
+        Me.txtlistname.Size = New System.Drawing.Size(287, 23)
         Me.txtlistname.TabIndex = 0
         '
         'ContextMenuStrip1
@@ -53,6 +53,8 @@ Partial Class Rankingsearch
         '
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FlowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(17, 231)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -63,7 +65,7 @@ Partial Class Rankingsearch
         '
         Me.btnclear.BackColor = System.Drawing.Color.Silver
         Me.btnclear.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnclear.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnclear.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnclear.Location = New System.Drawing.Point(271, 168)
         Me.btnclear.Name = "btnclear"
         Me.btnclear.Size = New System.Drawing.Size(115, 41)
@@ -75,7 +77,7 @@ Partial Class Rankingsearch
         '
         Me.btnsearch.BackColor = System.Drawing.Color.Silver
         Me.btnsearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnsearch.Font = New System.Drawing.Font("Clash Display", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsearch.Font = New System.Drawing.Font("Lucida Sans Typewriter", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsearch.Location = New System.Drawing.Point(99, 168)
         Me.btnsearch.Name = "btnsearch"
         Me.btnsearch.Size = New System.Drawing.Size(108, 41)
@@ -85,41 +87,41 @@ Partial Class Rankingsearch
         '
         'cmbownlists
         '
-        Me.cmbownlists.Font = New System.Drawing.Font("Supreme", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbownlists.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbownlists.FormattingEnabled = True
         Me.cmbownlists.Items.AddRange(New Object() {"No", "Yes"})
         Me.cmbownlists.Location = New System.Drawing.Point(732, 182)
         Me.cmbownlists.Name = "cmbownlists"
-        Me.cmbownlists.Size = New System.Drawing.Size(68, 27)
+        Me.cmbownlists.Size = New System.Drawing.Size(68, 24)
         Me.cmbownlists.TabIndex = 56
         '
         'lbllistmaker
         '
         Me.lbllistmaker.AutoSize = True
-        Me.lbllistmaker.Font = New System.Drawing.Font("Clash Display", 36.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbllistmaker.Font = New System.Drawing.Font("Bahnschrift", 36.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbllistmaker.Location = New System.Drawing.Point(3, 31)
         Me.lbllistmaker.Name = "lbllistmaker"
-        Me.lbllistmaker.Size = New System.Drawing.Size(300, 55)
+        Me.lbllistmaker.Size = New System.Drawing.Size(283, 58)
         Me.lbllistmaker.TabIndex = 61
         Me.lbllistmaker.Text = "Search lists"
         '
         'lbltitle
         '
         Me.lbltitle.AutoSize = True
-        Me.lbltitle.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltitle.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltitle.Location = New System.Drawing.Point(10, 138)
         Me.lbltitle.Name = "lbltitle"
-        Me.lbltitle.Size = New System.Drawing.Size(83, 18)
+        Me.lbltitle.Size = New System.Drawing.Size(85, 19)
         Me.lbltitle.TabIndex = 62
         Me.lbltitle.Text = "Enter title:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Clash Display", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(649, 186)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 18)
+        Me.Label1.Size = New System.Drawing.Size(78, 19)
         Me.Label1.TabIndex = 63
         Me.Label1.Text = "Own lists:"
         '

@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
 
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Newtonsoft.Json
@@ -15,21 +16,41 @@ Public Class register
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btnregister.Click
-        Dim newusername As String = txtusername.Text
-        Dim newpassword As String
-        Dim newage As Integer = Val(Txtage.Text)
-        Dim newemail As String = txtemail.Text
+        Dim newusername As String = txtusername.Text 'stores new username
+        Dim newpassword As String 'stores new password
+        Dim newage As Integer = Val(Txtage.Text) 'stores new age
+        Dim newemail As String = txtemail.Text 'stores email
 
-        If txtpassword.Text = txtpasswordagain.Text Then
+        If txtpassword.Text = txtpasswordagain.Text Then 'checks if passwords are the same
+
+
             newpassword = txtpassword.Text
-            If validatepassword(newpassword) = True Then
-                If validateemail(newemail) = True Then
-                    Adduser(newusername, newpassword, newage, newemail)
+
+            'nested if statement that returns an appropriate error message based on what went wrong
+            If validateusername(newusername) = False Then
+
+
+                If validatepassword(newpassword) = True Then
+
+
+                    If validateemail(newemail) = False Then
+
+
+                        Adduser(newusername, newpassword, newage, newemail)
+                    Else
+
+                        MsgBox("Email not valid, or already taken")
+
+                    End If
                 Else
-                    MsgBox("Email not valid")
+
+                    MsgBox("Password must have 8-32 characters, one special character and a capital letter")
+
                 End If
             Else
-                MsgBox("Email must have 8-32 characters, one special character and a capital letter")
+
+                MsgBox("Username is already taken")
+
             End If
         Else
             MsgBox("These passwords do not match each other.")
@@ -40,28 +61,30 @@ Public Class register
 
     Sub Adduser(newusername, newpassword, newage, newemail)
 
+
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+
+        'gets original password length
+        Dim passwordlength As Integer = Len(newpassword)
         'gets encrypted password
-
-        Dim newuser As New User()
-        newuser.passwordlength = Len(newpassword)
         Dim encryptpass As String = encryptpassword(newusername, newpassword)
+        Dim userid As Integer = GetNextUserID(users)
 
 
+        Dim newuser As New usermanagement(userid, newusername, encryptpass, passwordlength, newage, newemail, False)
 
-        newuser.username = newusername
-        newuser.age = newage
-        newuser.password = encryptpass
-        newuser.email = newemail
 
         'make list of existing users
-        Dim users As List(Of User) = functions.ReadUsersFromJson()
-        newuser.UserID = GetNextUserID(users)
+
+
         If ValidateUser(newuser) Then
+            'adds user to list
             users.Add(newuser)
-            functions.SaveUsersToJson(users)
-            MsgBox("New user added!")
+        'saves json
+        functions.SaveUsersToJson(users)
+        MsgBox("New user added!")
         Else
-            MsgBox("User not added.")
+        MsgBox("User not added. Form is not filled in.")
         End If
     End Sub
 
@@ -91,76 +114,84 @@ Public Class register
         Return encryptpass
     End Function
 
-    '2nd validation after encrpytion andbefore it is added to list
-    Function ValidateUser(user As User) As Boolean
-        If String.IsNullOrEmpty(user.username) OrElse String.IsNullOrEmpty(user.password) OrElse user.age <= 0 OrElse Not user.email.Contains("@") Then
-            Return False
-        End If
-        Return True
 
 
+    Function GetNextUserID(users As List(Of usermanagement)) As Integer
 
-    End Function
 
-    'read all the users from the list to make listg of existing users
+        'read all the users from the list to make listg of existing users
 
-    'get the next possible user id from list
-    Function GetNextUserID(users As List(Of User)) As Integer
+        'get the next possible user id from list
         If users.Count = 0 Then
             Return 1
         End If
 
         Return users.Max(Function(u) u.UserID) + 1
     End Function
-    'validate password before it is hashed
-    Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$")
-        MsgBox(passwordcheck.IsMatch(password))
-        Return passwordcheck.IsMatch(password)
-    End Function
-
-    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-    End Sub
 
-    Private Sub txtusername_TextChanged(sender As Object, e As EventArgs) Handles txtusername.TextChanged
 
-    End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
-    End Sub
 
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
 
-    End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub txtpasswordagain_TextChanged(sender As Object, e As EventArgs) Handles txtpasswordagain.TextChanged
-
-    End Sub
-
-    Function validateemail(ByVal email As String) As Boolean
-        'regular expression to check if email is in correct format
-        Static emailExpression As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        Return emailExpression.IsMatch(email)
-    End Function
-
-    Private Sub Btnback_Click(sender As Object, e As EventArgs)
-        Form1.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub txtemail_TextChanged(sender As Object, e As EventArgs) Handles txtemail.TextChanged
-
-    End Sub
 
     Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
         Form1.Show()
         Me.Close()
+    End Sub
+
+
+    'validation for user
+    Function ValidateUser(user As usermanagement) As Boolean
+        If String.IsNullOrEmpty(user.username) Or String.IsNullOrEmpty(user.password) Or user.age <= 0 Or String.IsNullOrEmpty(user.email) Then
+            Return False
+        End If
+        Return True
+    End Function
+
+
+    '********* VALIDATION ********
+
+    Function validateusername(username As String) As Boolean
+
+        'checks if username is already taken
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim match As Boolean = False
+        match = users.Any(Function(u) u.username = username)
+        Return match
+    End Function
+
+    Function validateemail(ByVal email As String) As Boolean
+        'regular expression to check if email is in correct format
+        Dim match As Boolean = False
+        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+
+        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
+        match = emailExpression.IsMatch(email)
+        If match = False Then
+            Return match
+        Else
+            'then checks if email is being used by another account
+            match = users.Any(Function(u) u.email = email)
+            Return match
+        End If
+
+
+
+
+
+    End Function
+    'validate password before it is hashed
+    Function validatepassword(ByVal password As String)
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
+        MsgBox(passwordcheck.IsMatch(password))
+        Return passwordcheck.IsMatch(password)
+    End Function
+
+    Private Sub register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
