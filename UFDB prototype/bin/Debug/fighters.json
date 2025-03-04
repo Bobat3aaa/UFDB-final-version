@@ -1,25 +1,5 @@
 [
   {
-    "fighter_id": "7mPkDPuQtnTtWNQR",
-    "Name": null,
-    "Height": null,
-    "Weight": null,
-    "Reach": null,
-    "Stance": null,
-    "Dob": null,
-    "n_win": 0,
-    "n_loss": 0,
-    "n_draw": 0,
-    "sig_str_land_pM": 0.0,
-    "sig_str_land_pct": 0.0,
-    "sig_str_abs_pM": 0.0,
-    "sig_str_def_pct": 0.0,
-    "td_avg": 0.0,
-    "td_land_pct": 0.0,
-    "td_def_pct": 0.0,
-    "sub_avg": 0.0
-  },
-  {
     "fighter_id": "003d82fa384ca1d0",
     "Name": "Aalon Cruz",
     "Height": "6' 0\"",

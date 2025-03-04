@@ -345,4 +345,9 @@ Public Class oddsgeneratorform
         txtfighter1fname.Text = ""
         txtfighter1lname.Text = ""
     End Sub
+
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
+    End Sub
+
 End Class

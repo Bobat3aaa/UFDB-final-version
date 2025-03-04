@@ -92,11 +92,13 @@ Public Class currentranking
             endIndex = Math.Min(startIndex + count, fighterlist.Count)
             mainendindex = endIndex
 
+            If startIndex < 0 Then startIndex = 0
+
             Dim btndelete As New Button
             btndelete.Width = 100
             btndelete.Height = 100
-            btndelete.BackColor = Color.Red
-            btndelete.ForeColor = Color.White
+            btndelete.BackColor = Color.Pink
+            btndelete.ForeColor = Color.Black
             btndelete.Font = New Font(btndelete.Font.FontFamily, btndelete.Font.Size + 3)
             btndelete.TextAlign = ContentAlignment.MiddleCenter
             btndelete.Text = "Delete fighter"

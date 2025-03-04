@@ -253,6 +253,8 @@ Public Class Likedfightersearch
             Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
             mainendindex = endIndex
 
+            If startIndex < 0 Then startIndex = 0 
+
 
             If startIndex > 0 Then
 

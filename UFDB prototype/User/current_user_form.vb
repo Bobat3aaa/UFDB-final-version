@@ -67,4 +67,13 @@ Public Class current_user_form
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
+
+    Private Sub panelmain_Paint(sender As Object, e As PaintEventArgs) Handles panelmain.Paint
+
+    End Sub
+
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
+    End Sub
+
 End Class

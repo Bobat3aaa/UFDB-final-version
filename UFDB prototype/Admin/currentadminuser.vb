@@ -21,6 +21,7 @@ Public Class currentadminuser
     End Sub
 
     Private Sub btnrefresh_Click(sender As Object, e As EventArgs) Handles btnrefresh.Click
+
         Dim answer = MessageBox.Show("Are you sure you would like to refresh the API. This will remove all previous changes made by admins!", "Refresh API", MessageBoxButtons.YesNo)
         If answer = DialogResult.Yes Then
 
@@ -77,7 +78,7 @@ Public Class currentadminuser
         End While
 
         'save new list of fighters to json
-        Debug.WriteLine(allfighters.Count)
+        Debug.WriteLine("new fighters amount:" & allfighters.Count)
         functions.SaveToFighterJson(allfighters)
     End Function
     Public Async Function fetchfights(httpclient As HttpClient) As Task 'asynchronus function that pulls all fights from api
@@ -121,7 +122,7 @@ Public Class currentadminuser
 
         End While
 
-        Debug.WriteLine(allfights.Count)
+        Debug.WriteLine("New fights amount" & allfights.Count)
         'saves fights
         functions.SaveToFightJson(allfights)
 
@@ -198,4 +199,9 @@ Public Class currentadminuser
         Dim newlikedfightersearch As New Likedfightersearch
         childform(newlikedfightersearch)
     End Sub
+
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
+    End Sub
+
 End Class

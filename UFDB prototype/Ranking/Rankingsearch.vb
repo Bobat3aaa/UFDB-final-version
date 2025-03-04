@@ -42,6 +42,7 @@ Public Class Rankingsearch
         Dim endIndex As Integer = Math.Min(startIndex + count, ranklist.Count)
         mainendindex = endIndex
 
+        If startIndex < 0 Then startIndex = 0
 
         If startIndex > 0 Then
 

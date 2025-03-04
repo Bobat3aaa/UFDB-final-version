@@ -263,7 +263,7 @@ Public Class FighterForm
         FlowLayoutPanel1.HorizontalScroll.Visible = True
 
 
-        Debug.WriteLine(fighterlistfiltered.Count)
+        Debug.WriteLine("Original fighters count: " & fighterlistfiltered.Count)
         'populate flow layout panel with fighters
         updatebuttons(fighterlistfiltered)
 
@@ -295,7 +295,7 @@ Public Class FighterForm
         Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
         mainendindex = endIndex
 
-        If startIndex < 0 Then startIndex = 0 'if there are not many fighters in a list, makes sure back button brings you to first fighter
+        If startIndex < 0 Then startIndex = 0 'if fighters index becomes negative from load back makes sure back button brings you to first fighter
 
         'if the starting fighters index is bigger than 0, a back button is added that makes the starting index go back by 100 to undo the action of loading more
 
@@ -528,7 +528,7 @@ Public Class FighterForm
             Dim midpoint As Integer = (indexlow + indexhigh) \ 2
             Dim currentfighter As fightermanagement = fighterlist(midpoint)
 
-            'gets event number
+
             Dim fightername As String = parsename(currentfighter.Name, decision)
 
 
@@ -719,7 +719,7 @@ Public Class FighterForm
 
             'sorts filtered fighters based on decision made
             filteredFighters = Quicksort(filteredFighters, indexlow, indexhigh, sortwins)
-
+            lblsorted.Text = cmbwins.SelectedItem
 
 
 
@@ -747,6 +747,10 @@ Public Class FighterForm
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub lblsorted_Click(sender As Object, e As EventArgs) Handles lblsorted.Click
 
     End Sub
 End Class

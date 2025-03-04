@@ -194,7 +194,7 @@ Public Class fight_form
         Next
         cmblocation.SelectedItem = "All"
 
-        Debug.WriteLine(currentfightlist.Count)
+        Debug.WriteLine("original fight amount: " & currentfightlist.Count)
         'populates flow layout panel
         updatebuttons(currentfightlist)
     End Sub
@@ -221,6 +221,8 @@ Public Class fight_form
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fights
         Dim endIndex As Integer = Math.Min(startIndex + count, fightlist.Count)
         mainendindex = endIndex
+
+        If startIndex < 0 Then startIndex = 0
 
         If startIndex > 0 Then
 
@@ -564,9 +566,11 @@ Public Class fight_form
             Dim ilow As Integer = 0
             Dim ihigh As Integer = filteredFights.Count - 1
             filteredFights = mergesortevents(filteredFights, ilow, ihigh, sortdirection)
+            lblsorted.Text = cmbsort.SelectedItem
 
 
-            Debug.WriteLine(filteredFights.Count)
+            'Debug.WriteLine(filteredFights.Count)
+
             Return filteredFights
         Catch ex As Exception
             MsgBox("Error occured checking filters: " & ex.Message)
