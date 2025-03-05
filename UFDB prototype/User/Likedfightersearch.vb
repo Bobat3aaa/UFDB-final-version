@@ -33,7 +33,7 @@ Public Class Likedfightersearch
         FlowLayoutPanel1.HorizontalScroll.Visible = True
 
 
-        updatebuttons(likedfighterlist)
+        updatebuttons(currentfighterlist)
 
     End Sub
 
@@ -51,14 +51,17 @@ Public Class Likedfightersearch
                                                               Where lf.userid = Form1.currentuserid 'condition -> liked fighter user id is the same as the current user id
                                                               Join sf In fighters On lf.fighterid Equals sf.FighterId 'links liked fighter to fighter list using fighter id
                                                               Select sf).ToList() 'adds it to a list
-
+        Debug.WriteLine(likedfighterlist.Count)
         'uses a quicksort to sort liked fighters
-        Dim indexlow As Integer = 0
-        Dim indexhigh As Integer = likedfighterlist.Count - 1
+        If likedfighterlist.Count > 1 Then
+            Dim indexlow As Integer = 0
+            Dim indexhigh As Integer = likedfighterlist.Count - 1
 
-        Dim sortedfighters As List(Of fightermanagement) = Quicksort(likedfighterlist, indexlow, indexhigh, 1)
-        'rertuns sorted fighters
-        Return sortedfighters
+            likedfighterlist = Quicksort(likedfighterlist, indexlow, indexhigh, 1)
+            'rertuns sorted fighters
+        End If
+
+        Return likedfighterlist
     End Function
 
 
@@ -272,9 +275,8 @@ Public Class Likedfightersearch
                 btnback.Tag = "btnback"
 
                 'adds an event handler to update buttons
-                AddHandler btnback.Click, Sub()
-                                              updatebuttons(fighterlist, endIndex - 100)
-                                          End Sub
+                AddHandler btnback.Click, AddressOf btnbackclick
+
                 FlowLayoutPanel1.Controls.Add(btnback)
 
 
@@ -320,9 +322,7 @@ Public Class Likedfightersearch
                 btnloadmore.Tag = "btnloadmore"
 
                 'adds an event handler to update buttons
-                AddHandler btnloadmore.Click, Sub()
-                                                  updatebuttons(fighterlist, endIndex)
-                                              End Sub
+                AddHandler btnloadmore.Click, AddressOf btnloadmoreclick
                 FlowLayoutPanel1.Controls.Add(btnloadmore)
 
 
@@ -338,7 +338,7 @@ Public Class Likedfightersearch
     End Sub
 
 
-    'when a button in the flow control panel is picked (fighter edition
+
     Private Sub btnlikedfighterclick(sender As Object, e As EventArgs)
 
         'shows what button was pressed
@@ -347,7 +347,7 @@ Public Class Likedfightersearch
         'gets tag of button which is the fighters place in the list
         Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
-        'need to find a way to optimise / reuse code
+
 
         Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
@@ -359,7 +359,7 @@ Public Class Likedfightersearch
 
         'finds current fighter
         Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
-        MsgBox(currentfighter.Name)
+
         'sends current fighter data over to the current fighter form
         Dim fighterForm As New current_fighter_form(currentfighter)
         fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow

@@ -229,7 +229,6 @@ Partial Class FighterForm
         '
         'pnlcurrentfighter
         '
-        Me.pnlcurrentfighter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlcurrentfighter.Location = New System.Drawing.Point(649, 72)
         Me.pnlcurrentfighter.Name = "pnlcurrentfighter"
         Me.pnlcurrentfighter.Size = New System.Drawing.Size(929, 513)

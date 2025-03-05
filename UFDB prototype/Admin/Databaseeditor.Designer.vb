@@ -123,6 +123,7 @@ Partial Class Databaseeditor
         Me.Controls.Add(Me.btndelete)
         Me.Controls.Add(Me.cmbselectview)
         Me.Controls.Add(Me.Datagridview)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Databaseeditor"
         Me.Text = "Edit database"
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()

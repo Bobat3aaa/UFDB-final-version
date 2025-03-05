@@ -52,7 +52,7 @@ Partial Class currentadminuser
         'btnlogout
         '
         Me.btnlogout.BackColor = System.Drawing.Color.White
-        Me.btnlogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnlogout.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnlogout.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnlogout.Location = New System.Drawing.Point(36, 587)
         Me.btnlogout.Name = "btnlogout"

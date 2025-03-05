@@ -10,6 +10,8 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class register
+
+    Private formswitch As Boolean = False
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtpassword.TextChanged
 
     End Sub
@@ -80,11 +82,20 @@ Public Class register
         If ValidateUser(newuser) Then
             'adds user to list
             users.Add(newuser)
-        'saves json
-        functions.SaveUsersToJson(users)
-        MsgBox("New user added!")
+            'saves json
+            functions.SaveUsersToJson(users)
+            MsgBox("New user added!")
+            txtusername.Text = ""
+            txtpassword.Text = ""
+            txtpasswordagain.Text = ""
+            txtemail.Text = ""
+            Txtage.Text = ""
+
+
+
+
         Else
-        MsgBox("User not added. Form is not filled in.")
+            MsgBox("User not added. Form is not filled in.")
         End If
     End Sub
 
@@ -139,6 +150,7 @@ Public Class register
 
 
     Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+        formswitch = True
         Form1.Show()
         Me.Close()
     End Sub
@@ -192,6 +204,13 @@ Public Class register
     End Function
 
     Private Sub register_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If formswitch = False Then
+            Application.Exit()
+        End If
+
 
     End Sub
 End Class

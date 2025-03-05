@@ -206,6 +206,7 @@ Partial Class Usereditor
         Me.Controls.Add(Me.btnadd)
         Me.Controls.Add(Me.btnsavefile)
         Me.Controls.Add(Me.btndelete)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Usereditor"
         Me.Text = "Edit users"
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()

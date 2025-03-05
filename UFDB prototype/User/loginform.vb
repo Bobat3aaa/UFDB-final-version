@@ -12,8 +12,8 @@ Imports System.Security.Policy
 
 
 Public Class loginform
-    Public Property currentuserid As Integer 'global variable to store current user id
 
+    Private formswitch As Boolean = False
     Private Sub btnsortusers_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -93,6 +93,7 @@ Public Class loginform
                     'clear textboxes
                     txtpassword.Text = ""
                     txtusername.Text = ""
+                    formswitch = True
                     Me.Close()
                 ElseIf users(currentuserindex).Admin = False Then
                     'open userform
@@ -102,6 +103,7 @@ Public Class loginform
                     'clear textboxes
                     txtpassword.Text = ""
                     txtusername.Text = ""
+                    formswitch = True
                     Me.Close()
                 End If
 
@@ -180,11 +182,19 @@ Public Class loginform
 
 
     Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click 'open home
+        formswitch = True
         Form1.Show()
         Me.Close()
     End Sub
 
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+    Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If formswitch = False Then
+            Application.Exit()
+        End If
+
 
     End Sub
 End Class

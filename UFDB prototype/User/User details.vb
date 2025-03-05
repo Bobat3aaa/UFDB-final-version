@@ -26,16 +26,15 @@ Public Class Userdetails
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnchangedetails.Click
 
-
-        Dim emailcheck As Boolean = validateemail(Txtemail.Text)
-        Dim usernamecheck As Boolean = validateusername(txtusername.Text)
+        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim emailcheck As Boolean = validateemail(Txtemail.Text, getcurrentuser(userlist))
+        Dim usernamecheck As Boolean = validateusername(txtusername.Text, getcurrentuser(userlist))
 
         If usernamecheck = False Then
 
 
             If emailcheck = False Then
 
-                Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
 
                 'Dim currentuser As User = getcurrentuser()
                 Dim currentuser As usermanagement = getcurrentuser(userlist)
@@ -76,7 +75,7 @@ Public Class Userdetails
 
     End Function
 
-    Function validateemail(ByVal email As String) As Boolean
+    Function validateemail(ByVal email As String, currentuser As usermanagement) As Boolean
 
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
@@ -87,7 +86,7 @@ Public Class Userdetails
             Return match
         Else
             'then checks if email is being used by another account 'doesnt fit aS ITR CHECKS SAME ACCOUNT!!!!!!
-            match = users.Any(Function(u) u.email = email)
+            match = users.Any(Function(u) u.email = email And u.UserID <> currentuser.UserID)
             Return match
         End If
 
@@ -182,12 +181,12 @@ Public Class Userdetails
 
     End Sub
 
-    Function validateusername(username As String) As Boolean
+    Function validateusername(username As String, currentuser As usermanagement) As Boolean
 
         'checks if username is already taken
         Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim match As Boolean = False
-        match = users.Any(Function(u) u.username = username)
+        match = users.Any(Function(u) u.username = username And u.UserID <> currentuser.UserID)
         Return match
     End Function
 

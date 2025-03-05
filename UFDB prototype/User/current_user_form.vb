@@ -8,6 +8,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Security.Policy
 
 Public Class current_user_form
+    Private formswitch As Boolean = False
 
     Private Sub btnranking_Click(sender As Object, e As EventArgs) Handles btnseerankings.Click
         'open ranking search
@@ -44,6 +45,7 @@ Public Class current_user_form
 
 
     Private Sub lblhome_Click(sender As Object, e As EventArgs) Handles lblhome.Click
+        formswitch = True
         Form1.Show()
         Me.Close()
     End Sub
@@ -73,7 +75,10 @@ Public Class current_user_form
     End Sub
 
     Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Application.Exit()
-    End Sub
+        If formswitch = False Then
+            Application.Exit()
+        End If
 
+
+    End Sub
 End Class

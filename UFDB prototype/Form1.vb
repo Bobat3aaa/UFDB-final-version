@@ -80,8 +80,10 @@ Public Class Form1
             Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
             Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuserid)
             Btnlogin.Text = currentuser.username
+            Btnregister.Visible = False
         Else
             Btnlogin.Text = "login"
+            Btnregister.Visible = True
         End If
     End Sub
 

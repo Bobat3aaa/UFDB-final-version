@@ -78,6 +78,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\APIrefresh.Designer.vb">
+      <DependentUpon>APIrefresh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\APIrefresh.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Admin\currentadminuser.Designer.vb">
       <DependentUpon>currentadminuser.vb</DependentUpon>
     </Compile>
@@ -209,6 +215,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Admin\APIrefresh.resx">
+      <DependentUpon>APIrefresh.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\currentadminuser.resx">
       <DependentUpon>currentadminuser.vb</DependentUpon>
     </EmbeddedResource>
