@@ -113,7 +113,7 @@ Public Class currentranking
 
                 Dim btnback As New Button
                 btnback.Width = 100
-                btnback.Height = 50
+                btnback.Height = 100
                 btnback.BackColor = Color.Red
                 btnback.ForeColor = Color.White
                 btnback.Font = New Font(btnback.Font.FontFamily, btnback.Font.Size + 2)
@@ -138,11 +138,11 @@ Public Class currentranking
 
                 Dim btnfighter As New Button
                 btnfighter.Width = 100
-                btnfighter.Height = 50
+                btnfighter.Height = 100
                 btnfighter.BackColor = Color.White
                 btnfighter.TextAlign = ContentAlignment.MiddleCenter
 
-                btnfighter.Text = fighterlist(i).Name
+                btnfighter.Text = fighterlist(i).Name & vbCrLf & fighterlist(i).Wins & "/" & fighterlist(i).Losses & "/" & fighterlist(i).Draws
                 btnfighter.Visible = True
                 btnfighter.Tag = i
                 currentfighterlist = fighterlist
@@ -159,7 +159,7 @@ Public Class currentranking
 
                 Dim btnloadmore As New Button
                 btnloadmore.Width = 100
-                btnloadmore.Height = 50
+                btnloadmore.Height = 100
                 btnloadmore.TextAlign = ContentAlignment.MiddleCenter
                 btnloadmore.BackColor = Color.Red
                 btnloadmore.ForeColor = Color.White

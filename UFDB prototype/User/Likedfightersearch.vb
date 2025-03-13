@@ -287,19 +287,19 @@ Public Class Likedfightersearch
             For i = startIndex To endIndex - 1
 
 
-                Dim btn As New Button
-                btn.Width = 100
-                btn.Height = 50
-                btn.BackColor = Color.White
-                btn.TextAlign = ContentAlignment.MiddleCenter
+                Dim btnfighter As New Button
+                btnfighter.Width = 100
+                btnfighter.Height = 100
+                btnfighter.BackColor = Color.White
+                btnfighter.TextAlign = ContentAlignment.MiddleCenter
 
-                btn.Text = fighterlist(i).Name
-                btn.Visible = True
-                btn.Tag = i
+                btnfighter.Text = fighterlist(i).Name & vbCrLf & fighterlist(i).Wins & "/" & fighterlist(i).Losses & "/" & fighterlist(i).Draws
+                btnfighter.Visible = True
+                btnfighter.Tag = i
                 currentfighterlist = fighterlist
-                AddHandler btn.Click, AddressOf btnlikedfighterclick
+                AddHandler btnfighter.Click, AddressOf btnlikedfighterclick
 
-                FlowLayoutPanel1.Controls.Add(btn)
+                FlowLayoutPanel1.Controls.Add(btnfighter)
 
 
             Next

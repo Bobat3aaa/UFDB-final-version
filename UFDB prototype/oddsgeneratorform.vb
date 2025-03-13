@@ -11,6 +11,7 @@ Public Class oddsgeneratorform
     Private fighter2 As fightermanagement
     Private fighter1index As Integer = 0
     Private fighter2index As Integer = 1
+    Private formswitch As Boolean = False
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles lblfighter2.Click
 
@@ -328,6 +329,7 @@ Public Class oddsgeneratorform
 
 
     Private Sub Label6_Click_1(sender As Object, e As EventArgs) Handles Label6.Click
+        formswitch = True
         Form1.Show()
         Me.Close()
     End Sub
@@ -347,7 +349,9 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub formclose(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Application.Exit()
+        If formswitch = False Then
+            Application.Exit()
+        End If
     End Sub
 
 End Class
