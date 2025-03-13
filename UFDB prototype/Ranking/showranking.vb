@@ -109,4 +109,9 @@ Public Class showranking
     Private Sub visiblepanel_Paint(sender As Object, e As PaintEventArgs) Handles visiblepanel.Paint
 
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
 End Class

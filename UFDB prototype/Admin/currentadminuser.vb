@@ -17,6 +17,7 @@ Public Class currentadminuser
         panel.TopLevel = False
         panelmain.Controls.Add(panel)
         panel.Show()
+
     End Sub
 
     Private Sub btnuserdetails_Click(sender As Object, e As EventArgs) Handles btnuserdetails.Click 'opens user detail
@@ -91,6 +92,9 @@ Public Class currentadminuser
         End If
 
 
+    End Sub
+    Private Sub Form1_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated ' if a list is deleted, this will reset the lists so the deleted one wont show up
+        Me.Refresh()
     End Sub
 
 End Class

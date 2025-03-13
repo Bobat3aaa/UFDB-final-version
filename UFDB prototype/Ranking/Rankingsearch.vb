@@ -325,11 +325,6 @@ Public Class Rankingsearch
         End Try
     End Function
 
-    Private Sub txtlistname_TextChanged(sender As Object, e As EventArgs) Handles txtlistname.TextChanged
 
-    End Sub
 
-    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
-
-    End Sub
 End Class
