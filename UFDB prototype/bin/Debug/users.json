@@ -1,5 +1,23 @@
 [
   {
+    "UserID": 10,
+    "username": "addedadmin",
+    "password": "Ÿ®¼¼¸ ½«þúåúƒƒ€…ƒïìÓìåýýûþýãÚØ",
+    "passwordlength": 11,
+    "age": 30,
+    "email": "addedadmin@gmail.com",
+    "Admin": true
+  },
+  {
+    "UserID": 11,
+    "username": "addednormaluser",
+    "password": "¶¤£²  ¤¼¡·áâòçœ™“ŸŸœ™Ÿ‘òóÅñÿçâ",
+    "passwordlength": 14,
+    "age": 16,
+    "email": "normaluser@gmail.com",
+    "Admin": false
+  },
+  {
     "UserID": 7,
     "username": "AdminUser",
     "password": "ãÒÀÀÄÜÁ×‚€’†óÿÿüùÿñ“‘¥™‡‚Ÿ¦¥",
@@ -61,5 +79,14 @@
     "age": 24,
     "email": "nh@gmail.com",
     "Admin": true
+  },
+  {
+    "UserID": 9,
+    "username": "userdetailschanged",
+    "password": "‰¸ªª®¶«½èêøì™••–“•›ùûÏúóëëíèëõÌÏ",
+    "passwordlength": 11,
+    "age": 41,
+    "email": "userdetailschanged@gmail.com",
+    "Admin": false
   }
 ]

@@ -315,7 +315,7 @@ Public Class FighterForm
             btnback.Tag = "btnback"
 
             'adds an event handler to update buttons
-            AddHandler btnback.Click, AddressOf btnloadmoreclick
+            AddHandler btnback.Click, AddressOf btnbackclick
 
             FlowLayoutPanel1.Controls.Add(btnback)
 

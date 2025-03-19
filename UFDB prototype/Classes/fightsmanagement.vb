@@ -1,4 +1,5 @@
 ﻿
+Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 
 ''fight and fightresponse data structrues to hold data from API
@@ -46,7 +47,31 @@ Public Class Fight
     <JsonProperty("time")>
     Public Property time As String 'holds time of finish
 
+    Public Property fightnumber As Integer
+
+    Function ParseEventNumber(eventName As String) As Integer 'Parses event number
+
+
+        'uses a regular expression to parse the fight number
+
+        'matches number within UFC(number)
+        Dim eventregex As New Regex("\bUFC\s+(\d+)\b", RegexOptions.IgnoreCase)
+
+
+
+        Dim match As Match = eventregex.Match(eventName)
+        'only does so for ufc names with an event number
+        If match.Success Then
+            Debug.WriteLine(Integer.Parse(match.Groups(1).Value))
+            Return Integer.Parse(match.Groups(1).Value)
+        Else
+            Debug.WriteLine("nothing returned")
+
+            Return -1
+        End If
+    End Function
 End Class
+
 
 Public Class FightsResponse 'class to hold content from API
     Public Property fights As List(Of Fight) 'holds fights from content of HTTP

@@ -144,21 +144,35 @@ Public Class Usereditor
 
 
 
+        newpassword = txtpassword.Text
 
-        If validateusername(newusername) = False Then
-            If validatepassword(newpassword) = True Then
-                If validateemail(newemail) = False Then
+            'nested if statement that returns an appropriate error message based on what went wrong
+            If validateusername(newusername) = False Then
+
+
+                If validatepassword(newpassword) = True Then
+
+
+                    If validateemail(newemail) = False Then
+
                     Adduser(newusername, newpassword, newage, newemail, admindecision)
+
                 Else
-                    MsgBox("Email not valid or already taken")
+
+                        MsgBox("Email not valid, or already taken")
+
+                    End If
+                Else
+
+                    MsgBox("Password must have 8-32 characters, one special character and a capital letter")
+
                 End If
             Else
-                MsgBox("Email must have 8-32 characters, one special character and a capital letter")
+
+                MsgBox("Username is already taken")
 
             End If
-        Else
-            MsgBox("Username is already taken")
-        End If
+
 
         updatedatabase()
 
@@ -231,7 +245,7 @@ Public Class Usereditor
             'adds user to list
             currentuserlist.Add(newuser)
             'saves json
-            functions.SaveUsersToJson(currentuserlist)
+
             MsgBox("New user added!")
         Else
             MsgBox("User not added. Form is not filled in.")

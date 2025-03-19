@@ -86,6 +86,10 @@ Public Class APIrefresh
                 'if there are fights within the json, add them to a list, if not, morefights turns to false
                 If fightresponse IsNot Nothing AndAlso fightresponse.fights IsNot Nothing AndAlso fightresponse.fights.Count > 0 Then
                     'if there is a response + there are fights, it adds all the fights found from fighterresponse into the allfights
+                    For Each fight In fightresponse.fights
+                        fight.fightnumber = fight.ParseEventNumber(fight.event_name)
+                    Next
+
                     allfights.AddRange(fightresponse.fights)
                     lblfightcount.Text = allfights.Count
                     i += 1

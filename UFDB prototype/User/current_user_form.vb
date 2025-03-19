@@ -59,6 +59,7 @@ Public Class current_user_form
     Private Sub btnlogout_Click(sender As Object, e As EventArgs) Handles btnlogout.Click
         Dim answer = MessageBox.Show("Are you sure you would like to logout?", "logout", MessageBoxButtons.YesNo)
         If answer = DialogResult.Yes Then
+            formswitch = True
             Form1.currentuserid = 0 'resets current user id
             Form1.Show()
             Me.Close()

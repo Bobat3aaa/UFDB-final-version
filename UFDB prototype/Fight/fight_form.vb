@@ -137,6 +137,29 @@ Public Class fight_form
                 pointer3 += 1
             End While
 
+        ElseIf sortdirection = 2 Then
+            While pointer1 < upperleft AndAlso pointer2 < upperright
+                If fightslefthalf(pointer1).fightnumber < fightsrighthalf(pointer2).fightnumber Then
+                    fights(pointer3) = fightslefthalf(pointer1)
+                    pointer1 += 1
+                Else
+                    fights(pointer3) = fightsrighthalf(pointer2)
+                    pointer2 += 1
+                End If
+                pointer3 += 1
+            End While
+
+            While pointer1 < upperleft
+                fights(pointer3) = fightslefthalf(pointer1)
+                pointer1 += 1
+                pointer3 += 1
+            End While
+
+            While pointer2 < upperright
+                fights(pointer3) = fightsrighthalf(pointer2)
+                pointer2 += 1
+                pointer3 += 1
+            End While
         End If
 
         'return merged list
@@ -336,7 +359,7 @@ Public Class fight_form
 
 
         ' if event number textbox isnt empty, execute binary search
-        If txteventnum.Text <> "" Then
+        If txteventnum.Text <> "" And txtfighter.Text = "" Then
             Dim indexlow As Integer = 0
             Dim indexhigh As Integer = fights.Count - 1
             Dim numtofind As Integer
@@ -344,20 +367,41 @@ Public Class fight_form
             numtofind = txteventnum.Text
 
 
-            Dim searchedfights As List(Of Fight) = bsearchevent(fights, numtofind, indexlow, indexhigh)
+            Dim searchedfights As List(Of Fight) = mergesortevents(fights, indexlow, indexhigh, 2)
+            searchedfights = bsearchevent(searchedfights, numtofind, indexlow, indexhigh)
+
             currentfightlist = searchedfights
-
-        End If
-
-        ' if fighter textbox isnt empty, execute lambda functiion to find fights with fighter
-        If txtfighter.Text <> "" Then
+        ElseIf txtfighter.Text <> "" And txteventnum.Text = "" Then
 
             Dim fightertofind As String = txtfighter.Text
             Dim searchedfighter_fightlist As List(Of Fight)
             searchedfighter_fightlist = currentfightlist.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
-            currentfightlist = searchedfighter_fightlist
 
+            currentfightlist = searchedfighter_fightlist
+        ElseIf txtfighter.Text <> "" And txteventnum.Text <> "" Then
+            Dim indexlow As Integer = 0
+            Dim indexhigh As Integer = fights.Count - 1
+            Dim numtofind As Integer
+            Dim fightertofind As String = txtfighter.Text
+            Dim searchedfighter_fightlist As List(Of Fight)
+
+
+
+
+            searchedfighter_fightlist = currentfightlist.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
+            numtofind = txteventnum.Text
+
+
+            Dim searchedfights As List(Of Fight) = mergesortevents(fights, indexlow, indexhigh, 2)
+            searchedfights = bsearchevent(searchedfights, numtofind, indexlow, indexhigh)
+
+            searchedfighter_fightlist = searchedfights.Where(Function(f) f.fighter1 = fightertofind Or f.fighter2 = fightertofind).ToList()
+            currentfightlist = searchedfighter_fightlist
         End If
+
+
+        ' if fighter textbox isnt empty, execute lambda functiion to find fights with fighter
+
 
         updatebuttons(currentfightlist)
 
@@ -372,9 +416,10 @@ Public Class fight_form
 
         'if there are no fights, return a new list of fights with nothing
         If indexlow > indexhigh Then
+            Debug.WriteLine(1)
             Return New List(Of Fight)()
         End If
-
+        Debug.WriteLine(2)
         Dim midpoint As Integer = (indexlow + indexhigh) \ 2
         Dim currentfight As Fight = fightlist(midpoint)
 
@@ -385,23 +430,13 @@ Public Class fight_form
         Dim currenteventnumber As Integer? = ParseEventNumber(currentfight.event_name)
 
         'if parsing returns nothing, skips the fight -> used when a fight night is found
-        If Not currenteventnumber.HasValue Then
 
-
-            Dim newfightlist As New List(Of Fight)()
-
-
-            'adds fights to new list but without skipped fight
-            newfightlist.AddRange(bsearchevent(fightlist, numtofind, indexlow, midpoint - 1))
-            newfightlist.AddRange(bsearchevent(fightlist, numtofind, midpoint + 1, indexhigh))
-            Return newfightlist
-        End If
 
         'recusrive binary search for event number
-        If currenteventnumber > numtofind Then
+        If currentfight.fightnumber < numtofind Then
 
             Return bsearchevent(fightlist, numtofind, midpoint + 1, indexhigh)
-        ElseIf currenteventnumber < numtofind Then
+        ElseIf currentfight.fightnumber > numtofind Then
 
             Return bsearchevent(fightlist, numtofind, indexlow, midpoint - 1)
         Else
@@ -413,10 +448,10 @@ Public Class fight_form
 
             Dim left As Integer = midpoint - 1
             While left >= indexlow
-                Dim lefteventnum As Integer? = ParseEventNumber(fightlist(left).event_name)
-                If lefteventnum.HasValue AndAlso lefteventnum = numtofind Then
+                Dim lefteventnum As Integer = fightlist(left).fightnumber
+                If lefteventnum = numtofind Then
                     searchedfights.Add(fightlist(left))
-                ElseIf lefteventnum.HasValue AndAlso lefteventnum < numtofind Then
+                ElseIf lefteventnum < numtofind Then
                     Exit While
                 End If
                 left -= 1
@@ -425,10 +460,10 @@ Public Class fight_form
 
             Dim right As Integer = midpoint + 1
             While right <= indexhigh
-                Dim righteventnum As Integer? = ParseEventNumber(fightlist(right).event_name)
-                If righteventnum.HasValue AndAlso righteventnum = numtofind Then
+                Dim righteventnum As Integer = fightlist(right).fightnumber
+                If righteventnum = numtofind Then
                     searchedfights.Add(fightlist(right))
-                ElseIf righteventnum.HasValue AndAlso righteventnum > numtofind Then
+                ElseIf righteventnum > numtofind Then
                     Exit While
                 End If
                 right += 1
@@ -440,7 +475,7 @@ Public Class fight_form
 
 
 
-    Public Function ParseEventNumber(eventName As String) As Integer? 'Parses event number
+    Function ParseEventNumber(eventName As String) As Integer? 'Parses event number
 
 
         'uses a regular expression to parse the fight number
@@ -453,9 +488,10 @@ Public Class fight_form
         Dim match As Match = eventregex.Match(eventName)
         'only does so for ufc names with an event number
         If match.Success Then
-
+            Debug.WriteLine(Integer.Parse(match.Groups(1).Value))
             Return Integer.Parse(match.Groups(1).Value)
         Else
+            Debug.WriteLine("nothing returned")
 
             Return Nothing
         End If
