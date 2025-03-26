@@ -8,7 +8,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
 
 
     ' read fighters from the json file
-    Public Shared Function ReadFightersFromJson() As List(Of fighter)
+    Public Shared Function readfightersfromjson() As List(Of fighter)
         Try
             If Not File.Exists("fighters.json") Then
                 Return New List(Of fighter)
@@ -23,7 +23,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
 
 
     ' save fighters from the json file
-    Public Shared Sub SaveToFighterJson(sortedfighters As List(Of fighter))
+    Public Shared Sub savetofighterjson(sortedfighters As List(Of fighter))
         Try
             Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
             Dim filePath As String = $"fighters.json"
@@ -35,7 +35,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Sub
 
     ' read fights from the json file
-    Public Shared Function ReadFightsFromJson() As List(Of Fight)
+    Public Shared Function readfightsfromjson() As List(Of Fight)
         Try
             If Not File.Exists("fights.json") Then
                 Return New List(Of Fight)
@@ -47,7 +47,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
             Return New List(Of Fight)
         End Try
     End Function
-    Public Shared Sub SaveToFightJson(allfights As List(Of Fight))
+    Public Shared Sub savetofightjson(allfights As List(Of Fight))
         Try
             Dim json As String = JsonConvert.SerializeObject(allfights, Formatting.Indented)
             Dim filePath As String = $"fights.json"
@@ -59,7 +59,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Sub
 
     ' read users from the json file
-    Public Shared Function ReadUsersFromJson() As List(Of usermanagement)
+    Public Shared Function readusersfromjson() As List(Of usermanagement)
         Try
             If Not File.Exists("users.json") Then
                 Return New List(Of usermanagement)
@@ -73,7 +73,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Function
 
     'save the user table to json
-    Public Shared Sub SaveUsersToJson(users As List(Of usermanagement))
+    Public Shared Sub saveuserstojson(users As List(Of usermanagement))
         Try
             Dim json As String = JsonConvert.SerializeObject(users, Formatting.Indented)
             File.WriteAllText("users.json", json)
@@ -84,7 +84,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Sub
 
     ' read ranklists from the json file
-    Public Shared Function ReadRanklistsFromJson() As List(Of ranking)
+    Public Shared Function readranklistsfromjson() As List(Of ranking)
         Try
             If Not File.Exists("ranklists.json") Then
                 Return New List(Of ranking)
@@ -96,7 +96,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
             Return New List(Of ranking)
         End Try
     End Function
-    Public Shared Sub SaveToRanklistJson(rankedlists As List(Of ranking))
+    Public Shared Sub savetoranklistjson(rankedlists As List(Of ranking))
         Try
             Dim json As String = JsonConvert.SerializeObject(rankedlists, Formatting.Indented)
             Dim filePath As String = $"ranklists.json"
@@ -108,7 +108,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
 
     End Sub
     ' read the fighter-ranking binder table from the json file
-    Public Shared Function ReadFighterranksFromFile() As List(Of fighterranking)
+    Public Shared Function readfighterranksfromjson() As List(Of fighterranking)
         Try
             If Not File.Exists("fighterranks.json") Then
                 Return New List(Of fighterranking)
@@ -122,7 +122,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Function
 
     'save the fighter-ranking binder table to the json file
-    Public Shared Sub SaveToFighterranksJson(rankingfighterlist As List(Of fighterranking))
+    Public Shared Sub savetofighterranksjson(rankingfighterlist As List(Of fighterranking))
         Try
             Dim json As String = JsonConvert.SerializeObject(rankingfighterlist, Formatting.Indented)
             Dim filePath As String = $"fighterranks.json"
@@ -134,7 +134,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Sub
 
     'save the liked fighter json to its json file
-    Public Shared Sub SaveTolikedfighterJson(likedfighters As List(Of likedfighter))
+    Public Shared Sub savetolikedfighterjson(likedfighters As List(Of likedfighter))
         Try
             Dim json As String = JsonConvert.SerializeObject(likedfighters, Formatting.Indented)
             Dim filePath As String = $"likedfighters.json"
@@ -146,7 +146,7 @@ Public Class functions 'JSON functions used throughout program to save and read 
     End Sub
 
     ' read the liked-fighters table from the json file
-    Public Shared Function ReadlikedfightersFromJson() As List(Of likedfighter)
+    Public Shared Function readlikedfighterjson() As List(Of likedfighter)
         Try
             If Not File.Exists("likedfighters.json") Then
                 Return New List(Of likedfighter)

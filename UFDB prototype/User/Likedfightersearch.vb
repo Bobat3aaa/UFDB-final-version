@@ -19,7 +19,7 @@ Public Class likedfightersearch
 
 
         'gets list of fighters via reading json
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson
 
         For Each fighter In fighters
             parsednames.Add(parsename(fighter.name, 1))
@@ -40,7 +40,7 @@ Public Class likedfightersearch
     Function returnlikedfighters(fighters As List(Of fighter))
 
         'reads likedfighter json
-        Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson
+        Dim likedfighters As List(Of likedfighter) = functions.readlikedfighterjson
 
 
 
@@ -173,7 +173,7 @@ Public Class likedfightersearch
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
 
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson
         fighters = returnlikedfighters(fighters)
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
@@ -328,7 +328,7 @@ Public Class likedfightersearch
 
 
         'finds current fighter
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -350,7 +350,7 @@ Public Class likedfightersearch
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fighterlist As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighterlist As List(Of fighter) = functions.readfightersfromjson()
         fighterlist = returnlikedfighters(fighterlist)
 
         updatebuttons(fighterlist)

@@ -13,8 +13,8 @@ Public Class databaseeditor
     Private Sub Databaseeditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'reads jsons to populate data grid view with api data
         cmbselectview.SelectedIndex = 0
-        currentfighterlist = functions.ReadFightersFromJson
-        currentfightlist = functions.ReadFightsFromJson
+        currentfighterlist = functions.readfightersfromjson
+        currentfightlist = functions.readfightsfromjson
 
 
         updatedatabase()
@@ -82,9 +82,9 @@ Public Class databaseeditor
 
         'saves file based on what view is shown
         If cmbselectview.SelectedIndex = 0 Then
-            functions.SaveToFighterJson(currentfighterlist)
+            functions.savetofighterjson(currentfighterlist)
         ElseIf cmbselectview.SelectedIndex = 1 Then
-            functions.SaveToFightJson(currentfightlist)
+            functions.savetofightjson(currentfightlist)
         End If
     End Sub
 
@@ -99,15 +99,6 @@ Public Class databaseeditor
 
     Private Sub btnadd_Click(sender As Object, e As EventArgs) Handles btnadd.Click
         'selects latest row as it has nothing in it
-
-
-
-
-
-
-
-
-
 
 
 
@@ -203,20 +194,20 @@ Public Class databaseeditor
     Sub refreshdatabase()
         'refreshes database depending on if you want to save or not
         If cmbselectview.SelectedIndex = 1 Then
-            currentfighterlist = functions.ReadFightersFromJson
+            currentfighterlist = functions.readfightersfromjson
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            currentfightlist = functions.ReadFightsFromJson
+            currentfightlist = functions.readfightsfromjson
         End If
     End Sub
 
     Sub savedatabase()
         'saves database when changing views
         If cmbselectview.SelectedIndex = 1 Then
-            functions.SaveToFighterJson(currentfighterlist)
+            functions.savetofighterjson(currentfighterlist)
             Refresh()
         ElseIf cmbselectview.SelectedIndex = 0 Then
-            functions.SaveToFightJson(currentfightlist)
+            functions.savetofightjson(currentfightlist)
         End If
     End Sub
 

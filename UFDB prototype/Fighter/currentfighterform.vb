@@ -61,7 +61,7 @@ Public Class currentfighterform
 
 
             ' reads list of liked fighters
-            Dim likedfighterlist As List(Of likedfighter) = functions.ReadlikedfightersFromJson
+            Dim likedfighterlist As List(Of likedfighter) = functions.readlikedfighterjson
 
             'boolean variable to check if user is already liked via lambda function that checks if there is any object with the fighter and user id
             Dim alreadyLiked As Boolean = likedfighterlist.Any(Function(lf) lf.userid = Form1.currentuserid AndAlso lf.fighterid = currentFighter.fighterid)
@@ -76,12 +76,12 @@ Public Class currentfighterform
             If alreadyLiked = True Then
                 Dim fightertoremove = likedfighterlist.FirstOrDefault(Function(lf) lf.userid = Form1.currentuserid AndAlso lf.fighterid = currentFighter.fighterid)
                 likedfighterlist.Remove(fightertoremove)
-                functions.SaveTolikedfighterJson(likedfighterlist)
+                functions.savetolikedfighterjson(likedfighterlist)
                 MsgBox("Unliked" & currentFighter.name)
             Else
                 'adds liked fighter
                 likedfighterlist.Add(likedfighter)
-                functions.SaveTolikedfighterJson(likedfighterlist)
+                functions.savetolikedfighterjson(likedfighterlist)
                 MsgBox("Liked " & currentFighter.name)
             End If
         ElseIf form1.currentuserid = 0 Then

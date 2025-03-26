@@ -173,7 +173,7 @@ Public Class fightsearch
     Private Sub fight_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'reads new fight list
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
 
 
         Dim ilow As Integer = 0
@@ -201,7 +201,7 @@ Public Class fightsearch
         Dim fightlistfiltered As List(Of Fight) = mergesortevents(fights, ilow, ihigh, sortdirection)
         'saves filtered list into currentfightlist and saves to json
         currentfightlist = fightlistfiltered
-        functions.SaveToFightJson(fightlistfiltered)
+        functions.savetofightjson(fightlistfiltered)
 
 
         'adds all distinct fight locations to a list
@@ -355,7 +355,7 @@ Public Class fightsearch
     '***************** BINARY SEARCH FOR FIGHTS ****************
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
 
 
         ' if event number textbox isnt empty, execute binary search
@@ -514,7 +514,7 @@ Public Class fightsearch
 
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click 'clears list by reading from json
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
         currentfightlist = fights
         updatebuttons(currentfightlist)
     End Sub
@@ -522,28 +522,28 @@ Public Class fightsearch
 
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbsort.SelectedIndexChanged
         'makes new fighter list with all fighters and performs checkfilter function before updating button
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         'makes new fighter list with all fighters and performs checkfilter function before updating button
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
         'makes new fighter list with all fighters and performs checkfilter function before updating button
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub
 
     Private Sub cmblocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmblocation.SelectedIndexChanged
         'makes new fighter list with all fighters and performs checkfilter function before updating button
-        Dim fights As List(Of Fight) = functions.ReadFightsFromJson()
+        Dim fights As List(Of Fight) = functions.readfightsfromjson()
         Dim filteredfightlist As List(Of Fight) = checkfilters(fights)
         updatebuttons(filteredfightlist)
     End Sub

@@ -8,7 +8,7 @@ Public Class Userdetails
 
 
         InitializeComponent()
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim userlist As List(Of usermanagement) = functions.readusersfromjson()
         Dim currentuser As usermanagement = getcurrentuser(userlist)
         'adds user details to appropriate textboxes
         lblusertitle.Text = currentuser.username
@@ -26,7 +26,7 @@ Public Class Userdetails
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnchangedetails.Click
 
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim userlist As List(Of usermanagement) = functions.readusersfromjson()
         Dim emailcheck As Boolean = validateemail(Txtemail.Text, getcurrentuser(userlist))
         Dim usernamecheck As Boolean = validateusername(txtusername.Text, getcurrentuser(userlist))
 
@@ -52,7 +52,7 @@ Public Class Userdetails
                 'stores new passwords
                 currentuser.password = encryptedpass
 
-                functions.SaveUsersToJson(userlist)
+                functions.saveuserstojson(userlist)
                 lblusertitle.Text = currentuser.username
                 MsgBox("details updated!")
 
@@ -79,9 +79,9 @@ Public Class Userdetails
 
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
-        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
-        match = emailExpression.IsMatch(email)
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
+        Static emailcheck As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
+        match = emailcheck.IsMatch(email)
         If match = False Then
             Return match
         Else
@@ -142,15 +142,15 @@ Public Class Userdetails
         If answer = vbYes Then
 
             'store all lists connected to user
-            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim userlist As List(Of usermanagement) = functions.readusersfromjson()
             Dim currentuser As usermanagement = getcurrentuser(userlist)
-            Dim fighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile()
-            Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson()
-            Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()
+            Dim fighterrankinglist As List(Of fighterranking) = functions.readfighterranksfromjson()
+            Dim likedfighters As List(Of likedfighter) = functions.readlikedfighterjson()
+            Dim rankinglist As List(Of ranking) = functions.readranklistsfromjson()
 
             'deletes user
             Dim usertoremove As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuser.userid)
-            MsgBox(usertoremove.userid)
+            Debug.WriteLine(usertoremove.userid)
             userlist.Remove(usertoremove)
 
             'removes all liked fighters with the same userid
@@ -169,10 +169,10 @@ Public Class Userdetails
             rankinglist.RemoveAll(Function(r) r.userid = currentuser.userid)
 
             'saves all data back to the json files
-            functions.SaveTolikedfighterJson(likedfighters)
-            functions.SaveToFighterranksJson(fighterrankinglist)
-            functions.SaveToRanklistJson(rankinglist)
-            functions.SaveUsersToJson(userlist)
+            functions.savetolikedfighterjson(likedfighters)
+            functions.savetofighterranksjson(fighterrankinglist)
+            functions.savetoranklistjson(rankinglist)
+            functions.saveuserstojson(userlist)
 
             Form1.Show()
             Me.Close()
@@ -184,7 +184,7 @@ Public Class Userdetails
     Function validateusername(username As String, currentuser As usermanagement) As Boolean
 
         'checks if username is already taken
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
         Dim match As Boolean = False
         match = users.Any(Function(u) u.username = username And u.userid <> currentuser.userid)
         Return match

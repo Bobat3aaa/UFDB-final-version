@@ -27,7 +27,7 @@ Public Class Form1
             Me.Hide()
             'else, it will check whether the account is an admin account or not 
         ElseIf currentuserid <> 0 Then
-            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim userlist As List(Of usermanagement) = functions.readusersfromjson()
             Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuserid)
             If currentuser.admin = True Then
                 currentadminuserform.Show()
@@ -77,7 +77,7 @@ Public Class Form1
     End Sub
     Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated 'changes login button text to username when form is on screen
         If currentuserid <> 0 Then
-            Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
+            Dim userlist As List(Of usermanagement) = functions.readusersfromjson()
             Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuserid)
             Btnlogin.Text = currentuser.username
             Btnregister.Visible = False

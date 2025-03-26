@@ -42,7 +42,7 @@ Public Class changepassword
 
 
 
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson 'gets full user list
+        Dim userlist As List(Of usermanagement) = functions.readusersfromjson 'gets full user list
         Dim currentuser As usermanagement = getcurrentuser(userlist) 'gets current user object
         Dim ogpass As String 'stores first password
         Dim newpass As String 'stores new password
@@ -65,7 +65,7 @@ Public Class changepassword
                     newpass = encryptpassword(currentuser.username, newpass) 'encrypts new password
                     currentuser.password = newpass 'stores encrypted password
 
-                    functions.SaveUsersToJson(userlist)
+                    functions.saveuserstojson(userlist)
                     MsgBox("Password changed!")
                     Me.Close()
                 Else

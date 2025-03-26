@@ -14,10 +14,10 @@ Public Class usereditor
 
     Private Sub Usereditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'load in all user related files
-        currentuserlist = functions.ReadUsersFromJson
-        currentranklist = functions.ReadRanklistsFromJson
-        currentfighterranklist = functions.ReadFighterranksFromFile
-        currentlikedfighterlist = functions.ReadlikedfightersFromJson
+        currentuserlist = functions.readusersfromjson
+        currentranklist = functions.readranklistsfromjson
+        currentfighterranklist = functions.readfighterranksfromjson
+        currentlikedfighterlist = functions.readlikedfighterjson
 
 
         updatedatabase()
@@ -214,10 +214,10 @@ Public Class usereditor
 
     Private Sub btnsavefile_Click(sender As Object, e As EventArgs) Handles btnsavefile.Click
         'save new files to all json
-        functions.SaveUsersToJson(currentuserlist)
-        functions.SaveToFighterranksJson(currentfighterranklist)
-        functions.SaveTolikedfighterJson(currentlikedfighterlist)
-        functions.SaveToRanklistJson(currentranklist)
+        functions.saveuserstojson(currentuserlist)
+        functions.savetofighterranksjson(currentfighterranklist)
+        functions.savetolikedfighterjson(currentlikedfighterlist)
+        functions.savetoranklistjson(currentranklist)
     End Sub
 
     Private Sub Adduser(newusername, newpassword, newage, newemail, admin)
@@ -278,9 +278,9 @@ Public Class usereditor
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
-        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
-        match = emailExpression.IsMatch(email)
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
+        Static emailcheck As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
+        match = emailcheck.IsMatch(email)
         If match = False Then
             Return match
         Else
@@ -298,10 +298,10 @@ Public Class usereditor
         Dim answer = MessageBox.Show("This will remove all changes made. Do you want to continue?", "Clear", MessageBoxButtons.YesNo)
         If answer = DialogResult.Yes Then
 
-            currentuserlist = functions.ReadUsersFromJson
-            currentranklist = functions.ReadRanklistsFromJson
-            currentfighterranklist = functions.ReadFighterranksFromFile
-            currentlikedfighterlist = functions.ReadlikedfightersFromJson
+            currentuserlist = functions.readusersfromjson
+            currentranklist = functions.readranklistsfromjson
+            currentfighterranklist = functions.readfighterranksfromjson
+            currentlikedfighterlist = functions.readlikedfighterjson
             updatedatabase()
 
         End If
@@ -310,7 +310,7 @@ Public Class usereditor
 
     End Sub
     Function validateusername(username As String) As Boolean
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
         Dim match As Boolean = False
         match = users.Any(Function(u) u.username = username)
         Return match

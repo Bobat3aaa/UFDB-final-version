@@ -13,7 +13,7 @@ Public Class currentFightForm
 
 
         InitializeComponent()
-        Dim fighterlist As List(Of fighter) = functions.ReadFightersFromJson() 'fighter list used to find fighter 1 and 2
+        Dim fighterlist As List(Of fighter) = functions.readfightersfromjson() 'fighter list used to find fighter 1 and 2
         Me.currentfight = fight
 
 

@@ -240,7 +240,7 @@ Public Class fightersearch
 
 
         'read fighters from json
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -255,7 +255,7 @@ Public Class fightersearch
 
         'save the sorted list to the main fighterlist, and also save sorted list to json
         currentfighterlist = fighterlistfiltered
-        functions.SaveToFighterJson(fighterlistfiltered)
+        functions.savetofighterjson(fighterlistfiltered)
 
 
         'allows scrolling for flow panel
@@ -419,7 +419,7 @@ Public Class fightersearch
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
 
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson() 'list of all fighters
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson() 'list of all fighters
         Dim indexlow As Integer = 0  'bottom of the fighter list
         Dim indexhigh As Integer = fighters.Count - 1 ' amount of fighters
         Dim nametofind As String 'name entered by user
@@ -633,7 +633,7 @@ Public Class fightersearch
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
         'reads fighters from json again  and updates the  buttons
-        Dim fighterlist As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighterlist As List(Of fighter) = functions.readfightersfromjson()
         txtfname.Text = ""
         txtlname.Text = ""
         currentfighterlist = fighterlist
@@ -642,7 +642,7 @@ Public Class fightersearch
 
     Private Sub cmbstance_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbstance.SelectedIndexChanged
         'makes new fighter list with all fighters
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         'checks filters and updates buttons
         Dim fighterlist As List(Of fighter) = checkfilters(fighters)
         updatebuttons(fighterlist)
@@ -654,7 +654,7 @@ Public Class fightersearch
     Private Sub cmbsort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbwins.SelectedIndexChanged
 
 
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         'makes new fighter list with all fighters
         Dim fighterlist As List(Of fighter) = checkfilters(fighters)
         'checks filters and updates buttons
@@ -667,7 +667,7 @@ Public Class fightersearch
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
         'reads fighters from json again
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         'checks for filters
         Dim fighterlist As List(Of fighter) = checkfilters(fighters)
         updatebuttons(fighterlist)

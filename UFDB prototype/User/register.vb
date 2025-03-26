@@ -12,9 +12,7 @@ Imports Newtonsoft.Json.Linq
 Public Class register
 
     Private formswitch As Boolean = False
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtpassword.TextChanged
 
-    End Sub
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btnregister.Click
@@ -64,7 +62,7 @@ Public Class register
     Sub Adduser(newusername, newpassword, newage, newemail)
 
 
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
 
         'gets original password length
         Dim passwordlength As Integer = Len(newpassword)
@@ -83,7 +81,7 @@ Public Class register
             'adds user to list
             users.Add(newuser)
             'saves json
-            functions.SaveUsersToJson(users)
+            functions.saveuserstojson(users)
             MsgBox("New user added!")
             txtusername.Text = ""
             txtpassword.Text = ""
@@ -170,7 +168,7 @@ Public Class register
     Function validateusername(username As String) As Boolean
 
         'checks if username is already taken
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
         Dim match As Boolean = False
         match = users.Any(Function(u) u.username = username)
         Return match
@@ -179,10 +177,10 @@ Public Class register
     Function validateemail(ByVal email As String) As Boolean
         'regular expression to check if email is in correct format
         Dim match As Boolean = False
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
+        Dim users As List(Of usermanagement) = functions.readusersfromjson()
 
-        Static emailExpression As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
-        match = emailExpression.IsMatch(email)
+        Static emailcheck As New Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$")
+        match = emailcheck.IsMatch(email)
         If match = False Then
             Return match
         Else
@@ -199,7 +197,7 @@ Public Class register
     'validate password before it is hashed
     Function validatepassword(ByVal password As String)
         Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
-        MsgBox(passwordcheck.IsMatch(password))
+        Debug.WriteLine(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function
 

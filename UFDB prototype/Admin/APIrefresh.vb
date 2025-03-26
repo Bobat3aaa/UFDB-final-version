@@ -57,7 +57,7 @@ Public Class APIrefresh
 
         'save new list of fighters to json
         Debug.WriteLine("new fighters amount:" & allfighters.Count)
-        functions.SaveToFighterJson(allfighters)
+        functions.savetofighterjson(allfighters)
     End Function
     Public Async Function fetchfights(httpclient As HttpClient) As Task 'asynchronus function that pulls all fights from api
 
@@ -108,7 +108,7 @@ Public Class APIrefresh
 
         Debug.WriteLine("New fights amount" & allfights.Count)
         'saves fights
-        functions.SaveToFightJson(allfights)
+        functions.savetofightjson(allfights)
 
     End Function
     Async Function fetchalldata() As Task 'asynchronus function to refresh all API data

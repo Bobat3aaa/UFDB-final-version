@@ -15,13 +15,13 @@ Public Class rankingsearch
 
 
     Private Sub Rankingsearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
 
 
         Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
-        functions.SaveToRanklistJson(sortedranklist)
+        functions.savetoranklistjson(sortedranklist)
         currentranklist = sortedranklist
 
         updatebuttons(currentranklist)
@@ -34,7 +34,7 @@ Public Class rankingsearch
 
 
         FlowLayoutPanel1.Controls.Clear()
-        Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
+        Dim userlist As List(Of usermanagement) = functions.readusersfromjson
 
         currentranklist = ranklist
 
@@ -135,7 +135,7 @@ Public Class rankingsearch
 
 
         'find button via quicksort and using index from tag
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
 
@@ -253,7 +253,7 @@ Public Class rankingsearch
 
         'uses binary search used in previous forms
         Dim nametofind As String = txtlistname.Text
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = ranklist.Count - 1
         Dim searchedrankindex As Integer
@@ -282,7 +282,7 @@ Public Class rankingsearch
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         updatebuttons(ranklist)
     End Sub
 

@@ -1,92 +1,92 @@
 [
   {
-    "UserID": 10,
+    "userid": 10,
     "username": "addedadmin",
     "password": "Ÿ®¼¼¸ ½«þúåúƒƒ€…ƒïìÓìåýýûþýãÚØ",
     "passwordlength": 11,
     "age": 30,
     "email": "addedadmin@gmail.com",
-    "Admin": true
+    "admin": true
   },
   {
-    "UserID": 11,
+    "userid": 11,
     "username": "addednormaluser",
     "password": "¶¤£²  ¤¼¡·áâòçœ™“ŸŸœ™Ÿ‘òóÅñÿçâ",
     "passwordlength": 14,
     "age": 16,
     "email": "normaluser@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 7,
+    "userid": 7,
     "username": "AdminUser",
     "password": "ãÒÀÀÄÜÁ×‚€’†óÿÿüùÿñ“‘¥™‡‚Ÿ¦¥",
     "passwordlength": 11,
     "age": 21,
     "email": "adminuser@gmail.com",
-    "Admin": true
+    "admin": true
   },
   {
-    "UserID": 6,
+    "userid": 6,
     "username": "GuestUser",
     "password": "éØÊÊÎÖËÝˆ‹˜Œùõõöóõû™˜¯š“‹‹ˆ‹•¬¯",
     "passwordlength": 11,
     "age": 21,
     "email": "guestuser@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 2,
+    "userid": 2,
     "username": "NathanH",
     "password": "Æ÷ååáùäò§¥5£ÖÚÚÙÜÚÔ¶´úµ¼¤¤¢§¤ºƒ€",
     "passwordlength": 11,
     "age": 21,
     "email": "nathanh@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 5,
+    "userid": 5,
     "username": "Newestuser",
     "password": "¡³³·¯²¤ñòáõ€ŒŒŠŒ‚àáÖãêòòôñòìÕÖ",
     "passwordlength": 11,
     "age": 21,
     "email": "blah@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 4,
+    "userid": 4,
     "username": "password",
     "password": "„µ§§£»¦°æàõá”˜˜›ž˜–õöÂ÷þææàåæøÂÂ",
     "passwordlength": 11,
     "age": 21,
     "email": "editor@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 8,
+    "userid": 8,
     "username": "testuserpassword",
     "password": "ˆ¹««¯·ª¼éùí˜””—’”šøÎûòêêìéêôÍÖÏÄ",
     "passwordlength": 10,
     "age": 21,
     "email": "passwordchange@gmail.com",
-    "Admin": false
+    "admin": false
   },
   {
-    "UserID": 3,
+    "userid": 3,
     "username": "userchanged",
     "password": "‰¸ªª®¶«½èêøì™••–“•›ùûÏúóëëíèëõÌÏ",
     "passwordlength": 11,
     "age": 24,
     "email": "nh@gmail.com",
-    "Admin": true
+    "admin": true
   },
   {
-    "UserID": 9,
+    "userid": 9,
     "username": "userdetailschanged",
     "password": "‰¸ªª®¶«½èêøì™••–“•›ùûÏúóëëíèëõÌÏ",
     "passwordlength": 11,
     "age": 41,
     "email": "userdetailschanged@gmail.com",
-    "Admin": false
+    "admin": false
   }
 ]

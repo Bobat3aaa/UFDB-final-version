@@ -47,12 +47,12 @@ Public Class Fight
     <JsonProperty("time")>
     Public Property time As String 'holds time of finish
 
-    Public Property fightnumber As Integer
+    Public Property fightnumber As Integer 'holds event number
 
-    Function ParseEventNumber(eventName As String) As Integer 'Parses event number
+    Function ParseEventNumber(eventName As String) As Integer 'parses event number
 
 
-        'uses a regular expression to parse the fight number
+
 
         'matches number within UFC(number)
         Dim eventregex As New Regex("\bUFC\s+(\d+)\b", RegexOptions.IgnoreCase)
@@ -65,6 +65,7 @@ Public Class Fight
             Debug.WriteLine(Integer.Parse(match.Groups(1).Value))
             Return Integer.Parse(match.Groups(1).Value)
         Else
+            'if a ufc event is a fight night, it just returns -1.
             Debug.WriteLine("nothing returned")
 
             Return -1

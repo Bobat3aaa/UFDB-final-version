@@ -16,7 +16,7 @@ Public Class makeranking
 
 
         'sorts fighters and saves to file
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -24,7 +24,7 @@ Public Class makeranking
         Dim fighterlistsorted As List(Of fighter) = Quicksort(fighters, indexlow, indexhigh)
         currentfighterlist = fighterlistsorted
 
-        functions.SaveToFighterJson(currentfighterlist)
+        functions.savetofighterjson(currentfighterlist)
 
         'allows scroling for flow panel
         FlowLayoutPanel1.VerticalScroll.Visible = True
@@ -37,7 +37,7 @@ Public Class makeranking
 
         updatebuttons(fighterlistsorted)
 
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
 
 
 
@@ -48,7 +48,7 @@ Public Class makeranking
     Function validatetitle(title As String) As Boolean
 
         'checks if title is already taken
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         Dim match As Boolean = False
         match = ranklist.Any(Function(r) r.rankname = title)
         Return match
@@ -185,7 +185,7 @@ Public Class makeranking
 
 
         Dim currentrank As Integer = currentrankfinder()
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
         Dim id As Integer = GetNextranklistID(ranklist)
 
         If currentrank <> 0 Then
@@ -223,7 +223,7 @@ Public Class makeranking
 
 
 
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -241,7 +241,7 @@ Public Class makeranking
             Dim currentrank As Integer = currentrankfinder()
 
             'gets rank list id
-            Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+            Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
             Dim currentrankid As Integer = GetNextranklistID(ranklist)
             'adds fighterrank to list
             Dim fighterrank As New fighterranking(currentrankid, currentfighter.fighterid, currentrank)
@@ -408,8 +408,8 @@ Public Class makeranking
 
     Sub submitranking()
 
-        Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
-        Dim jsonfighterrankinglist As List(Of fighterranking) = functions.ReadFighterranksFromFile
+        Dim ranklist As List(Of ranking) = functions.readranklistsfromjson
+        Dim jsonfighterrankinglist As List(Of fighterranking) = functions.readfighterranksfromjson
 
         'makes sure title and description are added
         If String.IsNullOrEmpty(txtrankingname.Text) Then
@@ -441,13 +441,13 @@ Public Class makeranking
 
                 ranklist.Add(newranking)
 
-                    functions.SaveToRanklistJson(ranklist)
+                    functions.savetoranklistjson(ranklist)
 
 
                     For i = 0 To rankedfighterlist.Count - 1
                         jsonfighterrankinglist.Add(rankedfighterlist(i))
                     Next
-                    functions.SaveToFighterranksJson(jsonfighterrankinglist)
+                    functions.savetofighterranksjson(jsonfighterrankinglist)
                     MsgBox("new list created!")
                 Else
                     MsgBox("title is taken")
@@ -504,7 +504,7 @@ Public Class makeranking
 
 
     Private Sub cmbweightclass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbweightclass.SelectedIndexChanged
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim fighterlist As List(Of fighter) = checkfilters(fighters)
         updatebuttons(fighterlist)
     End Sub
@@ -571,11 +571,11 @@ Public Class makeranking
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnsearch.Click
         'searches for fighter via bsearch
-        currentfighterlist = functions.ReadFightersFromJson()
+        currentfighterlist = functions.readfightersfromjson()
 
 
         If txtfname.Text = "" Then
-            currentfighterlist = functions.ReadFightersFromJson()
+            currentfighterlist = functions.readfightersfromjson()
             currentfighterlist = checkfilters(currentfighterlist)
             updatebuttons(currentfighterlist)
         End If
@@ -595,7 +595,7 @@ Public Class makeranking
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        currentfighterlist = functions.ReadFightersFromJson()
+        currentfighterlist = functions.readfightersfromjson()
         updatebuttons(currentfighterlist)
     End Sub
 

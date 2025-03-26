@@ -24,12 +24,12 @@ Public Class oddsgeneratorform
     Private Sub oddsgeneratorform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'sorts fighters and saves to file
 
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
         Dim sortedfighters As List(Of fighter) = Quicksort(fighters, indexlow, indexhigh)
-        functions.SaveToFighterJson(sortedfighters)
+        functions.savetofighterjson(sortedfighters)
         fighter1 = sortedfighters(0)
         fighter2 = sortedfighters(1)
         updatefighter1(fighter1)
@@ -102,7 +102,7 @@ Public Class oddsgeneratorform
     End Function
 
     Private Sub btnsearch1_Click(sender As Object, e As EventArgs) Handles btnsearch1.Click
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -124,7 +124,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnsearch2_Click(sender As Object, e As EventArgs) Handles btnsearch2.Click
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -243,7 +243,7 @@ Public Class oddsgeneratorform
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnback2.Click
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         If fighter2index > 0 Then
             fighter2index -= 1
             fighter2 = (fighters(fighter2index))
@@ -253,7 +253,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnnext2.Click
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         If fighter2index < fighters.Count - 1 Then
             fighter2index += 1
             fighter2 = (fighters(fighter2index))
@@ -290,7 +290,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnnext1_Click(sender As Object, e As EventArgs) Handles btnnext1.Click 'choose the next fighter
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         If fighter1index < fighters.Count - 1 Then
             fighter1index += 1
             fighter1 = (fighters(fighter1index))
@@ -300,7 +300,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnback1_Click_1(sender As Object, e As EventArgs) Handles btnback1.Click ' choose the fighter before
-        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.readfightersfromjson()
         If fighter1index > 0 Then
             fighter1index -= 1
             fighter1 = (fighters(fighter1index))
