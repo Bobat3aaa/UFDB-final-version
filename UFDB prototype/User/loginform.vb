@@ -17,7 +17,9 @@ Public Class loginform
     Private Sub btnsortusers_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Function Quicksort(users As List(Of usermanagement), indexlow As Integer, indexhigh As Integer) As List(Of usermanagement) 'quicksort that sorts users
+
+
+    Function quicksortusers(users As List(Of usermanagement), indexlow As Integer, indexhigh As Integer) As List(Of usermanagement)
         Dim pivot As String
         Dim templow As Integer = indexlow
         Dim temphigh As Integer = indexhigh
@@ -43,11 +45,11 @@ Public Class loginform
         End While
 
         If indexlow < temphigh Then
-            Quicksort(users, indexlow, temphigh)
+            quicksortusers(users, indexlow, temphigh)
         End If
 
         If templow < indexhigh Then
-            Quicksort(users, templow, indexhigh)
+            quicksortusers(users, templow, indexhigh)
         End If
 
         Return users
@@ -59,10 +61,10 @@ Public Class loginform
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
         'sorts users and saves to the json
-        Dim users As List(Of usermanagement) = functions.ReadUsersFromJson
+        Dim users As List(Of usermanagement) = functions.readusersfromjson
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = users.Count - 1
-        Dim sortedusers As List(Of usermanagement) = Quicksort(users, indexlow, indexhigh)
+        Dim sortedusers As List(Of usermanagement) = quicksortusers(users, indexlow, indexhigh)
         functions.SaveUsersToJson(sortedusers)
 
 

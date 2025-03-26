@@ -21,7 +21,7 @@ Public Class makeranking
         Dim indexhigh As Integer = fighters.Count - 1
 
 
-        Dim fighterlistsorted As List(Of fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim fighterlistsorted As List(Of fighter) = quicksortfighters(fighters, indexlow, indexhigh)
         currentfighterlist = fighterlistsorted
 
         functions.savetofighterjson(currentfighterlist)
@@ -228,7 +228,7 @@ Public Class makeranking
         Dim indexhigh As Integer = fighters.Count - 1
 
 
-        Dim fighterlistsorted As List(Of fighter) = Quicksort(fighters, indexlow, indexhigh)
+        Dim fighterlistsorted As List(Of fighter) = quicksortfighters(fighters, indexlow, indexhigh)
 
         If cmbchangerank.SelectedItem > 0 And cmbchangerank.SelectedItem < 11 Then
 
@@ -333,7 +333,7 @@ Public Class makeranking
 
 
 
-    Function Quicksort(fighterlist As List(Of fighter), indexlow As Integer, indexhigh As Integer) As List(Of fighter) 'quicksort used in other forms
+    Function quicksortfighters(fighterlist As List(Of fighter), indexlow As Integer, indexhigh As Integer) As List(Of fighter) 'quicksort used in other forms
 
 
         Try
@@ -369,11 +369,11 @@ Public Class makeranking
 
 
             If indexlow <= temphigh Then
-                Quicksort(fighterlist, indexlow, temphigh)
+                quicksortfighters(fighterlist, indexlow, temphigh)
             End If
 
             If templow < indexhigh Then
-                Quicksort(fighterlist, templow, indexhigh)
+                quicksortfighters(fighterlist, templow, indexhigh)
             End If
 
             Return fighterlist

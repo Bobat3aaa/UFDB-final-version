@@ -17,7 +17,7 @@ Public Class fightersearch
 
 
     '***************** QUICKSORT FOR FIGHTERS ****************
-    Function Quicksort(fighters As List(Of fighter), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fighter)
+    Function quicksortfighters(fighters As List(Of fighter), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fighter)
 
         Try
 
@@ -213,18 +213,18 @@ Public Class fightersearch
             End If
 
             If indexlow < temphigh Then
-                Quicksort(fighters, indexlow, temphigh, sortdecision)
+                quicksortfighters(fighters, indexlow, temphigh, sortdecision)
             End If
 
             If templow < indexhigh Then
-                Quicksort(fighters, templow, indexhigh, sortdecision)
+                quicksortfighters(fighters, templow, indexhigh, sortdecision)
             End If
 
 
             Return fighters
 
         Catch ex As Exception
-            MsgBox("Problem occured with fighter quicksort: " & ex.Message)
+            MsgBox("Problem occured with fighter quicksortfighters: " & ex.Message)
             Return New List(Of fighter)
         End Try
     End Function
@@ -444,7 +444,7 @@ Public Class fightersearch
             Debug.WriteLine("option 2 ")
             nametofind = txtlname.Text
             decision = 1
-            Dim filteredfighters = Quicksort(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
+            Dim filteredfighters = quicksortfighters(fighters, indexlow, indexhigh, 5) 'sorts users by last name for binary search
 
             For i = 0 To 20
                 Debug.WriteLine(filteredfighters(i).name)
@@ -718,7 +718,7 @@ Public Class fightersearch
 
 
             'sorts filtered fighters based on decision made
-            filteredFighters = Quicksort(filteredFighters, indexlow, indexhigh, sortwins)
+            filteredFighters = quicksortfighters(filteredFighters, indexlow, indexhigh, sortwins)
             lblsorted.Text = cmbwins.SelectedItem
 
 

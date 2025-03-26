@@ -20,7 +20,7 @@ Public Class rankingsearch
         Dim indexhigh As Integer = ranklist.Count - 1
 
 
-        Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
+        Dim sortedranklist As List(Of ranking) = quicksortlists(ranklist, indexlow, indexhigh)
         functions.savetoranklistjson(sortedranklist)
         currentranklist = sortedranklist
 
@@ -140,7 +140,7 @@ Public Class rankingsearch
         Dim indexhigh As Integer = ranklist.Count - 1
 
 
-        Dim sortedranklist As List(Of ranking) = Quicksort(ranklist, indexlow, indexhigh)
+        Dim sortedranklist As List(Of ranking) = quicksortlists(ranklist, indexlow, indexhigh)
 
 
         'finds current ranking
@@ -157,7 +157,7 @@ Public Class rankingsearch
 
     End Sub
 
-    Function Quicksort(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking) 'quicksort used in other forms
+    Function quicksortlists(ranklist As List(Of ranking), indexlow As Integer, indexhigh As Integer) As List(Of ranking) 'quicksort used in other forms
 
         Try
 
@@ -197,11 +197,11 @@ Public Class rankingsearch
 
 
                 If indexlow <= temphigh Then
-                    Quicksort(ranklist, indexlow, temphigh)
+                    quicksortlists(ranklist, indexlow, temphigh)
                 End If
 
                 If templow < indexhigh Then
-                    Quicksort(ranklist, templow, indexhigh)
+                    quicksortlists(ranklist, templow, indexhigh)
                 End If
 
                 Return ranklist
