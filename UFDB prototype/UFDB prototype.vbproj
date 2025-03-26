@@ -84,29 +84,29 @@
     <Compile Include="Admin\APIrefresh.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\currentadminuser.Designer.vb">
-      <DependentUpon>currentadminuser.vb</DependentUpon>
+    <Compile Include="Admin\currentadminuserform.Designer.vb">
+      <DependentUpon>currentadminuserform.vb</DependentUpon>
     </Compile>
-    <Compile Include="Admin\currentadminuser.vb">
+    <Compile Include="Admin\currentadminuserform.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\Databaseeditor.Designer.vb">
-      <DependentUpon>Databaseeditor.vb</DependentUpon>
+    <Compile Include="Admin\databaseeditor.Designer.vb">
+      <DependentUpon>databaseeditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Databaseeditor.vb">
+    <Compile Include="Admin\databaseeditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\Usereditor.Designer.vb">
-      <DependentUpon>Usereditor.vb</DependentUpon>
+    <Compile Include="Admin\usereditor.Designer.vb">
+      <DependentUpon>usereditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Usereditor.vb">
+    <Compile Include="Admin\usereditor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\functions.vb" />
-    <Compile Include="Ranking\currentranking.Designer.vb">
-      <DependentUpon>currentranking.vb</DependentUpon>
+    <Compile Include="Ranking\makeranking.Designer.vb">
+      <DependentUpon>makeranking.vb</DependentUpon>
     </Compile>
-    <Compile Include="Ranking\currentranking.vb">
+    <Compile Include="Ranking\makeranking.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fight\currentfightform.Designer.vb">
@@ -115,16 +115,16 @@
     <Compile Include="Fight\currentfightform.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fighter\current_fighter_form.Designer.vb">
-      <DependentUpon>current_fighter_form.vb</DependentUpon>
+    <Compile Include="Fighter\currentfighterform.Designer.vb">
+      <DependentUpon>currentfighterform.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fighter\current_fighter_form.vb">
+    <Compile Include="Fighter\currentfighterform.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ranking\Rankingsearch.Designer.vb">
-      <DependentUpon>Rankingsearch.vb</DependentUpon>
+    <Compile Include="Ranking\rankingsearch.Designer.vb">
+      <DependentUpon>rankingsearch.vb</DependentUpon>
     </Compile>
-    <Compile Include="Ranking\Rankingsearch.vb">
+    <Compile Include="Ranking\rankingsearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ranking\showranking.Designer.vb">
@@ -133,30 +133,30 @@
     <Compile Include="Ranking\showranking.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\Changepassword.Designer.vb">
-      <DependentUpon>Changepassword.vb</DependentUpon>
+    <Compile Include="User\changepassword.Designer.vb">
+      <DependentUpon>changepassword.vb</DependentUpon>
     </Compile>
-    <Compile Include="User\Changepassword.vb">
+    <Compile Include="User\changepassword.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\current_user_form.Designer.vb">
-      <DependentUpon>current_user_form.vb</DependentUpon>
+    <Compile Include="User\currentuserform.Designer.vb">
+      <DependentUpon>currentuserform.vb</DependentUpon>
     </Compile>
-    <Compile Include="User\current_user_form.vb">
+    <Compile Include="User\currentuserform.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\fightermanagement.vb" />
-    <Compile Include="Fighter\FighterForm.Designer.vb">
-      <DependentUpon>FighterForm.vb</DependentUpon>
+    <Compile Include="Fighter\fightersearch.Designer.vb">
+      <DependentUpon>fightersearch.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fighter\FighterForm.vb">
+    <Compile Include="Fighter\fightersearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\fightsmanagement.vb" />
-    <Compile Include="Fight\fight_form.Designer.vb">
-      <DependentUpon>fight_form.vb</DependentUpon>
+    <Compile Include="Fight\fightsearch.Designer.vb">
+      <DependentUpon>fightsearch.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fight\fight_form.vb">
+    <Compile Include="Fight\fightsearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -166,10 +166,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\Likedfightersearch.Designer.vb">
-      <DependentUpon>Likedfightersearch.vb</DependentUpon>
+    <Compile Include="User\likedfightersearch.Designer.vb">
+      <DependentUpon>likedfightersearch.vb</DependentUpon>
     </Compile>
-    <Compile Include="User\Likedfightersearch.vb">
+    <Compile Include="User\likedfightersearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User\loginform.Designer.vb">
@@ -207,10 +207,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\usermanagement.vb" />
-    <Compile Include="User\User details.Designer.vb">
-      <DependentUpon>User details.vb</DependentUpon>
+    <Compile Include="User\userdetails.Designer.vb">
+      <DependentUpon>userdetails.vb</DependentUpon>
     </Compile>
-    <Compile Include="User\User details.vb">
+    <Compile Include="User\userdetails.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -218,47 +218,47 @@
     <EmbeddedResource Include="Admin\APIrefresh.resx">
       <DependentUpon>APIrefresh.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\currentadminuser.resx">
-      <DependentUpon>currentadminuser.vb</DependentUpon>
+    <EmbeddedResource Include="Admin\currentadminuserform.resx">
+      <DependentUpon>currentadminuserform.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Databaseeditor.resx">
-      <DependentUpon>Databaseeditor.vb</DependentUpon>
+    <EmbeddedResource Include="Admin\databaseeditor.resx">
+      <DependentUpon>databaseeditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Usereditor.resx">
-      <DependentUpon>Usereditor.vb</DependentUpon>
+    <EmbeddedResource Include="Admin\usereditor.resx">
+      <DependentUpon>usereditor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ranking\currentranking.resx">
-      <DependentUpon>currentranking.vb</DependentUpon>
+    <EmbeddedResource Include="Ranking\makeranking.resx">
+      <DependentUpon>makeranking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fight\currentfightform.resx">
       <DependentUpon>currentfightform.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fighter\current_fighter_form.resx">
-      <DependentUpon>current_fighter_form.vb</DependentUpon>
+    <EmbeddedResource Include="Fighter\currentfighterform.resx">
+      <DependentUpon>currentfighterform.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ranking\Rankingsearch.resx">
-      <DependentUpon>Rankingsearch.vb</DependentUpon>
+    <EmbeddedResource Include="Ranking\rankingsearch.resx">
+      <DependentUpon>rankingsearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ranking\showranking.resx">
       <DependentUpon>showranking.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\Changepassword.resx">
-      <DependentUpon>Changepassword.vb</DependentUpon>
+    <EmbeddedResource Include="User\changepassword.resx">
+      <DependentUpon>changepassword.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\current_user_form.resx">
-      <DependentUpon>current_user_form.vb</DependentUpon>
+    <EmbeddedResource Include="User\currentuserform.resx">
+      <DependentUpon>currentuserform.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fighter\FighterForm.resx">
-      <DependentUpon>FighterForm.vb</DependentUpon>
+    <EmbeddedResource Include="Fighter\fightersearch.resx">
+      <DependentUpon>fightersearch.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fight\fight_form.resx">
-      <DependentUpon>fight_form.vb</DependentUpon>
+    <EmbeddedResource Include="Fight\fightsearch.resx">
+      <DependentUpon>fightsearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\Likedfightersearch.resx">
-      <DependentUpon>Likedfightersearch.vb</DependentUpon>
+    <EmbeddedResource Include="User\likedfightersearch.resx">
+      <DependentUpon>likedfightersearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\loginform.resx">
       <DependentUpon>loginform.vb</DependentUpon>
@@ -275,8 +275,8 @@
     <EmbeddedResource Include="User\register.resx">
       <DependentUpon>register.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\User details.resx">
-      <DependentUpon>User details.vb</DependentUpon>
+    <EmbeddedResource Include="User\userdetails.resx">
+      <DependentUpon>userdetails.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 Imports System.IO
 Imports System.Net.Http
 
-Public Class currentadminuser
+Public Class currentadminuserform
 
     Private formswitch As Boolean = False
 
@@ -70,19 +70,19 @@ Public Class currentadminuser
 
     Private Sub btnranking_Click(sender As Object, e As EventArgs) Handles btnranking.Click
         'open ranking search
-        Dim newrankingsearch As New Rankingsearch
+        Dim newrankingsearch As New rankingsearch
         childform(newrankingsearch)
     End Sub
 
     Private Sub btnnewranking_Click(sender As Object, e As EventArgs) Handles btnnewranking.Click
-        Dim newranking As New currentranking
+        Dim newranking As New makeranking
         childform(newranking)
 
     End Sub
 
     Private Sub btnlikedfighters_Click(sender As Object, e As EventArgs) Handles btnlikedfighters.Click
         'open liked fighter search
-        Dim newlikedfightersearch As New Likedfightersearch
+        Dim newlikedfightersearch As New likedfightersearch
         childform(newlikedfightersearch)
     End Sub
 

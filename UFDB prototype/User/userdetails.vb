@@ -70,7 +70,7 @@ Public Class Userdetails
     Function getcurrentuser(userlist As List(Of usermanagement))
 
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.userid = Form1.currentuserid)
         Return currentuser
 
     End Function
@@ -86,7 +86,7 @@ Public Class Userdetails
             Return match
         Else
             'then checks if email is being used by another account 'doesnt fit aS ITR CHECKS SAME ACCOUNT!!!!!!
-            match = users.Any(Function(u) u.email = email And u.UserID <> currentuser.UserID)
+            match = users.Any(Function(u) u.email = email And u.userid <> currentuser.userid)
             Return match
         End If
 
@@ -149,24 +149,24 @@ Public Class Userdetails
             Dim rankinglist As List(Of ranking) = functions.ReadRanklistsFromJson()
 
             'deletes user
-            Dim usertoremove As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuser.UserID)
-            MsgBox(usertoremove.UserID)
+            Dim usertoremove As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuser.userid)
+            MsgBox(usertoremove.userid)
             userlist.Remove(usertoremove)
 
             'removes all liked fighters with the same userid
-            likedfighters.RemoveAll(Function(lf) lf.userid = currentuser.UserID)
+            likedfighters.RemoveAll(Function(lf) lf.userid = currentuser.userid)
 
 
 
             'finds all ranking lists with the same user id
-            Dim rankingstoremove As List(Of ranking) = rankinglist.Where(Function(r) r.UserID = currentuser.UserID).ToList()
+            Dim rankingstoremove As List(Of ranking) = rankinglist.Where(Function(r) r.userid = currentuser.userid).ToList()
             'finds all fighterrankings with rankingids connected to user id
-            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
+            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.rankingid).ToList()
 
 
             'removes both ranking lists and fighter rankings
-            fighterrankinglist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
-            rankinglist.RemoveAll(Function(r) r.UserID = currentuser.UserID)
+            fighterrankinglist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.rankingid))
+            rankinglist.RemoveAll(Function(r) r.userid = currentuser.userid)
 
             'saves all data back to the json files
             functions.SaveTolikedfighterJson(likedfighters)
@@ -186,7 +186,7 @@ Public Class Userdetails
         'checks if username is already taken
         Dim users As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim match As Boolean = False
-        match = users.Any(Function(u) u.username = username And u.UserID <> currentuser.UserID)
+        match = users.Any(Function(u) u.username = username And u.userid <> currentuser.userid)
         Return match
     End Function
 

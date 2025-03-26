@@ -137,7 +137,7 @@ Public Class register
             Return 1
         End If
 
-        Return users.Max(Function(u) u.UserID) + 1
+        Return users.Max(Function(u) u.userid) + 1
     End Function
 
 

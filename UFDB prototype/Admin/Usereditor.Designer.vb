@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Usereditor
+Partial Class usereditor
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -171,7 +171,7 @@ Partial Class Usereditor
         Me.Checkadmin.Name = "Checkadmin"
         Me.Checkadmin.Size = New System.Drawing.Size(74, 23)
         Me.Checkadmin.TabIndex = 21
-        Me.Checkadmin.Text = "Admin"
+        Me.Checkadmin.Text = "admin"
         Me.Checkadmin.UseVisualStyleBackColor = True
         '
         'Button1

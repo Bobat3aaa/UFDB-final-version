@@ -3,10 +3,10 @@ Imports System.ComponentModel.Design
 Imports System.IO
 Imports System.Text
 
-Public Class Databaseeditor
+Public Class databaseeditor
 
 
-    Private currentfighterlist As List(Of fightermanagement)
+    Private currentfighterlist As List(Of fighter)
     Private currentfightlist As List(Of Fight)
 
 
@@ -122,9 +122,9 @@ Public Class Databaseeditor
                                          Dim editedvaluecolumn As String = Datagridview.Columns(0).Name
             Dim id As String
             Dim newfight As New Fight
-            Dim newfighter As New fightermanagement
+            Dim newfighter As New fighter
 
-        If editedvaluecolumn = "FighterId" Then
+        If editedvaluecolumn = "fighterid" Then
 
             currentfighterlist.Add(newfighter)
 
@@ -138,11 +138,11 @@ Public Class Databaseeditor
 
 
         Do 'loop to make sure the id isnt the same as someone elses
-            If editedvaluecolumn = "FighterId" Then 'add fighterid
+            If editedvaluecolumn = "fighterid" Then 'add fighterid
                 id = fightorfighterid(True)
                 check = idcheck(True, id)
                 If check = False Then
-                    newfighter.FighterId = id
+                    newfighter.fighterid = id
                 End If
 
 
@@ -174,7 +174,7 @@ Public Class Databaseeditor
 
         Dim check As Boolean
         If decision = True Then
-            check = currentfighterlist.Any(Function(cf) cf.FighterId = id)
+            check = currentfighterlist.Any(Function(cf) cf.fighterid = id)
 
 
         ElseIf decision = False Then

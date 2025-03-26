@@ -2,7 +2,7 @@
 Imports Newtonsoft.Json
 Imports System.IO
 
-Public Class Changepassword
+Public Class changepassword
 
 
     Function validatepassword(ByVal password As String)
@@ -85,7 +85,7 @@ Public Class Changepassword
     Function getcurrentuser(ByRef userlist As List(Of usermanagement))
 
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.userid = Form1.currentuserid)
         Return currentuser
     End Function
 

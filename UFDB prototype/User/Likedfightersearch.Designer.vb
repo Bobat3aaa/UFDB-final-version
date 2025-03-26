@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Likedfightersearch
+Partial Class likedfightersearch
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.

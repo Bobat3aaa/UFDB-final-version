@@ -7,14 +7,14 @@ Imports System.IO
 Imports System.Text.RegularExpressions
 
 
-Public Class fight_form
+Public Class fightsearch
 
 
-    '***************** Data structures used throughout fight form  ****************
+    '***************** CLASS LEVEL VARIABLES  ****************
 
 
     Private currentfightlist As List(Of Fight) 'the current fight list the user sees
-    Private mainendindex As Integer
+    Private mainendindex As Integer 'shows where last item of the list is
 
 
 
@@ -278,7 +278,7 @@ Public Class fight_form
             btnfight.Height = 120
             btnfight.TextAlign = ContentAlignment.MiddleCenter
             btnfight.BackColor = Color.White
-            btnfight.Text = fightlist(i).event_name & vbCrLf & vbCrLf & " " & fightlist(i).fighter1 & vbCrLf & " VS " & vbCrLf & fightlist(i).fighter2
+            btnfight.Text = fightlist(i).name & vbCrLf & vbCrLf & " " & fightlist(i).fighter1 & vbCrLf & " VS " & vbCrLf & fightlist(i).fighter2
             btnfight.Visible = True
             btnfight.Tag = i
 
@@ -427,7 +427,7 @@ Public Class fight_form
 
 
         'gets event number via parse function
-        Dim currenteventnumber As Integer? = ParseEventNumber(currentfight.event_name)
+        Dim currenteventnumber As Integer? = ParseEventNumber(currentfight.name)
 
         'if parsing returns nothing, skips the fight -> used when a fight night is found
 
@@ -582,7 +582,7 @@ Public Class fight_form
 
             If Not String.IsNullOrEmpty(selectedWeightClass) And selectedWeightClass <> "All" Then 'statement only occurs if the selected weight class does not equal nothing, or all
 
-                filteredFights = fightlist.Where(Function(f) f.weight_class = selectedWeightClass).ToList()
+                filteredFights = fightlist.Where(Function(f) f.weightclass = selectedWeightClass).ToList()
 
             End If
 

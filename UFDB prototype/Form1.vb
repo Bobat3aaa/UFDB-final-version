@@ -11,7 +11,7 @@ Public Class Form1
 
     Private Sub Fights_Click(sender As Object, e As EventArgs) Handles fights.Click
         'shows fight form and hides home form
-        fight_form.Show()
+        fightsearch.Show()
         Me.Hide()
     End Sub
 
@@ -28,12 +28,12 @@ Public Class Form1
             'else, it will check whether the account is an admin account or not 
         ElseIf currentuserid <> 0 Then
             Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
-            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuserid)
-            If currentuser.Admin = True Then
-                currentadminuser.Show()
+            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuserid)
+            If currentuser.admin = True Then
+                currentadminuserform.Show()
                 Me.Hide()
             Else
-                current_user_form.Show()
+                currentuserform.Show()
                 Me.Hide()
             End If
 
@@ -61,7 +61,7 @@ Public Class Form1
 
     Private Sub fighters_Click(sender As Object, e As EventArgs) Handles Btnfighter.Click
         'shows fighter form and hides home form
-        FighterForm.Show()
+        fightersearch.Show()
         Me.Hide()
     End Sub
 
@@ -78,7 +78,7 @@ Public Class Form1
     Private Sub formactivated(sender As Object, e As EventArgs) Handles MyBase.Activated 'changes login button text to username when form is on screen
         If currentuserid <> 0 Then
             Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
-            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentuserid)
+            Dim currentuser As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentuserid)
             Btnlogin.Text = currentuser.username
             Btnregister.Visible = False
         Else

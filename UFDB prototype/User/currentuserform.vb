@@ -7,18 +7,18 @@ Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Security.Policy
 
-Public Class current_user_form
+Public Class currentuserform
     Private formswitch As Boolean = False
 
     Private Sub btnranking_Click(sender As Object, e As EventArgs) Handles btnseerankings.Click
         'open ranking search
-        Dim newrankingsearch As New Rankingsearch
+        Dim newrankingsearch As New rankingsearch
         childform(newrankingsearch)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnmakeranking.Click
         'open ranking creator form
-        Dim newranking As New currentranking
+        Dim newranking As New makeranking
         childform(newranking)
 
     End Sub
@@ -38,7 +38,7 @@ Public Class current_user_form
 
     Private Sub btnlikedfighters_Click(sender As Object, e As EventArgs) Handles btnlikedfighters.Click
         'open n
-        Dim newlikedfightersearch As New Likedfightersearch
+        Dim newlikedfightersearch As New likedfightersearch
         childform(newlikedfightersearch)
     End Sub
 

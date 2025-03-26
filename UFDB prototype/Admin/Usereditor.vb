@@ -1,6 +1,6 @@
 ﻿Imports System.Text.RegularExpressions
 
-Public Class Usereditor
+Public Class usereditor
 
     Private oldvalue As String
 
@@ -92,7 +92,7 @@ Public Class Usereditor
 
         Dim editedvaluecolumn As String = Datagridview.Columns(e.ColumnIndex).Name 'holds the column name to check for username and pass
 
-        Dim currentuseredited As usermanagement = currentuserlist.FirstOrDefault(Function(cu) cu.UserID = editedvalueuserid) 'gets current user for encryption and decryption
+        Dim currentuseredited As usermanagement = currentuserlist.FirstOrDefault(Function(cu) cu.userid = editedvalueuserid) 'gets current user for encryption and decryption
 
         Debug.WriteLine(editedvaluecolumn)
 
@@ -182,7 +182,7 @@ Public Class Usereditor
             Return 1
         End If
 
-        Return users.Max(Function(u) u.UserID) + 1
+        Return users.Max(Function(u) u.userid) + 1
     End Function
 
     Private Sub btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
@@ -197,11 +197,11 @@ Public Class Usereditor
 
             'remove all instances of user-related items + user
 
-            currentlikedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.UserID)
-            Dim rankingstoremove As List(Of ranking) = currentranklist.Where(Function(r) r.UserID = usertodelete.UserID).ToList()
-            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
-            currentfighterranklist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
-            currentranklist.RemoveAll(Function(r) r.UserID = usertodelete.UserID)
+            currentlikedfighterlist.RemoveAll(Function(lf) lf.userid = usertodelete.userid)
+            Dim rankingstoremove As List(Of ranking) = currentranklist.Where(Function(r) r.userid = usertodelete.userid).ToList()
+            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.rankingid).ToList()
+            currentfighterranklist.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.rankingid))
+            currentranklist.RemoveAll(Function(r) r.userid = usertodelete.userid)
         End If
 
         'remove from data grid view

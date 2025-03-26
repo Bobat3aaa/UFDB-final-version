@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class current_user_form
+Partial Class currentuserform
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -146,7 +146,7 @@ Partial Class current_user_form
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.panelmain)
         Me.Name = "current_user_form"
-        Me.Text = "current_user_form"
+        Me.Text = "currentuser"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)

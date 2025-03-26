@@ -5,9 +5,9 @@ Imports System.IO
 Imports System.Net
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
-Public Class Rankingsearch
-    Private currentranklist As List(Of ranking)
-    Private mainendindex As Integer
+Public Class rankingsearch
+    Private currentranklist As List(Of ranking) 'holds the ranklist being shown
+    Private mainendindex As Integer 'shows where the last item is for the list
 
 
 
@@ -30,7 +30,7 @@ Public Class Rankingsearch
 
 
 
-    Sub updatebuttons(ranklist As List(Of ranking), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(ranklist As List(Of ranking), Optional startIndex As Integer = 0, Optional count As Integer = 50) 'same function as in fighter form
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -70,7 +70,7 @@ Public Class Rankingsearch
         'creates 50 buttons
         For i = startIndex To endIndex - 1
 
-            Dim user As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = ranklist(i).UserID)
+            Dim user As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = ranklist(i).userid)
 
 
             Dim btnlists As New Button
@@ -79,7 +79,7 @@ Public Class Rankingsearch
             btnlists.BackColor = Color.White
             btnlists.TextAlign = ContentAlignment.MiddleCenter
 
-            btnlists.Text = ranklist(i).RankingName & vbCrLf & "Made by:" & user.username & vbCrLf & ranklist(i).Rankingdatemade
+            btnlists.Text = ranklist(i).rankname & vbCrLf & "Made by:" & user.username & vbCrLf & ranklist(i).rankdatemade
             btnlists.Visible = True
             btnlists.Tag = i
             currentranklist = ranklist
@@ -172,14 +172,14 @@ Public Class Rankingsearch
 
 
 
-                pivot = ranklist(Int((indexlow + indexhigh) / 2)).RankingName
+                pivot = ranklist(Int((indexlow + indexhigh) / 2)).rankname
 
                 While templow <= temphigh
-                    While String.Compare(ranklist(templow).RankingName, pivot) < 0
+                    While String.Compare(ranklist(templow).rankname, pivot) < 0
                         templow += 1
                     End While
 
-                    While String.Compare(ranklist(temphigh).RankingName, pivot) > 0
+                    While String.Compare(ranklist(temphigh).rankname, pivot) > 0
                         temphigh -= 1
                     End While
 
@@ -225,19 +225,19 @@ Public Class Rankingsearch
 
             Dim midpoint As Integer = (indexlow + indexhigh) \ 2
 
-            If String.Compare(ranklist(midpoint).RankingName, nametofind) < 0 Then
+            If String.Compare(ranklist(midpoint).rankname, nametofind) < 0 Then
 
-                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Debug.WriteLine(ranklist(midpoint).rankname)
                 Return bsearchranklist(ranklist, nametofind, midpoint + 1, indexhigh)
 
-            ElseIf String.Compare(ranklist(midpoint).RankingName, nametofind) > 0 Then
+            ElseIf String.Compare(ranklist(midpoint).rankname, nametofind) > 0 Then
 
-                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Debug.WriteLine(ranklist(midpoint).rankname)
                 Return bsearchranklist(ranklist, nametofind, indexlow, midpoint - 1)
 
-            ElseIf ranklist(midpoint).RankingName = nametofind Then
+            ElseIf ranklist(midpoint).rankname = nametofind Then
 
-                Debug.WriteLine(ranklist(midpoint).RankingName)
+                Debug.WriteLine(ranklist(midpoint).rankname)
                 Return midpoint
 
 
@@ -313,7 +313,7 @@ Public Class Rankingsearch
 
             Dim filteredlist As List(Of ranking) = Nothing
             If ownrank <> "No" Then
-                filteredlist = ranklist.Where(Function(r) r.UserID = Form1.currentuserid).ToList()
+                filteredlist = ranklist.Where(Function(r) r.userid = Form1.currentuserid).ToList()
             End If
 
 

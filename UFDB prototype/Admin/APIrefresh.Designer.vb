@@ -105,7 +105,7 @@ Partial Class APIrefresh
         Me.Controls.Add(Me.Lbltitle)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "APIrefresh"
-        Me.Text = "APIrefresh"
+        Me.Text = "Refresh API"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

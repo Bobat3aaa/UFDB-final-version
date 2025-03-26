@@ -9,7 +9,7 @@ Public Class Fight
     Public Property id As String 'hold fight id
 
     <JsonProperty("event")>
-    Public Property event_name As String 'holds fight name
+    Public Property name As String 'holds fight name
 
     <JsonProperty("date")>
     Public Property [date] As DateTime 'holds fight date
@@ -35,8 +35,8 @@ Public Class Fight
     <JsonProperty("lose")>
     Public Property lose As String 'holds who lost
 
-    <JsonProperty("weight_class")>
-    Public Property weight_class As String 'holds the weightclass of the fight
+    <JsonProperty("weightclass")>
+    Public Property weightclass As String 'holds the weightclass of the fight
 
     <JsonProperty("method")>
     Public Property method As String 'holds how they won fight
@@ -73,6 +73,6 @@ Public Class Fight
 End Class
 
 
-Public Class FightsResponse 'class to hold content from API
+Public Class fightresponse 'class to hold content from API
     Public Property fights As List(Of Fight) 'holds fights from content of HTTP
 End Class

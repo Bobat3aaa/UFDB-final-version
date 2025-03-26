@@ -13,7 +13,7 @@ Public Class APIrefresh
     Public Async Function fetchfighters(httpclient As HttpClient) As Task 'asynchronus function that pulls all fighters from api
 
 
-        Dim allfighters As New List(Of fightermanagement) 'holds all fighters
+        Dim allfighters As New List(Of fighter) 'holds all fighters
         Dim answer As HttpResponseMessage 'stores content from api
         Dim i As Integer = 1 'counter for pages
         Dim morefighters As Boolean = True 'validation to see if there are any more fighters
@@ -82,12 +82,12 @@ Public Class APIrefresh
 
 
                 'deserialises json
-                Dim fightresponse As FightsResponse = JsonConvert.DeserializeObject(Of FightsResponse)(fightcontent)
+                Dim fightresponse As fightresponse = JsonConvert.DeserializeObject(Of fightresponse)(fightcontent)
                 'if there are fights within the json, add them to a list, if not, morefights turns to false
                 If fightresponse IsNot Nothing AndAlso fightresponse.fights IsNot Nothing AndAlso fightresponse.fights.Count > 0 Then
                     'if there is a response + there are fights, it adds all the fights found from fighterresponse into the allfights
                     For Each fight In fightresponse.fights
-                        fight.fightnumber = fight.ParseEventNumber(fight.event_name)
+                        fight.fightnumber = fight.ParseEventNumber(fight.name)
                     Next
 
                     allfights.AddRange(fightresponse.fights)

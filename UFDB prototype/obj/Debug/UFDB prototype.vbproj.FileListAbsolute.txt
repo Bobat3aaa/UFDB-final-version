@@ -31,10 +31,6 @@ D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\bin\Debug\Newtonsoft.Js
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\bin\Debug\Newtonsoft.Json.xml
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB prototype.vbproj.AssemblyReference.cache
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentFightForm.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.current_fighter_form.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.current_user_form.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.FighterForm.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.fight_form.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Form1.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.loginform.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Resources.resources
@@ -46,13 +42,17 @@ D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB pro.C3F1
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB prototype.exe
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB prototype.xml
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB prototype.pdb
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentranking.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Rankingsearch.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.showranking.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Likedfightersearch.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Userdetails.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Changepassword.resources
-D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentadminuser.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Databaseeditor.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.Usereditor.resources
 D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.APIrefresh.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.fightersearch.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentfighterform.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentadminuserform.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.makeranking.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.currentuserform.resources
+D:\UFDB Final\UFDB-prototype-new-new-main\UFDB prototype\obj\Debug\UFDB_prototype.fightsearch.resources

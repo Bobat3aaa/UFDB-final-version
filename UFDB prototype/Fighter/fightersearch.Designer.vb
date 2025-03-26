@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FighterForm
+Partial Class fightersearch
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -136,7 +136,7 @@ Partial Class FighterForm
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 16)
         Me.Label3.TabIndex = 18
-        Me.Label3.Text = "Weight class:"
+        Me.Label3.Text = "weight class:"
         '
         'Panel1
         '
@@ -166,7 +166,7 @@ Partial Class FighterForm
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(49, 16)
         Me.Label5.TabIndex = 21
-        Me.Label5.Text = "Stance:"
+        Me.Label5.Text = "stance:"
         '
         'cmbstance
         '
@@ -221,7 +221,7 @@ Partial Class FighterForm
         '
         Me.cmbwins.Font = New System.Drawing.Font("Lucida Console", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbwins.FormattingEnabled = True
-        Me.cmbwins.Items.AddRange(New Object() {"N/A", "Wins desc", "Wins asc", "loss desc", "loss asc", "names"})
+        Me.cmbwins.Items.AddRange(New Object() {"N/A", "wins desc", "wins asc", "loss desc", "loss asc", "names"})
         Me.cmbwins.Location = New System.Drawing.Point(378, 204)
         Me.cmbwins.Name = "cmbwins"
         Me.cmbwins.Size = New System.Drawing.Size(126, 24)

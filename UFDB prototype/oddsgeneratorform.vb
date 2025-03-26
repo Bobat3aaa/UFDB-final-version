@@ -7,8 +7,8 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 Public Class oddsgeneratorform
 
 
-    Private fighter1 As fightermanagement
-    Private fighter2 As fightermanagement
+    Private fighter1 As fighter
+    Private fighter2 As fighter
     Private fighter1index As Integer = 0
     Private fighter2index As Integer = 1
     Private formswitch As Boolean = False
@@ -24,11 +24,11 @@ Public Class oddsgeneratorform
     Private Sub oddsgeneratorform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'sorts fighters and saves to file
 
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
-        Dim sortedfighters As List(Of fightermanagement) = Quicksort(fighters, indexlow, indexhigh)
+        Dim sortedfighters As List(Of fighter) = Quicksort(fighters, indexlow, indexhigh)
         functions.SaveToFighterJson(sortedfighters)
         fighter1 = sortedfighters(0)
         fighter2 = sortedfighters(1)
@@ -38,25 +38,25 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer) As List(Of fightermanagement)
+    Function Quicksort(fighters As List(Of fighter), indexlow As Integer, indexhigh As Integer) As List(Of fighter) 'quicksort the fighters
         Try
             Dim pivot As String
             Dim templow As Integer = indexlow
             Dim temphigh As Integer = indexhigh
 
-            pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+            pivot = fighters(Int((indexlow + indexhigh) / 2)).name
 
             While templow <= temphigh
-                While String.Compare(fighters(templow).Name, pivot) < 0
+                While String.Compare(fighters(templow).name, pivot) < 0
                     templow += 1
                 End While
 
-                While String.Compare(fighters(temphigh).Name, pivot) > 0
+                While String.Compare(fighters(temphigh).name, pivot) > 0
                     temphigh -= 1
                 End While
 
                 If templow <= temphigh Then
-                    Dim tempfighter As fightermanagement = fighters(templow)
+                    Dim tempfighter As fighter = fighters(templow)
                     fighters(templow) = fighters(temphigh)
                     fighters(temphigh) = tempfighter
                     templow += 1
@@ -75,13 +75,13 @@ Public Class oddsgeneratorform
             Return fighters
         Catch ex As Exception
             MsgBox("Problem occured with sorting fighters: " & ex.Message)
-            Return New List(Of fightermanagement)
+            Return New List(Of fighter)
         End Try
     End Function
 
 
 
-    Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer)
+    Function bsearchusers(fighterlist As List(Of fighter), nametofind As String, indexlow As Integer, indexhigh As Integer)
 
         'binary search, returns midpoint which is place in list
         If indexlow > indexhigh Then
@@ -90,11 +90,11 @@ Public Class oddsgeneratorform
 
         Dim midpoint As Integer = (indexlow + indexhigh) \ 2
 
-        If String.Compare(fighterlist(midpoint).Name, nametofind) < 0 Then
+        If String.Compare(fighterlist(midpoint).name, nametofind) < 0 Then
             Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
-        ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
+        ElseIf String.Compare(fighterlist(midpoint).name, nametofind) > 0 Then
             Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
-        ElseIf fighterlist(midpoint).Name = nametofind Then
+        ElseIf fighterlist(midpoint).name = nametofind Then
             Return midpoint
         Else
             Return -1
@@ -102,7 +102,7 @@ Public Class oddsgeneratorform
     End Function
 
     Private Sub btnsearch1_Click(sender As Object, e As EventArgs) Handles btnsearch1.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -124,7 +124,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub btnsearch2_Click(sender As Object, e As EventArgs) Handles btnsearch2.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
@@ -145,36 +145,22 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Sub updatefighter1(fighter As fightermanagement)
-        txtfighter1stats.Text = fighter.Name & vbCrLf & " Height: " & fighter.Height & vbCrLf & " Weight: " & fighter.Weight & vbCrLf & " Reach: " & fighter.Reach & vbCrLf & " Record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
-        lblfighter1.Text = fighter1.Name
+    Sub updatefighter1(fighter As fighter)
+        txtfighter1stats.Text = fighter.name & vbCrLf & " height: " & fighter.height & vbCrLf & " weight: " & fighter.weight & vbCrLf & " reach: " & fighter.reach & vbCrLf & " Record: " & fighter.wins & "/" & fighter.losses & "/" & fighter.draws
+        lblfighter1.Text = fighter1.name
 
     End Sub
 
-    Sub updatefighter2(fighter As fightermanagement)
-        txtfighter2stats.Text = fighter.Name & vbCrLf & " Height: " & fighter.Height & vbCrLf & " Weight: " & fighter.Weight & vbCrLf & " Reach: " & fighter.Reach & vbCrLf & " Record: " & fighter.Wins & "/" & fighter.Losses & "/" & fighter.Draws
-        lblfighter2.Text = fighter2.Name
+    Sub updatefighter2(fighter As fighter)
+        txtfighter2stats.Text = fighter.name & vbCrLf & " height: " & fighter.height & vbCrLf & " weight: " & fighter.weight & vbCrLf & " reach: " & fighter.reach & vbCrLf & " Record: " & fighter.wins & "/" & fighter.losses & "/" & fighter.draws
+        lblfighter2.Text = fighter2.name
     End Sub
 
     Private Sub btnback1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub btnclear_Click(sender As Object, e As EventArgs)
-        txtfighter1stats.Text = ""
-        txtfighter1fname.Text = ""
-        txtfighter1lname.Text = ""
 
-        fighter1 = Nothing
-
-    End Sub
-
-    Private Sub btnclear2_Click(sender As Object, e As EventArgs)
-        txtfighter2stats.Text = ""
-        txtfighter2fname.Text = ""
-        txtfighter2lname.Text = ""
-        fighter2 = Nothing
-    End Sub
 
     Private Sub btnPredict_Click(sender As Object, e As EventArgs) Handles btnPredict.Click
         If fighter1 IsNot Nothing AndAlso fighter2 IsNot Nothing Then
@@ -193,13 +179,13 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Function generateodds(fighter1 As fightermanagement, fighter2 As fightermanagement)
+    Function generateodds(fighter1 As fighter, fighter2 As fighter)
 
-        Dim fighter1win As Integer = fighter1.Wins
-        Dim fighter2win As Integer = fighter2.Wins
+        Dim fighter1win As Integer = fighter1.wins
+        Dim fighter2win As Integer = fighter2.wins
 
-        Dim fighter1other As Integer = fighter1.Losses + fighter1.Draws
-        Dim fighter2other As Integer = fighter2.Losses + fighter2.Draws
+        Dim fighter1other As Integer = fighter1.losses + fighter1.draws
+        Dim fighter2other As Integer = fighter2.losses + fighter2.draws
 
 
         Dim fighter1winrate As Double
@@ -208,8 +194,8 @@ Public Class oddsgeneratorform
         Dim fighter1odds As Double
         Dim fighter2odds As Double
 
-        Dim fighter1weight As Integer? = ParseWeight(fighter1.Weight)
-        Dim fighter2weight As Integer? = ParseWeight(fighter2.Weight)
+        Dim fighter1weight As Integer? = ParseWeight(fighter1.weight)
+        Dim fighter2weight As Integer? = ParseWeight(fighter2.weight)
         'fighters win rate
         fighter1winrate = (fighter1win / (fighter1other + fighter1win)) * 100 * (fighter1weight * 0.015)
         fighter2winrate = (fighter2win / (fighter2other + fighter2win)) * 100 * (fighter2weight * 0.015)
@@ -241,7 +227,7 @@ Public Class oddsgeneratorform
 
     End Function
 
-    Function ParseWeight(weightString As String) As Integer?
+    Function ParseWeight(weightString As String) As Integer? 'parsing the weight from the fighter
 
         'finds a digit
         Dim regex As New Regex("\d+", RegexOptions.IgnoreCase)
@@ -257,7 +243,7 @@ Public Class oddsgeneratorform
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnback2.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         If fighter2index > 0 Then
             fighter2index -= 1
             fighter2 = (fighters(fighter2index))
@@ -267,7 +253,7 @@ Public Class oddsgeneratorform
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnnext2.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         If fighter2index < fighters.Count - 1 Then
             fighter2index += 1
             fighter2 = (fighters(fighter2index))
@@ -276,18 +262,18 @@ Public Class oddsgeneratorform
         End If
     End Sub
 
-    Sub updatewinner(oddpair)
-        lblfighter1.Text = fighter1.Name
-        lblfighter2.Text = fighter2.Name
+    Sub updatewinner(oddpair) 'update all the panels if a new fighter is chosen
+        lblfighter1.Text = fighter1.name
+        lblfighter2.Text = fighter2.name
         txtchance1.Text = oddpair(0)
         txtchance2.Text = oddpair(1)
 
         If oddpair(0) > oddpair(1) Then
-            txtwinner.Text = (fighter1.Name)
+            txtwinner.Text = (fighter1.name)
             pnlfighter1.BackColor = Color.LightGreen
             pnlfighter2.BackColor = Color.Pink
         ElseIf oddpair(0) < oddpair(1) Then
-            txtwinner.Text = (fighter2.Name)
+            txtwinner.Text = (fighter2.name)
             pnlfighter1.BackColor = Color.Pink
             pnlfighter2.BackColor = Color.LightGreen
         Else
@@ -303,8 +289,8 @@ Public Class oddsgeneratorform
 
     End Sub
 
-    Private Sub btnnext1_Click(sender As Object, e As EventArgs) Handles btnnext1.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+    Private Sub btnnext1_Click(sender As Object, e As EventArgs) Handles btnnext1.Click 'choose the next fighter
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         If fighter1index < fighters.Count - 1 Then
             fighter1index += 1
             fighter1 = (fighters(fighter1index))
@@ -313,8 +299,8 @@ Public Class oddsgeneratorform
         End If
     End Sub
 
-    Private Sub btnback1_Click_1(sender As Object, e As EventArgs) Handles btnback1.Click
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+    Private Sub btnback1_Click_1(sender As Object, e As EventArgs) Handles btnback1.Click ' choose the fighter before
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         If fighter1index > 0 Then
             fighter1index -= 1
             fighter1 = (fighters(fighter1index))
@@ -323,19 +309,22 @@ Public Class oddsgeneratorform
         End If
     End Sub
 
-    Private Sub txtfighter1stats_TextChanged(sender As Object, e As EventArgs) Handles txtfighter1stats.TextChanged
+    '***************** CLEARING FUNCTIONS  ****************
+
+    Private Sub btnclear_Click(sender As Object, e As EventArgs)
+        txtfighter1stats.Text = ""
+        txtfighter1fname.Text = ""
+        txtfighter1lname.Text = ""
+
+        fighter1 = Nothing
 
     End Sub
 
-
-    Private Sub Label6_Click_1(sender As Object, e As EventArgs) Handles Label6.Click
-        formswitch = True
-        Form1.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub pnlfighter1_Paint(sender As Object, e As PaintEventArgs) Handles pnlfighter1.Paint
-
+    Private Sub btnclear2_Click(sender As Object, e As EventArgs)
+        txtfighter2stats.Text = ""
+        txtfighter2fname.Text = ""
+        txtfighter2lname.Text = ""
+        fighter2 = Nothing
     End Sub
 
     Private Sub btnclearfighter2_Click(sender As Object, e As EventArgs) Handles btnclearfighter2.Click
@@ -353,5 +342,9 @@ Public Class oddsgeneratorform
             Application.Exit()
         End If
     End Sub
-
+    Private Sub Label6_Click_1(sender As Object, e As EventArgs) Handles Label6.Click
+        formswitch = True
+        Form1.Show()
+        Me.Close()
+    End Sub
 End Class

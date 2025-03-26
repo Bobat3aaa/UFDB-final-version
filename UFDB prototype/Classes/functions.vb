@@ -8,22 +8,22 @@ Public Class functions 'JSON functions used throughout program to save and read 
 
 
     ' read fighters from the json file
-    Public Shared Function ReadFightersFromJson() As List(Of fightermanagement)
+    Public Shared Function ReadFightersFromJson() As List(Of fighter)
         Try
             If Not File.Exists("fighters.json") Then
-                Return New List(Of fightermanagement)
+                Return New List(Of fighter)
             End If
             Dim json As String = File.ReadAllText("fighters.json")
-            Return JsonConvert.DeserializeObject(Of List(Of fightermanagement))(json)
+            Return JsonConvert.DeserializeObject(Of List(Of fighter))(json)
         Catch ex As Exception
             MsgBox("Error reading fighters from JSON" & ex.Message)
-            Return New List(Of fightermanagement)
+            Return New List(Of fighter)
         End Try
     End Function
 
 
     ' save fighters from the json file
-    Public Shared Sub SaveToFighterJson(sortedfighters As List(Of fightermanagement))
+    Public Shared Sub SaveToFighterJson(sortedfighters As List(Of fighter))
         Try
             Dim json As String = JsonConvert.SerializeObject(sortedfighters, Formatting.Indented)
             Dim filePath As String = $"fighters.json"

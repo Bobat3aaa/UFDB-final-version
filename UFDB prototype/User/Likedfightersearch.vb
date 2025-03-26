@@ -2,11 +2,11 @@
 Imports System.Data.SqlTypes
 Imports System.IO
 
-Public Class Likedfightersearch
+Public Class likedfightersearch
 
 
     Private parsednames As New List(Of String)
-    Private currentfighterlist As List(Of fightermanagement)
+    Private currentfighterlist As List(Of fighter)
     Private mainendindex As Integer
 
 
@@ -19,13 +19,13 @@ Public Class Likedfightersearch
 
 
         'gets list of fighters via reading json
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
 
         For Each fighter In fighters
-            parsednames.Add(parsename(fighter.Name, 1))
+            parsednames.Add(parsename(fighter.name, 1))
         Next
         'returns liked fighters for current user
-        Dim likedfighterlist As List(Of fightermanagement) = returnlikedfighters(fighters)
+        Dim likedfighterlist As List(Of fighter) = returnlikedfighters(fighters)
 
         currentfighterlist = likedfighterlist
         'allows scroling for flow panel
@@ -37,7 +37,7 @@ Public Class Likedfightersearch
 
     End Sub
 
-    Function returnlikedfighters(fighters As List(Of fightermanagement))
+    Function returnlikedfighters(fighters As List(Of fighter))
 
         'reads likedfighter json
         Dim likedfighters As List(Of likedfighter) = functions.ReadlikedfightersFromJson
@@ -47,9 +47,9 @@ Public Class Likedfightersearch
 
 
 
-        Dim likedfighterlist As List(Of fightermanagement) = (From lf In likedfighters 'looks through likedfighter list
+        Dim likedfighterlist As List(Of fighter) = (From lf In likedfighters 'looks through likedfighter list
                                                               Where lf.userid = Form1.currentuserid 'condition -> liked fighter user id is the same as the current user id
-                                                              Join sf In fighters On lf.fighterid Equals sf.FighterId 'links liked fighter to fighter list using fighter id
+                                                              Join sf In fighters On lf.fighterid Equals sf.fighterid 'links liked fighter to fighter list using fighter id
                                                               Select sf).ToList() 'adds it to a list
         Debug.WriteLine(likedfighterlist.Count)
         'uses a quicksort to sort liked fighters
@@ -67,7 +67,7 @@ Public Class Likedfightersearch
 
 
 
-    Function Quicksort(fighters As List(Of fightermanagement), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fightermanagement)
+    Function Quicksort(fighters As List(Of fighter), indexlow As Integer, indexhigh As Integer, sortdecision As Integer) As List(Of fighter)
         Try
 
 
@@ -79,26 +79,26 @@ Public Class Likedfightersearch
             'if the user has no liked fighters, returns a new list
             If fighters.Count = 0 Then
 
-                Return New List(Of fightermanagement)()
+                Return New List(Of fighter)()
             Else
 
                 If sortdecision = 1 Then
 
 
-                    pivot = fighters(Int((indexlow + indexhigh) / 2)).Name
+                    pivot = fighters(Int((indexlow + indexhigh) / 2)).name
 
                     While templow <= temphigh
-                        While String.Compare(fighters(templow).Name, pivot) < 0
+                        While String.Compare(fighters(templow).name, pivot) < 0
                             templow += 1
                         End While
 
-                        While String.Compare(fighters(temphigh).Name, pivot) > 0
+                        While String.Compare(fighters(temphigh).name, pivot) > 0
                             temphigh -= 1
                         End While
 
                         'swaps fighters
                         If templow <= temphigh Then
-                            Dim tempfighter As fightermanagement = fighters(templow)
+                            Dim tempfighter As fighter = fighters(templow)
                             fighters(templow) = fighters(temphigh)
                             fighters(temphigh) = tempfighter
                             templow += 1
@@ -131,7 +131,7 @@ Public Class Likedfightersearch
 
                             ' swaps fighters
 
-                            Dim tempfighter As fightermanagement = fighters(templow)
+                            Dim tempfighter As fighter = fighters(templow)
                             fighters(templow) = fighters(temphigh)
                             fighters(temphigh) = tempfighter
 
@@ -159,7 +159,7 @@ Public Class Likedfightersearch
             End If
         Catch ex As Exception
             MsgBox("Problem occured with quicksort: " & ex.Message)
-            Return New List(Of fightermanagement)
+            Return New List(Of fighter)
         End Try
     End Function
 
@@ -173,7 +173,7 @@ Public Class Likedfightersearch
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
 
 
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson
         fighters = returnlikedfighters(fighters)
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
@@ -185,24 +185,24 @@ Public Class Likedfightersearch
         If String.IsNullOrEmpty(txtlname.Text) And String.IsNullOrEmpty(txtfname.Text) = False Then
             nametofind = txtfname.Text
             decision = 0
-            Dim searchedfighters As List(Of fightermanagement) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
+            Dim searchedfighters As List(Of fighter) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
             currentfighterlist = searchedfighters
 
         ElseIf String.IsNullOrEmpty(txtlname.Text) = False And String.IsNullOrEmpty(txtfname.Text) Then
             nametofind = txtlname.Text
             decision = 1
             Quicksort(fighters, indexlow, indexhigh, 2) 'sorts users by last name for binary search
-            Dim searchedfighters As List(Of fightermanagement) = bsearchonename(fighters, nametofind, indexlow, indexhigh, decision)
+            Dim searchedfighters As List(Of fighter) = bsearchfighter_onename(fighters, nametofind, indexlow, indexhigh, decision)
             currentfighterlist = searchedfighters
 
         Else
             nametofind = (txtfname.Text) + " " + (txtlname.Text)
-            searchedfighterindex = bsearchusers(fighters, nametofind, indexlow, indexhigh)
+            searchedfighterindex = bsearchfighters(fighters, nametofind, indexlow, indexhigh)
             MsgBox(searchedfighterindex)
 
             'adds fighter to a new list to be shown in search alone
             If searchedfighterindex <> -1 Then
-                Dim searchedfighterlist As New List(Of fightermanagement)
+                Dim searchedfighterlist As New List(Of fighter)
                 searchedfighterlist.Clear()
                 searchedfighterlist.Add(fighters(searchedfighterindex))
                 currentfighterlist = searchedfighterlist
@@ -215,36 +215,14 @@ Public Class Likedfightersearch
         updatebuttons(currentfighterlist)
 
     End Sub
-    Function bsearchusers(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer)
-        Try
-            'binary search, returns midpoint which is place in list
-            If indexlow > indexhigh Then
-                Return -1
-            End If
 
-            Dim midpoint As Integer = (indexlow + indexhigh) \ 2
-
-            If String.Compare(fighterlist(midpoint).Name, nametofind) < 0 Then
-                Return bsearchusers(fighterlist, nametofind, midpoint + 1, indexhigh)
-            ElseIf String.Compare(fighterlist(midpoint).Name, nametofind) > 0 Then
-                Return bsearchusers(fighterlist, nametofind, indexlow, midpoint - 1)
-            Else
-                Return midpoint
-            End If
-
-
-        Catch ex As Exception
-            MsgBox("Problem occured with binary search: " & ex.Message)
-            Return New List(Of fightermanagement)
-        End Try
-    End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
     'the count is used to make sure only 50 items are shown at a time
-    Sub updatebuttons(fighterlist As List(Of fightermanagement), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fighterlist As List(Of fighter), Optional startIndex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -256,7 +234,7 @@ Public Class Likedfightersearch
             Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
             mainendindex = endIndex
 
-            If startIndex < 0 Then startIndex = 0 
+            If startIndex < 0 Then startIndex = 0
 
 
             If startIndex > 0 Then
@@ -293,7 +271,7 @@ Public Class Likedfightersearch
                 btnfighter.BackColor = Color.White
                 btnfighter.TextAlign = ContentAlignment.MiddleCenter
 
-                btnfighter.Text = fighterlist(i).Name & vbCrLf & fighterlist(i).Wins & "/" & fighterlist(i).Losses & "/" & fighterlist(i).Draws
+                btnfighter.Text = fighterlist(i).name & vbCrLf & fighterlist(i).wins & "/" & fighterlist(i).losses & "/" & fighterlist(i).draws
                 btnfighter.Visible = True
                 btnfighter.Tag = i
                 currentfighterlist = fighterlist
@@ -344,83 +322,108 @@ Public Class Likedfightersearch
         'shows what button was pressed
         Dim clickedButton As Button = DirectCast(sender, Button)
 
-        'gets tag of button which is the fighters place in the list
+        'gets tag (indexing number) of button which is the fighters place in the list
+
         Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
 
 
-
-        Dim fighters As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        'finds current fighter
+        Dim fighters As List(Of fighter) = functions.ReadFightersFromJson()
         Dim indexlow As Integer = 0
         Dim indexhigh As Integer = fighters.Count - 1
 
 
-        Dim sortedfighters As List(Of fightermanagement) = returnlikedfighters(fighters)
+        Dim sortedfighters As List(Of fighter) = returnlikedfighters(fighters)
 
 
-        'finds current fighter
-        Dim currentfighter As fightermanagement = currentfighterlist(fighterIndex)
+
+        Dim currentfighter As fighter = currentfighterlist(fighterIndex)
 
         'sends current fighter data over to the current fighter form
-        Dim fighterForm As New current_fighter_form(currentfighter)
+        Dim fighterForm As New currentfighterform(currentfighter)
         fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow
         fighterForm.ControlBox = True
 
         fighterForm.Show()
 
+
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
-        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson()
+        Dim fighterlist As List(Of fighter) = functions.ReadFightersFromJson()
         fighterlist = returnlikedfighters(fighterlist)
 
         updatebuttons(fighterlist)
     End Sub
 
+    '***************** SEARCHING ALGORITHMS  ****************
 
 
-
-    Public Function bsearchonename(fighterlist As List(Of fightermanagement), nametofind As String, indexlow As Integer, indexhigh As Integer, decision As Integer) As List(Of fightermanagement)
-
+    Function bsearchfighters(fighterlist As List(Of fighter), nametofind As String, indexlow As Integer, indexhigh As Integer)
         Try
 
-            Debug.WriteLine("index low is" & indexlow & "indexhigh is" & indexhigh)
 
+
+            'binary search for full name
+
+
+            'if there are no fighters, returns -1 
             If indexlow > indexhigh Then
-                Debug.WriteLine("1")
-                Return New List(Of fightermanagement)()
+                Return -1
             End If
 
             Dim midpoint As Integer = (indexlow + indexhigh) \ 2
 
-            Debug.WriteLine("midpoint is " & midpoint)
-            Dim currentfighter As fightermanagement = fighterlist(midpoint)
+            If String.Compare(fighterlist(midpoint).name, nametofind) < 0 Then
+                Return bsearchfighters(fighterlist, nametofind, midpoint + 1, indexhigh)
+            ElseIf String.Compare(fighterlist(midpoint).name, nametofind) > 0 Then
+                Return bsearchfighters(fighterlist, nametofind, indexlow, midpoint - 1)
+            Else
+                Return midpoint
+            End If
 
-            'gets event number
-            Dim fightname As String = parsename(currentfighter.Name, decision)
+
+        Catch ex As Exception
+            MsgBox("Problem occured with binary search: " & ex.Message)
+            Return New List(Of fighter)
+        End Try
+    End Function
+
+    Function bsearchfighter_onename(fighterlist As List(Of fighter), nametofind As String, indexlow As Integer, indexhigh As Integer, decision As Integer) As List(Of fighter)
+
+        Try
+
+            If indexlow > indexhigh Then
+                Return New List(Of fighter)()
+            End If
+
+            Dim midpoint As Integer = (indexlow + indexhigh) \ 2
+            Dim currentfighter As fighter = fighterlist(midpoint)
 
 
-            If String.Compare(fightname, nametofind) < 0 Then
-                Debug.WriteLine("name is smaller than nametofind")
-                Return bsearchonename(fighterlist, nametofind, midpoint + 1, indexhigh, decision)
-            ElseIf String.Compare(fightname, nametofind) > 0 Then
-                Debug.WriteLine("name is bigger than nametofind")
-                Return bsearchonename(fighterlist, nametofind, indexlow, midpoint - 1, decision)
+            Dim fightername As String = parsename(currentfighter.name, decision)
+
+
+            If String.Compare(fightername, nametofind) < 0 Then
+                Return bsearchfighter_onename(fighterlist, nametofind, midpoint + 1, indexhigh, decision)
+            ElseIf String.Compare(fightername, nametofind) > 0 Then
+                Return bsearchfighter_onename(fighterlist, nametofind, indexlow, midpoint - 1, decision)
             Else
 
-                Debug.WriteLine("3")
-                Dim searchedfighters As New List(Of fightermanagement)()
+                'once binary search is done, finds all the fights with event number
+                Dim searchedfighters As New List(Of fighter)()
                 searchedfighters.Add(currentfighter)
 
 
+                'checks fighters on left of midpoint
                 Dim left As Integer = midpoint - 1
                 While left >= indexlow
-                    Dim leftfightername As String = parsename(fighterlist(left).Name, decision)
+                    Dim leftfightername As String = parsename(fighterlist(left).name, decision)
                     If leftfightername = nametofind Then
                         searchedfighters.Add(fighterlist(left))
                         left -= 1
                     ElseIf leftfightername <> nametofind Then
                         Exit While
-
                     End If
 
                 End While
@@ -428,14 +431,14 @@ Public Class Likedfightersearch
                 Dim right As Integer = midpoint + 1
 
 
+                'checks fighters on right of midpoint
                 While right <= indexhigh
-                    Dim rightfightername As String = parsename(fighterlist(right).Name, decision)
+                    Dim rightfightername As String = parsename(fighterlist(right).name, decision)
                     If rightfightername = nametofind Then
                         searchedfighters.Add(fighterlist(right))
                         right += 1
                     ElseIf rightfightername <> nametofind Then
                         Exit While
-
                     End If
 
                 End While
@@ -443,39 +446,54 @@ Public Class Likedfightersearch
 
 
 
-
+                'return fighters
                 Return searchedfighters
             End If
 
         Catch ex As Exception
-            MsgBox("Problem occured with binary search: " & ex.Message)
-            Return New List(Of fightermanagement)
+            MsgBox("Problem occured with binary search using a single name: " & ex.Message)
+            Return New List(Of fighter)
         End Try
     End Function
-
-
 
 
 
     Function parsename(name As String, decision As Integer) ' parse name for binary search
 
         'splits name where the space is
-        Dim parsedname As String() = name.Split(" "c)
 
-        If parsedname.Length > 0 Then
-            If decision = 0 Then
-                'returns first name
-                Return parsedname(0)
+        Try
 
-            ElseIf decision = 1 And parsedname.Length > 1 Then
-                'returns last name
 
-                Return parsedname(1)
+            If name <> "" And name IsNot Nothing Then
+
+
+                Dim parsedname As String() = name.Split(" "c)
+
+
+
+                If parsedname.Length > 0 Then
+                    If decision = 0 Then
+                        'returns first name
+                        Return parsedname(0)
+
+                    ElseIf decision = 1 And parsedname.Length > 1 Then
+                        'returns last name
+
+                        Return parsedname(1)
+                    Else
+
+                        Return ""
+                    End If
+                End If
             Else
-
                 Return ""
             End If
-        End If
+
+        Catch ex As Exception
+            MsgBox("Error parsing name:" & ex.Message)
+            Return ""
+        End Try
 
     End Function
 End Class

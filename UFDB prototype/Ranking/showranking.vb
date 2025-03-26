@@ -12,20 +12,20 @@ Public Class showranking
         'shows ranking
 
         Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
-        Dim fighterlist As List(Of fightermanagement) = functions.ReadFightersFromJson
+        Dim fighterlist As List(Of fighter) = functions.ReadFightersFromJson
         Dim currentuser As usermanagement = getcurrentuser()
         Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson
 
-        Dim listusername As usermanagement = userlist.FirstOrDefault(Function(u) u.UserID = currentranking.UserID)
+        Dim listusername As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = currentranking.userid)
 
         For i = 1 To 10
 
 
-            Dim samerank As Boolean = fighterranks.Any(Function(rf) rf.Rank = i AndAlso rf.RankingID = currentranking.RankingID)
+            Dim samerank As Boolean = fighterranks.Any(Function(rf) rf.rank = i AndAlso rf.rankingid = currentranking.rankingid)
 
             If samerank = True Then
-                Dim ranktoadd As fighterranking = fighterranks.FirstOrDefault(Function(rf) rf.Rank = i AndAlso rf.RankingID = currentranking.RankingID)
-                Dim fightertoadd As fightermanagement = fighterlist.FirstOrDefault(Function(f) f.FighterId = ranktoadd.FighterID)
+                Dim ranktoadd As fighterranking = fighterranks.FirstOrDefault(Function(rf) rf.rank = i AndAlso rf.rankingid = currentranking.rankingid)
+                Dim fightertoadd As fighter = fighterlist.FirstOrDefault(Function(f) f.fighterid = ranktoadd.fighterid)
                 updateranks(ranktoadd, fightertoadd, i)
             End If
 
@@ -35,39 +35,31 @@ Public Class showranking
 
 
 
-
+        Me.Name = Me.currentranking.rankname
         Me.currentranking = currentranking
-        lbltitle.Text = Me.currentranking.RankingName
-        lbldesc.Text = Me.currentranking.Rankingdesc
+        lbltitle.Text = Me.currentranking.rankname
+        lbldesc.Text = Me.currentranking.rankdesc
         Lbluserid.Text = ("Made by:" & listusername.username)
 
-        If Me.currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
+        If Me.currentranking.userid = currentuser.userid Or currentuser.admin = True Then
             btndelete.Visible = True
             btndelete.Enabled = True
         End If
 
     End Sub
-    Private Sub showranking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
 
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles lbldesc.Click
-
-    End Sub
-
-    Sub updateranks(fighterrank As fighterranking, currentfighter As fightermanagement, i As Integer)
+    Sub updateranks(fighterrank As fighterranking, currentfighter As fighter, i As Integer) 'renames all the ranks to the current rankings names
 
         Dim fighterpanel As Panel = (visiblepanel)
         Dim ranklbl As Label = fighterpanel.Controls("lblfighter" & i)
-        If ranklbl IsNot Nothing And i = fighterrank.Rank Then
+        If ranklbl IsNot Nothing And i = fighterrank.rank Then
 
-            ranklbl.Text = currentfighter.Name
+            ranklbl.Text = currentfighter.name
 
 
 
         End If
-
-
 
 
     End Sub
@@ -75,7 +67,7 @@ Public Class showranking
     Function getcurrentuser()
         Dim userlist As List(Of usermanagement) = functions.ReadUsersFromJson()
         Dim currentuser As usermanagement
-        currentuser = userlist.FirstOrDefault(Function(u) u.UserID = Form1.currentuserid)
+        currentuser = userlist.FirstOrDefault(Function(u) u.userid = Form1.currentuserid)
         Return currentuser
     End Function
 
@@ -83,13 +75,18 @@ Public Class showranking
 
         'deletes ranking by joining ranking id between fighterranking and ranking lists
         Dim currentuser As usermanagement = getcurrentuser()
-        If currentranking.UserID = currentuser.UserID Or currentuser.Admin = True Then
+        If currentranking.userid = currentuser.userid Or currentuser.admin = True Then
             Dim ranklist As List(Of ranking) = functions.ReadRanklistsFromJson
+
             Dim fighterranks As List(Of fighterranking) = functions.ReadFighterranksFromFile
-            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.RankingID = currentranking.RankingID).ToList()
-            Dim rankingIdsToRemove As List(Of Integer) = rankingstoremove.Select(Function(r) r.RankingID).ToList()
-            fighterranks.RemoveAll(Function(fr) rankingIdsToRemove.Contains(fr.RankingID))
-            ranklist.RemoveAll(Function(r) r.RankingID = currentranking.RankingID)
+
+            Dim rankingstoremove As List(Of ranking) = ranklist.Where(Function(r) r.rankingid = currentranking.rankingid).ToList() 'finds all lists to delete
+
+            Dim rankingidstoremove As List(Of Integer) = rankingstoremove.Select(Function(r) r.rankingid).ToList()
+
+            fighterranks.RemoveAll(Function(fr) rankingidstoremove.Contains(fr.rankingid)) 'deletes all the fighterranks where the ranking id is the same as the one made
+
+            ranklist.RemoveAll(Function(r) r.rankingid = currentranking.rankingid)
 
 
 
@@ -102,16 +99,6 @@ Public Class showranking
 
     End Sub
 
-    Private Sub Lbluserid_Click(sender As Object, e As EventArgs) Handles Lbluserid.Click
 
-    End Sub
-
-    Private Sub visiblepanel_Paint(sender As Object, e As PaintEventArgs) Handles visiblepanel.Paint
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
 End Class
