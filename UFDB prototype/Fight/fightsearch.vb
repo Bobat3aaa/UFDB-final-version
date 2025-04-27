@@ -532,7 +532,7 @@ Public Class fightsearch
 
 
 
-            Dim selectedWeightClass As String = "" 'stores selected weight class
+            Dim selectedweightclass As String = "" 'stores selected weight class
             Dim selectedlocation As String = "" 'stores selected location
             Dim selecteddate As DateTime 'stores selected date
             Dim filteredfights As List(Of Fight) = fightlist 'new fight list to be returned
@@ -542,7 +542,7 @@ Public Class fightsearch
 
 
             If cmbweightclass.SelectedItem IsNot Nothing Then 'stores selected weight class if not empty
-                selectedWeightClass = cmbweightclass.SelectedItem.ToString()
+                selectedweightclass = cmbweightclass.SelectedItem.ToString()
 
             End If
             If cmblocation.SelectedItem IsNot Nothing Then 'stores selected location if not empty
@@ -557,9 +557,9 @@ Public Class fightsearch
 
             ' Filter fighters based on the selected weight class, location and date using lambda functions
 
-            If Not String.IsNullOrEmpty(selectedWeightClass) And selectedWeightClass <> "All" Then 'statement only occurs if the selected weight class does not equal nothing, or all
+            If Not String.IsNullOrEmpty(selectedweightclass) And selectedweightclass <> "All" Then 'statement only occurs if the selected weight class does not equal nothing, or all
 
-                filteredfights = fightlist.Where(Function(f) f.weightclass = selectedWeightClass).ToList()
+                filteredfights = fightlist.Where(Function(f) f.weightclass = selectedweightclass).ToList()
 
             End If
 

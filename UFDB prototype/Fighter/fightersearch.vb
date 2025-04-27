@@ -681,13 +681,13 @@ Public Class fightersearch
         Try
 
             Dim selectedstance As String = "" 'used to store the selected stance
-            Dim selectedWeightClass As String = "" ' used to store selected weight class
+            Dim selectedweightclass As String = "" ' used to store selected weight class
 
 
             Dim filteredfighters As List(Of fighter) = fighterlist 'makes new fighterlist with all fighters in it
 
             If cmbweightclass.SelectedItem IsNot Nothing Then
-                selectedWeightClass = cmbweightclass.SelectedItem.ToString() 'stores selected weight class
+                selectedweightclass = cmbweightclass.SelectedItem.ToString() 'stores selected weight class
             End If
 
             If cmbstance.SelectedItem IsNot Nothing Then
@@ -697,9 +697,9 @@ Public Class fightersearch
 
             ' Filter fighters based on the selected weight class
 
-            If selectedWeightClass <> "All" And selectedWeightClass <> "" Then 'statement only occurs if the selected weight class does not equal nothing, or all
+            If selectedweightclass <> "All" And selectedweightclass <> "" Then 'statement only occurs if the selected weight class does not equal nothing, or all
                 'returns a list of fighters with the same weight class
-                filteredfighters = filteredfighters.Where(Function(f) f.weight = selectedWeightClass).ToList()
+                filteredfighters = filteredfighters.Where(Function(f) f.weight = selectedweightclass).ToList()
             End If
 
 
