@@ -260,7 +260,7 @@ Public Class usereditor
 
 
     Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*.+#£])[A-Za-z\d!@$%^.&*+#£]{8,32}$")
         MsgBox(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function
@@ -317,6 +317,10 @@ Public Class usereditor
     End Function
 
     Private Sub txtusername_TextChanged(sender As Object, e As EventArgs) Handles txtusername.TextChanged
+
+    End Sub
+
+    Private Sub txtpassword_TextChanged(sender As Object, e As EventArgs) Handles txtpassword.TextChanged
 
     End Sub
 End Class

@@ -283,7 +283,7 @@ Public Class fightersearch
 
 
 
-    Sub updatebuttons(fighterlist As List(Of fighter), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fighterlist As List(Of fighter), Optional startindex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -292,14 +292,14 @@ Public Class fightersearch
         currentfighterlist = fighterlist
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-        Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
-        mainendindex = endIndex
+        Dim endindex As Integer = Math.Min(startindex + count, fighterlist.Count)
+        mainendindex = endindex
 
-        If startIndex < 0 Then startIndex = 0 'if fighters index becomes negative from load back makes sure back button brings you to first fighter
+        If startindex < 0 Then startindex = 0 'if fighters index becomes negative from load back makes sure back button brings you to first fighter
 
         'if the starting fighters index is bigger than 0, a back button is added that makes the starting index go back by 100 to undo the action of loading more
 
-        If startIndex > 0 Then
+        If startindex > 0 Then
 
 
             Dim btnback As New Button
@@ -325,7 +325,7 @@ Public Class fightersearch
 
         'creates 50 fighter buttons
 
-        For i = startIndex To endIndex - 1
+        For i = startindex To endindex - 1
 
 
             Dim btnfighter As New Button
@@ -350,7 +350,7 @@ Public Class fightersearch
         Next
 
         'creates a load more button if the last fighter index is smaller than the amount of fighters in the list
-        If endIndex < fighterlist.Count Then
+        If endindex < fighterlist.Count Then
 
 
             Dim btnloadmore As New Button
@@ -388,20 +388,20 @@ Public Class fightersearch
     Private Sub btnfighterclick(sender As Object, e As EventArgs)   'when a fighter button in the flow control panel is picked 
 
         'shows what button was pressed
-        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim clickedbutton As Button = DirectCast(sender, Button)
 
         'gets tag (indexing number) of button which is the fighters place in the list
-        Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
+        Dim fighterindex As Integer = Convert.ToInt32(clickedbutton.Tag)
 
 
         'finds current fighter
-        Dim currentfighter As fighter = currentfighterlist(fighterIndex)
+        Dim currentfighter As fighter = currentfighterlist(fighterindex)
         'sends current fighter data over to the current fighter form
-        Dim fighterForm As New currentfighterform(currentfighter)
+        Dim fighterform As New currentfighterform(currentfighter)
 
 
         'opens new fighterform in panel
-        childform(fighterForm)
+        childform(fighterform)
 
     End Sub
 
@@ -684,7 +684,7 @@ Public Class fightersearch
             Dim selectedWeightClass As String = "" ' used to store selected weight class
 
 
-            Dim filteredFighters As List(Of fighter) = fighterlist 'makes new fighterlist with all fighters in it
+            Dim filteredfighters As List(Of fighter) = fighterlist 'makes new fighterlist with all fighters in it
 
             If cmbweightclass.SelectedItem IsNot Nothing Then
                 selectedWeightClass = cmbweightclass.SelectedItem.ToString() 'stores selected weight class
@@ -699,32 +699,32 @@ Public Class fightersearch
 
             If selectedWeightClass <> "All" And selectedWeightClass <> "" Then 'statement only occurs if the selected weight class does not equal nothing, or all
                 'returns a list of fighters with the same weight class
-                filteredFighters = filteredFighters.Where(Function(f) f.weight = selectedWeightClass).ToList()
+                filteredfighters = filteredfighters.Where(Function(f) f.weight = selectedWeightClass).ToList()
             End If
 
 
 
             If selectedstance <> "All" And selectedstance <> "" Then 'statement only occurs if the selected stance does not equal nothing, or all
                 'returns a list of fighters with the same weight class and stance
-                filteredFighters = filteredFighters.Where(Function(f) f.stance = selectedstance).ToList()
+                filteredfighters = filteredfighters.Where(Function(f) f.stance = selectedstance).ToList()
             End If
 
 
             'variables used for sorting
 
             Dim indexlow As Integer = 0
-            Dim indexhigh As Integer = filteredFighters.Count - 1
+            Dim indexhigh As Integer = filteredfighters.Count - 1
             Dim sortwins As Integer = cmbwins.SelectedIndex 'determines sorting direction
 
 
             'sorts filtered fighters based on decision made
-            filteredFighters = quicksortfighters(filteredFighters, indexlow, indexhigh, sortwins)
+            filteredfighters = quicksortfighters(filteredfighters, indexlow, indexhigh, sortwins)
             lblsorted.Text = cmbwins.SelectedItem
 
 
 
-            Debug.WriteLine(filteredFighters.Count)
-            Return filteredFighters
+            Debug.WriteLine(filteredfighters.Count)
+            Return filteredfighters
 
         Catch ex As Exception
             MsgBox("Problem occured with checking filters: " & ex.Message)

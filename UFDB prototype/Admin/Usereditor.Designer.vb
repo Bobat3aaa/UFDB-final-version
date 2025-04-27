@@ -169,7 +169,7 @@ Partial Class usereditor
         Me.Checkadmin.Font = New System.Drawing.Font("Bahnschrift Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Checkadmin.Location = New System.Drawing.Point(636, 69)
         Me.Checkadmin.Name = "Checkadmin"
-        Me.Checkadmin.Size = New System.Drawing.Size(74, 23)
+        Me.Checkadmin.Size = New System.Drawing.Size(73, 23)
         Me.Checkadmin.TabIndex = 21
         Me.Checkadmin.Text = "admin"
         Me.Checkadmin.UseVisualStyleBackColor = True
@@ -185,7 +185,7 @@ Partial Class usereditor
         Me.Button1.Text = "clear"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'Usereditor
+        'usereditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -207,7 +207,7 @@ Partial Class usereditor
         Me.Controls.Add(Me.btnsavefile)
         Me.Controls.Add(Me.btndelete)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Usereditor"
+        Me.Name = "usereditor"
         Me.Text = "Edit users"
         CType(Me.Datagridview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

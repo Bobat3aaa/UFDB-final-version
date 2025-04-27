@@ -30,7 +30,7 @@ Public Class rankingsearch
 
 
 
-    Sub updatebuttons(ranklist As List(Of ranking), Optional startIndex As Integer = 0, Optional count As Integer = 50) 'same function as in fighter form
+    Sub updatebuttons(ranklist As List(Of ranking), Optional startindex As Integer = 0, Optional count As Integer = 50) 'same function as in fighter form
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -39,12 +39,12 @@ Public Class rankingsearch
         currentranklist = ranklist
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-        Dim endIndex As Integer = Math.Min(startIndex + count, ranklist.Count)
-        mainendindex = endIndex
+        Dim endindex As Integer = Math.Min(startindex + count, ranklist.Count)
+        mainendindex = endindex
 
-        If startIndex < 0 Then startIndex = 0
+        If startindex < 0 Then startindex = 0
 
-        If startIndex > 0 Then
+        If startindex > 0 Then
 
 
             Dim btnback As New Button
@@ -68,7 +68,7 @@ Public Class rankingsearch
 
 
         'creates 50 buttons
-        For i = startIndex To endIndex - 1
+        For i = startindex To endindex - 1
 
             Dim user As usermanagement = userlist.FirstOrDefault(Function(u) u.userid = ranklist(i).userid)
 
@@ -87,14 +87,13 @@ Public Class rankingsearch
 
 
             AddHandler btnlists.Click, AddressOf btnlistclick
-
             FlowLayoutPanel1.Controls.Add(btnlists)
 
 
         Next
 
         'creates a load more button if needed
-        If endIndex < ranklist.Count Then
+        If endindex < ranklist.Count Then
 
 
             Dim btnloadmore As New Button
@@ -128,10 +127,10 @@ Public Class rankingsearch
     Private Sub btnlistclick(sender As Object, e As EventArgs)
 
         'holds what button was just pressed
-        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim clickedbutton As Button = DirectCast(sender, Button)
 
         'gets the tag of ranking/button
-        Dim rankIndex As Integer = Convert.ToInt32(clickedButton.Tag)
+        Dim rankindex As Integer = Convert.ToInt32(clickedbutton.Tag)
 
 
         'find button via quicksort and using index from tag
@@ -144,7 +143,7 @@ Public Class rankingsearch
 
 
         'finds current ranking
-        Dim currentranking As ranking = sortedranklist(rankIndex)
+        Dim currentranking As ranking = sortedranklist(rankindex)
 
 
 

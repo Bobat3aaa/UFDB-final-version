@@ -7,6 +7,13 @@
     "rankdatemade": "2025-03-01T00:00:00+00:00"
   },
   {
+    "rankingid": 3,
+    "userid": 12,
+    "rankname": "Favourite fighters",
+    "rankdesc": "A list of my favourite UFC fighters!",
+    "rankdatemade": "2025-04-27T00:00:00+01:00"
+  },
+  {
     "rankingid": 1,
     "userid": 3,
     "rankname": "Test ranking to view",

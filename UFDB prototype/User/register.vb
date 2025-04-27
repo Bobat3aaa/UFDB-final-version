@@ -196,7 +196,7 @@ Public Class register
     End Function
     'validate password before it is hashed
     Function validatepassword(ByVal password As String)
-        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*+#£])[A-Za-z\d!@$%^&*+#£]{8,32}$")
+        Static passwordcheck As New Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$%^&*.+#£])[A-Za-z\d!@$%^.&*+#£]{8,32}$")
         Debug.WriteLine(passwordcheck.IsMatch(password))
         Return passwordcheck.IsMatch(password)
     End Function

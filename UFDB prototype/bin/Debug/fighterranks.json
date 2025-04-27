@@ -1,82 +1,132 @@
 [
   {
-    "RankingID": 1,
-    "FighterID": "003d82fa384ca1d0",
-    "Rank": 1
+    "rankingid": 1,
+    "fighterid": "003d82fa384ca1d0",
+    "rank": 1
   },
   {
-    "RankingID": 1,
-    "FighterID": "cf1a88371c8cb690",
-    "Rank": 3
+    "rankingid": 1,
+    "fighterid": "cf1a88371c8cb690",
+    "rank": 3
   },
   {
-    "RankingID": 1,
-    "FighterID": "1741343f0ca34dd5",
-    "Rank": 2
+    "rankingid": 1,
+    "fighterid": "1741343f0ca34dd5",
+    "rank": 2
   },
   {
-    "RankingID": 1,
-    "FighterID": "ccdcb20370be62a3",
-    "Rank": 4
+    "rankingid": 1,
+    "fighterid": "ccdcb20370be62a3",
+    "rank": 4
   },
   {
-    "RankingID": 1,
-    "FighterID": "d73e856f150744b2",
-    "Rank": 5
+    "rankingid": 1,
+    "fighterid": "d73e856f150744b2",
+    "rank": 5
   },
   {
-    "RankingID": 1,
-    "FighterID": "a4d055f1435d6d75",
-    "Rank": 6
+    "rankingid": 1,
+    "fighterid": "a4d055f1435d6d75",
+    "rank": 6
   },
   {
-    "RankingID": 1,
-    "FighterID": "34c2b3656f88f7ef",
-    "Rank": 7
+    "rankingid": 1,
+    "fighterid": "34c2b3656f88f7ef",
+    "rank": 7
   },
   {
-    "RankingID": 1,
-    "FighterID": "cc18abc046b382c9",
-    "Rank": 8
+    "rankingid": 1,
+    "fighterid": "cc18abc046b382c9",
+    "rank": 8
   },
   {
-    "RankingID": 1,
-    "FighterID": "1ce7998e0a215caa",
-    "Rank": 9
+    "rankingid": 1,
+    "fighterid": "1ce7998e0a215caa",
+    "rank": 9
   },
   {
-    "RankingID": 1,
-    "FighterID": "338a11d3674eb2d4",
-    "Rank": 10
+    "rankingid": 1,
+    "fighterid": "338a11d3674eb2d4",
+    "rank": 10
   },
   {
-    "RankingID": 2,
-    "FighterID": "003d82fa384ca1d0",
-    "Rank": 1
+    "rankingid": 2,
+    "fighterid": "003d82fa384ca1d0",
+    "rank": 1
   },
   {
-    "RankingID": 2,
-    "FighterID": "1741343f0ca34dd5",
-    "Rank": 3
+    "rankingid": 2,
+    "fighterid": "1741343f0ca34dd5",
+    "rank": 3
   },
   {
-    "RankingID": 2,
-    "FighterID": "cf1a88371c8cb690",
-    "Rank": 2
+    "rankingid": 2,
+    "fighterid": "cf1a88371c8cb690",
+    "rank": 2
   },
   {
-    "RankingID": 2,
-    "FighterID": "ccdcb20370be62a3",
-    "Rank": 4
+    "rankingid": 2,
+    "fighterid": "ccdcb20370be62a3",
+    "rank": 4
   },
   {
-    "RankingID": 2,
-    "FighterID": "d73e856f150744b2",
-    "Rank": 5
+    "rankingid": 2,
+    "fighterid": "d73e856f150744b2",
+    "rank": 5
   },
   {
-    "RankingID": 2,
-    "FighterID": "a4d055f1435d6d75",
-    "Rank": 6
+    "rankingid": 2,
+    "fighterid": "a4d055f1435d6d75",
+    "rank": 6
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "cf1a88371c8cb690",
+    "rank": 2
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "003d82fa384ca1d0",
+    "rank": 1
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "150ff4cc642270b9",
+    "rank": 3
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "54f64b5e283b0ce7",
+    "rank": 4
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "07f72a2a7591b409",
+    "rank": 5
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "1338e2c7480bdf9e",
+    "rank": 6
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "c1135a6892e916db",
+    "rank": 7
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "bfa8f263815cfa2e",
+    "rank": 8
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "e7ec11096eac0282",
+    "rank": 9
+  },
+  {
+    "rankingid": 3,
+    "fighterid": "e6904a03a66e711d",
+    "rank": 10
   }
 ]

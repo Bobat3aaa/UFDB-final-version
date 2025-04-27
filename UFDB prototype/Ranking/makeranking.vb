@@ -74,7 +74,7 @@ Public Class makeranking
 
 
 
-    Sub updatebuttons(fighterlist As List(Of fighter), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fighterlist As List(Of fighter), Optional startindex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -88,11 +88,11 @@ Public Class makeranking
         Else
 
             'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-            Dim endIndex As Integer
-            endIndex = Math.Min(startIndex + count, fighterlist.Count)
-            mainendindex = endIndex
+            Dim endindex As Integer
+            endindex = Math.Min(startindex + count, fighterlist.Count)
+            mainendindex = endindex
 
-            If startIndex < 0 Then startIndex = 0
+            If startindex < 0 Then startindex = 0
 
             Dim btndelete As New Button
             btndelete.Width = 100
@@ -108,7 +108,7 @@ Public Class makeranking
 
             FlowLayoutPanel1.Controls.Add(btndelete)
 
-            If startIndex > 0 Then
+            If startindex > 0 Then
 
 
                 Dim btnback As New Button
@@ -133,7 +133,7 @@ Public Class makeranking
 
 
             'creates 50 fighter buttons
-            For i = startIndex To endIndex - 1
+            For i = startindex To endindex - 1
 
 
                 Dim btnfighter As New Button
@@ -154,7 +154,7 @@ Public Class makeranking
             Next
 
             'creates a load more button if needed
-            If endIndex < fighterlist.Count Then
+            If endindex < fighterlist.Count Then
 
 
                 Dim btnloadmore As New Button
@@ -215,10 +215,10 @@ Public Class makeranking
 
 
         'shows what button was pressed
-        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim clickedbutton As Button = DirectCast(sender, Button)
 
         'gets tag (indexing number) of button which is the fighters place in the list
-        Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
+        Dim fighterindex As Integer = Convert.ToInt32(clickedbutton.Tag)
 
 
 
@@ -236,7 +236,7 @@ Public Class makeranking
 
 
             'finds current fighter
-            Dim currentfighter As fighter = currentfighterlist(fighterIndex)
+            Dim currentfighter As fighter = currentfighterlist(fighterindex)
             'finds current rank chosen via combo box
             Dim currentrank As Integer = currentrankfinder()
 
@@ -488,8 +488,8 @@ Public Class makeranking
                     ranklbl.Text = currentfighter.name
                 ElseIf ranklbl IsNot Nothing And ranklbl.Text = currentfighter.name Then
                     ranklbl.Text = "Fighter " & i
-                Else
-                    ranklbl.Text = "Fighter " & i
+
+
                 End If
 
 

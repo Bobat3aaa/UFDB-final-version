@@ -230,7 +230,7 @@ Public Class fightsearch
 
 
 
-    Sub updatebuttons(fightlist As List(Of Fight), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fightlist As List(Of Fight), Optional startindex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -242,12 +242,12 @@ Public Class fightsearch
 
 
         'figures out end index by checking whether the usual end index is still smaller than the overall sorted fights
-        Dim endIndex As Integer = Math.Min(startIndex + count, fightlist.Count)
-        mainendindex = endIndex
+        Dim endindex As Integer = Math.Min(startindex + count, fightlist.Count)
+        mainendindex = endindex
 
-        If startIndex < 0 Then startIndex = 0
+        If startindex < 0 Then startindex = 0
 
-        If startIndex > 0 Then
+        If startindex > 0 Then
 
 
             Dim btnback As New Button
@@ -270,7 +270,7 @@ Public Class fightsearch
         End If
 
         'creates 50 buttons
-        For i = startIndex To endIndex - 1
+        For i = startindex To endindex - 1
 
 
             Dim btnfight As New Button
@@ -290,7 +290,7 @@ Public Class fightsearch
         Next
 
         'creates a load more button if needed
-        If endIndex <fightlist.Count Then
+        If endindex < fightlist.Count Then
 
 
             Dim btnloadmore As New Button
@@ -325,10 +325,10 @@ Public Class fightsearch
     Private Sub btnfightclick(sender As Object, e As EventArgs)
 
         'shows what button was pressed
-        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim clickedbutton As Button = DirectCast(sender, Button)
 
         'gets tag/index of button which is the fights place in the list
-        Dim fightIndex As Integer = Convert.ToInt32(clickedButton.Tag)
+        Dim fightindex As Integer = Convert.ToInt32(clickedbutton.Tag)
 
 
 
@@ -336,17 +336,17 @@ Public Class fightsearch
 
 
         'finds current fight
-        Dim currentfight As Fight = currentfightlist(fightIndex)
+        Dim currentfight As Fight = currentfightlist(fightindex)
 
         'sends current fight data over to the current fighter form
-        Dim fightForm As New currentFightForm(currentfight)
+        Dim fightform As New currentFightForm(currentfight)
 
 
 
 
 
 
-        childform(fightForm)
+        childform(fightform)
 
     End Sub
 
@@ -426,8 +426,6 @@ Public Class fightsearch
 
 
 
-        'gets event number via parse function
-        Dim currenteventnumber As Integer? = ParseEventNumber(currentfight.name)
 
         'if parsing returns nothing, skips the fight -> used when a fight night is found
 
@@ -475,27 +473,6 @@ Public Class fightsearch
 
 
 
-    Function ParseEventNumber(eventName As String) As Integer? 'Parses event number
-
-
-        'uses a regular expression to parse the fight number
-
-        'matches number within UFC(number)
-        Dim eventregex As New Regex("\bUFC\s+(\d+)\b", RegexOptions.IgnoreCase)
-
-
-
-        Dim match As Match = eventregex.Match(eventName)
-        'only does so for ufc names with an event number
-        If match.Success Then
-            Debug.WriteLine(Integer.Parse(match.Groups(1).Value))
-            Return Integer.Parse(match.Groups(1).Value)
-        Else
-            Debug.WriteLine("nothing returned")
-
-            Return Nothing
-        End If
-    End Function
 
 
 
@@ -558,7 +535,7 @@ Public Class fightsearch
             Dim selectedWeightClass As String = "" 'stores selected weight class
             Dim selectedlocation As String = "" 'stores selected location
             Dim selecteddate As DateTime 'stores selected date
-            Dim filteredFights As List(Of Fight) = fightlist 'new fight list to be returned
+            Dim filteredfights As List(Of Fight) = fightlist 'new fight list to be returned
             Dim sortdirection As Integer = cmbsort.SelectedIndex 'stores sort direction
 
 
@@ -582,17 +559,17 @@ Public Class fightsearch
 
             If Not String.IsNullOrEmpty(selectedWeightClass) And selectedWeightClass <> "All" Then 'statement only occurs if the selected weight class does not equal nothing, or all
 
-                filteredFights = fightlist.Where(Function(f) f.weightclass = selectedWeightClass).ToList()
+                filteredfights = fightlist.Where(Function(f) f.weightclass = selectedWeightClass).ToList()
 
             End If
 
             If Not String.IsNullOrEmpty(selectedlocation) And selectedlocation <> "All" Then 'statement only occurs if the selected location does not equal nothing, or all
-                filteredFights = filteredFights.Where(Function(f) f.location = selectedlocation).ToList()
+                filteredfights = filteredfights.Where(Function(f) f.location = selectedlocation).ToList()
 
             End If
 
             If DateTimePicker1.Checked = True Then
-                filteredFights = filteredFights.Where(Function(f) f.date.Date = selecteddate.Date).ToList()
+                filteredfights = filteredfights.Where(Function(f) f.date.Date = selecteddate.Date).ToList()
 
             End If
 
@@ -600,14 +577,14 @@ Public Class fightsearch
 
 
             Dim ilow As Integer = 0
-            Dim ihigh As Integer = filteredFights.Count - 1
-            filteredFights = mergesortevents(filteredFights, ilow, ihigh, sortdirection)
+            Dim ihigh As Integer = filteredfights.Count - 1
+            filteredfights = mergesortevents(filteredfights, ilow, ihigh, sortdirection)
             lblsorted.Text = cmbsort.SelectedItem
 
 
             'Debug.WriteLine(filteredFights.Count)
 
-            Return filteredFights
+            Return filteredfights
         Catch ex As Exception
             MsgBox("Error occured checking filters: " & ex.Message)
             Return New List(Of Fight)

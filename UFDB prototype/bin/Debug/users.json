@@ -63,12 +63,30 @@
     "admin": false
   },
   {
+    "userid": 12,
+    "username": "standarduser",
+    "password": "µ„––’Š—ÑÖÔÄÐ¥©©ª¯©§ÇÇÅóÆÏ××ÑÔ×É",
+    "passwordlength": 12,
+    "age": 40,
+    "email": "standarduser@gmail.com",
+    "admin": false
+  },
+  {
     "userid": 8,
     "username": "testuserpassword",
     "password": "ˆ¹««¯·ª¼éùí˜””—’”šøÎûòêêìéêôÍÖÏÄ",
     "passwordlength": 10,
     "age": 21,
     "email": "passwordchange@gmail.com",
+    "admin": false
+  },
+  {
+    "userid": 13,
+    "username": "ufdbadminuser",
+    "password": "¦ƒŠŽ‰·†””ÉÕÖÌ¥¯¡®Ò§««ùÆÇûË×É×ÄÍÕ",
+    "passwordlength": 12,
+    "age": 43,
+    "email": "ufdbadminuser@hotmail.com",
     "admin": false
   },
   {

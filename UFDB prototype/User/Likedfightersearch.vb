@@ -52,16 +52,19 @@ Public Class likedfightersearch
                                                               Where lf.userid = Form1.currentuserid 'condition -> liked fighter user id is the same as the current user id
                                                               Join sf In fighters On lf.fighterid Equals sf.fighterid 'links liked fighter to fighter list using fighter id
                                                               Select sf).ToList() 'adds it to a list
-        Debug.WriteLine(likedfighterlist.Count)
+
         'uses a quicksort to sort liked fighters
         If likedfighterlist.Count > 1 Then
             Dim indexlow As Integer = 0
             Dim indexhigh As Integer = likedfighterlist.Count - 1
 
-            likedfighterlist = quicksortfighters(likedfighterlist, indexlow, indexhigh, 1)
+            Dim sortedlikedfighterlist As List(Of fighter) = quicksortfighters(likedfighterlist, indexlow, indexhigh, 1)
+            Debug.WriteLine(" fighter count " & sortedlikedfighterlist.Count)
             'rertuns sorted fighters
+            Return sortedlikedfighterlist
         End If
 
+        Debug.WriteLine("this happened")
         Return likedfighterlist
     End Function
 
@@ -75,89 +78,93 @@ Public Class likedfightersearch
             Dim pivot As String
             Dim templow As Integer = indexlow
             Dim temphigh As Integer = indexhigh
-
+            Debug.WriteLine(" starting list " & fighters.Count)
 
             'if the user has no liked fighters, returns a new list
             If fighters.Count = 0 Then
-
+                Debug.WriteLine("this is occuring")
                 Return New List(Of fighter)()
-            Else
-
-                If sortdecision = 1 Then
+            End If
 
 
-                    pivot = fighters(Int((indexlow + indexhigh) / 2)).name
 
-                    While templow <= temphigh
-                        While String.Compare(fighters(templow).name, pivot) < 0
-                            templow += 1
-                        End While
+            If sortdecision = 1 Then
+                Debug.WriteLine(" its sorting")
 
-                        While String.Compare(fighters(temphigh).name, pivot) > 0
-                            temphigh -= 1
-                        End While
+                pivot = fighters(Int((indexlow + indexhigh) / 2)).name
 
-                        'swaps fighters
-                        If templow <= temphigh Then
-                            Dim tempfighter As fighter = fighters(templow)
-                            fighters(templow) = fighters(temphigh)
-                            fighters(temphigh) = tempfighter
-                            templow += 1
-                            temphigh -= 1
-                        End If
+                While templow <= temphigh
+                    While String.Compare(fighters(templow).name, pivot) < 0
+                        templow += 1
                     End While
 
-
-
-                ElseIf sortdecision = 2 Then
-
-                    pivot = parsednames(Int((indexlow + indexhigh) / 2))
-
-                    While templow <= temphigh
-                        While String.Compare(parsednames(templow), pivot) < 0
-
-                            ' if the name before the pivot is smaller then the pivot, the indicator will increase until this is not the case
-
-                            templow += 1
-                        End While
-
-                        While String.Compare(parsednames(temphigh), pivot) > 0
-
-                            ' if the name after the pivot is larger then the pivot, the indicator will decrease until this is not the case
-
-                            temphigh -= 1
-                        End While
-
-                        If templow <= temphigh Then
-
-                            ' swaps fighters
-
-                            Dim tempfighter As fighter = fighters(templow)
-                            fighters(templow) = fighters(temphigh)
-                            fighters(temphigh) = tempfighter
-
-                            Dim tempname As String = parsednames(templow)
-                            parsednames(templow) = parsednames(temphigh)
-                            parsednames(temphigh) = tempname
-
-                            templow += 1
-                            temphigh -= 1
-                        End If
+                    While String.Compare(fighters(temphigh).name, pivot) > 0
+                        temphigh -= 1
                     End While
 
-                    'recursively sorts
-                    If indexlow <= temphigh Then
-                        quicksortfighters(fighters, indexlow, temphigh, sortdecision)
+                    'swaps fighters
+                    If templow <= temphigh Then
+                        Dim tempfighter As fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+                        templow += 1
+                        temphigh -= 1
                     End If
+                End While
 
-                    If templow < indexhigh Then
+
+
+            ElseIf sortdecision = 2 Then
+
+                pivot = parsednames(Int((indexlow + indexhigh) / 2))
+
+                While templow <= temphigh
+                    While String.Compare(parsednames(templow), pivot) < 0
+
+                        ' if the name before the pivot is smaller then the pivot, the indicator will increase until this is not the case
+
+                        templow += 1
+                    End While
+
+                    While String.Compare(parsednames(temphigh), pivot) > 0
+
+                        ' if the name after the pivot is larger then the pivot, the indicator will decrease until this is not the case
+
+                        temphigh -= 1
+                    End While
+
+                    If templow <= temphigh Then
+
+                        ' swaps fighters
+
+                        Dim tempfighter As fighter = fighters(templow)
+                        fighters(templow) = fighters(temphigh)
+                        fighters(temphigh) = tempfighter
+
+                        Dim tempname As String = parsednames(templow)
+                        parsednames(templow) = parsednames(temphigh)
+                        parsednames(temphigh) = tempname
+
+                        templow += 1
+                        temphigh -= 1
+                    End If
+                End While
+
+            End If
+
+            'recursively sorts
+            If indexlow < temphigh Then
+                    quicksortfighters(fighters, indexlow, temphigh, sortdecision)
+                End If
+
+                If templow < indexhigh Then
                         quicksortfighters(fighters, templow, indexhigh, sortdecision)
                     End If
-
+                    Debug.WriteLine(" last fighter count " & fighters.Count)
                     Return fighters
 
-                End If
-            End If
+
+
         Catch ex As Exception
             MsgBox("Problem occured with quicksortfighters: " & ex.Message)
             Return New List(Of fighter)
@@ -179,7 +186,7 @@ Public Class likedfightersearch
     End Sub
 
     'the count is used to make sure only 50 items are shown at a time
-    Sub updatebuttons(fighterlist As List(Of fighter), Optional startIndex As Integer = 0, Optional count As Integer = 50)
+    Sub updatebuttons(fighterlist As List(Of fighter), Optional startindex As Integer = 0, Optional count As Integer = 50)
 
 
         FlowLayoutPanel1.Controls.Clear()
@@ -188,13 +195,13 @@ Public Class likedfightersearch
 
             currentfighterlist = fighterlist
             'figures out end index by checking whether the usual end index is still smaller than the overall sorted fighters
-            Dim endIndex As Integer = Math.Min(startIndex + count, fighterlist.Count)
-            mainendindex = endIndex
+            Dim endindex As Integer = Math.Min(startindex + count, fighterlist.Count)
+            mainendindex = endindex
 
-            If startIndex < 0 Then startIndex = 0
+            If startindex < 0 Then startindex = 0
 
 
-            If startIndex > 0 Then
+            If startindex > 0 Then
 
 
                 Dim btnback As New Button
@@ -219,7 +226,7 @@ Public Class likedfightersearch
 
 
             'creates 50 buttons
-            For i = startIndex To endIndex - 1
+            For i = startindex To endindex - 1
 
 
                 Dim btnfighter As New Button
@@ -240,7 +247,7 @@ Public Class likedfightersearch
             Next
 
             'creates a load more button if needed
-            If endIndex < fighterlist.Count Then
+            If endindex < fighterlist.Count Then
 
 
                 Dim btnloadmore As New Button
@@ -277,11 +284,11 @@ Public Class likedfightersearch
     Private Sub btnlikedfighterclick(sender As Object, e As EventArgs)
 
         'shows what button was pressed
-        Dim clickedButton As Button = DirectCast(sender, Button)
+        Dim clickedbutton As Button = DirectCast(sender, Button)
 
         'gets tag (indexing number) of button which is the fighters place in the list
 
-        Dim fighterIndex As Integer = Convert.ToInt32(clickedButton.Tag)
+        Dim fighterindex As Integer = Convert.ToInt32(clickedbutton.Tag)
 
 
         'finds current fighter
@@ -294,14 +301,14 @@ Public Class likedfightersearch
 
 
 
-        Dim currentfighter As fighter = currentfighterlist(fighterIndex)
+        Dim currentfighter As fighter = currentfighterlist(fighterindex)
 
         'sends current fighter data over to the current fighter form
-        Dim fighterForm As New currentfighterform(currentfighter)
-        fighterForm.FormBorderStyle = FormBorderStyle.FixedToolWindow
-        fighterForm.ControlBox = True
+        Dim fighterform As New currentfighterform(currentfighter)
+        fighterform.FormBorderStyle = FormBorderStyle.FixedToolWindow
+        fighterform.ControlBox = True
 
-        fighterForm.Show()
+        fighterform.Show()
 
 
     End Sub
